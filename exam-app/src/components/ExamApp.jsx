@@ -249,11 +249,11 @@ export default function ExamApp() {
       <Container maxWidth="md" sx={{ mt: 8 }}>
         <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
           <Typography variant="h4" component="h1" gutterBottom color="primary">
-            MongoDB Associate Developer Exam
+            Exam Hub - Practice Tests
           </Typography>
           
           <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-            Welcome to the MongoDB certification practice exam. Select an exam and click Start when you're ready.
+            Welcome to Exam Hub. Select an exam type from the list below and click Start when you're ready.
           </Typography>
           
           <FormControl fullWidth sx={{ mb: 4 }}>
@@ -302,7 +302,7 @@ export default function ExamApp() {
       <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
           <Typography variant="h4" color="primary" fontWeight="bold">
-            MongoDB Associate Developer Exam
+            Certification Practice Exam
           </Typography>
           <Chip 
             icon={<TimerIcon />}

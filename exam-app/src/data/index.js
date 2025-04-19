@@ -13,14 +13,14 @@ export const examData = {
     title: "MongoDB Exam 2",
     questions: questions1
   },
-  2: {
-    title: "MongoDB Querying Exam", 
-    questions: questions2
-  },
-  3: {
-    title: "MongoDB Aggregation Exam",
-    questions: questions3
-  }
+  // 2: {
+  //   title: "MongoDB Querying Exam", 
+  //   questions: questions2
+  // },
+  // 3: {
+  //   title: "MongoDB Aggregation Exam",
+  //   questions: questions3
+  // }
 };
 
 // Get available exam types
