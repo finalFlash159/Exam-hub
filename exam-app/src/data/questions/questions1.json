@@ -1,0 +1,1052 @@
+[
+    {
+      "id": 1,
+      "question": "What is the primary data structure used in MongoDB to store data?",
+      "options": [
+        {"label": "A", "text": "Table"},
+        {"label": "B", "text": "Document"},
+        {"label": "C", "text": "Row"},
+        {"label": "D", "text": "Column"}
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "MongoDB uses documents, which are JSON-like structures, to store data in a flexible, semi-structured format.",
+        "vi": "MongoDB sử dụng tài liệu (document), là các cấu trúc giống JSON, để lưu trữ dữ liệu theo định dạng linh hoạt, bán cấu trúc."
+      }
+    },
+    {
+      "id": 2,
+      "question": "Which MongoDB Atlas component provides a fully managed cloud database service?",
+      "options": [
+        {"label": "A", "text": "Atlas Clusters"},
+        {"label": "B", "text": "Atlas Data Explorer"},
+        {"label": "C", "text": "Atlas Charts"},
+        {"label": "D", "text": "Atlas Triggers"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Atlas Clusters allow you to deploy and manage MongoDB databases in the cloud with minimal setup.",
+        "vi": "Atlas Clusters cho phép bạn triển khai và quản lý cơ sở dữ liệu MongoDB trên đám mây với ít thiết lập."
+      }
+    },
+    {
+      "id": 3,
+      "question": "In MongoDB, what is a collection?",
+      "options": [
+        {"label": "A", "text": "A group of databases"},
+        {"label": "B", "text": "A group of documents"},
+        {"label": "C", "text": "A single document"},
+        {"label": "D", "text": "A set of fields"}
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A collection in MongoDB is a group of documents, analogous to a table in relational databases.",
+        "vi": "Một bộ sưu tập (collection) trong MongoDB là một nhóm các tài liệu, tương tự như bảng trong cơ sở dữ liệu quan hệ."
+      }
+    },
+    {
+      "id": 4,
+      "question": "What is the purpose of data modeling in MongoDB?",
+      "options": [
+        {"label": "A", "text": "To define how data is stored and related"},
+        {"label": "B", "text": "To create indexes automatically"},
+        {"label": "C", "text": "To connect to the database"},
+        {"label": "D", "text": "To encrypt data"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Data modeling defines the structure and relationships of data to optimize storage and queries.",
+        "vi": "Mô hình hóa dữ liệu xác định cấu trúc và mối quan hệ của dữ liệu để tối ưu hóa lưu trữ và truy vấn."
+      }
+    },
+    {
+      "id": 5,
+      "question": "Which part of a MongoDB connection string specifies the database host?",
+      "options": [
+        {"label": "A", "text": "Username"},
+        {"label": "B", "text": "Host address"},
+        {"label": "C", "text": "Port number"},
+        {"label": "D", "text": "Database name"}
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The host address in the connection string identifies the server running MongoDB.",
+        "vi": "Địa chỉ host trong chuỗi kết nối xác định máy chủ chạy MongoDB."
+      }
+    },
+    {
+      "id": 6,
+      "question": "Which Python library is used to connect to MongoDB?",
+      "options": [
+        {"label": "A", "text": "SQLAlchemy"},
+        {"label": "B", "text": "PyMongo"},
+        {"label": "C", "text": "Psycopg2"},
+        {"label": "D", "text": "Pandas"}
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "PyMongo is the official Python driver for MongoDB, enabling Python applications to interact with MongoDB.",
+        "vi": "PyMongo là trình điều khiển Python chính thức cho MongoDB, cho phép ứng dụng Python tương tác với MongoDB."
+      }
+    },
+    {
+      "id": 7,
+      "question": "In PyMongo, what method creates a connection to a MongoDB instance?",
+      "options": [
+        {"label": "A", "text": "MongoClient()"},
+        {"label": "B", "text": "MongoConnect()"},
+        {"label": "C", "text": "DatabaseClient()"},
+        {"label": "D", "text": "ConnectMongo()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `MongoClient()` class in PyMongo establishes a connection to a MongoDB instance.",
+        "vi": "Lớp `MongoClient()` trong PyMongo thiết lập kết nối với một phiên bản MongoDB."
+      }
+    },
+    {
+      "id": 8,
+      "question": "Which MongoDB shell command inserts a single document into a collection?",
+      "options": [
+        {"label": "A", "text": "db.collection.insertOne()"},
+        {"label": "B", "text": "db.collection.insertMany()"},
+        {"label": "C", "text": "db.collection.add()"},
+        {"label": "D", "text": "db.collection.create()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`insertOne()` inserts a single document into a collection in MongoDB.",
+        "vi": "`insertOne()` chèn một tài liệu đơn vào một bộ sưu tập trong MongoDB."
+      }
+    },
+    {
+      "id": 9,
+      "question": "How do you insert multiple documents in PyMongo?",
+      "options": [
+        {"label": "A", "text": "collection.insert_many()"},
+        {"label": "B", "text": "collection.insert_one()"},
+        {"label": "C", "text": "collection.add_many()"},
+        {"label": "D", "text": "collection.bulk_insert()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`insert_many()` in PyMongo allows inserting multiple documents in a single operation.",
+        "vi": "`insert_many()` trong PyMongo cho phép chèn nhiều tài liệu trong một thao tác duy nhất."
+      }
+    },
+    {
+      "id": 10,
+      "question": "What does the `find()` method return in MongoDB?",
+      "options": [
+        {"label": "A", "text": "A single document"},
+        {"label": "B", "text": "A cursor to matching documents"},
+        {"label": "C", "text": "An array of all documents"},
+        {"label": "D", "text": "A count of documents"}
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The `find()` method returns a cursor, which can be iterated to access matching documents.",
+        "vi": "Phương thức `find()` trả về một con trỏ (cursor), có thể được lặp lại để truy cập các tài liệu khớp."
+      }
+    },
+    {
+      "id": 11,
+      "question": "In PyMongo, how do you retrieve a single document matching a query?",
+      "options": [
+        {"label": "A", "text": "collection.find_one()"},
+        {"label": "B", "text": "collection.find()"},
+        {"label": "C", "text": "collection.get_one()"},
+        {"label": "D", "text": "collection.single()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`find_one()` retrieves the first document that matches the query in PyMongo.",
+        "vi": "`find_one()` lấy tài liệu đầu tiên khớp với truy vấn trong PyMongo."
+      }
+    },
+    {
+      "id": 12,
+      "question": "Which operator updates a specific field in a MongoDB document?",
+      "options": [
+        {"label": "A", "text": "$set"},
+        {"label": "B", "text": "$push"},
+        {"label": "C", "text": "$inc"},
+        {"label": "D", "text": "$pull"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$set` operator updates the value of a specific field in a document.",
+        "vi": "Toán tử `$set` cập nhật giá trị của một trường cụ thể trong tài liệu."
+      }
+    },
+    {
+      "id": 13,
+      "question": "How do you replace an entire document in MongoDB?",
+      "options": [
+        {"label": "A", "text": "db.collection.replaceOne()"},
+        {"label": "B", "text": "db.collection.updateOne()"},
+        {"label": "C", "text": "db.collection.insertOne()"},
+        {"label": "D", "text": "db.collection.deleteOne()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`replaceOne()` replaces an entire document with a new one while keeping the `_id`.",
+        "vi": "`replaceOne()` thay thế toàn bộ tài liệu bằng một tài liệu mới trong khi giữ nguyên `_id`."
+      }
+    },
+    {
+      "id": 14,
+      "question": "Which PyMongo method deletes multiple documents matching a filter?",
+      "options": [
+        {"label": "A", "text": "collection.delete_many()"},
+        {"label": "B", "text": "collection.delete_one()"},
+        {"label": "C", "text": "collection.remove_many()"},
+        {"label": "D", "text": "collection.drop()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`delete_many()` removes all documents that match the specified filter in PyMongo.",
+        "vi": "`delete_many()` xóa tất cả tài liệu khớp với bộ lọc được chỉ định trong PyMongo."
+      }
+    },
+    {
+      "id": 15,
+      "question": "What method sorts query results in MongoDB?",
+      "options": [
+        {"label": "A", "text": "sort()"},
+        {"label": "B", "text": "limit()"},
+        {"label": "C", "text": "skip()"},
+        {"label": "D", "text": "count()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `sort()` method orders the results of a query in ascending or descending order.",
+        "vi": "Phương thức `sort()` sắp xếp kết quả của một truy vấn theo thứ tự tăng dần hoặc giảm dần."
+      }
+    },
+    {
+      "id": 16,
+      "question": "In MongoDB, how do you limit the number of returned documents?",
+      "options": [
+        {"label": "A", "text": "limit()"},
+        {"label": "B", "text": "skip()"},
+        {"label": "C", "text": "sort()"},
+        {"label": "D", "text": "project()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`limit()` restricts the number of documents returned by a query.",
+        "vi": "`limit()` giới hạn số lượng tài liệu được trả về bởi một truy vấn."
+      }
+    },
+    {
+      "id": 17,
+      "question": "What does the `$inc` operator do in a MongoDB update operation?",
+      "options": [
+        {"label": "A", "text": "Increments a numeric field"},
+        {"label": "B", "text": "Adds an element to an array"},
+        {"label": "C", "text": "Removes a field"},
+        {"label": "D", "text": "Replaces a document"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$inc` operator increases the value of a numeric field by a specified amount.",
+        "vi": "Toán tử `$inc` tăng giá trị của một trường số lên một lượng được chỉ định."
+      }
+    },
+    {
+      "id": 18,
+      "question": "How do you add an element to an array field in MongoDB?",
+      "options": [
+        {"label": "A", "text": "$push"},
+        {"label": "B", "text": "$set"},
+        {"label": "C", "text": "$add"},
+        {"label": "D", "text": "$append"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$push` operator appends a value to an array field in a document.",
+        "vi": "Toán tử `$push` thêm một giá trị vào một trường mảng trong tài liệu."
+      }
+    },
+    {
+      "id": 19,
+      "question": "Which method counts documents in a MongoDB collection?",
+      "options": [
+        {"label": "A", "text": "count_documents()"},
+        {"label": "B", "text": "find_count()"},
+        {"label": "C", "text": "total()"},
+        {"label": "D", "text": "size()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`count_documents()` returns the number of documents matching a query in PyMongo.",
+        "vi": "`count_documents()` trả về số lượng tài liệu khớp với truy vấn trong PyMongo."
+      }
+    },
+    {
+      "id": 20,
+      "question": "In PyMongo, how do you update multiple documents at once?",
+      "options": [
+        {"label": "A", "text": "collection.update_many()"},
+        {"label": "B", "text": "collection.update_one()"},
+        {"label": "C", "text": "collection.modify_many()"},
+        {"label": "D", "text": "collection.replace_many()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`update_many()` updates all documents that match the filter in PyMongo.",
+        "vi": "`update_many()` cập nhật tất cả tài liệu khớp với bộ lọc trong PyMongo."
+      }
+    },
+    {
+      "id": 21,
+      "question": "What is the main purpose of the MongoDB aggregation framework?",
+      "options": [
+        {"label": "A", "text": "To perform complex data analysis"},
+        {"label": "B", "text": "To create indexes"},
+        {"label": "C", "text": "To connect to the database"},
+        {"label": "D", "text": "To delete documents"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The aggregation framework processes data through pipelines for advanced analysis and transformation.",
+        "vi": "Khung tổng hợp xử lý dữ liệu thông qua các đường ống để phân tích và chuyển đổi nâng cao."
+      }
+    },
+    {
+      "id": 22,
+      "question": "What is an aggregation pipeline in MongoDB?",
+      "options": [
+        {"label": "A", "text": "A sequence of stages to process data"},
+        {"label": "B", "text": "A method to insert data"},
+        {"label": "C", "text": "A connection string"},
+        {"label": "D", "text": "A type of index"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "An aggregation pipeline is a series of stages that transform and analyze data sequentially.",
+        "vi": "Đường ống tổng hợp là một loạt các giai đoạn biến đổi và phân tích dữ liệu theo thứ tự."
+      }
+    },
+    {
+      "id": 23,
+      "question": "Which stage filters documents in an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "$match"},
+        {"label": "B", "text": "$group"},
+        {"label": "C", "text": "$sort"},
+        {"label": "D", "text": "$project"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$match` stage filters documents based on specified criteria in an aggregation pipeline.",
+        "vi": "Giai đoạn `$match` lọc tài liệu dựa trên các tiêu chí được chỉ định trong đường ống tổng hợp."
+      }
+    },
+    {
+      "id": 24,
+      "question": "How do you group documents in a MongoDB aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "$group"},
+        {"label": "B", "text": "$match"},
+        {"label": "C", "text": "$limit"},
+        {"label": "D", "text": "$unwind"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$group` stage groups documents by a key and can apply accumulators like `$sum`.",
+        "vi": "Giai đoạn `$group` nhóm các tài liệu theo một khóa và có thể áp dụng các bộ tích lũy như `$sum`."
+      }
+    },
+    {
+      "id": 25,
+      "question": "What does the `$project` stage do in an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "Reshapes documents by including or excluding fields"},
+        {"label": "B", "text": "Groups documents"},
+        {"label": "C", "text": "Sorts documents"},
+        {"label": "D", "text": "Filters documents"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$project` reshapes documents by specifying which fields to include, exclude, or compute.",
+        "vi": "`$project` định hình lại tài liệu bằng cách chỉ định trường nào được bao gồm, loại trừ hoặc tính toán."
+      }
+    },
+    {
+      "id": 26,
+      "question": "In PyMongo, how do you execute an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "collection.aggregate()"},
+        {"label": "B", "text": "collection.find()"},
+        {"label": "C", "text": "collection.group()"},
+        {"label": "D", "text": "collection.pipeline()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`aggregate()` runs an aggregation pipeline on a collection in PyMongo.",
+        "vi": "`aggregate()` chạy một đường ống tổng hợp trên một bộ sưu tập trong PyMongo."
+      }
+    },
+    {
+      "id": 27,
+      "question": "What is the purpose of the `$unwind` stage?",
+      "options": [
+        {"label": "A", "text": "Deconstructs an array field into multiple documents"},
+        {"label": "B", "text": "Groups documents by a field"},
+        {"label": "C", "text": "Sorts documents"},
+        {"label": "D", "text": "Limits document count"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$unwind` expands an array field, creating a document for each element.",
+        "vi": "`$unwind` mở rộng một trường mảng, tạo một tài liệu cho mỗi phần tử."
+      }
+    },
+    {
+      "id": 28,
+      "question": "Which operator performs a join between collections in aggregation?",
+      "options": [
+        {"label": "A", "text": "$lookup"},
+        {"label": "B", "text": "$match"},
+        {"label": "C", "text": "$group"},
+        {"label": "D", "text": "$sort"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$lookup` performs a left outer join between collections in an aggregation pipeline.",
+        "vi": "`$lookup` thực hiện phép nối ngoài trái giữa các bộ sưu tập trong đường ống tổng hợp."
+      }
+    },
+    {
+      "id": 29,
+      "question": "What does the `$sum` accumulator do in a `$group` stage?",
+      "options": [
+        {"label": "A", "text": "Calculates the total of a numeric field"},
+        {"label": "B", "text": "Counts documents"},
+        {"label": "C", "text": "Creates an array"},
+        {"label": "D", "text": "Finds the maximum value"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$sum` adds up the values of a specified numeric field in grouped documents.",
+        "vi": "`$sum` cộng tổng các giá trị của một trường số được chỉ định trong các tài liệu được nhóm."
+      }
+    },
+    {
+      "id": 30,
+      "question": "How do you calculate the average in an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "$avg"},
+        {"label": "B", "text": "$sum"},
+        {"label": "C", "text": "$mean"},
+        {"label": "D", "text": "$total"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$avg` accumulator computes the average of a numeric field in a `$group` stage.",
+        "vi": "Bộ tích lũy `$avg` tính trung bình của một trường số trong giai đoạn `$group`."
+      }
+    },
+    {
+      "id": 31,
+      "question": "What is the `$push` accumulator used for in aggregation?",
+      "options": [
+        {"label": "A", "text": "Creates an array of values"},
+        {"label": "B", "text": "Increments a value"},
+        {"label": "C", "text": "Filters documents"},
+        {"label": "D", "text": "Sorts values"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$push` collects values into an array during a `$group` operation.",
+        "vi": "`$push` thu thập các giá trị vào một mảng trong quá trình thao tác `$group`."
+      }
+    },
+    {
+      "id": 32,
+      "question": "Which stage limits the number of documents in an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "$limit"},
+        {"label": "B", "text": "$skip"},
+        {"label": "C", "text": "$sort"},
+        {"label": "D", "text": "$match"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$limit` restricts the number of documents passed to the next stage in the pipeline.",
+        "vi": "`$limit` giới hạn số lượng tài liệu được chuyển đến giai đoạn tiếp theo trong đường ống."
+      }
+    },
+    {
+      "id": 33,
+      "question": "What does the `$sort` stage do in an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "Orders documents by a field"},
+        {"label": "B", "text": "Groups documents"},
+        {"label": "C", "text": "Filters documents"},
+        {"label": "D", "text": "Projects fields"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$sort` arranges documents in a specified order based on a field.",
+        "vi": "`$sort` sắp xếp tài liệu theo thứ tự được chỉ định dựa trên một trường."
+      }
+    },
+    {
+      "id": 34,
+      "question": "What is the `$first` accumulator used for?",
+      "options": [
+        {"label": "A", "text": "Returns the first value in a group"},
+        {"label": "B", "text": "Sums values in a group"},
+        {"label": "C", "text": "Creates an array"},
+        {"label": "D", "text": "Filters documents"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$first` retrieves the first value of a field in a group, useful with sorted data.",
+        "vi": "`$first` lấy giá trị đầu tiên của một trường trong một nhóm, hữu ích với dữ liệu đã sắp xếp."
+      }
+    },
+    {
+      "id": 35,
+      "question": "How do you perform conditional logic in an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "$cond"},
+        {"label": "B", "text": "$if"},
+        {"label": "C", "text": "$switch"},
+        {"label": "D", "text": "$logic"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The `$cond` operator evaluates a condition and returns a value based on it.",
+        "vi": "Toán tử `$cond` đánh giá một điều kiện và trả về giá trị dựa trên nó."
+      }
+    },
+    {
+      "id": 36,
+      "question": "What does the `$facet` stage allow in aggregation?",
+      "options": [
+        {"label": "A", "text": "Multiple pipelines within a single stage"},
+        {"label": "B", "text": "Joining collections"},
+        {"label": "C", "text": "Filtering documents"},
+        {"label": "D", "text": "Sorting documents"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$facet` processes multiple aggregation pipelines in one stage for different outputs.",
+        "vi": "`$facet` xử lý nhiều đường ống tổng hợp trong một giai đoạn cho các đầu ra khác nhau."
+      }
+    },
+    {
+      "id": 37,
+      "question": "What is the difference between `$lookup` and `$graphLookup`?",
+      "options": [
+        {"label": "A", "text": "$lookup joins, $graphLookup traverses hierarchies"},
+        {"label": "B", "text": "$lookup sorts, $graphLookup groups"},
+        {"label": "C", "text": "$lookup filters, $graphLookup joins"},
+        {"label": "D", "text": "No difference"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$lookup` joins collections; `$graphLookup` recursively traverses hierarchical data.",
+        "vi": "`$lookup` nối các bộ sưu tập; `$graphLookup` duyệt dữ liệu phân cấp một cách đệ quy."
+      }
+    },
+    {
+      "id": 38,
+      "question": "Which stage is useful for handling large datasets in aggregation?",
+      "options": [
+        {"label": "A", "text": "$limit"},
+        {"label": "B", "text": "$group"},
+        {"label": "C", "text": "$project"},
+        {"label": "D", "text": "$unwind"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$limit` reduces the dataset size, improving performance with large collections.",
+        "vi": "`$limit` giảm kích thước tập dữ liệu, cải thiện hiệu suất với các bộ sưu tập lớn."
+      }
+    },
+    {
+      "id": 39,
+      "question": "What is a common use case for MongoDB aggregation?",
+      "options": [
+        {"label": "A", "text": "Generating reports"},
+        {"label": "B", "text": "Creating databases"},
+        {"label": "C", "text": "Connecting to Atlas"},
+        {"label": "D", "text": "Deleting indexes"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Aggregation is often used to summarize data for reports or analytics.",
+        "vi": "Tổng hợp thường được sử dụng để tóm tắt dữ liệu cho báo cáo hoặc phân tích."
+      }
+    },
+    {
+      "id": 40,
+      "question": "How do you optimize an aggregation pipeline?",
+      "options": [
+        {"label": "A", "text": "Place $match early to reduce documents"},
+        {"label": "B", "text": "Use $group first"},
+        {"label": "C", "text": "Avoid $sort"},
+        {"label": "D", "text": "Increase pipeline stages"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Placing `$match` early filters data, reducing the workload for later stages.",
+        "vi": "Đặt `$match` sớm để lọc dữ liệu, giảm khối lượng công việc cho các giai đoạn sau."
+      }
+    },
+    {
+      "id": 41,
+      "question": "What is the purpose of indexes in MongoDB?",
+      "options": [
+        {"label": "A", "text": "To improve query performance"},
+        {"label": "B", "text": "To encrypt data"},
+        {"label": "C", "text": "To connect to Atlas"},
+        {"label": "D", "text": "To group documents"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Indexes enhance the speed of queries by allowing efficient data retrieval.",
+        "vi": "Chỉ mục nâng cao tốc độ truy vấn bằng cách cho phép lấy dữ liệu hiệu quả."
+      }
+    },
+    {
+      "id": 42,
+      "question": "How do you create a single-field index in MongoDB?",
+      "options": [
+        {"label": "A", "text": "db.collection.createIndex({field: 1})"},
+        {"label": "B", "text": "db.collection.index({field})"},
+        {"label": "C", "text": "db.collection.addIndex(field)"},
+        {"label": "D", "text": "db.collection.create(field)"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`createIndex({field: 1})` creates an ascending index on a single field.",
+        "vi": "`createIndex({field: 1})` tạo một chỉ mục tăng dần trên một trường đơn."
+      }
+    },
+    {
+      "id": 43,
+      "question": "What is a compound index in MongoDB?",
+      "options": [
+        {"label": "A", "text": "An index on multiple fields"},
+        {"label": "B", "text": "An index on a single field"},
+        {"label": "C", "text": "An index for arrays"},
+        {"label": "D", "text": "An index for text search"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "A compound index indexes multiple fields to support queries on those fields.",
+        "vi": "Chỉ mục ghép lập chỉ mục nhiều trường để hỗ trợ truy vấn trên các trường đó."
+      }
+    },
+    {
+      "id": 44,
+      "question": "What type of index supports queries on array fields?",
+      "options": [
+        {"label": "A", "text": "Multikey index"},
+        {"label": "B", "text": "Single-field index"},
+        {"label": "C", "text": "Compound index"},
+        {"label": "D", "text": "Text index"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Multikey indexes are used for fields containing arrays, indexing each element.",
+        "vi": "Chỉ mục đa khóa được sử dụng cho các trường chứa mảng, lập chỉ mục cho mỗi phần tử."
+      }
+    },
+    {
+      "id": 45,
+      "question": "How do you delete an index in MongoDB?",
+      "options": [
+        {"label": "A", "text": "db.collection.dropIndex()"},
+        {"label": "B", "text": "db.collection.removeIndex()"},
+        {"label": "C", "text": "db.collection.deleteIndex()"},
+        {"label": "D", "text": "db.collection.drop()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`dropIndex()` removes a specified index from a collection.",
+        "vi": "`dropIndex()` xóa một chỉ mục được chỉ định khỏi bộ sưu tập."
+      }
+    },
+    {
+      "id": 46,
+      "question": "What is MongoDB Atlas Search?",
+      "options": [
+        {"label": "A", "text": "A full-text search feature"},
+        {"label": "B", "text": "A data modeling tool"},
+        {"label": "C", "text": "A clustering service"},
+        {"label": "D", "text": "A transaction manager"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Atlas Search provides full-text search capabilities integrated with MongoDB Atlas.",
+        "vi": "Atlas Search cung cấp khả năng tìm kiếm toàn văn tích hợp với MongoDB Atlas."
+      }
+    },
+    {
+      "id": 47,
+      "question": "How do you create a search index in Atlas Search?",
+      "options": [
+        {"label": "A", "text": "Using the Atlas UI or API"},
+        {"label": "B", "text": "With db.collection.createIndex()"},
+        {"label": "C", "text": "Using $search in aggregation"},
+        {"label": "D", "text": "With a connection string"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Search indexes are created via the Atlas interface or API, not standard index commands.",
+        "vi": "Chỉ mục tìm kiếm được tạo qua giao diện Atlas hoặc API, không phải lệnh chỉ mục tiêu chuẩn."
+      }
+    },
+    {
+      "id": 48,
+      "question": "What does ACID stand for in MongoDB transactions?",
+      "options": [
+        {"label": "A", "text": "Atomicity, Consistency, Isolation, Durability"},
+        {"label": "B", "text": "Access, Control, Integrity, Data"},
+        {"label": "C", "text": "Aggregation, Consistency, Index, Durability"},
+        {"label": "D", "text": "Atomicity, Collection, Isolation, Data"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "ACID ensures reliable database transactions with these four properties.",
+        "vi": "ACID đảm bảo giao dịch cơ sở dữ liệu đáng tin cậy với bốn thuộc tính này."
+      }
+    },
+    {
+      "id": 49,
+      "question": "How do you start a transaction in MongoDB?",
+      "options": [
+        {"label": "A", "text": "session.start_transaction()"},
+        {"label": "B", "text": "db.startTransaction()"},
+        {"label": "C", "text": "collection.begin()"},
+        {"label": "D", "text": "transaction.start()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`start_transaction()` begins a transaction within a session in MongoDB.",
+        "vi": "`start_transaction()` bắt đầu một giao dịch trong một phiên trong MongoDB."
+      }
+    },
+    {
+      "id": 50,
+      "question": "What is required to use transactions in MongoDB?",
+      "options": [
+        {"label": "A", "text": "A replica set or sharded cluster"},
+        {"label": "B", "text": "A standalone server"},
+        {"label": "C", "text": "An index on every field"},
+        {"label": "D", "text": "Atlas Search"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Transactions require a replica set or sharded cluster for multi-document consistency.",
+        "vi": "Giao dịch yêu cầu một tập sao chép hoặc cụm phân mảnh để đảm bảo nhất quán nhiều tài liệu."
+      }
+    },
+    {
+      "id": 51,
+      "question": "In PyMongo, how do you commit a transaction?",
+      "options": [
+        {"label": "A", "text": "session.commit_transaction()"},
+        {"label": "B", "text": "session.end_transaction()"},
+        {"label": "C", "text": "collection.commit()"},
+        {"label": "D", "text": "transaction.save()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`commit_transaction()` finalizes a transaction in a PyMongo session.",
+        "vi": "`commit_transaction()` hoàn tất một giao dịch trong phiên PyMongo."
+      }
+    },
+    {
+      "id": 52,
+      "question": "What happens if a transaction is not committed?",
+      "options": [
+        {"label": "A", "text": "Changes are rolled back"},
+        {"label": "B", "text": "Changes are saved automatically"},
+        {"label": "C", "text": "The session hangs"},
+        {"label": "D", "text": "The database crashes"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Uncommitted transactions are aborted, and changes are rolled back for consistency.",
+        "vi": "Giao dịch không được cam kết bị hủy bỏ, và các thay đổi được hoàn tác để đảm bảo nhất quán."
+      }
+    },
+    {
+      "id": 53,
+      "question": "Which CRUD operation does `find_one_and_update()` perform?",
+      "options": [
+        {"label": "A", "text": "Update"},
+        {"label": "B", "text": "Insert"},
+        {"label": "C", "text": "Delete"},
+        {"label": "D", "text": "Read"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`find_one_and_update()` updates a document and returns it, combining read and update.",
+        "vi": "`find_one_and_update()` cập nhật một tài liệu và trả về nó, kết hợp đọc và cập nhật."
+      }
+    },
+    {
+      "id": 54,
+      "question": "How do you perform a case-insensitive query in MongoDB?",
+      "options": [
+        {"label": "A", "text": "Use $regex with 'i' option"},
+        {"label": "B", "text": "Use $case option"},
+        {"label": "C", "text": "Set ignoreCase to true"},
+        {"label": "D", "text": "Use $insensitive"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$regex` with the 'i' flag enables case-insensitive matching in queries.",
+        "vi": "`$regex` với cờ 'i' cho phép khớp không phân biệt chữ hoa chữ thường trong truy vấn."
+      }
+    },
+    {
+      "id": 55,
+      "question": "What does the `$unset` operator do in an update?",
+      "options": [
+        {"label": "A", "text": "Removes a field from a document"},
+        {"label": "B", "text": "Sets a field to null"},
+        {"label": "C", "text": "Increments a field"},
+        {"label": "D", "text": "Adds a field"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$unset` deletes a specified field from a document entirely.",
+        "vi": "`$unset` xóa hoàn toàn một trường được chỉ định khỏi tài liệu."
+      }
+    },
+    {
+      "id": 56,
+      "question": "In PyMongo, how do you skip a number of documents in a query?",
+      "options": [
+        {"label": "A", "text": "collection.find().skip()"},
+        {"label": "B", "text": "collection.find().limit()"},
+        {"label": "C", "text": "collection.find().offset()"},
+        {"label": "D", "text": "collection.find().jump()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`skip()` bypasses a specified number of documents in a query result.",
+        "vi": "`skip()` bỏ qua một số lượng tài liệu được chỉ định trong kết quả truy vấn."
+      }
+    },
+    {
+      "id": 57,
+      "question": "What is the purpose of the `projection` parameter in `find()`?",
+      "options": [
+        {"label": "A", "text": "To specify which fields to return"},
+        {"label": "B", "text": "To filter documents"},
+        {"label": "C", "text": "To sort results"},
+        {"label": "D", "text": "To limit results"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`projection` determines which fields are included or excluded in the query results.",
+        "vi": "`projection` xác định trường nào được bao gồm hoặc loại trừ trong kết quả truy vấn."
+      }
+    },
+    {
+      "id": 58,
+      "question": "How do you bulk write multiple operations in PyMongo?",
+      "options": [
+        {"label": "A", "text": "collection.bulk_write()"},
+        {"label": "B", "text": "collection.batch()"},
+        {"label": "C", "text": "collection.multi_write()"},
+        {"label": "D", "text": "collection.write_many()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`bulk_write()` executes multiple write operations efficiently in PyMongo.",
+        "vi": "`bulk_write()` thực thi nhiều thao tác ghi hiệu quả trong PyMongo."
+      }
+    },
+    {
+      "id": 59,
+      "question": "What does `find_one_and_delete()` do in PyMongo?",
+      "options": [
+        {"label": "A", "text": "Deletes a document and returns it"},
+        {"label": "B", "text": "Updates a document"},
+        {"label": "C", "text": "Inserts a document"},
+        {"label": "D", "text": "Counts documents"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`find_one_and_delete()` removes a document and returns it before deletion.",
+        "vi": "`find_one_and_delete()` xóa một tài liệu và trả về nó trước khi xóa."
+      }
+    },
+    {
+      "id": 60,
+      "question": "Which operator removes elements from an array in MongoDB?",
+      "options": [
+        {"label": "A", "text": "$pull"},
+        {"label": "B", "text": "$push"},
+        {"label": "C", "text": "$set"},
+        {"label": "D", "text": "$pop"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$pull` removes all instances of a value or matching condition from an array.",
+        "vi": "`$pull` xóa tất cả các trường hợp của một giá trị hoặc điều kiện khớp khỏi mảng."
+      }
+    },
+    {
+      "id": 61,
+      "question": "What is the `$out` stage used for in aggregation?",
+      "options": [
+        {"label": "A", "text": "Writes pipeline results to a collection"},
+        {"label": "B", "text": "Sorts the output"},
+        {"label": "C", "text": "Filters the output"},
+        {"label": "D", "text": "Groups the output"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$out` writes the results of an aggregation pipeline to a new or existing collection.",
+        "vi": "`$out` ghi kết quả của đường ống tổng hợp vào một bộ sưu tập mới hoặc hiện có."
+      }
+    },
+    {
+      "id": 62,
+      "question": "How do you handle errors in PyMongo?",
+      "options": [
+        {"label": "A", "text": "Using try-except blocks"},
+        {"label": "B", "text": "With if-else statements"},
+        {"label": "C", "text": "By restarting the server"},
+        {"label": "D", "text": "Using return codes"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Try-except blocks catch and handle exceptions raised by PyMongo operations.",
+        "vi": "Khối try-except bắt và xử lý các ngoại lệ do thao tác PyMongo gây ra."
+      }
+    },
+    {
+      "id": 63,
+      "question": "What does the `$exists` operator check in a query?",
+      "options": [
+        {"label": "A", "text": "If a field exists in a document"},
+        {"label": "B", "text": "If a field is null"},
+        {"label": "C", "text": "If a field is indexed"},
+        {"label": "D", "text": "If a field is unique"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$exists` filters documents based on whether a field is present or not.",
+        "vi": "`$exists` lọc tài liệu dựa trên việc một trường có tồn tại hay không."
+      }
+    },
+    {
+      "id": 64,
+      "question": "Which method drops an entire collection in MongoDB?",
+      "options": [
+        {"label": "A", "text": "db.collection.drop()"},
+        {"label": "B", "text": "db.collection.delete()"},
+        {"label": "C", "text": "db.collection.remove()"},
+        {"label": "D", "text": "db.collection.clear()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`drop()` removes a collection and all its documents permanently.",
+        "vi": "`drop()` xóa một bộ sưu tập và tất cả tài liệu của nó vĩnh viễn."
+      }
+    },
+    {
+      "id": 65,
+      "question": "What is the `$addToSet` operator used for?",
+      "options": [
+        {"label": "A", "text": "Adds unique values to an array"},
+        {"label": "B", "text": "Removes values from an array"},
+        {"label": "C", "text": "Increments an array"},
+        {"label": "D", "text": "Sorts an array"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$addToSet` adds a value to an array only if it doesn’t already exist.",
+        "vi": "`$addToSet` thêm một giá trị vào mảng chỉ khi nó chưa tồn tại."
+      }
+    },
+    {
+      "id": 66,
+      "question": "How do you monitor MongoDB performance?",
+      "options": [
+        {"label": "A", "text": "Using Atlas monitoring tools"},
+        {"label": "B", "text": "By restarting the server"},
+        {"label": "C", "text": "With a connection string"},
+        {"label": "D", "text": "By dropping indexes"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Atlas provides tools to monitor performance metrics like query speed and resource usage.",
+        "vi": "Atlas cung cấp công cụ để giám sát các số liệu hiệu suất như tốc độ truy vấn và sử dụng tài nguyên."
+      }
+    },
+    {
+      "id": 67,
+      "question": "What is a best practice for using MongoDB with Python?",
+      "options": [
+        {"label": "A", "text": "Close connections after use"},
+        {"label": "B", "text": "Keep connections open indefinitely"},
+        {"label": "C", "text": "Avoid indexing"},
+        {"label": "D", "text": "Use synchronous calls only"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Closing connections prevents resource leaks and ensures efficient application performance.",
+        "vi": "Đóng kết nối ngăn chặn rò rỉ tài nguyên và đảm bảo hiệu suất ứng dụng hiệu quả."
+      }
+    },
+    {
+      "id": 68,
+      "question": "Which aggregation stage skips documents?",
+      "options": [
+        {"label": "A", "text": "$skip"},
+        {"label": "B", "text": "$limit"},
+        {"label": "C", "text": "$sort"},
+        {"label": "D", "text": "$match"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$skip` bypasses a specified number of documents in an aggregation pipeline.",
+        "vi": "`$skip` bỏ qua một số lượng tài liệu được chỉ định trong đường ống tổng hợp."
+      }
+    },
+    {
+      "id": 69,
+      "question": "What does the `$size` operator do in a query?",
+      "options": [
+        {"label": "A", "text": "Matches arrays by their length"},
+        {"label": "B", "text": "Sums array elements"},
+        {"label": "C", "text": "Sorts arrays"},
+        {"label": "D", "text": "Removes array elements"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`$size` filters documents based on the number of elements in an array field.",
+        "vi": "`$size` lọc tài liệu dựa trên số lượng phần tử trong một trường mảng."
+      }
+    },
+    {
+      "id": 70,
+      "question": "Which PyMongo method checks if a collection exists?",
+      "options": [
+        {"label": "A", "text": "database.list_collection_names()"},
+        {"label": "B", "text": "collection.exists()"},
+        {"label": "C", "text": "database.check_collection()"},
+        {"label": "D", "text": "collection.info()"}
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "`list_collection_names()` returns a list of collections, allowing you to check existence.",
+        "vi": "`list_collection_names()` trả về danh sách các bộ sưu tập, cho phép bạn kiểm tra sự tồn tại."
+      }
+    }
+  ]
