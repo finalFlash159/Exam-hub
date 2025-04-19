@@ -14,6 +14,10 @@ A flexible and customizable exam application platform for various subjects and t
   - [JSON File Structure](#json-file-structure)
   - [Question Format](#question-format)
   - [Adding Your Exam to the Application](#adding-your-exam-to-the-application)
+- [Document-to-Exam Conversion](#document-to-exam-conversion)
+  - [Supported Document Types](#supported-document-types)
+  - [Backend Setup](#backend-setup)
+  - [Using the Exam Generator](#using-the-exam-generator)
 - [Customization Options](#customization-options)
 - [Contributing](#contributing)
 - [License](#license)
@@ -30,6 +34,7 @@ Exam Hub is a React-based application designed to deliver customizable practice 
 - **Flexible Architecture**: Easy to extend with new question types and exam formats
 - **Results Analysis**: Detailed results with correct/incorrect answers and explanations
 - **Multilingual Support**: Support for multiple languages in question explanations
+- **AI-Powered Exam Generation**: Create exams from PDF or DOCX documents automatically
 
 ## Getting Started
 
@@ -37,6 +42,7 @@ Exam Hub is a React-based application designed to deliver customizable practice 
 
 - Node.js (14.x or higher)
 - npm (6.x or higher) or yarn
+- Python (3.8 or higher) for the backend document processing
 
 ### Installation
 
@@ -46,16 +52,35 @@ git clone https://github.com/yourusername/exam-hub.git
 cd exam-hub
 ```
 
-2. Install dependencies:
+2. Install frontend dependencies:
 ```bash
 cd exam-app
 npm install
 ```
 
+3. Install backend dependencies:
+```bash
+cd ../backend
+pip install -r requirements.txt
+```
+
+4. Set up the environment variables:
+```bash
+cp .env.example .env
+# Edit the .env file and add your Gemini API key
+```
+
 ### Running the Application
 
-Start the development server:
+1. Start the backend server:
 ```bash
+cd backend
+python app.py
+```
+
+2. In a separate terminal, start the frontend:
+```bash
+cd exam-app
 npm start
 ```
 
@@ -180,6 +205,39 @@ export const examData = {
   }
 };
 ```
+
+## Document-to-Exam Conversion
+
+Exam Hub includes a powerful feature to generate exams automatically from PDF and DOCX documents using Google's Gemini AI.
+
+### Supported Document Types
+
+- **PDF** (.pdf files)
+- **Microsoft Word** (.docx files)
+
+### Backend Setup
+
+To use the document processing features:
+
+1. Get a Gemini API key from Google AI Studio (https://makersuite.google.com/)
+2. Add your API key to the `.env` file:
+```
+GEMINI_API_KEY=your-api-key-here
+```
+3. Ensure the Python backend is running (`python app.py`)
+
+### Using the Exam Generator
+
+1. Navigate to the "Create Exam" page
+2. Upload your document (PDF or DOCX)
+3. Configure your exam settings:
+   - Set the title for your exam
+   - Choose the number of questions to generate
+4. Click "Generate Exam Questions"
+5. Review the generated questions
+6. Save the exam to add it to your collection
+
+The AI will analyze your document and generate relevant multiple-choice questions based on the content. The quality of the generated questions depends on the clarity and structure of your document.
 
 ## Customization Options
 
