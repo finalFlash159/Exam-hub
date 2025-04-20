@@ -4,23 +4,27 @@ A flexible and customizable exam application platform for various subjects and t
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running the Application](#running-the-application)
-- [Creating Custom Exams](#creating-custom-exams)
-  - [JSON File Structure](#json-file-structure)
-  - [Question Format](#question-format)
-  - [Adding Your Exam to the Application](#adding-your-exam-to-the-application)
-- [Document-to-Exam Conversion](#document-to-exam-conversion)
-  - [Supported Document Types](#supported-document-types)
-  - [Backend Setup](#backend-setup)
-  - [Using the Exam Generator](#using-the-exam-generator)
-- [Customization Options](#customization-options)
-- [Contributing](#contributing)
-- [License](#license)
+- [Exam Hub](#exam-hub)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Running the Application](#running-the-application)
+  - [Creating Custom Exams](#creating-custom-exams)
+    - [JSON File Structure](#json-file-structure)
+    - [Question Format](#question-format)
+      - [Fields Explained:](#fields-explained)
+    - [Example Question](#example-question)
+    - [Adding Your Exam to the Application](#adding-your-exam-to-the-application)
+  - [Document-to-Exam Conversion](#document-to-exam-conversion)
+    - [Supported Document Types](#supported-document-types)
+    - [Backend Setup](#backend-setup)
+    - [Using the Exam Generator](#using-the-exam-generator)
+  - [Customization Options](#customization-options)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Overview
 
@@ -43,6 +47,7 @@ Exam Hub is a React-based application designed to deliver customizable practice 
 - Node.js (14.x or higher)
 - npm (6.x or higher) or yarn
 - Python (3.8 or higher) for the backend document processing
+- Google API Key (for using Gemini AI)
 
 ### Installation
 
@@ -64,7 +69,7 @@ cd ../backend
 pip install -r requirements.txt
 ```
 
-4. Set up the environment variables:
+4. Set up environment variables:
 ```bash
 cp .env.example .env
 # Edit the .env file and add your Gemini API key
@@ -72,7 +77,7 @@ cp .env.example .env
 
 ### Running the Application
 
-1. Start the backend server:
+1. Start the backend server (port 5001):
 ```bash
 cd backend
 python app.py
@@ -101,7 +106,7 @@ Each question object should have the following structure:
 ```json
 {
   "id": 1,
-  "question": "What is your question text?",
+  "question": "Your question text?",
   "options": [
     { "label": "A", "text": "First option" },
     { "label": "B", "text": "Second option" },
@@ -122,7 +127,7 @@ Each question object should have the following structure:
 - **question**: The question text (string)
 - **options**: Array of answer options, each with:
   - **label**: Option identifier (typically A, B, C, D)
-  - **text**: Option text
+  - **text**: Option content
 - **answer**: Correct option label (must match one of the option labels)
 - **explanation**: Object containing explanations in different languages
   - At minimum, include "en" for English
@@ -132,7 +137,7 @@ Each question object should have the following structure:
 ```json
 {
   "id": 1,
-  "question": "Which programming language is known for its use in data science?",
+  "question": "Which programming language is most known for data science?",
   "options": [
     { "label": "A", "text": "Java" },
     { "label": "B", "text": "C++" },
@@ -145,44 +150,6 @@ Each question object should have the following structure:
     "vi": "Python đã trở thành ngôn ngữ hàng đầu cho khoa học dữ liệu nhờ hệ sinh thái phong phú của các thư viện như NumPy, pandas và scikit-learn."
   }
 }
-```
-
-### Full Example File
-
-Create a file like `my-exam.json` with this structure:
-
-```json
-[
-  {
-    "id": 1,
-    "question": "Question 1 text",
-    "options": [
-      { "label": "A", "text": "Option A" },
-      { "label": "B", "text": "Option B" },
-      { "label": "C", "text": "Option C" },
-      { "label": "D", "text": "Option D" }
-    ],
-    "answer": "A",
-    "explanation": {
-      "en": "Explanation for question 1"
-    }
-  },
-  {
-    "id": 2,
-    "question": "Question 2 text",
-    "options": [
-      { "label": "A", "text": "Option A" },
-      { "label": "B", "text": "Option B" },
-      { "label": "C", "text": "Option C" },
-      { "label": "D", "text": "Option D" }
-    ],
-    "answer": "B",
-    "explanation": {
-      "en": "Explanation for question 2",
-      "vi": "Vietnamese explanation for question 2"
-    }
-  }
-]
 ```
 
 ### Adding Your Exam to the Application
@@ -200,7 +167,7 @@ import myExamQuestions from './questions/my-exam.json';
 export const examData = {
   // ...existing exams
   "my-exam": {
-    title: "My Custom Exam Title",
+    title: "Custom Exam Title",
     questions: myExamQuestions
   }
 };
@@ -221,7 +188,7 @@ To use the document processing features:
 
 1. Get a Gemini API key from Google AI Studio (https://makersuite.google.com/)
 2. Add your API key to the `.env` file:
-```
+```bash
 GEMINI_API_KEY=your-api-key-here
 ```
 3. Ensure the Python backend is running (`python app.py`)
@@ -231,7 +198,7 @@ GEMINI_API_KEY=your-api-key-here
 1. Navigate to the "Create Exam" page
 2. Upload your document (PDF or DOCX)
 3. Configure your exam settings:
-   - Set the title for your exam
+   - Set a title for the exam
    - Choose the number of questions to generate
 4. Click "Generate Exam Questions"
 5. Review the generated questions
@@ -243,14 +210,14 @@ The AI will analyze your document and generate relevant multiple-choice question
 
 You can customize various aspects of the exam:
 
-- **Time Limit**: Modify the `TOTAL_TIME` constant in `/src/components/ExamApp.jsx`
+- **Time Limit**: Change the `TOTAL_TIME` constant in `/src/components/ExamApp.jsx`
 - **Passing Score**: Adjust the `PASSING_SCORE` constant
-- **UI Themes**: Modify the Material UI theme in the application
+- **User Interface**: Modify the Material UI theme in the application
 - **Languages**: Add additional language support in the explanation objects
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please submit a Pull Request.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
