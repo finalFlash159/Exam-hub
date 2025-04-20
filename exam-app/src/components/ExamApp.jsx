@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Box, Button, Container, Typography, RadioGroup, FormControlLabel, 
   Radio, Paper, Grid, LinearProgress, Chip, Card, CardContent, 
@@ -26,12 +26,21 @@ export default function ExamApp() {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [flagged, setFlagged] = useState(Array(questions.length).fill(false));
   const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
-  const [examFinished, setExamFinished] = useState(false);
   const [examStarted, setExamStarted] = useState(false);
-  // Thêm 2 state mới để sửa lỗi
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const examTypes = getExamTypes();
+  const [examTypes, setExamTypes] = useState(getExamTypes());
+  
+  // Định nghĩa handleFinish sử dụng useCallback để tránh lỗi
+  const handleFinish = useCallback(() => {
+    // Calculate score
+    const correctAnswers = answers.filter((answer, index) => 
+      answer === questions[index].answer
+    ).length;
+    const scorePercent = Math.round((correctAnswers / questions.length) * 100);
+    setScore(scorePercent);
+    setFinished(true);
+  }, [answers, questions]);
   
   // Load different question sets based on selection
   const handleExamTypeChange = (event) => {
@@ -45,7 +54,6 @@ export default function ExamApp() {
       setAnswers(Array(newQuestions.length).fill(null));
       setFlagged(Array(newQuestions.length).fill(false));
       setCurrentIndex(0);
-      setExamFinished(false);
       setExamStarted(false);
     } catch (error) {
       console.error("Error loading questions:", error);
@@ -67,7 +75,7 @@ export default function ExamApp() {
     }
     const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, handleFinish]);
 
   const handleSelect = (option) => {
     const newAnswers = [...answers];
@@ -89,25 +97,25 @@ export default function ExamApp() {
     setFlagged(newFlagged);
   };
 
-  const handlePageChange = (event, page) => {
-    setCurrentIndex(page - 1);
-  };
-
-  const handleFinish = () => {
-    // Calculate score
-    const correctAnswers = answers.filter((answer, index) => 
-      answer === questions[index].answer
-    ).length;
-    const scorePercent = Math.round((correctAnswers / questions.length) * 100);
-    setScore(scorePercent);
-    setFinished(true);
-  };
-
   const confirmFinish = () => {
     if (window.confirm('Are you sure you want to end the exam and see your results?')) {
       handleFinish();
     }
   };
+
+  // Thêm useEffect để tải lại danh sách bài kiểm tra mỗi khi component được render
+  useEffect(() => {
+    const refreshExamTypes = () => {
+      try {
+        const updated = getExamTypes();
+        setExamTypes(updated);
+      } catch (error) {
+        console.error("Lỗi khi làm mới danh sách bài kiểm tra:", error);
+      }
+    };
+    
+    refreshExamTypes();
+  }, []);
 
   if (finished) {
     const isPassed = score >= PASSING_SCORE;

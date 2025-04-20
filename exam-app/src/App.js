@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Box, AppBar, Toolbar, Typography, Button, Container, Tabs, Tab } from '@mui/material';
+import { Box, AppBar, Toolbar, Typography, Tabs, Tab, Snackbar, Alert } from '@mui/material';
 import ExamApp from './components/ExamApp';
 import ExamGenerator from './components/ExamGenerator';
 import { useLocation } from 'react-router-dom';
@@ -35,6 +35,29 @@ function NavTabs() {
 }
 
 function App() {
+  const [notification, setNotification] = useState(null);
+  
+  // Kiểm tra xem có thông báo mới từ quá trình lưu bài kiểm tra không
+  useEffect(() => {
+    const savedExam = sessionStorage.getItem('savedExam');
+    if (savedExam) {
+      try {
+        const examData = JSON.parse(savedExam);
+        setNotification({
+          message: `Bài kiểm tra "${examData.title}" đã được thêm thành công!`,
+          type: 'success'
+        });
+        sessionStorage.removeItem('savedExam');
+      } catch (e) {
+        console.error('Lỗi khi đọc thông tin bài kiểm tra đã lưu:', e);
+      }
+    }
+  }, []);
+  
+  const handleCloseNotification = () => {
+    setNotification(null);
+  };
+  
   return (
     <Router>
       <Box sx={{ flexGrow: 1 }}>
@@ -53,6 +76,23 @@ function App() {
             <Route path="/create" element={<ExamGenerator />} />
           </Routes>
         </Box>
+        
+        {notification && (
+          <Snackbar 
+            open={true} 
+            autoHideDuration={6000} 
+            onClose={handleCloseNotification}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          >
+            <Alert 
+              onClose={handleCloseNotification} 
+              severity={notification.type || 'info'} 
+              sx={{ width: '100%' }}
+            >
+              {notification.message}
+            </Alert>
+          </Snackbar>
+        )}
       </Box>
     </Router>
   );

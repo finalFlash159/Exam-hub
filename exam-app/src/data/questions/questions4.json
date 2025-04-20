@@ -1,0 +1,137 @@
+[
+  {
+    "answer": "B",
+    "explanation": {
+      "en": "The text explicitly states that the goal is to \"determine all itemsets I that occur as a subset of at least a predefined fraction minsup of the transactions in T.\"",
+      "vi": "Văn bản nêu rõ mục tiêu là \"xác định các tập hạng mục I xuất hiện như một tập con của ít nhất một phần được xác định trước minsup của các giao dịch trong T.\""
+    },
+    "id": 1,
+    "options": [
+      {
+        "label": "A",
+        "text": "To cluster similar customer purchase behaviors."
+      },
+      {
+        "label": "B",
+        "text": "To identify relationships between groups of items purchased together."
+      },
+      {
+        "label": "C",
+        "text": "To predict future purchases based on past transactions."
+      },
+      {
+        "label": "D",
+        "text": "To analyze outliers in customer purchase data."
+      }
+    ],
+    "question": "What is the primary goal of classic association rule mining in market basket data?"
+  },
+  {
+    "answer": "B",
+    "explanation": {
+      "en": "The definition of support is given as \"the fraction of the transactions in the database T that contain I as a subset.\"",
+      "vi": "Định nghĩa của độ hỗ trợ được đưa ra là \"phần nhỏ của các giao dịch trong cơ sở dữ liệu T có chứa I như một tập hợp con.\""
+    },
+    "id": 2,
+    "options": [
+      {
+        "label": "A",
+        "text": "The probability of an itemset appearing in a transaction."
+      },
+      {
+        "label": "B",
+        "text": "The fraction of transactions in the database containing the itemset."
+      },
+      {
+        "label": "C",
+        "text": "The total number of times the itemset appears in the database."
+      },
+      {
+        "label": "D",
+        "text": "The conditional probability of one itemset appearing given another itemset."
+      }
+    ],
+    "question": "What does the 'support' of an itemset represent?"
+  },
+  {
+    "answer": "B",
+    "explanation": {
+      "en": "The text defines the downward closure property as: \"Every subset of a frequent itemset is also frequent.\"",
+      "vi": "Văn bản định nghĩa thuộc tính đóng xuống dưới là: \"Mọi tập hợp con của một tập hạng mục thường xuyên cũng thường xuyên.\""
+    },
+    "id": 3,
+    "options": [
+      {
+        "label": "A",
+        "text": "All supersets of a frequent itemset are also frequent."
+      },
+      {
+        "label": "B",
+        "text": "All subsets of a frequent itemset are also frequent."
+      },
+      {
+        "label": "C",
+        "text": "Frequent itemsets form a closed loop in the itemset lattice."
+      },
+      {
+        "label": "D",
+        "text": "The support of an itemset decreases as its size increases."
+      }
+    ],
+    "question": "What is the 'downward closure property' in frequent itemset mining?"
+  },
+  {
+    "answer": "C",
+    "explanation": {
+      "en": "The text provides the formula: conf(X ⇒ Y) = sup(X ∪ Y) / sup(X)",
+      "vi": "Văn bản cung cấp công thức: conf(X ⇒ Y) = sup(X ∪ Y) / sup(X)"
+    },
+    "id": 4,
+    "options": [
+      {
+        "label": "A",
+        "text": "sup(X ∪ Y) / sup(Y)"
+      },
+      {
+        "label": "B",
+        "text": "sup(X) / sup(X ∪ Y)"
+      },
+      {
+        "label": "C",
+        "text": "sup(X ∪ Y) / sup(X)"
+      },
+      {
+        "label": "D",
+        "text": "sup(X) * sup(Y)"
+      }
+    ],
+    "question": "How is the 'confidence' of an association rule X ⇒ Y calculated?"
+  },
+  {
+    "answer": "B",
+    "explanation": {
+      "en": "The text states that the \"Apriori algorithm uses the downward closure property to prune the search space.\"",
+      "vi": "Văn bản nói rằng \"Thuật toán Apriori sử dụng thuộc tính đóng xuống dưới để cắt tỉa không gian tìm kiếm.\""
+    },
+    "id": 5,
+    "options": [
+      {
+        "label": "A",
+        "text": "Brute Force"
+      },
+      {
+        "label": "B",
+        "text": "Apriori"
+      },
+      {
+        "label": "C",
+        "text": "TreeProjection"
+      },
+      {
+        "label": "D",
+        "text": "DepthProject"
+      }
+    ],
+    "question": "Which algorithm leverages the downward closure property to prune the search space?"
+  }
+]

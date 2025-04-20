@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Box, Button, Container, Typography, Paper, LinearProgress, 
   TextField, FormControl, InputLabel, Select, MenuItem, Stepper, 
-  Step, StepLabel, Alert, Chip, Divider, Stack
+  Step, StepLabel, Alert, Chip, Divider
 } from '@mui/material';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -157,39 +157,63 @@ export default function ExamGenerator() {
     }
   };
   
-  const handleSaveExam = () => {
-    // Here we would typically save the exam to the backend
-    // For now, we'll just create a JSON file for download
-    
+  const handleSaveExam = async () => {
     if (!generatedExam) {
-      setError('No exam data to save');
+      setError('Không có dữ liệu bài kiểm tra để lưu');
       return;
     }
     
-    // Create a download link for the JSON file
-    const examData = JSON.stringify(generatedExam, null, 2);
-    const blob = new Blob([examData], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    setLoading(true);
+    setError(null);
     
-    link.href = url;
-    link.download = `${examTitle.replace(/\s+/g, '_').toLowerCase()}.json`;
-    document.body.appendChild(link);
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-    
-    // Here you would typically have code to save to your app's state
-    alert('Exam saved! You can now find it in your downloads folder.');
-    // Reset the form
-    setActiveStep(0);
-    setFile(null);
-    setFileId(null);
-    setExamTitle('');
-    setQuestionCount(10);
-    setGeneratedExam(null);
+    try {
+      // Gọi API để lưu bài kiểm tra vào hệ thống
+      const response = await fetch(`${BACKEND_URL}/api/save-exam`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          exam_data: generatedExam
+        }),
+        mode: 'cors',
+        credentials: 'omit',
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Không thể lưu bài kiểm tra');
+      }
+      
+      // Hiển thị thông báo thành công
+      alert(`Bài kiểm tra "${generatedExam.title}" đã được thêm vào hệ thống thành công!`);
+      
+      // Làm mới trang để hiển thị bài kiểm tra mới
+      window.location.href = '/';
+      
+    } catch (err) {
+      setError(`Lỗi: ${err.message}`);
+      console.error('Lỗi khi lưu bài kiểm tra:', err);
+      
+      // Tải xuống file JSON như là phương án dự phòng
+      const examData = JSON.stringify(generatedExam, null, 2);
+      const blob = new Blob([examData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      
+      link.href = url;
+      link.download = `${examTitle.replace(/\s+/g, '_').toLowerCase()}.json`;
+      document.body.appendChild(link);
+      link.click();
+      
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      alert('Không thể lưu trực tiếp vào hệ thống. File JSON đã được tải xuống.');
+    } finally {
+      setLoading(false);
+    }
   };
   
   const renderStep = () => {
@@ -421,17 +445,22 @@ export default function ExamGenerator() {
               )}
             </Box>
             
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 2 }}>
               <Button
                 variant="contained"
                 color="success"
                 startIcon={<SaveAltIcon />}
                 onClick={handleSaveExam}
                 size="large"
+                disabled={loading}
               >
-                Save Exam
+                {loading ? 'Đang lưu...' : 'Lưu vào hệ thống'}
               </Button>
             </Box>
+            
+            <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 2 }}>
+              Bài kiểm tra này sẽ được thêm vào danh sách bài kiểm tra có sẵn trong hệ thống.
+            </Typography>
           </Box>
         );
       default:
