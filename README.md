@@ -1,241 +1,137 @@
 # Exam Hub
 
-A flexible and customizable exam application platform for various subjects and tools. Build, manage, and deliver interactive examinations with support for multiple question types, subject-specific testing, and extensible modules for different educational needs.
+Smart exam application with AI-powered automatic exam generation from PDF/DOCX documents.
 
-![man_page](images/main_page.png)
+![Main Page](images/main_page.png)
 
-## Table of Contents
+## Key Features
 
-- [Exam Hub](#exam-hub)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Features](#features)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Running the Application](#running-the-application)
-  - [Creating Custom Exams](#creating-custom-exams)
-    - [JSON File Structure](#json-file-structure)
-    - [Question Format](#question-format)
-      - [Fields Explained:](#fields-explained)
-    - [Example Question](#example-question)
-    - [Adding Your Exam to the Application](#adding-your-exam-to-the-application)
-  - [Document-to-Exam Conversion](#document-to-exam-conversion)
-    - [Supported Document Types](#supported-document-types)
-    - [Backend Setup](#backend-setup)
-    - [Using the Exam Generator](#using-the-exam-generator)
-  - [Customization Options](#customization-options)
-  - [Contributing](#contributing)
-  - [License](#license)
+- **Online Multiple Choice Exams**: User-friendly interface with timer and progress tracking
+- **AI-Powered Exam Generation**: Create questions automatically from PDF/DOCX documents
+- **Results Management**: View detailed correct/incorrect answers with explanations
+- **Multi-language Support**: Vietnamese and English
+- **Flexible Customization**: Easy to add new exams
 
-## Overview
+![GenAI Feature 1](images/genai1.png)
+![GenAI Feature 2](images/genai2.png)
+![GenAI Feature 3](images/genai3.png)
 
-Exam Hub is a React-based application designed to deliver customizable practice tests and exams across various subjects, technologies, and tools. Whether you need to create a programming language quiz, a certification practice exam, or an educational assessment, Exam Hub provides a flexible framework to build and deploy your tests.
+## Quick Setup
 
-## Features
+### System Requirements
+- Node.js 18+
+- Python 3.9+
+- Google Gemini API Key
 
-- **Customizable Exam Creation**: Define your own exams with custom questions and answers
-- **Multiple Question Types**: Support for multiple-choice questions with detailed explanations
-- **Interactive UI**: User-friendly interface with progress tracking and timer
-- **Flexible Architecture**: Easy to extend with new question types and exam formats
-- **Results Analysis**: Detailed results with correct/incorrect answers and explanations
-- **Multilingual Support**: Support for multiple languages in question explanations
-- **AI-Powered Exam Generation**: Create exams from PDF or DOCX documents automatically
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (14.x or higher)
-- npm (6.x or higher) or yarn
-- Python (3.8 or higher) for the backend document processing
-- Google API Key (for using Gemini AI)
-
-### Installation
-
-1. Clone the repository:
+### Step 1: Clone repository
 ```bash
-git clone https://github.com/yourusername/exam-hub.git
-cd exam-hub
+git clone https://github.com/finalFlash159/Exam-hub.git
+cd Exam-hub
 ```
 
-2. Install frontend dependencies:
+### Step 2: Frontend Setup
 ```bash
 cd exam-app
 npm install
-```
-
-3. Install backend dependencies:
-```bash
-cd ../backend
-pip install -r requirements.txt
-```
-
-4. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit the .env file and add your Gemini API key
-```
-
-### Running the Application
-
-1. Start the backend server (port 5001):
-```bash
-cd backend
-python app.py
-```
-
-2. In a separate terminal, start the frontend:
-```bash
-cd exam-app
 npm start
 ```
+Frontend will run at http://localhost:3000
 
-The application will be available at [http://localhost:3000](http://localhost:3000).
+### Step 3: Backend Setup
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+Backend will run at http://localhost:5001
 
-## Creating Custom Exams
+### Step 4: Configure API Key
+Create `.env` file in `backend` folder:
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-You can create custom exams by defining question sets in JSON files. Follow these guidelines to create compatible exam files.
+## How to Use
 
-### JSON File Structure
+### Take Available Exams
+1. Open http://localhost:3000
+2. Select an exam
+3. Start taking the exam
+4. View results and explanations
 
-Create a JSON file with an array of question objects. Place your file in the `/src/data/questions/` directory.
+### Generate Exam from Documents
+1. Go to "Create Exam" page
+2. Upload PDF or DOCX file
+3. Fill in exam information
+4. Click "Generate Exam"
+5. New exam will be added to the system
 
-### Question Format
-
-Each question object should have the following structure:
-
+### Add Manual Exams
+1. Create JSON file in `exam-app/src/data/questions/`
+2. Question format:
 ```json
 {
   "id": 1,
-  "question": "Your question text?",
+  "question": "Your question here?",
   "options": [
-    { "label": "A", "text": "First option" },
-    { "label": "B", "text": "Second option" },
-    { "label": "C", "text": "Third option" },
-    { "label": "D", "text": "Fourth option" }
+    {"label": "A", "text": "Option A"},
+    {"label": "B", "text": "Option B"},
+    {"label": "C", "text": "Option C"},
+    {"label": "D", "text": "Option D"}
   ],
   "answer": "B",
   "explanation": {
     "en": "Explanation in English",
-    "vi": "Explanation in Vietnamese (optional)"
+    "vi": "Giải thích bằng tiếng Việt"
   }
 }
 ```
+3. Update `exam-app/src/data/index.js` file
 
-#### Fields Explained:
+## Project Structure
 
-- **id**: Unique identifier for the question (number)
-- **question**: The question text (string)
-- **options**: Array of answer options, each with:
-  - **label**: Option identifier (typically A, B, C, D)
-  - **text**: Option content
-- **answer**: Correct option label (must match one of the option labels)
-- **explanation**: Object containing explanations in different languages
-  - At minimum, include "en" for English
-
-### Example Question
-
-```json
-{
-  "id": 1,
-  "question": "Which programming language is most known for data science?",
-  "options": [
-    { "label": "A", "text": "Java" },
-    { "label": "B", "text": "C++" },
-    { "label": "C", "text": "Python" },
-    { "label": "D", "text": "JavaScript" }
-  ],
-  "answer": "C",
-  "explanation": {
-    "en": "Python has become the leading language for data science due to its rich ecosystem of libraries like NumPy, pandas, and scikit-learn.",
-    "vi": "Python đã trở thành ngôn ngữ hàng đầu cho khoa học dữ liệu nhờ hệ sinh thái phong phú của các thư viện như NumPy, pandas và scikit-learn."
-  }
-}
+```
+Exam-hub/
+├── exam-app/           # Frontend React
+│   ├── src/
+│   │   ├── components/ # React components
+│   │   ├── data/       # Exam data
+│   │   └── styles/     # CSS styles
+│   └── public/
+├── backend/            # Backend Python Flask
+│   ├── app.py         # Main application
+│   ├── document_processor.py
+│   ├── llm_generator.py
+│   └── requirements.txt
+└── uploads/           # Document upload folder
 ```
 
-### Adding Your Exam to the Application
+## Deployment
 
-1. Place your JSON file in the `/src/data/questions/` directory
-2. Import your file in `/src/data/index.js`:
+Project supports automatic CI/CD with GitHub Actions:
+- Frontend: Deploy to Vercel
+- Backend: Deploy to Railway
+- Database: PostgreSQL on Railway
 
-```javascript
-import myExamQuestions from './questions/my-exam.json';
-```
+See `Quick-Setup-Guide.md` for details
 
-3. Add your exam to the `examData` object:
+## Technologies Used
 
-```javascript
-export const examData = {
-  // ...existing exams
-  "my-exam": {
-    title: "Custom Exam Title",
-    questions: myExamQuestions
-  }
-};
-```
+**Frontend:**
+- React 18
+- Material-UI
+- React Router
 
-## Document-to-Exam Conversion
+**Backend:**
+- Python Flask
+- Google Gemini AI
+- PyPDF2, python-docx
 
-Exam Hub includes a powerful feature to generate exams automatically from PDF and DOCX documents using Google's Gemini AI.
-
-![man_page](images/genai1.png)
-
-
-![man_page](images/genai2.png)
-
-
-![man_page](images/genai3.png)
-
-
-### Supported Document Types
-
-- **PDF** (.pdf files)
-- **Microsoft Word** (.docx files)
-
-### Backend Setup
-
-To use the document processing features:
-
-1. Get a Gemini API key from Google AI Studio (https://makersuite.google.com/)
-2. Add your API key to the `.env` file:
-```bash
-GEMINI_API_KEY=your-api-key-here
-```
-3. Ensure the Python backend is running (`python app.py`)
-
-### Using the Exam Generator
-
-1. Navigate to the "Create Exam" page
-2. Upload your document (PDF or DOCX)
-3. Configure your exam settings:
-   - Set a title for the exam
-   - Choose the number of questions to generate
-4. Click "Generate Exam Questions"
-5. Review the generated questions
-6. Save the exam to add it to your collection
-
-The AI will analyze your document and generate relevant multiple-choice questions based on the content. The quality of the generated questions depends on the clarity and structure of your document.
-
-## Customization Options
-
-You can customize various aspects of the exam:
-
-- **Time Limit**: Change the `TOTAL_TIME` constant in `/src/components/ExamApp.jsx`
-- **Passing Score**: Adjust the `PASSING_SCORE` constant
-- **User Interface**: Modify the Material UI theme in the application
-- **Languages**: Add additional language support in the explanation objects
-
-## Contributing
-
-Contributions are welcome! Please submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+**Deployment:**
+- Vercel (Frontend)
+- Railway (Backend + Database)
+- GitHub Actions (CI/CD)
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - see [LICENSE](LICENSE) file
