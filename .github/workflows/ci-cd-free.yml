@@ -203,12 +203,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Install Railway CLI
+      run: |
+        curl -fsSL https://railway.app/install.sh | sh
+        echo "$HOME/.railway/bin" >> $GITHUB_PATH
+
     - name: Deploy to Railway
-      uses: bervProject/railway-deploy@v1.2.0
-      with:
-        railway_token: ${{ secrets.RAILWAY_TOKEN }}
-        service: 'web'
-        detach: true
+      run: |
+        cd backend
+        railway login --token ${{ secrets.RAILWAY_TOKEN }}
+        railway up --detach
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
   notify:
     name: Notify
@@ -220,9 +226,9 @@ jobs:
     - name: Notify deployment status
       run: |
         if [ "${{ needs.deploy-frontend.result }}" = "success" ] && [ "${{ needs.deploy-backend.result }}" = "success" ]; then
-          echo "✅ Deployment successful!"
+          echo "Deployment successful!"
           echo "Frontend: Available on Vercel"
           echo "Backend: Available on Railway" 
         else
-          echo "❌ Deployment failed!"
+          echo "Deployment failed!"
         fi 
