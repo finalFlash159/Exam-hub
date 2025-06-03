@@ -39,10 +39,17 @@ jobs:
     - name: Deploy to Railway
       run: |
         npm install -g @railway/cli
-        cd backend
-        railway up --service backend
+        # Try to link existing project or create new one
+        if [ -n "${{ secrets.RAILWAY_PROJECT_ID }}" ]; then
+          railway link ${{ secrets.RAILWAY_PROJECT_ID }}
+        else
+          railway login --token ${{ secrets.RAILWAY_TOKEN }}
+          railway init
+        fi
+        railway up
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      working-directory: backend
 
     - name: Deployment complete
       run: |
