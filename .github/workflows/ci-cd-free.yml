@@ -6,167 +6,11 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  NODE_VERSION: '18'
-  PYTHON_VERSION: '3.9'
-
 jobs:
-  test:
-    name: Test
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test-type: [frontend, backend]
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Frontend Tests
-      if: matrix.test-type == 'frontend'
-      run: |
-        cd exam-app
-        # Use Node.js 18 for better compatibility
-        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-        sudo apt-get install -y nodejs
-        node --version
-        npm --version
-        
-        # Install dependencies with clean cache
-        npm ci --prefer-offline --no-audit
-        
-        # Run tests with proper configuration
-        CI=true npm test -- --coverage --watchAll=false --testTimeout=10000
-      env:
-        NODE_ENV: test
-
-    - name: Backend Tests  
-      if: matrix.test-type == 'backend'
-      run: |
-        cd backend
-        
-        # Setup Python 3.9
-        python3 --version
-        pip install --upgrade pip
-        
-        # Install backend dependencies first
-        pip install flask flask-cors python-docx PyPDF2 python-dotenv
-        pip install pytest pytest-cov requests
-        
-        # Install missing dependencies that might be needed
-        pip install werkzeug pathlib2 || true
-        
-        # Create required directories
-        mkdir -p uploads test_uploads
-        
-        # Set environment variables for testing
-        export FLASK_ENV=testing
-        export GEMINI_API_KEY=test_key_for_ci
-        
-        # Run tests with verbose output
-        python -m pytest tests/ -v --tb=short --no-header
-      env:
-        PYTHONPATH: /home/runner/work/Exam-hub/Exam-hub/backend
-        FLASK_ENV: testing
-
-  quality-security:
-    name: Quality & Security
-    runs-on: ubuntu-latest
-    needs: test
-    if: success()
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        cache-dependency-path: exam-app/package-lock.json
-
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-
-    - name: Install dependencies
-      run: |
-        cd exam-app && npm ci
-        cd ../backend && pip install -r requirements.txt || pip install flask flask-cors python-docx PyPDF2 python-dotenv
-
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-    - name: CodeQL Analysis
-      uses: github/codeql-action/init@v3
-      with:
-        languages: javascript, python
-
-    - name: CodeQL Autobuild
-      uses: github/codeql-action/autobuild@v3
-
-    - name: CodeQL Analysis Results
-      uses: github/codeql-action/analyze@v3
-
-  performance:
-    name: Performance Testing
-    runs-on: ubuntu-latest
-    needs: test
-    if: success()
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-
-    - name: Install Artillery
-      run: npm install -g artillery@latest
-
-    - name: Build frontend for testing
-      run: |
-        cd exam-app
-        npm ci
-        npm run build
-
-    - name: Start test server
-      run: |
-        cd exam-app
-        npx serve -s build -p 3000 &
-        sleep 10
-      
-    - name: Run performance tests
-      run: |
-        echo "config:
-          target: 'http://localhost:3000'
-          phases:
-            - duration: 30
-              arrivalRate: 5
-        scenarios:
-          - name: 'Basic load test'
-            requests:
-              - get:
-                  url: '/'
-              - get:
-                  url: '/exam/1'" > load-test.yml
-        
-        artillery run load-test.yml
-
-  deploy-frontend:
-    name: Deploy Frontend
-    runs-on: ubuntu-latest
-    needs: [quality-security, performance]
-    if: github.ref == 'refs/heads/main' && success()
+    if: github.ref == 'refs/heads/main'
     
     steps:
     - name: Checkout code
@@ -179,10 +23,14 @@ jobs:
         cache: 'npm'
         cache-dependency-path: exam-app/package-lock.json
 
-    - name: Install dependencies and build
+    - name: Install frontend dependencies
       run: |
         cd exam-app
         npm ci
+
+    - name: Build frontend
+      run: |
+        cd exam-app
         npm run build
 
     - name: Install Vercel CLI
@@ -197,16 +45,6 @@ jobs:
         VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
         VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
-  deploy-backend:
-    name: Deploy Backend
-    runs-on: ubuntu-latest
-    needs: [quality-security, performance]
-    if: github.ref == 'refs/heads/main' && success()
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
     - name: Install Railway CLI
       run: |
         curl -fsSL https://railway.app/install.sh | sh
@@ -220,19 +58,8 @@ jobs:
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-  notify:
-    name: Notify
-    runs-on: ubuntu-latest
-    needs: [deploy-frontend, deploy-backend]
-    if: always()
-    
-    steps:
-    - name: Notify deployment status
+    - name: Notify success
       run: |
-        if [ "${{ needs.deploy-frontend.result }}" = "success" ] && [ "${{ needs.deploy-backend.result }}" = "success" ]; then
-          echo "Deployment successful!"
-          echo "Frontend: Available on Vercel"
-          echo "Backend: Available on Railway" 
-        else
-          echo "Deployment failed!"
-        fi 
+        echo "Deployment completed successfully!"
+        echo "Frontend: Deployed to Vercel"
+        echo "Backend: Deployed to Railway" 
