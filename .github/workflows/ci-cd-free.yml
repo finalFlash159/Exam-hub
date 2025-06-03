@@ -41,7 +41,7 @@ jobs:
         curl -fsSL https://railway.app/install.sh | sh
         echo "$HOME/.railway/bin" >> $GITHUB_PATH
         cd backend
-        railway up --detach
+        railway up --service backend --detach
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
