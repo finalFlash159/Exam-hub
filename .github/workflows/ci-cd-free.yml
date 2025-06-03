@@ -36,16 +36,12 @@ jobs:
         VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
         VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
-    - name: Deploy to Railway
+    - name: Trigger Railway deployment
       run: |
-        npm install -g @railway/cli
-        # Use railway.json config for project selection
-        railway up
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      working-directory: backend
+        echo "Railway will auto-deploy from GitHub webhook"
+        echo "Backend dependencies updated with PyMuPDF"
 
     - name: Deployment complete
       run: |
         echo "Frontend deployed to Vercel"
-        echo "Backend deployed to Railway" 
+        echo "Backend will auto-deploy on Railway" 
