@@ -39,13 +39,8 @@ jobs:
     - name: Deploy to Railway
       run: |
         npm install -g @railway/cli
-        # Try to link existing project or create new one
-        if [ -n "${{ secrets.RAILWAY_PROJECT_ID }}" ]; then
-          railway link ${{ secrets.RAILWAY_PROJECT_ID }}
-        else
-          railway login --token ${{ secrets.RAILWAY_TOKEN }}
-          railway init
-        fi
+        # Environment variable RAILWAY_TOKEN will be used automatically
+        railway link ${{ secrets.RAILWAY_PROJECT_ID }}
         railway up
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
