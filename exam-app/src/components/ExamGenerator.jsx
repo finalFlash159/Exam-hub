@@ -10,8 +10,8 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-// Cập nhật URL backend từ port 5000 sang port 5001
-const BACKEND_URL = 'http://localhost:5001';
+// Backend URL - Railway production URL
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://exam-hub-production.up.railway.app';
 
 export default function ExamGenerator() {
   const [activeStep, setActiveStep] = useState(0);
