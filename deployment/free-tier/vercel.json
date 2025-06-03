@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "name": "exam-hub-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      }
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "$BACKEND_URL/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "@backend_url",
+    "REACT_APP_ENVIRONMENT": "production"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "@backend_url"
+    }
+  }
+} 

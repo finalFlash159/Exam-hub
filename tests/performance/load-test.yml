@@ -1,0 +1,114 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    # Warm up phase
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+    
+    # Ramp up phase
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+      name: "Ramp up"
+    
+    # Sustained load phase
+    - duration: 300
+      arrivalRate: 50
+      name: "Sustained load"
+    
+    # Spike test
+    - duration: 60
+      arrivalRate: 100
+      name: "Spike test"
+
+  # Performance thresholds
+  ensure:
+    maxErrorRate: 1  # Max 1% error rate
+    maxVusers: 200   # Max 200 virtual users
+    
+  # Response time thresholds
+  thresholds:
+    - http.response_time.p95: 2000  # 95th percentile < 2s
+    - http.response_time.p99: 5000  # 99th percentile < 5s
+
+scenarios:
+  - name: "Exam Hub User Journey"
+    weight: 100
+    flow:
+      # Home page load
+      - get:
+          url: "/"
+          headers:
+            User-Agent: "Artillery Load Test"
+          capture:
+            - json: "$.status"
+              as: "status"
+      
+      # API health check
+      - get:
+          url: "/api/test-connection"
+          headers:
+            Accept: "application/json"
+      
+      # Simulate exam taking
+      - post:
+          url: "/api/upload"
+          formData:
+            file: "@./test-data/sample.pdf"
+          capture:
+            - json: "$.file_id"
+              as: "fileId"
+      
+      # Generate exam (if file uploaded successfully)
+      - post:
+          url: "/api/generate-exam"
+          headers:
+            Content-Type: "application/json"
+          json:
+            file_id: "{{ fileId }}"
+            exam_title: "Load Test Exam"
+            question_count: 5
+          ifTrue: "fileId"
+      
+      # Think time between actions
+      - think: 2
+      
+      # Simulate browsing different exam types
+      - loop:
+          - get:
+              url: "/api/test-connection"
+          count: 3
+          
+  # API-only testing scenario
+  - name: "API Load Test"
+    weight: 30
+    flow:
+      - get:
+          url: "/api/test-connection"
+      
+      - get:
+          url: "/health"
+          
+      - think: 1
+
+# Custom functions for dynamic data
+functions:
+  generateRandomExamTitle: |
+    function(context, events, done) {
+      const titles = [
+        "Math Test", "Science Quiz", "History Exam", 
+        "Programming Challenge", "Language Assessment"
+      ];
+      context.vars.examTitle = titles[Math.floor(Math.random() * titles.length)];
+      return done();
+    }
+
+# Plugin configuration
+plugins:
+  metrics-by-endpoint: {}
+  
+# Custom metrics
+metrics:
+  - name: "exam_generation_time"
+    unit: "milliseconds" 

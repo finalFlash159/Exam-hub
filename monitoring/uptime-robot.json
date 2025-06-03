@@ -1,0 +1,16 @@
+{
+  "monitors": [
+    {
+      "friendly_name": "Exam Hub Frontend",
+      "url": "https://exam-hub.vercel.app",
+      "type": 1,
+      "interval": 300
+    },
+    {
+      "friendly_name": "Exam Hub Backend",
+      "url": "https://exam-hub-backend.railway.app/health",
+      "type": 1,
+      "interval": 300
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database (free alternative to RDS)
+  postgres:
+    image: postgres:15-alpine
+    container_name: exam-hub-db
+    environment:
+      POSTGRES_DB: examhub
+      POSTGRES_USER: examhub_user
+      POSTGRES_PASSWORD: examhub_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U examhub_user -d examhub"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis (for caching)
+  redis:
+    image: redis:7-alpine
+    container_name: exam-hub-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  # Backend Service
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: exam-hub-backend
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://examhub_user:examhub_password@postgres:5432/examhub
+      - REDIS_URL=redis://redis:6379/0
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "5001:5001"
+    volumes:
+      - ../../backend:/app
+      - uploads_data:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ../../exam-app
+      dockerfile: Dockerfile
+    container_name: exam-hub-frontend
+    environment:
+      - REACT_APP_API_URL=http://localhost:5001
+      - REACT_APP_ENVIRONMENT=development
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  # Nginx (reverse proxy)
+  nginx:
+    image: nginx:alpine
+    container_name: exam-hub-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads_data:
+
+networks:
+  default:
+    name: exam-hub-network 

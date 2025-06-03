@@ -1,0 +1,13 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "backend/Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "never"
+
+[env]
+PORT = "5001"
+FLASK_ENV = "production"
+PYTHONPATH = "/app" 
