@@ -1,7 +1,7 @@
 import pytest
 import os
 import sys
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 # Add the backend directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -9,13 +9,33 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 @pytest.fixture
 def client():
     """Create a test client for the Flask application."""
-    from app import app
-    app.config['TESTING'] = True
-    app.config['UPLOAD_FOLDER'] = 'test_uploads'
-    
-    with app.test_client() as client:
-        with app.app_context():
-            yield client
+    # Mock the dependencies that might not be available in CI
+    with patch('document_processor.DocumentProcessor') as mock_processor, \
+         patch('llm_generator.ExamGenerator') as mock_generator:
+        
+        # Configure mocks
+        mock_processor.return_value.extract_text.return_value = "Test extracted text"
+        mock_generator.return_value.generate_from_text.return_value = {
+            "title": "Test Exam",
+            "questions": [{"id": 1, "question": "Test?", "answer": "A"}]
+        }
+        
+        # Now import the app
+        from app import app
+        app.config['TESTING'] = True
+        app.config['UPLOAD_FOLDER'] = 'test_uploads'
+        
+        # Create test upload folder
+        os.makedirs('test_uploads', exist_ok=True)
+        
+        with app.test_client() as client:
+            with app.app_context():
+                yield client
+        
+        # Cleanup
+        import shutil
+        if os.path.exists('test_uploads'):
+            shutil.rmtree('test_uploads')
 
 @pytest.fixture
 def mock_env_vars():
