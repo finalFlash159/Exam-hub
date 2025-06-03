@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Box, Button, Container, Typography, RadioGroup, FormControlLabel, 
-  Radio, Paper, Grid, LinearProgress, Chip, Card, CardContent, 
-  Pagination, Divider, CircularProgress, IconButton, Tooltip,
+  Radio, Paper, Grid, LinearProgress, Chip, Card, 
+  Divider, CircularProgress, IconButton, Tooltip,
   Select, MenuItem, FormControl, InputLabel
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';

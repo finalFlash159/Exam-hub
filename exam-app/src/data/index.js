@@ -1,9 +1,7 @@
 import defaultQuestions from './questions/questions.json';
 import questions1 from './questions/questions1.json';
-import questions2 from './questions/questions2.json';
-import questions3 from './questions/questions3.json';
-
 import questions4 from './questions/questions4.json';
+
 // Map of exam types to question data
 export const examData = {
   4: {
