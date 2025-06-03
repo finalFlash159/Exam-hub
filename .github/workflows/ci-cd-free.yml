@@ -37,13 +37,11 @@ jobs:
         VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     - name: Deploy to Railway
-      run: |
-        curl -fsSL https://railway.app/install.sh | sh
-        echo "$HOME/.railway/bin" >> $GITHUB_PATH
-        cd backend
-        railway up --service backend --detach
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      uses: bervProject/railway-deploy@v1.3.0
+      with:
+        railway_token: ${{ secrets.RAILWAY_TOKEN }}
+        service: backend
+        directory: backend
 
     - name: Deployment complete
       run: |
