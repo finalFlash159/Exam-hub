@@ -39,8 +39,7 @@ jobs:
     - name: Deploy to Railway
       run: |
         npm install -g @railway/cli
-        # Environment variable RAILWAY_TOKEN will be used automatically
-        railway link ${{ secrets.RAILWAY_PROJECT_ID }}
+        # Use railway.json config for project selection
         railway up
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
