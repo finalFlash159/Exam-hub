@@ -37,11 +37,12 @@ jobs:
         VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     - name: Deploy to Railway
-      uses: bervProject/railway-deploy@main
+      run: |
+        npm install -g @railway/cli
+        cd backend
+        railway up --service backend
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      with:
-        service: backend
 
     - name: Deployment complete
       run: |

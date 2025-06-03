@@ -1,0 +1,12 @@
+[build]
+builder = "NIXPACKS"
+nixpacksConfigPath = "backend"
+
+[deploy]
+startCommand = "cd backend && python app.py"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+
+[env]
+PORT = "5001" 
