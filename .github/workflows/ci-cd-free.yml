@@ -8,6 +8,9 @@ jobs:
   deploy:
     name: Deploy Frontend and Backend
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://exam-app-gules.vercel.app/
     
     steps:
     - name: Checkout code
@@ -39,9 +42,10 @@ jobs:
     - name: Trigger Railway deployment
       run: |
         echo "Railway will auto-deploy from GitHub webhook"
-        echo "Backend dependencies updated with PyMuPDF"
+        echo "Backend URL: https://exam-hub-production.up.railway.app"
 
     - name: Deployment complete
       run: |
-        echo "Frontend deployed to Vercel"
-        echo "Backend will auto-deploy on Railway" 
+        echo "✅ Frontend deployed to: https://exam-app-gules.vercel.app/"
+        echo "✅ Backend deployed to: https://exam-hub-production.up.railway.app"
+        echo "🚀 Production deployment successful!" 

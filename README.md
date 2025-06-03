@@ -4,6 +4,13 @@ Smart exam application with AI-powered automatic exam generation from PDF/DOCX d
 
 ![Main Page](images/main_page.png)
 
+## 🚀 Live Demo
+
+**🌐 Frontend:** https://exam-app-gules.vercel.app/  
+**🔧 Backend API:** https://exam-hub-production.up.railway.app  
+
+*Try the live application now! Upload your PDF/DOCX documents and generate AI-powered exams instantly.*
+
 ## Key Features
 
 - **Online Multiple Choice Exams**: User-friendly interface with timer and progress tracking
