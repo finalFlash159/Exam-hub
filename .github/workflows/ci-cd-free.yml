@@ -1,16 +1,13 @@
-name: CI/CD Pipeline (Free Tier)
+name: Deploy to Production
 
 on:
   push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build-and-deploy:
-    name: Build and Deploy
+  deploy:
+    name: Deploy Frontend and Backend
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     
     steps:
     - name: Checkout code
@@ -23,21 +20,15 @@ jobs:
         cache: 'npm'
         cache-dependency-path: exam-app/package-lock.json
 
-    - name: Install frontend dependencies
-      run: |
-        cd exam-app
-        npm ci
-
     - name: Build frontend
       run: |
         cd exam-app
+        npm ci
         npm run build
-
-    - name: Install Vercel CLI
-      run: npm install -g vercel@latest
 
     - name: Deploy to Vercel
       run: |
+        npm install -g vercel@latest
         cd exam-app
         vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --yes
       env:
@@ -45,21 +36,17 @@ jobs:
         VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
         VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
-    - name: Install Railway CLI
+    - name: Deploy to Railway
       run: |
         curl -fsSL https://railway.app/install.sh | sh
         echo "$HOME/.railway/bin" >> $GITHUB_PATH
-
-    - name: Deploy to Railway
-      run: |
         cd backend
         railway login --token ${{ secrets.RAILWAY_TOKEN }}
         railway up --detach
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-    - name: Notify success
+    - name: Deployment complete
       run: |
-        echo "Deployment completed successfully!"
-        echo "Frontend: Deployed to Vercel"
-        echo "Backend: Deployed to Railway" 
+        echo "Frontend deployed to Vercel"
+        echo "Backend deployed to Railway" 
