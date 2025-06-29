@@ -91,7 +91,16 @@ function AppContent() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <AppBar position="static" elevation={4}>
+        <AppBar 
+          position="static" 
+          elevation={4} 
+          sx={{ 
+            backgroundColor: '#1976d2',
+            '&.MuiAppBar-root': {
+              backgroundColor: '#1976d2',
+            }
+          }}
+        >
           <Toolbar>
             <motion.div
               whileHover={{ scale: 1.05 }}

@@ -30,7 +30,7 @@ export const ThemeContextProvider = ({ children }) => {
     palette: {
       mode: isDarkMode ? 'dark' : 'light',
       primary: {
-        main: isDarkMode ? '#90caf9' : '#1976d2',
+        main: '#1976d2', // Giữ màu xanh thương hiệu nhất quán trong cả light và dark mode
       },
       secondary: {
         main: isDarkMode ? '#f48fb1' : '#dc004e',
