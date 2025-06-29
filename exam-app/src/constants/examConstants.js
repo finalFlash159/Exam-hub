@@ -7,7 +7,7 @@ export const PASSING_SCORE = 70;
 
 // UI constants
 export const QUESTION_TRANSITION_DELAY = 150;
-export const CONFETTI_DURATION = 5000;
+export const CONFETTI_DURATION = 3000;
 
 // Navigation constants
 export const QUESTIONS_PER_ROW = 14;
