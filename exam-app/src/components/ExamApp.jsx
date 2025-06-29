@@ -107,7 +107,14 @@ export default function ExamApp() {
                 : (theme) => theme.palette.mode === 'dark' ? '#b71c1c' : '#ffebee',
               color: (theme) => theme.palette.text.primary
             }}>
-          <Typography variant="h4" gutterBottom color="primary" fontWeight="bold">
+          <Typography 
+            variant="h4" 
+            gutterBottom 
+            fontWeight="bold"
+            sx={{
+              color: (theme) => theme.palette.mode === 'dark' ? '#ffffff' : theme.palette.primary.main
+            }}
+          >
             Exam Results
           </Typography>
           
