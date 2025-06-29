@@ -86,8 +86,7 @@ export default function ExamGenerator() {
         credentials: 'omit',
       });
       
-      // Log response details for debugging
-      console.log('Upload response status:', response.status);
+
       
       if (!response.ok) {
         // Try to get error details from response
@@ -102,7 +101,6 @@ export default function ExamGenerator() {
       }
       
       const data = await response.json();
-      console.log('Upload successful:', data);
       
       setFileId(data.file_id);
       setActiveStep(1); // Move to next step

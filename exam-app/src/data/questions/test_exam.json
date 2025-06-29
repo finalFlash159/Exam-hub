@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "question": "What is the capital of France?",
+    "options": [
+      {"label": "A", "text": "London"},
+      {"label": "B", "text": "Berlin"},
+      {"label": "C", "text": "Paris"},
+      {"label": "D", "text": "Madrid"}
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Paris is the capital and largest city of France.",
+      "vi": "Paris là thủ đô và thành phố lớn nhất của Pháp."
+    }
+  },
+  {
+    "id": 2,
+    "question": "What is 2 + 2?",
+    "options": [
+      {"label": "A", "text": "3"},
+      {"label": "B", "text": "4"},
+      {"label": "C", "text": "5"},
+      {"label": "D", "text": "6"}
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "2 + 2 equals 4. This is basic arithmetic.",
+      "vi": "2 + 2 bằng 4. Đây là phép tính số học cơ bản."
+    }
+  },
+  {
+    "id": 3,
+    "question": "Which programming language is known for 'Hello, World!'?",
+    "options": [
+      {"label": "A", "text": "Python"},
+      {"label": "B", "text": "JavaScript"},
+      {"label": "C", "text": "C"},
+      {"label": "D", "text": "All of the above"}
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "'Hello, World!' is a common first program in many programming languages including Python, JavaScript, and C.",
+      "vi": "'Hello, World!' là chương trình đầu tiên phổ biến trong nhiều ngôn ngữ lập trình bao gồm Python, JavaScript và C."
+    }
+  },
+  {
+    "id": 4,
+    "question": "What color do you get when you mix red and blue?",
+    "options": [
+      {"label": "A", "text": "Green"},
+      {"label": "B", "text": "Yellow"},
+      {"label": "C", "text": "Purple"},
+      {"label": "D", "text": "Orange"}
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "When you mix red and blue, you get purple.",
+      "vi": "Khi bạn trộn màu đỏ và xanh dương, bạn sẽ được màu tím."
+    }
+  },
+  {
+    "id": 5,
+    "question": "How many days are there in a week?",
+    "options": [
+      {"label": "A", "text": "5"},
+      {"label": "B", "text": "6"},
+      {"label": "C", "text": "7"},
+      {"label": "D", "text": "8"}
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.",
+      "vi": "Có 7 ngày trong một tuần: Thứ Hai, Thứ Ba, Thứ Tư, Thứ Năm, Thứ Sáu, Thứ Bảy và Chủ Nhật."
+    }
+  }
+] 

@@ -1,0 +1,1622 @@
+[
+    {
+        "id": 1,
+        "question": "What is the definition of a classification task in machine learning?",
+        "options": [
+            {
+                "label": "A",
+                "text": "An unsupervised task to cluster data into groups."
+            },
+            {
+                "label": "B",
+                "text": "A supervised task to assign inputs to predefined categories or classes."
+            },
+            {
+                "label": "C",
+                "text": "A supervised task to predict continuous values."
+            },
+            {
+                "label": "D",
+                "text": "A reinforcement learning task to find an optimal action sequence."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Classification is a supervised learning task where the goal is to assign input data to one or more predefined categories or classes.",
+            "vi": "Phân loại là một nhiệm vụ học có giám sát nhằm gán dữ liệu đầu vào vào một hoặc nhiều danh mục hoặc lớp đã được định nghĩa trước."
+        }
+    },
+    {
+        "id": 2,
+        "question": "In binary classification, which label typically represents the negative class?",
+        "options": [
+            {
+                "label": "A",
+                "text": "1"
+            },
+            {
+                "label": "B",
+                "text": "0"
+            },
+            {
+                "label": "C",
+                "text": "Any positive integer"
+            },
+            {
+                "label": "D",
+                "text": "Any negative integer"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "In binary classification, the negative class is typically labeled as 0, while the positive class is labeled as 1.",
+            "vi": "Trong phân loại nhị phân, lớp âm tính thường được gán nhãn là 0, trong khi lớp dương tính được gán nhãn là 1."
+        }
+    },
+    {
+        "id": 3,
+        "question": "What is the primary purpose of the Sigmoid function in Logistic Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "To speed up model training."
+            },
+            {
+                "label": "B",
+                "text": "To map a linear combination of input features to a value between 0 and 1."
+            },
+            {
+                "label": "C",
+                "text": "To add a regularization term to the loss function."
+            },
+            {
+                "label": "D",
+                "text": "To encode inputs into one-hot format."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The Sigmoid function maps the linear combination of features to [0, 1], representing the probability of the positive class.",
+            "vi": "Hàm Sigmoid ánh xạ kết hợp tuyến tính của các đặc trưng vào khoảng [0, 1], biểu thị xác suất của lớp dương tính."
+        }
+    },
+    {
+        "id": 4,
+        "question": "What does the term \\\\( z = \\\\theta_0 + \\\\theta_1 x_1 + \\\\dots + \\\\theta_d x_d \\\\) represent in Logistic Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The output probability of the model."
+            },
+            {
+                "label": "B",
+                "text": "A linear combination of input features and model parameters."
+            },
+            {
+                "label": "C",
+                "text": "The value of the loss function."
+            },
+            {
+                "label": "D",
+                "text": "The learning rate of the algorithm."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The term \\\\( z \\\\) is the linear combination of input features weighted by the model’s parameters, before applying the Sigmoid function.",
+            "vi": "Thuật ngữ \\\\( z \\\\) là kết hợp tuyến tính của các đặc trưng đầu vào được trọng số bởi các tham số của mô hình, trước khi áp dụng hàm Sigmoid."
+        }
+    },
+    {
+        "id": 5,
+        "question": "Why does using Mean Squared Error (MSE) as a loss function in Logistic Regression pose challenges for Gradient Descent convergence?",
+        "options": [
+            {
+                "label": "A",
+                "text": "MSE cannot handle probability outputs."
+            },
+            {
+                "label": "B",
+                "text": "MSE becomes non-convex in Logistic Regression."
+            },
+            {
+                "label": "C",
+                "text": "MSE is only suitable for regression tasks."
+            },
+            {
+                "label": "D",
+                "text": "MSE requires excessive computational memory."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "In Logistic Regression, MSE becomes non-convex due to the Sigmoid function, making it harder for Gradient Descent to find the global minimum.",
+            "vi": "Trong Hồi quy Logistic, MSE trở thành hàm không lồi do hàm Sigmoid, khiến Gradient Descent khó tìm được cực tiểu toàn cục."
+        }
+    },
+    {
+        "id": 6,
+        "question": "What is the intuition behind Binary Cross-Entropy (BCE) when \\\\( y=1 \\\\) but the model predicts \\\\( h_\\\\theta(x) \\\\to 0 \\\\)?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The loss approaches 0, indicating a correct prediction."
+            },
+            {
+                "label": "B",
+                "text": "The loss approaches positive infinity, penalizing large errors."
+            },
+            {
+                "label": "C",
+                "text": "The loss approaches 1, indicating a small error."
+            },
+            {
+                "label": "D",
+                "text": "The loss approaches negative infinity."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "BCE penalizes large errors heavily; when \\\\( y=1 \\\\) and \\\\( h_\\\\theta(x) \\\\to 0 \\\\), the loss \\\\( -\\\\log(h_\\\\theta(x)) \\\\) approaches positive infinity.",
+            "vi": "BCE trừng phạt lỗi lớn mạnh mẽ; khi \\\\( y=1 \\\\) và \\\\( h_\\\\theta(x) \\\\to 0 \\\\), hàm mất mát \\\\( -\\\\log(h_\\\\theta(x)) \\\\) tiến về vô cực dương."
+        }
+    },
+    {
+        "id": 7,
+        "question": "Softmax Regression is described as what in relation to Logistic Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "A simplified version."
+            },
+            {
+                "label": "B",
+                "text": "A variant for binary classification."
+            },
+            {
+                "label": "C",
+                "text": "A generalization for multi-class classification."
+            },
+            {
+                "label": "D",
+                "text": "A completely different algorithm."
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Softmax Regression generalizes Logistic Regression to handle multi-class classification by producing a probability distribution over classes.",
+            "vi": "Hồi quy Softmax tổng quát hóa Hồi quy Logistic để xử lý phân loại đa lớp bằng cách tạo ra phân phối xác suất trên các lớp."
+        }
+    },
+    {
+        "id": 8,
+        "question": "In a confusion matrix, what does False Positive (FP) represent?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Predicted Positive, Actual Positive."
+            },
+            {
+                "label": "B",
+                "text": "Predicted Negative, Actual Positive."
+            },
+            {
+                "label": "C",
+                "text": "Predicted Positive, Actual Negative."
+            },
+            {
+                "label": "D",
+                "text": "Predicted Negative, Actual Negative."
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "False Positive (FP) occurs when the model predicts Positive, but the actual label is Negative.",
+            "vi": "False Positive (FP) xảy ra khi mô hình dự đoán là Dương tính, nhưng nhãn thực tế là Âm tính."
+        }
+    },
+    {
+        "id": 9,
+        "question": "Which evaluation metric measures the ratio of predicted Positive instances that are actually Positive?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Recall"
+            },
+            {
+                "label": "B",
+                "text": "Accuracy"
+            },
+            {
+                "label": "C",
+                "text": "Precision"
+            },
+            {
+                "label": "D",
+                "text": "F1-score"
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Precision measures the proportion of predicted Positive instances that are actually Positive: \\\\( \\\\text{Precision} = \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} \\\\).",
+            "vi": "Precision đo lường tỷ lệ các trường hợp được dự đoán là Dương tính thực sự là Dương tính: \\\\( \\\\text{Precision} = \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} \\\\)."
+        }
+    },
+    {
+        "id": 10,
+        "question": "What is the purpose of the regularization term \\\\( \\\\lambda \\\\frac{1}{2} \\\\sum_{j=1}^{d} \\\\theta_j^2 \\\\) in the loss function?",
+        "options": [
+            {
+                "label": "A",
+                "text": "To ensure the loss function is always convex."
+            },
+            {
+                "label": "B",
+                "text": "To prevent the model from overfitting the training data."
+            },
+            {
+                "label": "C",
+                "text": "To make Gradient Descent converge faster."
+            },
+            {
+                "label": "D",
+                "text": "To convert parameters \\\\( \\\\theta \\\\) to integers."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The regularization term penalizes large parameter values to prevent overfitting and improve model generalization.",
+            "vi": "Thuật ngữ chuẩn hóa trừng phạt các giá trị tham số lớn để ngăn chặn quá khớp và cải thiện khả năng tổng quát hóa của mô hình."
+        }
+    },
+    {
+        "id": 11,
+        "question": "What does Multi-class Multi-label Classification refer to?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Assigning a single class to each instance."
+            },
+            {
+                "label": "B",
+                "text": "Assigning multiple classes to each instance, where each class is independent."
+            },
+            {
+                "label": "C",
+                "text": "Predicting a continuous value for multiple outputs."
+            },
+            {
+                "label": "D",
+                "text": "Clustering data into multiple groups."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Multi-class Multi-label Classification involves assigning multiple independent class labels to each instance, unlike single-label classification.",
+            "vi": "Phân loại Đa lớp Đa nhãn liên quan đến việc gán nhiều nhãn lớp độc lập cho mỗi trường hợp, khác với phân loại một nhãn."
+        }
+    },
+    {
+        "id": 12,
+        "question": "What is the role of the threshold in binary Logistic Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "It determines the learning rate."
+            },
+            {
+                "label": "B",
+                "text": "It converts probability outputs to class labels."
+            },
+            {
+                "label": "C",
+                "text": "It initializes model parameters."
+            },
+            {
+                "label": "D",
+                "text": "It measures prediction accuracy."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The threshold (e.g., 0.5) is used to convert the Sigmoid’s probability output into a binary class label.",
+            "vi": "Ngưỡng (ví dụ: 0.5) được sử dụng để chuyển đổi đầu ra xác suất của hàm Sigmoid thành nhãn lớp nhị phân."
+        }
+    },
+    {
+        "id": 13,
+        "question": "What does the term 'overfitting' mean in the context of Logistic Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The model is too simple to capture data patterns."
+            },
+            {
+                "label": "B",
+                "text": "The model fits the training data too closely, reducing generalization."
+            },
+            {
+                "label": "C",
+                "text": "The model converges too quickly."
+            },
+            {
+                "label": "D",
+                "text": "The model uses too few features."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Overfitting occurs when the model fits the training data too well, including noise, leading to poor generalization on new data.",
+            "vi": "Quá khớp xảy ra khi mô hình phù hợp quá tốt với dữ liệu huấn luyện, bao gồm cả nhiễu, dẫn đến khả năng tổng quát hóa kém trên dữ liệu mới."
+        }
+    },
+    {
+        "id": 14,
+        "question": "What is the False Negative (FN) in a confusion matrix?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Predicted Positive, Actual Positive."
+            },
+            {
+                "label": "B",
+                "text": "Predicted Negative, Actual Positive."
+            },
+            {
+                "label": "C",
+                "text": "Predicted Positive, Actual Negative."
+            },
+            {
+                "label": "D",
+                "text": "Predicted Negative, Actual Negative."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "False Negative (FN) occurs when the model predicts Negative, but the actual label is Positive.",
+            "vi": "False Negative (FN) xảy ra khi mô hình dự đoán là Âm tính, nhưng nhãn thực tế là Dương tính."
+        }
+    },
+    {
+        "id": 15,
+        "question": "What does the F1-score measure in classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The total number of correct predictions."
+            },
+            {
+                "label": "B",
+                "text": "The harmonic mean of Precision and Recall."
+            },
+            {
+                "label": "C",
+                "text": "The proportion of correct predictions overall."
+            },
+            {
+                "label": "D",
+                "text": "The ratio of False Positives to True Positives."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The F1-score is the harmonic mean of Precision and Recall, balancing the trade-off between the two metrics.",
+            "vi": "F1-score là trung bình điều hòa của Precision và Recall, cân bằng giữa hai chỉ số này."
+        }
+    },
+    {
+        "id": 16,
+        "question": "What is the purpose of the Cross-Entropy Loss in Softmax Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "To measure the difference between predicted and actual probabilities for multiple classes."
+            },
+            {
+                "label": "B",
+                "text": "To ensure all parameters are positive."
+            },
+            {
+                "label": "C",
+                "text": "To reduce the number of features."
+            },
+            {
+                "label": "D",
+                "text": "To increase the learning rate."
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "Cross-Entropy Loss measures the difference between the predicted probability distribution and the actual class distribution in multi-class settings.",
+            "vi": "Hàm mất mát Cross-Entropy đo lường sự khác biệt giữa phân phối xác suất dự đoán và phân phối lớp thực tế trong cài đặt đa lớp."
+        }
+    },
+    {
+        "id": 17,
+        "question": "What does the term 'One-vs-all' refer to in multi-class classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Training a single model to predict all classes simultaneously."
+            },
+            {
+                "label": "B",
+                "text": "Training multiple binary classifiers, each distinguishing one class from the rest."
+            },
+            {
+                "label": "C",
+                "text": "Randomly selecting one class for prediction."
+            },
+            {
+                "label": "D",
+                "text": "Combining predictions from Linear Regression models."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "One-vs-all trains a binary classifier for each class, distinguishing it from all other classes, and selects the class with the highest probability.",
+            "vi": "One-vs-all huấn luyện một bộ phân loại nhị phân cho mỗi lớp, phân biệt lớp đó với tất cả các lớp khác, và chọn lớp có xác suất cao nhất."
+        }
+    },
+    {
+        "id": 18,
+        "question": "What is the role of the parameter \\\\( \\\\lambda \\\\) in L2 regularization?",
+        "options": [
+            {
+                "label": "A",
+                "text": "It determines the number of training iterations."
+            },
+            {
+                "label": "B",
+                "text": "It controls the strength of the penalty on large parameters."
+            },
+            {
+                "label": "C",
+                "text": "It sets the threshold for classification."
+            },
+            {
+                "label": "D",
+                "text": "It adjusts the learning rate dynamically."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The parameter \\\\( \\\\lambda \\\\) controls the strength of the L2 regularization penalty, reducing overfitting by shrinking large parameters.",
+            "vi": "Tham số \\\\( \\\\lambda \\\\) kiểm soát mức độ của hình phạt chuẩn hóa L2, giảm quá khớp bằng cách thu nhỏ các tham số lớn."
+        }
+    },
+    {
+        "id": 19,
+        "question": "What does Recall measure in a classification model?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The proportion of predicted Positives that are correct."
+            },
+            {
+                "label": "B",
+                "text": "The proportion of actual Positives correctly identified."
+            },
+            {
+                "label": "C",
+                "text": "The overall accuracy of the model."
+            },
+            {
+                "label": "D",
+                "text": "The harmonic mean of Precision and Accuracy."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Recall measures the proportion of actual Positive instances correctly identified: \\\\( \\\\text{Recall} = \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} \\\\).",
+            "vi": "Recall đo lường tỷ lệ các trường hợp thực sự Dương tính được xác định đúng: \\\\( \\\\text{Recall} = \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} \\\\)."
+        }
+    },
+    {
+        "id": 20,
+        "question": "What is the purpose of the Softmax function in multi-class classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "To map inputs to a single class label."
+            },
+            {
+                "label": "B",
+                "text": "To convert unscaled values into a probability distribution over classes."
+            },
+            {
+                "label": "C",
+                "text": "To reduce the dimensionality of the input features."
+            },
+            {
+                "label": "D",
+                "text": "To compute the loss function directly."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The Softmax function converts unscaled values (\\\\( z_j \\\\)) into a probability distribution over multiple classes, ensuring they sum to 1.",
+            "vi": "Hàm Softmax chuyển đổi các giá trị chưa được tỷ lệ hóa (\\\\( z_j \\\\)) thành phân phối xác suất trên nhiều lớp, đảm bảo tổng bằng 1."
+        }
+    },
+    {
+        "id": 21,
+        "question": "In an online transaction fraud detection system, a fraudulent transaction (Actual YES) misclassified as non-fraudulent (Prediction NO) is what type of error?",
+        "options": [
+            {
+                "label": "A",
+                "text": "True Positive (TP)"
+            },
+            {
+                "label": "B",
+                "text": "False Positive (FP)"
+            },
+            {
+                "label": "C",
+                "text": "False Negative (FN)"
+            },
+            {
+                "label": "D",
+                "text": "True Negative (TN)"
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "A fraudulent transaction misclassified as non-fraudulent is a False Negative (FN), as the model predicts Negative when the actual label is Positive.",
+            "vi": "Một giao dịch gian lận bị phân loại nhầm là không gian lận là False Negative (FN), vì mô hình dự đoán Âm tính khi nhãn thực tế là Dương tính."
+        }
+    },
+    {
+        "id": 22,
+        "question": "Why is computing the probability of one event (e.g., \\\\( P(\\\\text{event}) \\\\)) sufficient for binary classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( P(\\\\text{event}) \\\\) is always larger than \\\\( P(\\\\neg\\\\text{event}) \\\\)."
+            },
+            {
+                "label": "B",
+                "text": "\\\\( P(\\\\text{event}) + P(\\\\neg\\\\text{event}) = 1 \\\\), so knowing one implies the other."
+            },
+            {
+                "label": "C",
+                "text": "Only \\\\( P(\\\\text{event}) \\\\) has statistical significance."
+            },
+            {
+                "label": "D",
+                "text": "The model can only predict one class at a time."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Since \\\\( P(\\\\text{event}) + P(\\\\neg\\\\text{event}) = 1 \\\\), computing the probability of one class is sufficient to determine the other.",
+            "vi": "Vì \\\\( P(\\\\text{event}) + P(\\\\neg\\\\text{event}) = 1 \\\\), tính xác suất của một lớp là đủ để xác định lớp còn lại."
+        }
+    },
+    {
+        "id": 23,
+        "question": "To minimize important emails (non-spam) being marked as spam in an email classification system, how should the Logistic Regression threshold be adjusted?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Set it above 0.5 (e.g., 0.7) to be more cautious in classifying as spam."
+            },
+            {
+                "label": "B",
+                "text": "Set it below 0.5 (e.g., 0.3) to classify as spam more easily."
+            },
+            {
+                "label": "C",
+                "text": "Keep it at 0.5 as it is always optimal."
+            },
+            {
+                "label": "D",
+                "text": "Remove the threshold and use probabilities directly."
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "A higher threshold (e.g., 0.7) makes the model more cautious, reducing False Positives (non-spam marked as spam).",
+            "vi": "Ngưỡng cao hơn (ví dụ: 0.7) khiến mô hình thận trọng hơn, giảm False Positives (non-spam bị đánh dấu nhầm là spam)."
+        }
+    },
+    {
+        "id": 24,
+        "question": "What is the core difference between regression and classification tasks?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Regression uses the Sigmoid function; classification does not."
+            },
+            {
+                "label": "B",
+                "text": "Regression predicts continuous values; classification assigns data to discrete classes."
+            },
+            {
+                "label": "C",
+                "text": "Regression uses numerical data; classification uses text data."
+            },
+            {
+                "label": "D",
+                "text": "Regression does not require labeled data; classification does."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Regression predicts continuous outputs (e.g., house prices), while classification assigns inputs to discrete categories (e.g., spam/non-spam).",
+            "vi": "Hồi quy dự đoán các giá trị liên tục (ví dụ: giá nhà), trong khi phân loại gán đầu vào vào các danh mục rời rạc (ví dụ: spam/non-spam)."
+        }
+    },
+    {
+        "id": 25,
+        "question": "When does Accuracy fail to reflect a classification model’s true performance?",
+        "options": [
+            {
+                "label": "A",
+                "text": "When the model is too simple."
+            },
+            {
+                "label": "B",
+                "text": "When the dataset is very large."
+            },
+            {
+                "label": "C",
+                "text": "When classes are highly imbalanced (e.g., one class is 99% of the data)."
+            },
+            {
+                "label": "D",
+                "text": "When training is too slow."
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Accuracy can be misleading in imbalanced datasets, as a model predicting the majority class can achieve high accuracy but miss minority class patterns.",
+            "vi": "Accuracy có thể gây hiểu lầm trong các tập dữ liệu mất cân bằng, vì mô hình dự đoán lớp chiếm đa số có thể đạt Accuracy cao nhưng bỏ qua các mẫu lớp thiểu số."
+        }
+    },
+    {
+        "id": 26,
+        "question": "How does the One-vs-all method work for multi-class classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Trains a single model to predict all classes simultaneously."
+            },
+            {
+                "label": "B",
+                "text": "Trains multiple binary classifiers, each distinguishing one class from the rest."
+            },
+            {
+                "label": "C",
+                "text": "Randomly selects one class for prediction."
+            },
+            {
+                "label": "D",
+                "text": "Combines predictions from Linear Regression models."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "One-vs-all trains a binary classifier for each class against all others, selecting the class with the highest probability.",
+            "vi": "One-vs-all huấn luyện một bộ phân loại nhị phân cho mỗi lớp so với tất cả các lớp khác, chọn lớp có xác suất cao nhất."
+        }
+    },
+    {
+        "id": 27,
+        "question": "What does the converged parameter \\\\( \\\\theta^* \\\\) represent in Logistic Regression?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The optimal learning rate."
+            },
+            {
+                "label": "B",
+                "text": "The optimized parameters for predicting probabilities on new data."
+            },
+            {
+                "label": "C",
+                "text": "The classification threshold."
+            },
+            {
+                "label": "D",
+                "text": "The size of the training dataset."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The converged \\\\( \\\\theta^* \\\\) represents the optimized parameters that allow the model to predict probabilities for new data accurately.",
+            "vi": "Tham số hội tụ \\\\( \\\\theta^* \\\\) biểu thị các tham số được tối ưu hóa, cho phép mô hình dự đoán xác suất chính xác trên dữ liệu mới."
+        }
+    },
+    {
+        "id": 28,
+        "question": "If a Logistic Regression model predicts a probability of 0.1 with a threshold of 0.5, what is the predicted class?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Positive class (class 1)"
+            },
+            {
+                "label": "B",
+                "text": "Negative class (class 0)"
+            },
+            {
+                "label": "C",
+                "text": "Cannot be classified"
+            },
+            {
+                "label": "D",
+                "text": "Requires more information"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Since the predicted probability (0.1) is below the threshold (0.5), the sample is classified as the negative class (0).",
+            "vi": "Vì xác suất dự đoán (0.1) thấp hơn ngưỡng (0.5), mẫu được phân loại là lớp âm tính (0)."
+        }
+    },
+    {
+        "id": 29,
+        "question": "Which metric should be used to balance identifying all Positive cases (Recall) and ensuring predicted Positives are correct (Precision)?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Accuracy"
+            },
+            {
+                "label": "B",
+                "text": "Precision"
+            },
+            {
+                "label": "C",
+                "text": "Recall"
+            },
+            {
+                "label": "D",
+                "text": "F1-score"
+            }
+        ],
+        "answer": "D",
+        "explanation": {
+            "en": "The F1-score, the harmonic mean of Precision and Recall, balances the trade-off between identifying Positives and ensuring their correctness.",
+            "vi": "F1-score, trung bình điều hòa của Precision và Recall, cân bằng giữa việc xác định các trường hợp Dương tính và đảm bảo tính chính xác của chúng."
+        }
+    },
+    {
+        "id": 30,
+        "question": "In a rare disease detection model, which metric should be prioritized to minimize missing actual Positive cases (Actual YES predicted as NO)?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Precision (reduces FP)"
+            },
+            {
+                "label": "B",
+                "text": "Recall (reduces FN)"
+            },
+            {
+                "label": "C",
+                "text": "Accuracy (overall)"
+            },
+            {
+                "label": "D",
+                "text": "F1-score (balanced)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Recall should be prioritized to minimize False Negatives (missing actual Positive cases), critical in rare disease detection.",
+            "vi": "Recall nên được ưu tiên để giảm thiểu False Negatives (bỏ sót các trường hợp Dương tính thực sự), quan trọng trong phát hiện bệnh hiếm."
+        }
+    },
+    {
+        "id": 31,
+        "question": "What is a practical example of a Multi-class Multi-label Classification problem?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Predicting a single disease from symptoms."
+            },
+            {
+                "label": "B",
+                "text": "Tagging a news article with multiple topics (e.g., politics, economy)."
+            },
+            {
+                "label": "C",
+                "text": "Predicting house prices based on features."
+            },
+            {
+                "label": "D",
+                "text": "Clustering customers into groups."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Tagging a news article with multiple topics is a Multi-class Multi-label Classification problem, as each article can belong to multiple independent classes.",
+            "vi": "Gắn thẻ một bài báo với nhiều chủ đề là bài toán Phân loại Đa lớp Đa nhãn, vì mỗi bài báo có thể thuộc nhiều lớp độc lập."
+        }
+    },
+    {
+        "id": 32,
+        "question": "In a medical diagnosis system, you want to minimize False Negatives (missing a disease). How should the threshold be adjusted?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Increase it above 0.5 to be more cautious."
+            },
+            {
+                "label": "B",
+                "text": "Decrease it below 0.5 to classify more cases as Positive."
+            },
+            {
+                "label": "C",
+                "text": "Keep it at 0.5 for balance."
+            },
+            {
+                "label": "D",
+                "text": "Remove the threshold entirely."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Lowering the threshold (e.g., 0.3) increases Positive predictions, reducing False Negatives but potentially increasing False Positives.",
+            "vi": "Giảm ngưỡng (ví dụ: 0.3) tăng dự đoán Dương tính, giảm False Negatives nhưng có thể tăng False Positives."
+        }
+    },
+    {
+        "id": 33,
+        "question": "What is a key limitation of the One-vs-all method in multi-class classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "It cannot handle more than two classes."
+            },
+            {
+                "label": "B",
+                "text": "It may produce ambiguous predictions when multiple classifiers yield high probabilities."
+            },
+            {
+                "label": "C",
+                "text": "It requires a non-convex loss function."
+            },
+            {
+                "label": "D",
+                "text": "It is computationally faster than Softmax Regression."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "One-vs-all can produce ambiguous results when multiple classifiers assign high probabilities, as it does not model inter-class relationships.",
+            "vi": "One-vs-all có thể tạo ra kết quả mơ hồ khi nhiều bộ phân loại gán xác suất cao, vì nó không mô hình hóa mối quan hệ giữa các lớp."
+        }
+    },
+    {
+        "id": 34,
+        "question": "In a fraud detection system, which metric should be prioritized to minimize fraudulent transactions being missed?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Precision"
+            },
+            {
+                "label": "B",
+                "text": "Recall"
+            },
+            {
+                "label": "C",
+                "text": "Accuracy"
+            },
+            {
+                "label": "D",
+                "text": "F1-score"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Recall is prioritized to minimize False Negatives (missed fraudulent transactions), ensuring more Positive cases are identified.",
+            "vi": "Recall được ưu tiên để giảm thiểu False Negatives (bỏ sót giao dịch gian lận), đảm bảo xác định được nhiều trường hợp Dương tính hơn."
+        }
+    },
+    {
+        "id": 35,
+        "question": "If a model’s training data has 95% non-spam emails and 5% spam emails, what issue might arise when using Accuracy as the evaluation metric?",
+        "options": [
+            {
+                "label": "A",
+                "text": "The model will overfit to the spam class."
+            },
+            {
+                "label": "B",
+                "text": "Accuracy will be high even if the model predicts all emails as non-spam."
+            },
+            {
+                "label": "C",
+                "text": "The model will converge too slowly."
+            },
+            {
+                "label": "D",
+                "text": "The model will fail to train."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "In imbalanced datasets, a model predicting the majority class (non-spam) can achieve high Accuracy while failing to detect spam, masking poor performance.",
+            "vi": "Trong tập dữ liệu mất cân bằng, mô hình dự đoán lớp chiếm đa số (non-spam) có thể đạt Accuracy cao nhưng không phát hiện được spam, che giấu hiệu suất kém."
+        }
+    },
+    {
+        "id": 36,
+        "question": "How does a high \\\\( \\\\lambda \\\\) value in L2 regularization affect a Logistic Regression model?",
+        "options": [
+            {
+                "label": "A",
+                "text": "It increases parameter values, risking overfitting."
+            },
+            {
+                "label": "B",
+                "text": "It shrinks parameter values, risking underfitting."
+            },
+            {
+                "label": "C",
+                "text": "It speeds up convergence."
+            },
+            {
+                "label": "D",
+                "text": "It has no effect on parameters."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "A high \\\\( \\\\lambda \\\\) increases the regularization penalty, shrinking parameters and potentially causing underfitting by simplifying the model.",
+            "vi": "Một \\\\( \\\\lambda \\\\) cao tăng hình phạt chuẩn hóa, thu nhỏ các tham số và có thể gây thiếu khớp bằng cách đơn giản hóa mô hình."
+        }
+    },
+    {
+        "id": 37,
+        "question": "In a customer churn prediction system, you want to minimize false predictions of churn (predicting churn when the customer stays). Which metric should you prioritize?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Recall"
+            },
+            {
+                "label": "B",
+                "text": "Precision"
+            },
+            {
+                "label": "C",
+                "text": "Accuracy"
+            },
+            {
+                "label": "D",
+                "text": "F1-score"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Precision should be prioritized to minimize False Positives (predicting churn when the customer stays), ensuring Positive predictions are accurate.",
+            "vi": "Precision nên được ưu tiên để giảm thiểu False Positives (dự đoán rời bỏ khi khách hàng ở lại), đảm bảo dự đoán Dương tính là chính xác."
+        }
+    },
+    {
+        "id": 38,
+        "question": "If a Logistic Regression model predicts a probability of 0.8 with a threshold of 0.5, what is the predicted class?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Negative class (class 0)"
+            },
+            {
+                "label": "B",
+                "text": "Positive class (class 1)"
+            },
+            {
+                "label": "C",
+                "text": "Cannot be classified"
+            },
+            {
+                "label": "D",
+                "text": "Requires more information"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Since the predicted probability (0.8) exceeds the threshold (0.5), the sample is classified as the Positive class (1).",
+            "vi": "Vì xác suất dự đoán (0.8) vượt ngưỡng (0.5), mẫu được phân loại là lớp Dương tính (1)."
+        }
+    },
+    {
+        "id": 39,
+        "question": "In a text classification system, why might you choose a threshold lower than 0.5 for predicting Positive labels?",
+        "options": [
+            {
+                "label": "A",
+                "text": "To increase False Positives."
+            },
+            {
+                "label": "B",
+                "text": "To increase Recall by classifying more instances as Positive."
+            },
+            {
+                "label": "C",
+                "text": "To reduce the learning rate."
+            },
+            {
+                "label": "D",
+                "text": "To simplify the model."
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "A lower threshold increases Positive predictions, boosting Recall by reducing False Negatives, though it may increase False Positives.",
+            "vi": "Ngưỡng thấp hơn tăng dự đoán Dương tính, tăng Recall bằng cách giảm False Negatives, mặc dù có thể tăng False Positives."
+        }
+    },
+    {
+        "id": 40,
+        "question": "What is a real-world scenario where the One-vs-all method might struggle in multi-class classification?",
+        "options": [
+            {
+                "label": "A",
+                "text": "Classifying images with highly correlated classes (e.g., dog breeds)."
+            },
+            {
+                "label": "B",
+                "text": "Predicting a single class from numerical data."
+            },
+            {
+                "label": "C",
+                "text": "Clustering data into groups."
+            },
+            {
+                "label": "D",
+                "text": "Predicting continuous values."
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "One-vs-all struggles with correlated classes (e.g., dog breeds) as it treats classes independently, potentially leading to ambiguous predictions.",
+            "vi": "One-vs-all gặp khó khăn với các lớp tương quan cao (ví dụ: giống chó) vì nó xử lý các lớp độc lập, có thể dẫn đến dự đoán mơ hồ."
+        }
+    },
+    {
+        "id": 41,
+        "question": "For an email with \\\\( z = -2 \\\\), calculate the Sigmoid output \\\\( \\\\sigma(z) \\\\) and determine the class with a threshold of 0.5.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( \\\\sigma(-2) \\\\approx 0.12 \\\\), classified as spam."
+            },
+            {
+                "label": "B",
+                "text": "\\\\( \\\\sigma(-2) \\\\approx 0.88 \\\\), classified as non-spam."
+            },
+            {
+                "label": "C",
+                "text": "\\\\( \\\\sigma(-2) \\\\approx 0.12 \\\\), classified as non-spam."
+            },
+            {
+                "label": "D",
+                "text": "\\\\( \\\\sigma(-2) \\\\approx 0.88 \\\\), classified as spam."
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Using \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(-2) = \\\\frac{1}{1 + e^2} \\\\approx 0.119 \\\\). Since 0.119 < 0.5, it is classified as non-spam (class 0).",
+            "vi": "Sử dụng \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(-2) = \\\\frac{1}{1 + e^2} \\\\approx 0.119 \\\\). Vì 0.119 < 0.5, mẫu được phân loại là non-spam (lớp 0)."
+        }
+    },
+    {
+        "id": 42,
+        "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.9 \\\\) but the actual label is \\\\( y = 0 \\\\), calculate the BCE loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( J(\\\\theta) = -\\\\log(0.9) \\\\approx 0.105 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( J(\\\\theta) = -\\\\log(1 - 0.9) = -\\\\log(0.1) \\\\approx 2.302 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( J(\\\\theta) = 0 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( J(\\\\theta) = 1 \\\\)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "For \\\\( y = 0 \\\\), BCE is \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.9) = -\\\\log(0.1) \\\\approx 2.302 \\\\), penalizing the large error.",
+            "vi": "Với \\\\( y = 0 \\\\), BCE là \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.9) = -\\\\log(0.1) \\\\approx 2.302 \\\\), trừng phạt lỗi lớn."
+        }
+    },
+    {
+        "id": 43,
+        "question": "As \\\\( z \\\\to +\\\\infty \\\\), what does the Sigmoid function \\\\( \\\\sigma(z) \\\\) approach?",
+        "options": [
+            {
+                "label": "A",
+                "text": "0"
+            },
+            {
+                "label": "B",
+                "text": "0.5"
+            },
+            {
+                "label": "C",
+                "text": "1"
+            },
+            {
+                "label": "D",
+                "text": "-\\\\( \\\\infty \\\\)"
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "As \\\\( z \\\\to +\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 1 \\\\), indicating a high probability for the Positive class.",
+            "vi": "Khi \\\\( z \\\\to +\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 1 \\\\), biểu thị xác suất cao cho lớp Dương tính."
+        }
+    },
+    {
+        "id": 44,
+        "question": "Given a confusion matrix: TP = 50, FP = 5, FN = 20, TN = 25, calculate Precision.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 50 / (50 + 20) = 0.714 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( 50 / (50 + 5) = 0.909 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( (50 + 25) / (50 + 5 + 20 + 25) = 0.75 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 25 / (20 + 25) = 0.556 \\\\)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{50}{50 + 5} = 0.909 \\\\).",
+            "vi": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{50}{50 + 5} = 0.909 \\\\)."
+        }
+    },
+    {
+        "id": 45,
+        "question": "Using the same confusion matrix (TP = 50, FP = 5, FN = 20, TN = 25), calculate Recall.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 50 / (50 + 5) = 0.909 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( 50 / (50 + 20) = 0.714 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( (50 + 25) / (50 + 5 + 20 + 25) = 0.75 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 25 / (20 + 25) = 0.556 \\\\)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{50}{50 + 20} = 0.714 \\\\).",
+            "vi": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{50}{50 + 20} = 0.714 \\\\)."
+        }
+    },
+    {
+        "id": 46,
+        "question": "Using the same confusion matrix (TP = 50, FP = 5, FN = 20, TN = 25), calculate Accuracy.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 50 / (50 + 5) = 0.909 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( 50 / (50 + 20) = 0.714 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( (50 + 25) / (50 + 5 + 20 + 25) = 0.75 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 25 / (20 + 25) = 0.556 \\\\)"
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{50 + 25}{50 + 5 + 20 + 25} = 0.75 \\\\).",
+            "vi": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{50 + 25}{50 + 5 + 20 + 25} = 0.75 \\\\)."
+        }
+    },
+    {
+        "id": 47,
+        "question": "Using the same confusion matrix (TP = 50, FP = 5, FN = 20, TN = 25), calculate the F1-score (Precision ≈ 0.909, Recall ≈ 0.714).",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 2 \\\\times (0.909 \\\\times 0.714) / (0.909 + 0.714) \\\\approx 0.799 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( (0.909 + 0.714) / 2 = 0.8115 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( 0.909 \\\\times 0.714 = 0.649 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 0.909 \\\\)"
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.714}{0.909 + 0.714} \\\\approx 0.799 \\\\).",
+            "vi": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.714}{0.909 + 0.714} \\\\approx 0.799 \\\\)."
+        }
+    },
+    {
+        "id": 48,
+        "question": "In Softmax Regression, a sample belongs to class 'cat' (one-hot: [0, 1, 0]) and predicted probabilities are [0.2, 0.7, 0.1] for [dog, cat, chicken]. Calculate the Cross-Entropy Loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( -1 \\\\times \\\\log(0.2) \\\\approx 1.61 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( -1 \\\\times \\\\log(0.7) \\\\approx 0.357 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( -1 \\\\times \\\\log(0.1) \\\\approx 2.3 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( -(0 \\\\times \\\\log(0.2) + 1 \\\\times \\\\log(0.7) + 0 \\\\times \\\\log(0.1)) \\\\approx 0.357 \\\\)"
+            }
+        ],
+        "answer": "D",
+        "explanation": {
+            "en": "Cross-Entropy Loss = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -(0 \\\\times \\\\log(0.2) + 1 \\\\times \\\\log(0.7) + 0 \\\\times \\\\log(0.1)) = -\\\\log(0.7) \\\\approx 0.357 \\\\).",
+            "vi": "Hàm mất mát Cross-Entropy = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -(0 \\\\times \\\\log(0.2) + 1 \\\\times \\\\log(0.7) + 0 \\\\times \\\\log(0.1)) = -\\\\log(0.7) \\\\approx 0.357 \\\\)."
+        }
+    },
+    {
+        "id": 49,
+        "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.1 \\\\) but the actual label is \\\\( y = 1 \\\\), calculate the BCE loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( J(\\\\theta) = -\\\\log(0.1) \\\\approx 2.302 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( J(\\\\theta) = -\\\\log(1 - 0.1) \\\\approx 0.105 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( J(\\\\theta) = 0 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( J(\\\\theta) = 1 \\\\)"
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "For \\\\( y = 1 \\\\), BCE is \\\\( J(\\\\theta) = -y \\\\log(h_\\\\theta(x)) = -\\\\log(0.1) \\\\approx 2.302 \\\\), penalizing the large error.",
+            "vi": "Với \\\\( y = 1 \\\\), BCE là \\\\( J(\\\\theta) = -y \\\\log(h_\\\\theta(x)) = -\\\\log(0.1) \\\\approx 2.302 \\\\), trừng phạt lỗi lớn."
+        }
+    },
+    {
+        "id": 50,
+        "question": "As \\\\( z \\\\to -\\\\infty \\\\), what does the Sigmoid function \\\\( \\\\sigma(z) \\\\) approach?",
+        "options": [
+            {
+                "label": "A",
+                "text": "0"
+            },
+            {
+                "label": "B",
+                "text": "0.5"
+            },
+            {
+                "label": "C",
+                "text": "1"
+            },
+            {
+                "label": "D",
+                "text": "+\\\\( \\\\infty \\\\)"
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "As \\\\( z \\\\to -\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 0 \\\\), indicating a low probability for the Positive class.",
+            "vi": "Khi \\\\( z \\\\to -\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 0 \\\\), biểu thị xác suất thấp cho lớp Dương tính."
+        }
+    },
+    {
+        "id": 51,
+        "question": "In a Softmax Regression model with classes [A, B, C] and predicted probabilities [0.1, 0.6, 0.3] for a sample with actual class B (one-hot: [0, 1, 0]), calculate the Cross-Entropy Loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( -\\\\log(0.1) \\\\approx 2.302 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( -\\\\log(0.6) \\\\approx 0.511 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( -\\\\log(0.3) \\\\approx 1.204 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( -(0 \\\\times \\\\log(0.1) + 1 \\\\times \\\\log(0.6) + 0 \\\\times \\\\log(0.3)) \\\\approx 0.511 \\\\)"
+            }
+        ],
+        "answer": "D",
+        "explanation": {
+            "en": "Cross-Entropy Loss = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.6) \\\\approx 0.511 \\\\), as only the probability for class B contributes.",
+            "vi": "Hàm mất mát Cross-Entropy = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.6) \\\\approx 0.511 \\\\), vì chỉ xác suất cho lớp B đóng góp."
+        }
+    },
+    {
+        "id": 52,
+        "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.7 \\\\) and \\\\( y = 1 \\\\), calculate the BCE loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( -\\\\log(0.7) \\\\approx 0.357 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( -\\\\log(1 - 0.7) \\\\approx 1.204 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( -\\\\log(0.3) \\\\approx 1.204 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 0 \\\\)"
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "For \\\\( y = 1 \\\\), BCE is \\\\( J(\\\\theta) = -\\\\log(h_\\\\theta(x)) = -\\\\log(0.7) \\\\approx 0.357 \\\\).",
+            "vi": "Với \\\\( y = 1 \\\\), BCE là \\\\( J(\\\\theta) = -\\\\log(h_\\\\theta(x)) = -\\\\log(0.7) \\\\approx 0.357 \\\\)."
+        }
+    },
+    {
+        "id": 53,
+        "question": "Given a confusion matrix: TP = 100, FP = 10, FN = 5, TN = 85, calculate Precision.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 100 / (100 + 5) = 0.952 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( 100 / (100 + 10) = 0.909 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( (100 + 85) / (100 + 10 + 5 + 85) = 0.925 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 85 / (5 + 85) = 0.944 \\\\)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{100}{100 + 10} = 0.909 \\\\).",
+            "vi": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{100}{100 + 10} = 0.909 \\\\)."
+        }
+    },
+    {
+        "id": 54,
+        "question": "Using the same confusion matrix (TP = 100, FP = 10, FN = 5, TN = 85), calculate Recall.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 100 / (100 + 10) = 0.909 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( 100 / (100 + 5) = 0.952 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( (100 + 85) / (100 + 10 + 5 + 85) = 0.925 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 85 / (5 + 85) = 0.944 \\\\)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{100}{100 + 5} = 0.952 \\\\).",
+            "vi": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{100}{100 + 5} = 0.952 \\\\)."
+        }
+    },
+    {
+        "id": 55,
+        "question": "Using the same confusion matrix (TP = 100, FP = 10, FN = 5, TN = 85), calculate Accuracy.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 100 / (100 + 10) = 0.909 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( 100 / (100 + 5) = 0.952 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( (100 + 85) / (100 + 10 + 5 + 85) = 0.925 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 85 / (5 + 85) = 0.944 \\\\)"
+            }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{100 + 85}{100 + 10 + 5 + 85} = 0.925 \\\\).",
+            "vi": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{100 + 85}{100 + 10 + 5 + 85} = 0.925 \\\\)."
+        }
+    },
+    {
+        "id": 56,
+        "question": "Using the same confusion matrix (TP = 100, FP = 10, FN = 5, TN = 85), calculate the F1-score (Precision ≈ 0.909, Recall ≈ 0.952).",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 2 \\\\times (0.909 \\\\times 0.952) / (0.909 + 0.952) \\\\approx 0.930 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( (0.909 + 0.952) / 2 = 0.9305 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( 0.909 \\\\times 0.952 = 0.866 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 0.909 \\\\)"
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.952}{0.909 + 0.952} \\\\approx 0.930 \\\\).",
+            "vi": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.952}{0.909 + 0.952} \\\\approx 0.930 \\\\)."
+        }
+    },
+    {
+        "id": 57,
+        "question": "For \\\\( z = 3 \\\\), calculate the Sigmoid output \\\\( \\\\sigma(z) \\\\) and determine the class with a threshold of 0.5.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( \\\\sigma(3) \\\\approx 0.047, \\\\text{class 0}"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( \\\\sigma(3) \\\\approx 0.953, \\\\text{class 1}"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( \\\\sigma(3) \\\\approx 0.047, \\\\text{class 1}"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( \\\\sigma(3) \\\\approx 0.953, \\\\text{class 0}"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Using \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(3) = \\\\frac{1}{1 + e^{-3}} \\\\approx 0.953 \\\\). Since 0.953 > 0.5, it is classified as class 1.",
+            "vi": "Sử dụng \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(3) = \\\\frac{1}{1 + e^{-3}} \\\\approx 0.953 \\\\). Vì 0.953 > 0.5, mẫu được phân loại là lớp 1."
+        }
+    },
+    {
+        "id": 58,
+        "question": "In Softmax Regression with classes [X, Y, Z] and predicted probabilities [0.4, 0.4, 0.2] for a sample with actual class Y (one-hot: [0, 1, 0]), calculate the Cross-Entropy Loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( -\\\\log(0.4) \\\\approx 0.916 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( -\\\\log(0.2) \\\\approx 1.609 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( -\\\\log(0.4) + -\\\\log(0.2) \\\\approx 2.525 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( -(0 \\\\times \\\\log(0.4) + 1 \\\\times \\\\log(0.4) + 0 \\\\times \\\\log(0.2)) \\\\approx 0.916 \\\\)"
+            }
+        ],
+        "answer": "D",
+        "explanation": {
+            "en": "Cross-Entropy Loss = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.4) \\\\approx 0.916 \\\\), as only the probability for class Y contributes.",
+            "vi": "Hàm mất mát Cross-Entropy = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.4) \\\\approx 0.916 \\\\), vì chỉ xác suất cho lớp Y đóng góp."
+        }
+    },
+    {
+        "id": 59,
+        "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.3 \\\\) and \\\\( y = 0 \\\\), calculate the BCE loss.",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( -\\\\log(0.3) \\\\approx 1.204 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( -\\\\log(1 - 0.3) \\\\approx 0.357 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( -\\\\log(0.7) \\\\approx 0.357 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 0 \\\\)"
+            }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "For \\\\( y = 0 \\\\), BCE is \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.3) = -\\\\log(0.7) \\\\approx 0.357 \\\\).",
+            "vi": "Với \\\\( y = 0 \\\\), BCE là \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.3) = -\\\\log(0.7) \\\\approx 0.357 \\\\)."
+        }
+    },
+    {
+        "id": 60,
+        "question": "Given a confusion matrix: TP = 80, FP = 15, FN = 10, TN = 95, calculate the F1-score (Precision ≈ 0.842, Recall ≈ 0.889).",
+        "options": [
+            {
+                "label": "A",
+                "text": "\\\\( 2 \\\\times (0.842 \\\\times 0.889) / (0.842 + 0.889) \\\\approx 0.865 \\\\)"
+            },
+            {
+                "label": "B",
+                "text": "\\\\( (0.842 + 0.889) / 2 = 0.8655 \\\\)"
+            },
+            {
+                "label": "C",
+                "text": "\\\\( 0.842 \\\\times 0.889 = 0.749 \\\\)"
+            },
+            {
+                "label": "D",
+                "text": "\\\\( 0.842 \\\\)"
+            }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "Precision = \\\\( \\\\frac{80}{80 + 15} \\\\approx 0.842 \\\\), Recall = \\\\( \\\\frac{80}{80 + 10} \\\\approx 0.889 \\\\). F1-score = \\\\( \\\\frac{2 \\\\times 0.842 \\\\times 0.889}{0.842 + 0.889} \\\\approx 0.865 \\\\).",
+            "vi": "Precision = \\\\( \\\\frac{80}{80 + 15} \\\\approx 0.842 \\\\), Recall = \\\\( \\\\frac{80}{80 + 10} \\\\approx 0.889 \\\\). F1-score = \\\\( \\\\frac{2 \\\\times 0.842 \\\\times 0.889}{0.842 + 0.889} \\\\approx 0.865 \\\\)."
+        }
+    }
+]
