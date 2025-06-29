@@ -29,7 +29,7 @@ const ConfettiCelebration = ({ show, onComplete, score, isPassed }) => {
     if (show && isPassed) {
       const timer = setTimeout(() => {
         if (onComplete) onComplete();
-      }, 5000); // Confetti chạy 5 giây
+      }, 3000); // Confetti chạy 3 giây để giảm lag
 
       return () => clearTimeout(timer);
     }
@@ -52,8 +52,8 @@ const ConfettiCelebration = ({ show, onComplete, score, isPassed }) => {
         <Confetti
           width={windowSize.width}
           height={windowSize.height}
-          numberOfPieces={200}
-          recycle={true}
+          numberOfPieces={100}
+          recycle={false}
           gravity={0.3}
           wind={0.01}
           initialVelocityY={20}
