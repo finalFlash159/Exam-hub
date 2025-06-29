@@ -4,6 +4,7 @@ import linear_reg from './questions/linear_reg.json';
 import logis_reg from './questions/logis_reg.json';
 import navie_bayes from './questions/navie_bayes.json';
 import test_exam from './questions/test_exam.json';
+import decision_tree from './questions/decision_tree.json';
 
 // Map of exam types to question data
 export const examData = {
@@ -24,6 +25,10 @@ export const examData = {
     questions: navie_bayes
   },
   5: {
+    title: "Decision Tree",
+    questions: decision_tree
+  },
+  6: {
     title: "Quick Test (5 Questions)",
     questions: test_exam
   },
