@@ -240,12 +240,14 @@ export default function ExamGenerator() {
             )}
             
             <Box sx={{ 
-              border: '1px dashed #ccc',
+              border: (theme) => `1px dashed ${theme.palette.divider}`,
               borderRadius: 2, 
               p: 4, 
               mb: 3, 
               textAlign: 'center',
-              backgroundColor: '#f9f9f9'
+              backgroundColor: (theme) => theme.palette.mode === 'dark' 
+                ? 'rgba(255, 255, 255, 0.05)' 
+                : 'rgba(0, 0, 0, 0.02)'
             }}>
               <input
                 accept=".pdf,.docx"
@@ -263,11 +265,7 @@ export default function ExamGenerator() {
                   size="large"
                   sx={{ 
                     mb: 2, 
-                    py: 1.5,
-                    backgroundColor: '#1976d2',
-                    '&:hover': {
-                      backgroundColor: '#1565c0'
-                    }
+                    py: 1.5
                   }}
                 >
                   SELECT DOCUMENT (PDF OR DOCX)
@@ -409,7 +407,15 @@ export default function ExamGenerator() {
               Exam Generated Successfully!
             </Typography>
             
-            <Box sx={{ my: 3, p: 3, bgcolor: '#f8f9fa', borderRadius: 2 }}>
+            <Box sx={{ 
+              my: 3, 
+              p: 3, 
+              bgcolor: (theme) => theme.palette.mode === 'dark' 
+                ? 'rgba(255, 255, 255, 0.05)' 
+                : 'rgba(0, 0, 0, 0.02)', 
+              borderRadius: 2,
+              border: (theme) => `1px solid ${theme.palette.divider}`
+            }}>
               <Typography variant="h5" gutterBottom>
                 {examTitle}
               </Typography>
@@ -419,7 +425,15 @@ export default function ExamGenerator() {
               </Typography>
             </Box>
             
-            <Box sx={{ mb: 3, maxHeight: '300px', overflow: 'auto', p: 2, border: '1px solid #e0e0e0', borderRadius: 1 }}>
+            <Box sx={{ 
+              mb: 3, 
+              maxHeight: '300px', 
+              overflow: 'auto', 
+              p: 2, 
+              border: (theme) => `1px solid ${theme.palette.divider}`, 
+              borderRadius: 1,
+              bgcolor: (theme) => theme.palette.background.paper
+            }}>
               <Typography variant="subtitle1" gutterBottom>
                 Preview of questions:
               </Typography>
