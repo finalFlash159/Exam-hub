@@ -33,9 +33,9 @@ def configure_gemini():
     logger.debug(f"API key được tìm thấy: {bool(api_key)}")
     
     if not api_key:
-        logger.error("Không tìm thấy GEMINI_API_KEY trong environment variables hoặc file .env")
-        logger.error("Vui lòng set environment variable GEMINI_API_KEY trên Railway")
-        raise Exception("Không tìm thấy GEMINI_API_KEY trong environment variables")
+        logger.warning("Không tìm thấy GEMINI_API_KEY trong environment variables hoặc file .env")
+        logger.warning("Gemini API sẽ không khả dụng. Vui lòng set environment variable GEMINI_API_KEY trên Railway")
+        return False  # Return False instead of raising exception
     
     try:
         logger.info("Đang khởi tạo ChatGoogleGenerativeAI...")

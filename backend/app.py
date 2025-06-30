@@ -18,8 +18,11 @@ logger = setup_logging()
 
 # Initialize Gemini
 logger.info("Khởi động server và cấu hình Gemini API...")
-configure_gemini()
-logger.info("Cấu hình Gemini hoàn tất")
+gemini_configured = configure_gemini()
+if gemini_configured:
+    logger.info("Cấu hình Gemini hoàn tất")
+else:
+    logger.warning("Gemini API chưa được cấu hình - một số tính năng sẽ không khả dụng")
 
 # Create FastAPI app
 logger.info("Khởi tạo FastAPI application...")
