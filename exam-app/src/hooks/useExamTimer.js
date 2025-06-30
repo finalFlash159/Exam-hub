@@ -1,12 +1,20 @@
 import { useState, useEffect, useCallback } from 'react';
-import { EXAM_TIME_SECONDS, LOW_TIME_THRESHOLD, VERY_LOW_TIME_THRESHOLD } from '../constants/examConstants';
+import { EXAM_TIME_SECONDS, getExamTimeSeconds, LOW_TIME_THRESHOLD, VERY_LOW_TIME_THRESHOLD } from '../constants/examConstants';
 
-export const useExamTimer = (onTimeUp) => {
-  const [timeLeft, setTimeLeft] = useState(EXAM_TIME_SECONDS);
+export const useExamTimer = (onTimeUp, questionCount = null) => {
+  const getInitialTime = () => {
+    if (questionCount) {
+      return getExamTimeSeconds(questionCount);
+    }
+    return EXAM_TIME_SECONDS;
+  };
+  
+  const [timeLeft, setTimeLeft] = useState(getInitialTime());
 
   const resetTimer = useCallback(() => {
-    setTimeLeft(EXAM_TIME_SECONDS);
-  }, []);
+    const initialTime = questionCount ? getExamTimeSeconds(questionCount) : EXAM_TIME_SECONDS;
+    setTimeLeft(initialTime);
+  }, [questionCount]);
 
   useEffect(() => {
     if (timeLeft <= 0) {
