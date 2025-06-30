@@ -3,6 +3,7 @@ Exam Hub FastAPI Application
 Main application file with modular structure
 """
 
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -49,6 +50,12 @@ logger.info("CORS middleware đã được cấu hình")
 async def root():
     """Root endpoint"""
     return {"message": "Exam Hub API v2.0 - FastAPI", "docs": "/docs"}
+
+# Simple health check (backup)
+@app.get("/health")
+async def simple_health():
+    """Simple health check endpoint"""
+    return {"status": "ok", "service": "exam-hub-api"}
 
 # Include routers
 app.include_router(health_router)
