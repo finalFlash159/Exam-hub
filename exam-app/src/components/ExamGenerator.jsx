@@ -22,6 +22,7 @@ export default function ExamGenerator() {
   const [examTitle, setExamTitle] = useState('');
   const [questionCount, setQuestionCount] = useState(10);
   const [generatedExam, setGeneratedExam] = useState(null);
+  const [saveSuccess, setSaveSuccess] = useState(false);
   
   const steps = ['Upload Document', 'Configure Exam', 'Generate Questions', 'Review & Save'];
   
@@ -180,17 +181,26 @@ export default function ExamGenerator() {
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.error || 'Không thể lưu bài kiểm tra');
+        throw new Error(data.detail || data.error || 'Không thể lưu bài kiểm tra');
       }
       
-      // Hiển thị thông báo thành công
-      alert(`Bài kiểm tra "${generatedExam.title}" đã được thêm vào hệ thống thành công!`);
+      // Đánh dấu save thành công
+      setSaveSuccess(true);
       
-      // Làm mới trang để hiển thị bài kiểm tra mới
-      window.location.href = '/';
+      // Lưu thông tin vào sessionStorage để hiển thị thông báo
+      sessionStorage.setItem('savedExam', JSON.stringify({
+        title: generatedExam.title,
+        examId: data.exam_id,
+        fileName: data.file_name
+      }));
+      
+      // Đợi 2 giây để user thấy thông báo thành công, sau đó redirect
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 2000);
       
     } catch (err) {
-      setError(`Lỗi: ${err.message}`);
+      setError(`Lỗi khi lưu vào hệ thống: ${err.message}`);
       console.error('Lỗi khi lưu bài kiểm tra:', err);
       
       // Tải xuống file JSON như là phương án dự phòng
@@ -207,7 +217,7 @@ export default function ExamGenerator() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
       
-      alert('Không thể lưu trực tiếp vào hệ thống. File JSON đã được tải xuống.');
+      alert('Không thể lưu trực tiếp vào hệ thống. File JSON đã được tải xuống thay thế.');
     } finally {
       setLoading(false);
     }
@@ -403,75 +413,95 @@ export default function ExamGenerator() {
       case 3:
         return (
           <Box sx={{ py: 3 }}>
-            <Typography variant="h6" gutterBottom>
-              Exam Generated Successfully!
-            </Typography>
-            
-            <Box sx={{ 
-              my: 3, 
-              p: 3, 
-              bgcolor: (theme) => theme.palette.mode === 'dark' 
-                ? 'rgba(255, 255, 255, 0.05)' 
-                : 'rgba(0, 0, 0, 0.02)', 
-              borderRadius: 2,
-              border: (theme) => `1px solid ${theme.palette.divider}`
-            }}>
-              <Typography variant="h5" gutterBottom>
-                {examTitle}
-              </Typography>
-              <Divider sx={{ my: 1 }} />
-              <Typography variant="body1">
-                {generatedExam?.questions?.length || questionCount} questions generated
-              </Typography>
-            </Box>
-            
-            <Box sx={{ 
-              mb: 3, 
-              maxHeight: '300px', 
-              overflow: 'auto', 
-              p: 2, 
-              border: (theme) => `1px solid ${theme.palette.divider}`, 
-              borderRadius: 1,
-              bgcolor: (theme) => theme.palette.background.paper
-            }}>
-              <Typography variant="subtitle1" gutterBottom>
-                Preview of questions:
-              </Typography>
-              
-              {generatedExam?.questions?.slice(0, 3).map((q, idx) => (
-                <Paper key={idx} sx={{ p: 2, mb: 2 }} elevation={1}>
-                  <Typography variant="body1" gutterBottom>
-                    <strong>Q{idx + 1}:</strong> {q.question}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Correct answer: Option {q.answer}
-                  </Typography>
-                </Paper>
-              ))}
-              
-              {generatedExam?.questions?.length > 3 && (
-                <Typography variant="body2" color="text.secondary" align="center">
-                  ... and {generatedExam.questions.length - 3} more questions
+            {saveSuccess ? (
+              // Success State
+              <Box sx={{ textAlign: 'center' }}>
+                <CheckCircleIcon sx={{ fontSize: 80, color: 'success.main', mb: 2 }} />
+                <Typography variant="h5" gutterBottom color="success.main">
+                  Bài kiểm tra đã được lưu thành công!
                 </Typography>
-              )}
-            </Box>
-            
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 2 }}>
-              <Button
-                variant="contained"
-                color="success"
-                startIcon={<SaveAltIcon />}
-                onClick={handleSaveExam}
-                size="large"
-                disabled={loading}
-              >
-                {loading ? 'Đang lưu...' : 'Lưu vào hệ thống'}
-              </Button>
-            </Box>
-            
-            <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 2 }}>
-              Bài kiểm tra này sẽ được thêm vào danh sách bài kiểm tra có sẵn trong hệ thống.
-            </Typography>
+                <Typography variant="body1" sx={{ mb: 3 }}>
+                  "{examTitle}" đã được thêm vào danh sách bài kiểm tra.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Đang chuyển hướng về trang chủ...
+                </Typography>
+                <LinearProgress sx={{ mt: 2 }} color="success" />
+              </Box>
+            ) : (
+              // Normal Review State
+              <>
+                <Typography variant="h6" gutterBottom>
+                  Exam Generated Successfully!
+                </Typography>
+                
+                <Box sx={{ 
+                  my: 3, 
+                  p: 3, 
+                  bgcolor: (theme) => theme.palette.mode === 'dark' 
+                    ? 'rgba(255, 255, 255, 0.05)' 
+                    : 'rgba(0, 0, 0, 0.02)', 
+                  borderRadius: 2,
+                  border: (theme) => `1px solid ${theme.palette.divider}`
+                }}>
+                  <Typography variant="h5" gutterBottom>
+                    {examTitle}
+                  </Typography>
+                  <Divider sx={{ my: 1 }} />
+                  <Typography variant="body1">
+                    {generatedExam?.questions?.length || questionCount} questions generated
+                  </Typography>
+                </Box>
+                
+                <Box sx={{ 
+                  mb: 3, 
+                  maxHeight: '300px', 
+                  overflow: 'auto', 
+                  p: 2, 
+                  border: (theme) => `1px solid ${theme.palette.divider}`, 
+                  borderRadius: 1,
+                  bgcolor: (theme) => theme.palette.background.paper
+                }}>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Preview of questions:
+                  </Typography>
+                  
+                  {generatedExam?.questions?.slice(0, 3).map((q, idx) => (
+                    <Paper key={idx} sx={{ p: 2, mb: 2 }} elevation={1}>
+                      <Typography variant="body1" gutterBottom>
+                        <strong>Q{idx + 1}:</strong> {q.question}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Correct answer: Option {q.answer}
+                      </Typography>
+                    </Paper>
+                  ))}
+                  
+                  {generatedExam?.questions?.length > 3 && (
+                    <Typography variant="body2" color="text.secondary" align="center">
+                      ... and {generatedExam.questions.length - 3} more questions
+                    </Typography>
+                  )}
+                </Box>
+                
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 2 }}>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    startIcon={<SaveAltIcon />}
+                    onClick={handleSaveExam}
+                    size="large"
+                    disabled={loading}
+                  >
+                    {loading ? 'Đang lưu vào hệ thống...' : 'Lưu vào hệ thống'}
+                  </Button>
+                </Box>
+                
+                <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 2 }}>
+                  💡 Bài kiểm tra sẽ được thêm vào danh sách để có thể chọn từ trang chủ
+                </Typography>
+              </>
+            )}
           </Box>
         );
       default:

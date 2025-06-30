@@ -97,7 +97,7 @@ export default function ExamApp() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Container maxWidth="md" sx={{ mt: 4, mb: 8 }}>
+      <Container maxWidth="md" sx={{ mt: 4, mb: 8 }}>
             <Card sx={{ 
               mb: 4, 
               p: 3, 
@@ -155,8 +155,8 @@ export default function ExamApp() {
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4, mb: 3 }}>
           <Typography variant="h5">
-            Review Your Answers
-          </Typography>
+          Review Your Answers
+        </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Button 
               variant={!reviewIncorrectOnly ? "contained" : "outlined"}
@@ -310,7 +310,7 @@ export default function ExamApp() {
       </Container>
     </motion.div>
   </>
-);
+    );
   }
 
   // Welcome screen with exam selection
@@ -377,7 +377,7 @@ export default function ExamApp() {
   const q = questions[examState.currentIndex];
   const progress = (examState.currentIndex / questions.length) * 100;
 
-      return (
+  return (
     <Container maxWidth="lg" sx={{ mt: 2, mb: 2 }}>
       <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
         <ExamHeader 
@@ -419,29 +419,29 @@ export default function ExamApp() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Button 
-            variant="outlined" 
-            startIcon={<NavigateBeforeIcon />}
+        <Button 
+          variant="outlined" 
+          startIcon={<NavigateBeforeIcon />}
             disabled={examState.currentIndex === 0} 
             onClick={examState.handlePrev}
             size="medium"
-          >
-            Previous
-          </Button>
+        >
+          Previous
+        </Button>
         </motion.div>
         
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Button 
-            variant="contained" 
-            color="error"
-            onClick={confirmFinish}
+        <Button 
+          variant="contained" 
+          color="error"
+          onClick={confirmFinish}
             size="medium"
-          >
-            End Exam
-          </Button>
+        >
+          End Exam
+        </Button>
         </motion.div>
         
         {examState.currentIndex === questions.length - 1 ? (
@@ -449,28 +449,28 @@ export default function ExamApp() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
-              variant="contained" 
-              color="success"
-              onClick={confirmFinish}
+          <Button 
+            variant="contained" 
+            color="success"
+            onClick={confirmFinish}
               size="medium"
-            >
-              Finish Exam
-            </Button>
+          >
+            Finish Exam
+          </Button>
           </motion.div>
         ) : (
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
-              variant="contained" 
-              endIcon={<NavigateNextIcon />}
+          <Button 
+            variant="contained" 
+            endIcon={<NavigateNextIcon />}
               onClick={examState.handleNext}
               size="medium"
-            >
-              Next
-            </Button>
+          >
+            Next
+          </Button>
           </motion.div>
         )}
       </Box>

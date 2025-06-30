@@ -26,6 +26,7 @@ const calculateExamInfo = (questions) => {
   };
 };
 
+
 // Map of exam types to question data
 export const examData = {
   1: {

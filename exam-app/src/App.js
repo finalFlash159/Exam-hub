@@ -15,27 +15,27 @@ function NavTabs() {
   
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', ml: 2, flexGrow: 1 }}>
-      <Tabs 
-        value={currentPath} 
-        textColor="inherit"
-        indicatorColor="secondary"
+    <Tabs 
+      value={currentPath} 
+      textColor="inherit"
+      indicatorColor="secondary"
         sx={{ flexGrow: 1 }}
-      >
-        <Tab 
-          label="Take Exam" 
-          value="/" 
-          component={Link} 
-          to="/"
+    >
+      <Tab 
+        label="Take Exam" 
+        value="/" 
+        component={Link} 
+        to="/"
           sx={{ color: 'inherit', fontWeight: 'medium' }}
-        />
-        <Tab 
-          label="Create Exam" 
-          value="/create" 
-          component={Link} 
-          to="/create"
+      />
+      <Tab 
+        label="Create Exam" 
+        value="/create" 
+        component={Link} 
+        to="/create"
           sx={{ color: 'inherit', fontWeight: 'medium' }}
-        />
-      </Tabs>
+      />
+    </Tabs>
       
       {/* Dark Mode Toggle */}
       <motion.div
@@ -70,8 +70,9 @@ function AppContent() {
       try {
         const examData = JSON.parse(savedExam);
         setNotification({
-          message: `Bài kiểm tra "${examData.title}" đã được thêm thành công!`,
-          type: 'success'
+          message: `🎉 Bài kiểm tra "${examData.title}" đã được thêm thành công vào hệ thống!`,
+          type: 'success',
+          details: `ID: ${examData.examId} | File: ${examData.fileName}`
         });
         sessionStorage.removeItem('savedExam');
       } catch (e) {
@@ -106,15 +107,15 @@ function AppContent() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
-                Exam Hub
-              </Typography>
+            <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+              Exam Hub
+            </Typography>
             </motion.div>
             <NavTabs />
           </Toolbar>
         </AppBar>
       </motion.div>
-      
+        
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -127,31 +128,48 @@ function AppContent() {
           </Routes>
         </Box>
       </motion.div>
-      
-      {notification && (
+        
+        {notification && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          exit={{ y: -100, opacity: 0 }}
+          transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
         >
           <Snackbar 
             open={true} 
-            autoHideDuration={6000} 
+            autoHideDuration={8000} 
             onClose={handleCloseNotification}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
             <Alert 
               onClose={handleCloseNotification} 
               severity={notification.type || 'info'} 
-              sx={{ width: '100%' }}
+              variant="filled"
+              sx={{ 
+                width: '100%',
+                fontSize: '1.1rem',
+                fontWeight: 'medium',
+                '& .MuiAlert-message': {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 0.5
+                }
+              }}
             >
+              <Box>
               {notification.message}
+              </Box>
+              {notification.details && (
+                <Box sx={{ fontSize: '0.85rem', opacity: 0.9 }}>
+                  {notification.details}
+                </Box>
+              )}
             </Alert>
           </Snackbar>
         </motion.div>
-      )}
-    </Box>
+        )}
+      </Box>
   );
 }
 
@@ -160,7 +178,7 @@ function App() {
     <ThemeContextProvider>
       <Router>
         <AppContent />
-      </Router>
+    </Router>
     </ThemeContextProvider>
   );
 }
