@@ -1,0 +1,1021 @@
+{
+  "title": "Support Vector Machine - Exam B",
+  "description": "Comprehensive SVM exam covering all topics (Exam B)",
+  "questions": [
+    {
+      "id": 1,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Tóm tắt SVM bao gồm các khái niệm chính nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chỉ Hard Margin và Soft Margin."
+        },
+        {
+          "label": "B",
+          "text": "Chỉ Kernel Trick và Lagrange Multiplier."
+        },
+        {
+          "label": "C",
+          "text": "SVM, KKT, Primal, Dual, Soft vs. Hard Margin, Kernel Trick."
+        },
+        {
+          "label": "D",
+          "text": "Chỉ các phương pháp gom cụm."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM encompasses Support Vector Machine, KKT conditions, Primal and Dual forms, Soft vs. Hard Margin, and Kernel Trick.",
+        "vi": "SVM bao gồm Máy Vector Hỗ trợ, điều kiện KKT, dạng Primal và Dual, Soft vs. Hard Margin, và Kernel Trick."
+      }
+    },
+    {
+      "id": 2,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Medium",
+      "question": "Kỹ thuật nào được sử dụng để giải bài toán tối ưu hóa SVM với ràng buộc bất đẳng thức?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phương pháp bình phương tối thiểu"
+        },
+        {
+          "label": "B",
+          "text": "Quy hoạch tuyến tính"
+        },
+        {
+          "label": "C",
+          "text": "Điều kiện Karush-Kuhn-Tucker (KKT)"
+        },
+        {
+          "label": "D",
+          "text": "Gradient Descent"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "KKT conditions generalize Lagrange multipliers for inequality constraints, used to solve SVM’s optimization problem.",
+        "vi": "Điều kiện KKT tổng quát hóa nhân tử Lagrange cho ràng buộc bất đẳng thức, được dùng để giải bài toán tối ưu hóa SVM."
+      }
+    },
+    {
+      "id": 3,
+      "category": "Terminology",
+      "difficulty": "Easy",
+      "question": "Support Vector Machine (SVM) thuộc loại mô hình học máy nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Học không giám sát"
+        },
+        {
+          "label": "B",
+          "text": "Học tăng cường"
+        },
+        {
+          "label": "C",
+          "text": "Học có giám sát"
+        },
+        {
+          "label": "D",
+          "text": "Học bán giám sát"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM is a supervised learning model used for classification, requiring labeled data to predict a response variable.",
+        "vi": "SVM là mô hình học có giám sát dùng cho phân loại, yêu cầu dữ liệu có nhãn để dự đoán biến phản hồi."
+      }
+    },
+    {
+      "id": 4,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Why is feature scaling important in SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To reduce the dimensionality of the data."
+        },
+        {
+          "label": "B",
+          "text": "To ensure all features have the same scale, improving classification performance."
+        },
+        {
+          "label": "C",
+          "text": "To increase the number of support vectors."
+        },
+        {
+          "label": "D",
+          "text": "To remove outliers."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Feature scaling ensures all features contribute equally to the distance metric used in SVM, improving classification performance by preventing features with larger scales from dominating.",
+        "vi": "Chuẩn hóa đặc trưng đảm bảo tất cả đặc trưng đóng góp đồng đều vào độ đo khoảng cách trong SVM, cải thiện hiệu suất phân loại bằng cách ngăn các đặc trưng có thang đo lớn chi phối."
+      }
+    },
+    {
+      "id": 5,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Tại sao cần chuẩn hóa đặc trưng (feature scaling) trước khi huấn luyện SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Để giảm số chiều của dữ liệu."
+        },
+        {
+          "label": "B",
+          "text": "Để đảm bảo tất cả đặc trưng có cùng thang đo, cải thiện hiệu suất."
+        },
+        {
+          "label": "C",
+          "text": "Để loại bỏ các vector hỗ trợ."
+        },
+        {
+          "label": "D",
+          "text": "Để tăng số lỗi phân loại."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Feature scaling ensures all features contribute equally to the distance metric, improving SVM performance.",
+        "vi": "Chuẩn hóa đặc trưng đảm bảo tất cả đặc trưng có cùng thang đo, cải thiện hiệu suất SVM."
+      }
+    },
+    {
+      "id": 6,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "When training an SVM for text classification with sparse features (e.g., TF-IDF vectors), which kernel is most suitable?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Linear Kernel."
+        },
+        {
+          "label": "B",
+          "text": "High-degree Polynomial Kernel."
+        },
+        {
+          "label": "C",
+          "text": "Gaussian (RBF) Kernel."
+        },
+        {
+          "label": "D",
+          "text": "Sigmoid Kernel."
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "For text classification with sparse, high-dimensional features, the Linear Kernel is preferred due to its efficiency and effectiveness in high-dimensional spaces, avoiding the computational complexity of non-linear kernels.",
+        "vi": "Đối với phân loại văn bản với đặc trưng thưa, chiều cao (ví dụ: vector TF-IDF), Kernel Tuyến tính được ưu tiên do hiệu quả và tính hiệu quả trong không gian chiều cao, tránh độ phức tạp tính toán của kernel phi tuyến."
+      }
+    },
+    {
+      "id": 7,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Nhược điểm của SVM liên quan đến thời gian huấn luyện là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Luôn nhanh chóng."
+        },
+        {
+          "label": "B",
+          "text": "Chậm khi tập dữ liệu lớn."
+        },
+        {
+          "label": "C",
+          "text": "Thời gian không đổi."
+        },
+        {
+          "label": "D",
+          "text": "Chậm chỉ với dữ liệu tuyến tính."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "SVM training is slow for large datasets due to the complexity of quadratic programming.",
+        "vi": "Huấn luyện SVM chậm với tập dữ liệu lớn do độ phức tạp của quy hoạch bậc hai."
+      }
+    },
+    {
+      "id": 8,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Dạng Dual của SVM được ưu tiên khi nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Khi dữ liệu hoàn toàn phân tách tuyến tính."
+        },
+        {
+          "label": "B",
+          "text": "Khi số mẫu và số chiều đều nhỏ."
+        },
+        {
+          "label": "C",
+          "text": "Khi số chiều lớn và cần áp dụng Kernel Trick."
+        },
+        {
+          "label": "D",
+          "text": "Khi không cần tính tích vô hướng."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Dual form is preferred for high-dimensional data with Kernel Trick, as it handles dot products efficiently.",
+        "vi": "Dạng Dual được ưu tiên cho dữ liệu chiều cao với Kernel Trick, vì nó xử lý tích vô hướng hiệu quả."
+      }
+    },
+    {
+      "id": 9,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Tham số \\(\\sigma\\) trong Kernel Gaussian ảnh hưởng thế nào đến mô hình SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Điều khiển số vector hỗ trợ."
+        },
+        {
+          "label": "B",
+          "text": "Kiểm soát độ cong của biên quyết định."
+        },
+        {
+          "label": "C",
+          "text": "Xác định số chiều của không gian ánh xạ."
+        },
+        {
+          "label": "D",
+          "text": "Tăng tốc độ hội tụ."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "\\(\\sigma\\) in the Gaussian Kernel controls the spread, affecting the curvature of the decision boundary.",
+        "vi": "\\(\\sigma\\) trong Kernel Gaussian kiểm soát độ lan, ảnh hưởng đến độ cong của biên quyết định."
+      }
+    },
+    {
+      "id": 10,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Mục đích chính của Kernel Trick trong SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giảm số vector hỗ trợ."
+        },
+        {
+          "label": "B",
+          "text": "Tăng tốc tính toán w và b."
+        },
+        {
+          "label": "C",
+          "text": "Giải quyết bài toán không phân tách tuyến tính bằng ánh xạ lên không gian chiều cao."
+        },
+        {
+          "label": "D",
+          "text": "Giảm ảnh hưởng của điểm ngoại lai."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Kernel Trick maps data to a higher-dimensional space to make non-linearly separable data linearly separable.",
+        "vi": "Kernel Trick ánh xạ dữ liệu lên không gian chiều cao để làm cho dữ liệu không phân tách tuyến tính trở thành phân tách tuyến tính."
+      }
+    },
+    {
+      "id": 11,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Hàm Kernel nào có công thức \\\\( K(x_i, x_j) = \\exp(-||x_i - x_j||^2 / 2\\sigma^2) \\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Kernel Tuyến tính"
+        },
+        {
+          "label": "B",
+          "text": "Kernel Đa thức"
+        },
+        {
+          "label": "C",
+          "text": "Kernel Gaussian (RBF)"
+        },
+        {
+          "label": "D",
+          "text": "Kernel Sigmoid"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Gaussian (RBF) Kernel is \\\\( K(x_i, x_j) = \\exp(-||x_i - x_j||^2 / 2\\sigma^2) \\\\), suitable for non-linear data.",
+        "vi": "Kernel Gaussian (RBF) là \\\\( K(x_i, x_j) = \\exp(-||x_i - x_j||^2 / 2\\sigma^2) \\\\), phù hợp cho dữ liệu không tuyến tính."
+      }
+    },
+    {
+      "id": 12,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Điều kiện KKT nào được gọi là 'complementary slackness'?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( \\nabla f(x) - \\sum \\lambda_i \\nabla h_i(x) - \\sum \\mu_j \\nabla l_j(x) = 0 \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( h_i(x) \\leq 0 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( \\mu_j \\geq 0 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( \\lambda_i h_i(x) = 0 \\\\)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Complementary slackness, \\\\( \\lambda_i h_i(x) = 0 \\\\), means if a constraint is not tight (\\\\( h_i(x) < 0 \\\\)), then \\\\( \\lambda_i = 0 \\\\).",
+        "vi": "Tính bổ sung lỏng, \\\\( \\lambda_i h_i(x) = 0 \\\\), nghĩa là nếu ràng buộc không chặt (\\\\( h_i(x) < 0 \\\\)), thì \\\\( \\lambda_i = 0 \\\\)."
+      }
+    },
+    {
+      "id": 13,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "In an image classification task, you observe that an SVM with a Gaussian Kernel underfits the data. Which parameter should you adjust?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Increase \\(\\sigma\\) to make the decision boundary smoother."
+        },
+        {
+          "label": "B",
+          "text": "Decrease \\(\\sigma\\) to increase the decision boundary’s complexity."
+        },
+        {
+          "label": "C",
+          "text": "Increase C to prioritize a larger margin."
+        },
+        {
+          "label": "D",
+          "text": "Reduce data dimensionality using PCA."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Underfitting in an SVM with a Gaussian Kernel suggests the decision boundary is too smooth. Decreasing \\(\\sigma\\) increases the kernel’s sensitivity to local variations, making the boundary more complex and better fitting the data.",
+        "vi": "Underfitting trong SVM với Kernel Gaussian cho thấy biên quyết định quá mượt. Giảm \\(\\sigma\\) tăng độ nhạy của kernel với các biến đổi cục bộ, làm biên phức tạp hơn và phù hợp dữ liệu hơn."
+      }
+    },
+    {
+      "id": 14,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Phương trình \\(w^2 = \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j)\\) xuất hiện ở đâu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trong hàm Lagrangian ban đầu."
+        },
+        {
+          "label": "B",
+          "text": "Trong hàm mục tiêu Primal."
+        },
+        {
+          "label": "C",
+          "text": "Khi thay \\(w = \\sum_i \\lambda_i y_i x_i\\) vào \\(w^2\\)."
+        },
+        {
+          "label": "D",
+          "text": "Khi tính \\(b^*\\)."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Substituting \\(w = \\sum_i \\lambda_i y_i x_i\\) into \\(w^2\\) yields \\(w^2 = \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j)\\) in the Dual derivation.",
+        "vi": "Thay \\(w = \\sum_i \\lambda_i y_i x_i\\) vào \\(w^2\\) cho \\(w^2 = \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j)\\) trong suy dẫn Dual."
+      }
+    },
+    {
+      "id": 15,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Mối quan hệ giữa Soft Margin và Hard Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Hai thuật toán hoàn toàn khác biệt."
+        },
+        {
+          "label": "B",
+          "text": "Hard Margin là trường hợp đặc biệt của Soft Margin."
+        },
+        {
+          "label": "C",
+          "text": "Soft Margin là tổng quát hóa của Hard Margin."
+        },
+        {
+          "label": "D",
+          "text": "Cả hai chỉ dùng cho dữ liệu phân tách tuyến tính."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Soft Margin SVM generalizes Hard Margin by allowing misclassifications, with Hard Margin as a special case when \\(C \\to \\infty\\).",
+        "vi": "Soft Margin SVM tổng quát hóa Hard Margin bằng cách cho phép lỗi phân loại, với Hard Margin là trường hợp đặc biệt khi \\(C \\to \\infty\\)."
+      }
+    },
+    {
+      "id": 16,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Biến nào được thêm vào dạng Primal của Soft Margin SVM để cho phép lỗi?",
+      "options": [
+        {
+          "label": "A",
+          "text": "w"
+        },
+        {
+          "label": "B",
+          "text": "b"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\lambda_i\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\xi_i\\) (slack variables)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Slack variables \\(\\xi_i\\) allow points to be misclassified or within the margin in Soft Margin SVM.",
+        "vi": "Biến slack \\(\\xi_i\\) cho phép các điểm bị phân loại sai hoặc nằm trong biên độ trong Soft Margin SVM."
+      }
+    },
+    {
+      "id": 17,
+      "category": "Calculations",
+      "difficulty": "Challenging",
+      "question": "Given two points \\(x_1 = [1, 2]\\), \\(x_2 = [3, 4]\\) and a Gaussian Kernel \\(K(x_i, x_j) = \\exp(-||x_i - x_j||^2 / 2\\sigma^2)\\) with \\(\\sigma = 1\\), compute \\(K(x_1, x_2)\\) (rounded to 3 decimal places).",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.135"
+        },
+        {
+          "label": "B",
+          "text": "0.018"
+        },
+        {
+          "label": "C",
+          "text": "0.607"
+        },
+        {
+          "label": "D",
+          "text": "0.819"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Compute the Euclidean distance: \\(||x_1 - x_2||^2 = (1-3)^2 + (2-4)^2 = 4 + 4 = 8\\). Then, \\(K(x_1, x_2) = \\exp(-8 / 2 \\cdot 1^2) = \\exp(-4) \\approx 0.0183156\\). Rounded to 3 decimal places, this is 0.018.",
+        "vi": "Tính khoảng cách Euclidean: \\(||x_1 - x_2||^2 = (1-3)^2 + (2-4)^2 = 4 + 4 = 8\\). Sau đó, \\(K(x_1, x_2) = \\exp(-8 / 2 \\cdot 1^2) = \\exp(-4) \\approx 0.0183156\\). Làm tròn đến 3 chữ số thập phân, giá trị là 0.018."
+      }
+    },
+    {
+      "id": 18,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "In SVM, what does the parameter \\(\\sigma\\) control in the Gaussian (RBF) Kernel?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The size of the margin."
+        },
+        {
+          "label": "B",
+          "text": "The spread of the kernel, affecting the decision boundary’s curvature."
+        },
+        {
+          "label": "C",
+          "text": "The number of support vectors."
+        },
+        {
+          "label": "D",
+          "text": "The convergence speed of the algorithm."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The parameter \\(\\sigma\\) in the Gaussian (RBF) Kernel controls the spread of the kernel, influencing the curvature of the decision boundary. A smaller \\(\\sigma\\) creates a more complex boundary, while a larger \\(\\sigma\\) smooths it.",
+        "vi": "Tham số \\(\\sigma\\) trong Kernel Gaussian (RBF) kiểm soát độ lan của kernel, ảnh hưởng đến độ cong của biên quyết định. \\(\\sigma\\) nhỏ tạo biên phức tạp hơn, trong khi \\(\\sigma\\) lớn làm biên mượt hơn."
+      }
+    },
+    {
+      "id": 19,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Ứng dụng nào sau đây phù hợp nhất cho SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Gom cụm dữ liệu không nhãn."
+        },
+        {
+          "label": "B",
+          "text": "Phân loại văn bản (text classification)."
+        },
+        {
+          "label": "C",
+          "text": "Dự đoán giá trị liên tục."
+        },
+        {
+          "label": "D",
+          "text": "Tối ưu hóa tác vụ tăng cường."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "SVM is widely used for text classification due to its effectiveness in high-dimensional spaces with sparse data.",
+        "vi": "SVM được sử dụng rộng rãi cho phân loại văn bản nhờ hiệu quả trong không gian chiều cao với dữ liệu thưa."
+      }
+    },
+    {
+      "id": 20,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Đặc điểm nào của SVM liên quan đến việc tìm nghiệm tối ưu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chỉ tìm nghiệm tối ưu cục bộ."
+        },
+        {
+          "label": "B",
+          "text": "Hội tụ đến nhiều nghiệm tối ưu cục bộ."
+        },
+        {
+          "label": "C",
+          "text": "Tìm nghiệm tối ưu toàn cục."
+        },
+        {
+          "label": "D",
+          "text": "Không đảm bảo hội tụ đến nghiệm tối ưu."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM finds the global optimum due to its convex quadratic optimization problem, ensuring a unique solution.",
+        "vi": "SVM tìm nghiệm tối ưu toàn cục nhờ bài toán tối ưu hóa bậc hai lồi, đảm bảo nghiệm duy nhất."
+      }
+    },
+    {
+      "id": 21,
+      "category": "Terminology",
+      "difficulty": "Easy",
+      "question": "Trong phân loại nhị phân, nhiệm vụ chính của SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Gom nhóm các điểm dữ liệu tương tự."
+        },
+        {
+          "label": "B",
+          "text": "Dự đoán giá trị liên tục."
+        },
+        {
+          "label": "C",
+          "text": "Phân tách các lớp trong không gian đặc trưng."
+        },
+        {
+          "label": "D",
+          "text": "Giảm số chiều của dữ liệu."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Binary classification in SVM involves separating classes in feature space using a hyperplane.",
+        "vi": "Phân loại nhị phân trong SVM liên quan đến việc phân tách các lớp trong không gian đặc trưng bằng siêu phẳng."
+      }
+    },
+    {
+      "id": 22,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Medium",
+      "question": "Kỹ thuật nào được sử dụng để giải bài toán Dual của SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Hồi quy tuyến tính"
+        },
+        {
+          "label": "B",
+          "text": "Phân tích thành phần chính"
+        },
+        {
+          "label": "C",
+          "text": "Quy hoạch bậc hai"
+        },
+        {
+          "label": "D",
+          "text": "Thuật toán K-means"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Quadratic programming solves the Dual form to find optimal \\\\( \\lambda \\\\) values.",
+        "vi": "Quy hoạch bậc hai giải dạng Dual để tìm giá trị tối ưu của \\\\( \\lambda \\\\)."
+      }
+    },
+    {
+      "id": 23,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Khi \\(\\xi_i > 1\\) trong Soft Margin SVM, điểm dữ liệu như thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân loại đúng, trong biên độ."
+        },
+        {
+          "label": "B",
+          "text": "Phân loại sai."
+        },
+        {
+          "label": "C",
+          "text": "Trên siêu phẳng quyết định."
+        },
+        {
+          "label": "D",
+          "text": "Là vector hỗ trợ."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "If \\(\\xi_i > 1\\), the point is misclassified, as \\(y_i(w \\cdot x_i + b) < 0\\).",
+        "vi": "Nếu \\(\\xi_i > 1\\), điểm bị phân loại sai, vì \\(y_i(w \\cdot x_i + b) < 0\\)."
+      }
+    },
+    {
+      "id": 24,
+      "category": "Terminology",
+      "difficulty": "Easy",
+      "question": "Các mẫu huấn luyện nằm trên đường biên \\\\( w \\cdot x + b = \\pm 1 \\\\) được gọi là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Điểm ngoại lai"
+        },
+        {
+          "label": "B",
+          "text": "Điểm nhiễu"
+        },
+        {
+          "label": "C",
+          "text": "Vector hỗ trợ"
+        },
+        {
+          "label": "D",
+          "text": "Điểm trọng tâm"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Training samples on the margin lines \\\\( w \\cdot x + b = \\pm 1 \\\\) are called support vectors, shaping the optimal hyperplane.",
+        "vi": "Các mẫu huấn luyện trên đường biên \\\\( w \\cdot x + b = \\pm 1 \\\\) được gọi là vector hỗ trợ, định hình siêu phẳng tối ưu."
+      }
+    },
+    {
+      "id": 25,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Nếu C trong Soft Margin SVM rất lớn (C → ∞), điều gì xảy ra?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cho phép nhiều lỗi phân loại."
+        },
+        {
+          "label": "B",
+          "text": "Ưu tiên biên độ lớn hơn tránh lỗi."
+        },
+        {
+          "label": "C",
+          "text": "Hoạt động như Hard Margin SVM."
+        },
+        {
+          "label": "D",
+          "text": "Mô hình không hội tụ."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Large C penalizes misclassifications heavily, making Soft Margin SVM behave like Hard Margin SVM.",
+        "vi": "C lớn phạt nặng các lỗi phân loại, khiến Soft Margin SVM hoạt động như Hard Margin SVM."
+      }
+    },
+    {
+      "id": 26,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Thư viện Quadratic Programming như CVXOPT được dùng để làm gì trong SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tính trực tiếp siêu phẳng tối ưu w và b."
+        },
+        {
+          "label": "B",
+          "text": "Xác định kernel tốt nhất."
+        },
+        {
+          "label": "C",
+          "text": "Tìm giá trị tối ưu của \\(\\lambda\\)."
+        },
+        {
+          "label": "D",
+          "text": "Kiểm tra dữ liệu phân tách tuyến tính."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Quadratic programming solves for optimal \\(\\lambda\\) values in the Dual form, enabling computation of w and b.",
+        "vi": "Quy hoạch bậc hai giải giá trị tối ưu của \\(\\lambda\\) trong dạng Dual, cho phép tính w và b."
+      }
+    },
+    {
+      "id": 27,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Hàm dự đoán nhãn \\(y(u)\\) cho điểm mới u khi dùng Kernel Trick là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( y(u) = \\text{sign}(w^* \\cdot u + b^*) \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( y(u) = \\text{sign}(\\sum_i \\lambda_i y_i (\\Phi(x_i) \\cdot \\Phi(u))) \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( y(u) = \\text{sign}(\\sum_i \\lambda_i y_i K(x_i, u) + b^*) \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( y(u) = \\text{sign}(K(u, b^*)) \\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "The prediction function is \\(y(u) = \\text{sign}(\\sum_i \\lambda_i y_i K(x_i, u) + b^*)\\), using the kernel for dot products.",
+        "vi": "Hàm dự đoán là \\(y(u) = \\text{sign}(\\sum_i \\lambda_i y_i K(x_i, u) + b^*)\\), sử dụng kernel cho tích vô hướng."
+      }
+    },
+    {
+      "id": 28,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Ưu điểm tính toán của Kernel Trick là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giảm số phép nhân."
+        },
+        {
+          "label": "B",
+          "text": "Giảm số điểm dữ liệu."
+        },
+        {
+          "label": "C",
+          "text": "Tính tích vô hướng ở dạng đóng mà không cần tính đặc trưng."
+        },
+        {
+          "label": "D",
+          "text": "Chỉ hiệu quả cho dữ liệu 2 chiều."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Kernel Trick computes dot products in closed form, avoiding explicit feature computation in high-dimensional spaces.",
+        "vi": "Kernel Trick tính tích vô hướng ở dạng đóng, tránh tính toán tường minh đặc trưng trong không gian chiều cao."
+      }
+    },
+    {
+      "id": 29,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Dạng Primal của Hard Margin SVM được biểu diễn thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( \\arg\\min_w \\frac{1}{2} ||w||, \\text{ s.t. } y_i(w \\cdot x_i + b) = 1 \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( \\arg\\max_w \\frac{1}{2} ||w||^2, \\text{ s.t. } y_i(w \\cdot x_i + b) \\geq 1 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( \\arg\\min_w ||w||^2, \\text{ s.t. } y_i(w \\cdot x_i + b) \\leq 1 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( \\arg\\min_w \\frac{1}{2} ||w||^2, \\text{ s.t. } y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "The Primal form minimizes \\\\( \\frac{1}{2} ||w||^2 \\\\) subject to \\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\), ensuring correct classification with maximum margin.",
+        "vi": "Dạng Primal tối thiểu hóa \\\\( \\frac{1}{2} ||w||^2 \\\\) với ràng buộc \\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\), đảm bảo phân loại đúng với biên độ tối đa."
+      }
+    },
+    {
+      "id": 30,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Đạo hàm riêng của Lagrangian theo b bằng 0 cho kết quả gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( w = \\sum_i \\lambda_i y_i x_i \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( -\\sum_i \\lambda_i y_i = 0 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( \\lambda_i \\geq 0 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( y_i(w \\cdot x_i + b) - 1 = 0 \\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Taking \\\\( \\frac{\\partial}{\\partial b} L = -\\sum_i \\lambda_i y_i = 0 \\\\) ensures the sum of weighted labels is balanced.",
+        "vi": "Lấy \\\\( \\frac{\\partial}{\\partial b} L = -\\sum_i \\lambda_i y_i = 0 \\\\) đảm bảo tổng các nhãn có trọng số bằng nhau."
+      }
+    },
+    {
+      "id": 31,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Điểm yếu chính của Hard Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Không hiệu quả trong không gian chiều cao."
+        },
+        {
+          "label": "B",
+          "text": "Không tìm được siêu phẳng tối ưu toàn cục."
+        },
+        {
+          "label": "C",
+          "text": "Chỉ hoạt động khi dữ liệu hoàn toàn phân tách tuyến tính."
+        },
+        {
+          "label": "D",
+          "text": "Tốc độ huấn luyện chậm với tập dữ liệu nhỏ."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Hard Margin SVM requires perfectly linearly separable data without noise or outliers, limiting its applicability.",
+        "vi": "Hard Margin SVM yêu cầu dữ liệu phân tách tuyến tính hoàn toàn không có nhiễu hoặc ngoại lệ, giới hạn ứng dụng."
+      }
+    },
+    {
+      "id": 32,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Mục tiêu của Soft Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chỉ tối đa hóa biên độ."
+        },
+        {
+          "label": "B",
+          "text": "Chỉ tối thiểu hóa lỗi phân loại."
+        },
+        {
+          "label": "C",
+          "text": "Tối đa hóa biên độ và tối thiểu hóa lỗi phân loại."
+        },
+        {
+          "label": "D",
+          "text": "Phân loại tất cả điểm chính xác."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Soft Margin SVM balances maximizing the margin and minimizing per-sample classification errors.",
+        "vi": "Soft Margin SVM cân bằng giữa tối đa hóa biên độ và tối thiểu hóa lỗi phân loại mỗi mẫu."
+      }
+    },
+    {
+      "id": 33,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Nếu C trong Soft Margin SVM rất nhỏ (C → 0), điều gì xảy ra?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rất nhạy cảm với lỗi phân loại."
+        },
+        {
+          "label": "B",
+          "text": "Cho phép nhiều lỗi phân loại hơn."
+        },
+        {
+          "label": "C",
+          "text": "Tìm biên độ cực kỳ hẹp."
+        },
+        {
+          "label": "D",
+          "text": "Chỉ tập trung vào vector hỗ trợ."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Small C reduces the penalty for misclassifications, allowing more errors and a wider margin.",
+        "vi": "C nhỏ giảm hình phạt cho lỗi phân loại, cho phép nhiều lỗi hơn và biên độ rộng hơn."
+      }
+    },
+    {
+      "id": 34,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Mục tiêu của hàm \\\\( f(x) = \\text{sign}(w \\cdot x + b) \\\\) trong SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tính xác suất một điểm thuộc một lớp."
+        },
+        {
+          "label": "B",
+          "text": "Xác định nhãn lớp của một điểm dữ liệu."
+        },
+        {
+          "label": "C",
+          "text": "Đo khoảng cách từ điểm đến siêu phẳng."
+        },
+        {
+          "label": "D",
+          "text": "Tối ưu hóa trọng số w và độ lệch b."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The function \\\\( f(x) = \\text{sign}(w \\cdot x + b) \\\\) returns +1 or -1, determining the class label of a data point.",
+        "vi": "Hàm \\\\( f(x) = \\text{sign}(w \\cdot x + b) \\\\) trả về +1 hoặc -1, xác định nhãn lớp của điểm dữ liệu."
+      }
+    },
+    {
+      "id": 35,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Tại sao bài toán Primal của Hard Margin SVM luôn có nghiệm tối ưu toàn cục duy nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vì nó là bài toán tối ưu hóa tuyến tính."
+        },
+        {
+          "label": "B",
+          "text": "Vì hàm mục tiêu là hàm bậc hai lồi."
+        },
+        {
+          "label": "C",
+          "text": "Vì các ràng buộc là bất đẳng thức."
+        },
+        {
+          "label": "D",
+          "text": "Vì nó chỉ áp dụng cho dữ liệu phân tách tuyến tính."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The quadratic objective function \\\\( \\frac{1}{2} ||w||^2 \\\\) is convex, ensuring a single global minimum for the constrained problem.",
+        "vi": "Hàm mục tiêu bậc hai \\\\( \\frac{1}{2} ||w||^2 \\\\) là lồi, đảm bảo một nghiệm tối ưu toàn cục duy nhất cho bài toán ràng buộc."
+      }
+    }
+  ]
+}

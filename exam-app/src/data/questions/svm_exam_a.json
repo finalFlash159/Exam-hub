@@ -1,0 +1,1021 @@
+{
+  "title": "Support Vector Machine - Exam A",
+  "description": "Comprehensive SVM exam covering all topics (Exam A)",
+  "questions": [
+    {
+      "id": 1,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Hàm Lagrangian cho dạng Primal của Hard Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( L(w, b, \\lambda) = \\frac{1}{2} ||w||^2 + \\sum_i \\lambda_i (y_i(w \\cdot x_i + b) - 1) \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( L(w, b, \\lambda) = \\sum_i \\lambda_i - \\frac{1}{2} ||w||^2 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( L(w, b, \\lambda) = \\frac{1}{2} ||w||^2 - \\sum_i \\lambda_i (y_i(w \\cdot x_i + b) - 1) \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( L(w, b, \\lambda) = \\frac{1}{2} ||w||^2 - \\sum_i \\lambda_i (1 - y_i(w \\cdot x_i + b)) \\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "The Lagrangian is \\\\( L(w, b, \\lambda) = \\frac{1}{2} ||w||^2 - \\sum_i \\lambda_i (y_i(w \\cdot x_i + b) - 1) \\\\), incorporating the constraints \\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\).",
+        "vi": "Hàm Lagrangian là \\\\( L(w, b, \\lambda) = \\frac{1}{2} ||w||^2 - \\sum_i \\lambda_i (y_i(w \\cdot x_i + b) - 1) \\\\), kết hợp các ràng buộc \\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\)."
+      }
+    },
+    {
+      "id": 2,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "If you encounter numerical stability issues when solving the Dual form of an SVM using quadratic programming, what should you do?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Increase the parameter C to reduce misclassification errors."
+        },
+        {
+          "label": "B",
+          "text": "Use a robust optimization library like CVXOPT or SMO."
+        },
+        {
+          "label": "C",
+          "text": "Switch to a Linear Kernel."
+        },
+        {
+          "label": "D",
+          "text": "Reduce the number of training samples."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Numerical stability issues in solving the Dual form can be addressed by using robust optimization libraries like CVXOPT or Sequential Minimal Optimization (SMO), designed to handle quadratic programming efficiently.",
+        "vi": "Vấn đề về độ ổn định số khi giải dạng Dual có thể được khắc phục bằng cách sử dụng các thư viện tối ưu hóa mạnh mẽ như CVXOPT hoặc SMO, được thiết kế để xử lý quy hoạch bậc hai hiệu quả."
+      }
+    },
+    {
+      "id": 3,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Vector w có mối quan hệ thế nào với siêu phẳng quyết định \\\\( f(x) = 0 \\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Song song với siêu phẳng quyết định."
+        },
+        {
+          "label": "B",
+          "text": "Không liên quan đến siêu phẳng quyết định."
+        },
+        {
+          "label": "C",
+          "text": "Vuông góc với siêu phẳng quyết định."
+        },
+        {
+          "label": "D",
+          "text": "Tạo góc 45 độ với siêu phẳng quyết định."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Vector w is perpendicular to the decision hyperplane, as it defines the direction normal to \\\\( w \\cdot x + b = 0 \\\\).",
+        "vi": "Vector w vuông góc với siêu phẳng quyết định, vì nó xác định hướng pháp tuyến của \\\\( w \\cdot x + b = 0 \\\\)."
+      }
+    },
+    {
+      "id": 4,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Hàm Kernel K(x, y) thực hiện chức năng gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tính khoảng cách Euclidean trong không gian gốc."
+        },
+        {
+          "label": "B",
+          "text": "Tính tích vô hướng trong không gian ánh xạ mà không cần tính đặc trưng."
+        },
+        {
+          "label": "C",
+          "text": "Trả về nhãn phân loại trực tiếp."
+        },
+        {
+          "label": "D",
+          "text": "Đảm bảo tất cả điểm nằm trên một siêu phẳng."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Kernel function computes the dot product in the mapped space without explicitly calculating the features.",
+        "vi": "Hàm Kernel tính tích vô hướng trong không gian ánh xạ mà không cần tính toán tường minh các đặc trưng."
+      }
+    },
+    {
+      "id": 5,
+      "category": "Calculations",
+      "difficulty": "Medium",
+      "question": "Công thức nào biểu diễn chiều rộng biên độ phân tách M trong SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( M = \\frac{||w||}{2} \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( M = \\frac{1}{||w||} \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( M = ||w|| \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( M = \\frac{2}{||w||} \\\\)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "The margin width is \\\\( M = \\frac{2}{||w||} \\\\), derived from \\\\( w \\cdot (x_+ - x_-) = 2 \\\\), where \\\\( x_+ \\\\) and \\\\( x_- \\\\) are points on the margin lines.",
+        "vi": "Chiều rộng biên độ là \\\\( M = \\frac{2}{||w||} \\\\), suy ra từ \\\\( w \\cdot (x_+ - x_-) = 2 \\\\), với \\\\( x_+ \\\\) và \\\\( x_- \\\\) là các điểm trên đường biên."
+      }
+    },
+    {
+      "id": 6,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Dạng Dual của SVM được hình thành bằng cách nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Thêm các biến slack vào dạng Primal."
+        },
+        {
+          "label": "B",
+          "text": "Chuyển từ tối thiểu hóa sang tối đa hóa w và b."
+        },
+        {
+          "label": "C",
+          "text": "Thay thế w và b vào Lagrangian để tối đa hóa theo λ."
+        },
+        {
+          "label": "D",
+          "text": "Đơn giản hóa hàm mục tiêu Primal."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "The Dual form eliminates w and b from the Lagrangian by substitution, maximizing over \\\\( \\lambda \\\\) subject to KKT conditions.",
+        "vi": "Dạng Dual loại bỏ w và b khỏi Lagrangian bằng cách thay thế, tối đa hóa theo \\\\( \\lambda \\\\) với các điều kiện KKT."
+      }
+    },
+    {
+      "id": 7,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Ràng buộc mới của \\(\\lambda_i\\) trong dạng Dual của Soft Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\lambda_i = 0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\lambda_i \\geq 0\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\lambda_i \\leq C\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0 \\leq \\lambda_i \\leq C\\)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Soft Margin SVM adds \\(\\mu_i = C - \\lambda_i \\geq 0\\), so \\(\\lambda_i \\leq C\\), combined with \\(\\lambda_i \\geq 0\\), giving \\(0 \\leq \\lambda_i \\leq C\\).",
+        "vi": "Soft Margin SVM thêm \\(\\mu_i = C - \\lambda_i \\geq 0\\), nên \\(\\lambda_i \\leq C\\), kết hợp với \\(\\lambda_i \\geq 0\\), cho \\(0 \\leq \\lambda_i \\leq C\\)."
+      }
+    },
+    {
+      "id": 8,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Điểm dữ liệu nào có \\\\( \\lambda_i > 0 \\\\) theo điều kiện KKT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Điểm ngoại lai, nằm xa siêu phẳng."
+        },
+        {
+          "label": "B",
+          "text": "Điểm nhiễu, nằm ở bất kỳ đâu."
+        },
+        {
+          "label": "C",
+          "text": "Vector hỗ trợ, nằm trên đường biên."
+        },
+        {
+          "label": "D",
+          "text": "Điểm trung tâm, gần siêu phẳng."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Points with \\\\( \\lambda_i > 0 \\\\) satisfy \\\\( y_i(w \\cdot x_i + b) = 1 \\\\), lying on the margin lines, and are called support vectors.",
+        "vi": "Các điểm với \\\\( \\lambda_i > 0 \\\\) thỏa \\\\( y_i(w \\cdot x_i + b) = 1 \\\\), nằm trên đường biên, được gọi là vector hỗ trợ."
+      }
+    },
+    {
+      "id": 9,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Đạo hàm riêng của Lagrangian theo w bằng 0 cho kết quả gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( \\sum_i \\lambda_i y_i = 0 \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( b = \\sum_i \\lambda_i y_i x_i \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( w - \\sum_i \\lambda_i y_i x_i = 0 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Taking \\\\( \\frac{\\partial}{\\partial w} L = w - \\sum_i \\lambda_i y_i x_i = 0 \\\\) gives \\\\( w = \\sum_i \\lambda_i y_i x_i \\\\).",
+        "vi": "Lấy \\\\( \\frac{\\partial}{\\partial w} L = w - \\sum_i \\lambda_i y_i x_i = 0 \\\\) cho \\\\( w = \\sum_i \\lambda_i y_i x_i \\\\)."
+      }
+    },
+    {
+      "id": 10,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Điều kiện KKT 'primal feasibility' có ý nghĩa gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(h_i(x) = 0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(h_i(x) \\leq 0\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(h_i(x) \\geq 0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(h_i(x) \\neq 0\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Primal feasibility requires that inequality constraints \\(h_i(x) \\leq 0\\) are satisfied.",
+        "vi": "Tính khả thi nguyên thủy yêu cầu các ràng buộc bất đẳng thức \\(h_i(x) \\leq 0\\) được thỏa mãn."
+      }
+    },
+    {
+      "id": 11,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Tại sao SVM được coi là tiết kiệm bộ nhớ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sử dụng ít dữ liệu huấn luyện."
+        },
+        {
+          "label": "B",
+          "text": "Không lưu trữ điểm dữ liệu."
+        },
+        {
+          "label": "C",
+          "text": "Chỉ dùng tập con vector hỗ trợ để dự đoán."
+        },
+        {
+          "label": "D",
+          "text": "Xóa các điểm không phải vector hỗ trợ."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM uses only support vectors for prediction, making it memory efficient.",
+        "vi": "SVM chỉ sử dụng vector hỗ trợ để dự đoán, giúp tiết kiệm bộ nhớ."
+      }
+    },
+    {
+      "id": 12,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Biến nào được loại bỏ trong hàm Lagrangian của dạng Dual của Soft Margin SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tất cả được tính trực tiếp trong Dual Form."
+        },
+        {
+          "label": "B",
+          "text": "Chỉ w và b."
+        },
+        {
+          "label": "C",
+          "text": "w, b, \\(\\mu_i\\), \\(\\xi_i\\)."
+        },
+        {
+          "label": "D",
+          "text": "Thay bằng giá trị cố định."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "In the Dual form, w, b, \\(\\mu_i\\), and \\(\\xi_i\\) are eliminated, leaving only \\(\\lambda_i\\) in the objective function.",
+        "vi": "Trong dạng Dual, w, b, \\(\\mu_i\\), và \\(\\xi_i\\) được loại bỏ, chỉ còn \\(\\lambda_i\\) trong hàm mục tiêu."
+      }
+    },
+    {
+      "id": 13,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "SVM tìm kiếm siêu phẳng nào là tối ưu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Siêu phẳng đi qua trung tâm các điểm dữ liệu."
+        },
+        {
+          "label": "B",
+          "text": "Siêu phẳng gần nhất với các điểm dữ liệu của cả hai lớp."
+        },
+        {
+          "label": "C",
+          "text": "Siêu phẳng tối đa hóa biên độ phân tách giữa các lớp."
+        },
+        {
+          "label": "D",
+          "text": "Siêu phẳng sử dụng ít đặc trưng nhất."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM seeks the hyperplane that maximizes the margin between classes, ensuring optimal separation.",
+        "vi": "SVM tìm siêu phẳng tối đa hóa biên độ phân tách giữa các lớp, đảm bảo phân tách tối ưu."
+      }
+    },
+    {
+      "id": 14,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Hệ số tối ưu \\\\( w^* \\\\) được biểu diễn thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( w^* = \\sum_i \\lambda_i y_i x_i \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( w^* = \\sum_i \\lambda_i \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( w^* = b^* - \\sum_i \\lambda_i y_i x_i \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( w^* = \\sum_i x_i \\\\)"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "From KKT, \\\\( w^* = \\sum_i \\lambda_i y_i x_i \\\\), representing the optimal hyperplane as a linear combination of support vectors.",
+        "vi": "Từ KKT, \\\\( w^* = \\sum_i \\lambda_i y_i x_i \\\\), biểu diễn siêu phẳng tối ưu là tổ hợp tuyến tính của các vector hỗ trợ."
+      }
+    },
+    {
+      "id": 15,
+      "category": "Calculations",
+      "difficulty": "Challenging",
+      "question": "Cho \\(\\lambda_1 = 0.5\\), \\(\\lambda_2 = 0\\), \\(y_1 = 1\\), \\(y_2 = -1\\), \\(x_1 = [1, 0]\\), \\(x_2 = [0, 1]\\). Tính \\(w^*\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "[0.5, 0]"
+        },
+        {
+          "label": "B",
+          "text": "[0, -0.5]"
+        },
+        {
+          "label": "C",
+          "text": "[0, 0]"
+        },
+        {
+          "label": "D",
+          "text": "[0.5, -0.5]"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "The optimal weight vector \\(w^*\\) in SVM is given by \\(w^* = \\sum_i \\lambda_i y_i x_i\\). Given \\(\\lambda_1 = 0.5\\), \\(\\lambda_2 = 0\\), \\(y_1 = 1\\), \\(y_2 = -1\\), \\(x_1 = [1, 0]\\), and \\(x_2 = [0, 1]\\), we compute: \\(w^* = \\lambda_1 y_1 x_1 + \\lambda_2 y_2 x_2 = (0.5)(1)[1, 0] + (0)(-1)[0, 1] = [0.5, 0] + [0, 0] = [0.5, 0]\\). Thus, the correct answer is [0.5, 0].",
+        "vi": "Vector trọng số tối ưu \\(w^*\\) trong SVM được tính bởi \\(w^* = \\sum_i \\lambda_i y_i x_i\\). Với \\(\\lambda_1 = 0.5\\), \\(\\lambda_2 = 0\\), \\(y_1 = 1\\), \\(y_2 = -1\\), \\(x_1 = [1, 0]\\), và \\(x_2 = [0, 1]\\), ta tính: \\(w^* = \\lambda_1 y_1 x_1 + \\lambda_2 y_2 x_2 = (0.5)(1)[1, 0] + (0)(-1)[0, 1] = [0.5, 0] + [0, 0] = [0.5, 0]\\). Do đó, đáp án đúng là [0.5, 0]."
+      }
+    },
+    {
+      "id": 16,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Dạng Primal của SVM được ưu tiên khi nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Khi cần áp dụng Kernel Trick."
+        },
+        {
+          "label": "B",
+          "text": "Khi dữ liệu có số chiều rất lớn."
+        },
+        {
+          "label": "C",
+          "text": "Khi không cần Kernel Trick và tập dữ liệu lớn nhưng số chiều nhỏ."
+        },
+        {
+          "label": "D",
+          "text": "Khi dữ liệu không phân tách tuyến tính."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Primal form is preferred for large datasets with low-dimensional features when Kernel Trick is not needed.",
+        "vi": "Dạng Primal được ưu tiên cho tập dữ liệu lớn với đặc trưng chiều thấp khi không cần Kernel Trick."
+      }
+    },
+    {
+      "id": 17,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Mục tiêu của Hard Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giảm thiểu lỗi phân loại."
+        },
+        {
+          "label": "B",
+          "text": "Tối đa hóa biên độ."
+        },
+        {
+          "label": "C",
+          "text": "Tối thiểu hóa số vector hỗ trợ."
+        },
+        {
+          "label": "D",
+          "text": "Phù hợp với tất cả điểm dữ liệu."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Hard Margin SVM maximizes the margin between classes, ensuring optimal separation.",
+        "vi": "Hard Margin SVM tối đa hóa biên độ giữa các lớp, đảm bảo phân tách tối ưu."
+      }
+    },
+    {
+      "id": 18,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Hard",
+      "question": "Tham số C trong Soft Margin SVM đóng vai trò gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Điều khiển kích thước biên độ."
+        },
+        {
+          "label": "B",
+          "text": "Quyết định số lượng vector hỗ trợ."
+        },
+        {
+          "label": "C",
+          "text": "Kiểm soát mức độ tránh lỗi phân loại."
+        },
+        {
+          "label": "D",
+          "text": "Xác định tốc độ hội tụ."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "C controls the trade-off between maximizing the margin and minimizing misclassification errors.",
+        "vi": "C kiểm soát sự đánh đổi giữa tối đa hóa biên độ và tối thiểu hóa lỗi phân loại."
+      }
+    },
+    {
+      "id": 19,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Công thức của Kernel Đa thức bậc p là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( K(x_i, x_j) = x_i \\cdot x_j \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( K(x_i, x_j) = \\exp(-||x_i - x_j||^2 / 2\\sigma^2) \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( K(x_i, x_j) = (x_i \\cdot x_j + 1)^p \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( K(x_i, x_j) = (x_i + x_j)^p \\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Polynomial Kernel is \\\\( K(x_i, x_j) = (x_i \\cdot x_j + 1)^p \\\\), creating polynomial features of degree p.",
+        "vi": "Kernel Đa thức là \\\\( K(x_i, x_j) = (x_i \\cdot x_j + 1)^p \\\\), tạo đặc trưng đa thức bậc p."
+      }
+    },
+    {
+      "id": 20,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Ưu điểm của SVM liên quan đến siêu phẳng quyết định là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tạo siêu phẳng ngẫu nhiên."
+        },
+        {
+          "label": "B",
+          "text": "Không tìm được siêu phẳng tối ưu."
+        },
+        {
+          "label": "C",
+          "text": "Hoạt động tốt với siêu phẳng tối ưu."
+        },
+        {
+          "label": "D",
+          "text": "Tạo nhiều siêu phẳng quyết định."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM performs well with an optimal decision hyperplane that maximizes the margin.",
+        "vi": "SVM hoạt động tốt với siêu phẳng quyết định tối ưu, tối đa hóa biên độ."
+      }
+    },
+    {
+      "id": 21,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Mục tiêu tối ưu hóa ban đầu của SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( \\arg\\max ||w|| \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( \\arg\\min \\frac{1}{2} ||w|| \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( \\arg\\max \\frac{2}{||w||} \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( \\arg\\min \\frac{1}{2} ||w||^2 \\\\)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "SVM aims to maximize the margin \\\\( M = \\frac{2}{||w||} \\\\), equivalent to minimizing \\\\( \\frac{1}{2} ||w||^2 \\\\) for computational simplicity.",
+        "vi": "SVM tối đa hóa biên độ \\\\( M = \\frac{2}{||w||} \\\\), tương đương với tối thiểu hóa \\\\( \\frac{1}{2} ||w||^2 \\\\) để đơn giản hóa tính toán."
+      }
+    },
+    {
+      "id": 22,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Đối với điểm có \\\\( \\lambda_i = 0 \\\\), điều gì đúng theo KKT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( y_i(w \\cdot x_i + b) - 1 = 0 \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( y_i(w \\cdot x_i + b) - 1 > 0 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( y_i(w \\cdot x_i + b) - 1 < 0 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( w \\cdot x_i + b = 0 \\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "If \\\\( \\lambda_i = 0 \\\\), the constraint \\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\) holds, and points lie outside the margin, so \\\\( y_i(w \\cdot x_i + b) - 1 > 0 \\\\).",
+        "vi": "Nếu \\\\( \\lambda_i = 0 \\\\), ràng buộc \\\\( y_i(w \\cdot x_i + b) - 1 \\geq 0 \\\\) thỏa, và các điểm nằm ngoài biên độ, nên \\\\( y_i(w \\cdot x_i + b) - 1 > 0 \\\\)."
+      }
+    },
+    {
+      "id": 23,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Hàm mục tiêu của dạng Dual của Hard Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( L(\\lambda) = \\sum_i \\lambda_i + \\frac{1}{2} \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j) \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( L(\\lambda) = \\frac{1}{2} \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j) \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( L(\\lambda) = \\sum_i \\lambda_i - \\frac{1}{2} \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j) \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( L(\\lambda) = \\sum_i \\lambda_i y_i \\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "The Dual objective is \\\\( L(\\lambda) = \\sum_i \\lambda_i - \\frac{1}{2} \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j) \\\\), derived by substituting \\\\( w \\\\) and \\\\( b \\\\).",
+        "vi": "Hàm mục tiêu Dual là \\\\( L(\\lambda) = \\sum_i \\lambda_i - \\frac{1}{2} \\sum_i \\sum_j \\lambda_i \\lambda_j y_i y_j (x_i \\cdot x_j) \\\\), suy ra bằng cách thay thế \\\\( w \\\\) và \\\\( b \\\\)."
+      }
+    },
+    {
+      "id": 24,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Tại điểm tối ưu, vector gradient của hàm mục tiêu f và hàm ràng buộc g có quan hệ gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vuông góc với nhau."
+        },
+        {
+          "label": "B",
+          "text": "Không liên quan gì đến nhau."
+        },
+        {
+          "label": "C",
+          "text": "Luôn bằng không."
+        },
+        {
+          "label": "D",
+          "text": "Song song với nhau."
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "At the optimal point, gradients \\\\( \\nabla f \\\\) and \\\\( \\nabla g \\\\) are parallel, as they are perpendicular to the tangent line at the constraint boundary.",
+        "vi": "Tại điểm tối ưu, gradient \\\\( \\nabla f \\\\) và \\\\( \\nabla g \\\\) song song, vì chúng vuông góc với đường tiếp tuyến tại biên ràng buộc."
+      }
+    },
+    {
+      "id": 25,
+      "category": "Calculations",
+      "difficulty": "Challenging",
+      "question": "Cho hai điểm \\(x_1 = [1, 1]\\), \\(x_2 = [2, 2]\\) và Kernel Đa thức bậc 2: \\(K(x_i, x_j) = (x_i \\cdot x_j + 1)^2\\). Tính \\(K(x_1, x_2)\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "9"
+        },
+        {
+          "label": "B",
+          "text": "16"
+        },
+        {
+          "label": "C",
+          "text": "25"
+        },
+        {
+          "label": "D",
+          "text": "36"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "\\(x_1 \\cdot x_2 = 1 \\cdot 2 + 1 \\cdot 2 = 4\\). Then \\(K(x_1, x_2) = (4 + 1)^2 = 5^2 = 25\\).",
+        "vi": "\\(x_1 \\cdot x_2 = 1 \\cdot 2 + 1 \\cdot 2 = 4\\). Sau đó \\(K(x_1, x_2) = (4 + 1)^2 = 5^2 = 25\\)."
+      }
+    },
+    {
+      "id": 26,
+      "category": "Calculations",
+      "difficulty": "Hard",
+      "question": "Trong dạng Dual của SVM với Kernel Trick, \\(\\Phi(x_i) \\cdot \\Phi(x_j)\\) được thay bằng gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( w \\cdot x_i + b \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( y_i y_j \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( K(x_i, x_j) \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "C"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Kernel Trick replaces \\(\\Phi(x_i) \\cdot \\Phi(x_j)\\) with \\(K(x_i, x_j)\\), computing dot products in the mapped space.",
+        "vi": "Kernel Trick thay \\(\\Phi(x_i) \\cdot \\Phi(x_j)\\) bằng \\(K(x_i, x_j)\\), tính tích vô hướng trong không gian ánh xạ."
+      }
+    },
+    {
+      "id": 27,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Việc sử dụng Kernel \\((u \\cdot v)^d\\) tương đương với việc gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tính khoảng cách Euclidean trong không gian gốc."
+        },
+        {
+          "label": "B",
+          "text": "Ánh xạ lên không gian chiều cao và tính tích vô hướng."
+        },
+        {
+          "label": "C",
+          "text": "Phân loại tuyến tính trong không gian gốc."
+        },
+        {
+          "label": "D",
+          "text": "Giảm số chiều của dữ liệu."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The kernel \\((u \\cdot v)^d\\) computes the dot product in a high-dimensional space without explicit mapping.",
+        "vi": "Kernel \\((u \\cdot v)^d\\) tính tích vô hướng trong không gian chiều cao mà không cần ánh xạ tường minh."
+      }
+    },
+    {
+      "id": 28,
+      "category": "Calculations",
+      "difficulty": "Challenging",
+      "question": "Given \\(\\lambda_1 = 0.4\\), \\(\\lambda_2 = 0.6\\), \\(y_1 = 1\\), \\(y_2 = -1\\), \\(x_1 = [2, 1]\\), \\(x_2 = [1, 3]\\), compute \\(w^*\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "[0.2, -1.4]"
+        },
+        {
+          "label": "B",
+          "text": "[1.4, -0.2]"
+        },
+        {
+          "label": "C",
+          "text": "[0.2, 1.4]"
+        },
+        {
+          "label": "D",
+          "text": "[-0.2, -1.4]"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Using \\(w^* = \\sum_i \\lambda_i y_i x_i\\), compute: \\(w^* = \\lambda_1 y_1 x_1 + \\lambda_2 y_2 x_2 = (0.4)(1)[2, 1] + (0.6)(-1)[1, 3] = [0.8, 0.4] + [-0.6, -1.8] = [0.8 - 0.6, 0.4 - 1.8] = [0.2, -1.4]\\). Thus, the answer is [0.2, -1.4].",
+        "vi": "Sử dụng \\(w^* = \\sum_i \\lambda_i y_i x_i\\), tính: \\(w^* = \\lambda_1 y_1 x_1 + \\lambda_2 y_2 x_2 = (0.4)(1)[2, 1] + (0.6)(-1)[1, 3] = [0.8, 0.4] + [-0.6, -1.8] = [0.8 - 0.6, 0.4 - 1.8] = [0.2, -1.4]\\). Do đó, đáp án là [0.2, -1.4]."
+      }
+    },
+    {
+      "id": 29,
+      "category": "Terminology",
+      "difficulty": "Hard",
+      "question": "Khi \\(\\xi_i\\) trong Soft Margin SVM thỏa \\(0 < \\xi_i < 1\\), điểm dữ liệu nằm ở đâu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân loại đúng, ngoài biên độ."
+        },
+        {
+          "label": "B",
+          "text": "Phân loại sai."
+        },
+        {
+          "label": "C",
+          "text": "Phân loại đúng, trong biên độ."
+        },
+        {
+          "label": "D",
+          "text": "Trên siêu phẳng quyết định."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "If \\(0 < \\xi_i < 1\\), the point is correctly classified but lies within the margin (\\(0 < y_i(w \\cdot x_i + b) < 1\\)).",
+        "vi": "Nếu \\(0 < \\xi_i < 1\\), điểm được phân loại đúng nhưng nằm trong biên độ (\\(0 < y_i(w \\cdot x_i + b) < 1\\))."
+      }
+    },
+    {
+      "id": 30,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Ràng buộc của bài toán Dual của Hard Margin SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( \\sum_i \\lambda_i y_i \\geq 0, \\lambda_i \\leq 0 \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( \\sum_i \\lambda_i y_i = 1, \\lambda_i \\geq 0 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( \\sum_i \\lambda_i y_i = 0, \\lambda_i \\geq 0 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( \\sum_i \\lambda_i y_i = 0, 0 \\leq \\lambda_i \\leq C \\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "The Dual constraints are \\\\( \\sum_i \\lambda_i y_i = 0 \\\\) and \\\\( \\lambda_i \\geq 0 \\\\), derived from KKT conditions.",
+        "vi": "Ràng buộc Dual là \\\\( \\sum_i \\lambda_i y_i = 0 \\\\) và \\\\( \\lambda_i \\geq 0 \\\\), suy ra từ điều kiện KKT."
+      }
+    },
+    {
+      "id": 31,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Medium",
+      "question": "Soft Margin SVM được sử dụng khi nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dữ liệu hoàn toàn phân tách tuyến tính."
+        },
+        {
+          "label": "B",
+          "text": "Có ít mẫu dữ liệu."
+        },
+        {
+          "label": "C",
+          "text": "Dữ liệu không có đặc trưng."
+        },
+        {
+          "label": "D",
+          "text": "Dữ liệu nhiễu với chồng lấn giữa các lớp."
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Soft Margin SVM handles noisy data with overlapping samples by allowing some misclassifications.",
+        "vi": "Soft Margin SVM xử lý dữ liệu nhiễu với sự chồng lấn giữa các lớp bằng cách cho phép một số lỗi phân loại."
+      }
+    },
+    {
+      "id": 32,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "SVM có cung cấp ước tính xác suất phân loại trực tiếp không?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Có, luôn luôn."
+        },
+        {
+          "label": "B",
+          "text": "Chỉ khi dùng Kernel Gaussian."
+        },
+        {
+          "label": "C",
+          "text": "Chỉ khi dùng Soft Margin."
+        },
+        {
+          "label": "D",
+          "text": "Không, không cung cấp trực tiếp."
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "SVM does not directly provide classification probability estimates, unlike models like Logistic Regression.",
+        "vi": "SVM không cung cấp trực tiếp ước tính xác suất phân loại, không giống các mô hình như Hồi quy Logistic."
+      }
+    },
+    {
+      "id": 33,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "Ràng buộc trong bài toán tối ưu hóa dạng Primal của SVM là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( y_i(w \\cdot x_i + b) = 1 \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( y_i(w \\cdot x_i + b) \\leq 1 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( w \\cdot x_i + b \\geq 0 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( y_i(w \\cdot x_i + b) \\geq 1 \\\\)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "The constraint \\\\( y_i(w \\cdot x_i + b) \\geq 1 \\\\) ensures all points are correctly classified on or beyond the margin.",
+        "vi": "Ràng buộc \\\\( y_i(w \\cdot x_i + b) \\geq 1 \\\\) đảm bảo tất cả điểm được phân loại đúng trên hoặc ngoài biên độ."
+      }
+    },
+    {
+      "id": 34,
+      "category": "Terminology",
+      "difficulty": "Medium",
+      "question": "SVM hoạt động tốt trong không gian nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chỉ không gian 2 chiều."
+        },
+        {
+          "label": "B",
+          "text": "Không gian chiều thấp."
+        },
+        {
+          "label": "C",
+          "text": "Không gian chiều cao."
+        },
+        {
+          "label": "D",
+          "text": "Không gian một chiều."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM is effective in high-dimensional spaces, especially with Kernel Trick for non-linear data.",
+        "vi": "SVM hiệu quả trong không gian chiều cao, đặc biệt với Kernel Trick cho dữ liệu không tuyến tính."
+      }
+    },
+    {
+      "id": 35,
+      "category": "Problem-Solving Scenarios",
+      "difficulty": "Medium",
+      "question": "Điểm dữ liệu nào được dùng để tính \\\\( b^* \\\\) tối ưu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Bất kỳ điểm dữ liệu nào trong tập huấn luyện."
+        },
+        {
+          "label": "B",
+          "text": "Chỉ các điểm không phải vector hỗ trợ."
+        },
+        {
+          "label": "C",
+          "text": "Bất kỳ vector hỗ trợ nào."
+        },
+        {
+          "label": "D",
+          "text": "Điểm có \\\\( y_i = 0 \\\\)."
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "\\\\( b^* \\\\) is computed using any support vector (\\\\( \\lambda_i > 0 \\\\)) satisfying \\\\( y_i(w \\cdot x_i + b) = 1 \\\\).",
+        "vi": "\\\\( b^* \\\\) được tính bằng bất kỳ vector hỗ trợ nào (\\\\( \\lambda_i > 0 \\\\)) thỏa \\\\( y_i(w \\cdot x_i + b) = 1 \\\\)."
+      }
+    }
+  ]
+}

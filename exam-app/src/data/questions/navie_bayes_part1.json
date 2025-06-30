@@ -1,0 +1,947 @@
+[
+  {
+    "id": 1,
+    "question": "In machine learning, what is the definition of a classification task?",
+    "options": [
+      {
+        "label": "A",
+        "text": "An unsupervised task to cluster data into groups."
+      },
+      {
+        "label": "B",
+        "text": "A supervised task to predict continuous values."
+      },
+      {
+        "label": "C",
+        "text": "A supervised task to assign inputs to predefined categories or classes."
+      },
+      {
+        "label": "D",
+        "text": "A process to reduce data dimensionality for model efficiency."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Classification is a supervised learning task that assigns input data to one or more predefined categories or classes.",
+      "vi": "Phân loại là một nhiệm vụ học có giám sát nhằm gán dữ liệu đầu vào vào một hoặc nhiều danh mục hoặc lớp đã được định nghĩa trước."
+    }
+  },
+  {
+    "id": 2,
+    "question": "What is binary classification in machine learning?",
+    "options": [
+      {
+        "label": "A",
+        "text": "A classification task with more than two classes."
+      },
+      {
+        "label": "B",
+        "text": "A classification task to assign inputs to one of two classes."
+      },
+      {
+        "label": "C",
+        "text": "A regression algorithm to predict continuous values."
+      },
+      {
+        "label": "D",
+        "text": "A method to label unlabeled data."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Binary classification involves assigning input data to one of two classes, typically labeled as 0 (negative) and 1 (positive).",
+      "vi": "Phân loại nhị phân liên quan đến việc gán dữ liệu đầu vào vào một trong hai lớp, thường được gán nhãn là 0 (âm tính) và 1 (dương tính)."
+    }
+  },
+  {
+    "id": 3,
+    "question": "What is Logistic Regression primarily used for in supervised machine learning?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Multivariate linear regression."
+      },
+      {
+        "label": "B",
+        "text": "Data clustering."
+      },
+      {
+        "label": "C",
+        "text": "Classification, especially binary classification."
+      },
+      {
+        "label": "D",
+        "text": "Data dimensionality reduction."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Logistic Regression is a supervised algorithm used primarily for binary classification tasks, predicting class probabilities.",
+      "vi": "Hồi quy Logistic là một thuật toán có giám sát được sử dụng chủ yếu cho các nhiệm vụ phân loại nhị phân, dự đoán xác suất lớp."
+    }
+  },
+  {
+    "id": 4,
+    "question": "What is the purpose of the Sigmoid function in Logistic Regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To transform inputs into an unbounded continuous value."
+      },
+      {
+        "label": "B",
+        "text": "To map a linear combination of input features to a value between 0 and 1."
+      },
+      {
+        "label": "C",
+        "text": "To compute the Mean Squared Error (MSE)."
+      },
+      {
+        "label": "D",
+        "text": "To directly define the decision boundary."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The Sigmoid function maps the linear combination \\\\( z = \\theta_0 + \\theta_1 x_1 + \\dots + \\theta_d x_d \\\\) to [0, 1], representing class probabilities.",
+      "vi": "Hàm Sigmoid ánh xạ tổ hợp tuyến tính \\\\( z = \\theta_0 + \\theta_1 x_1 + \\dots + \\theta_d x_d \\\\) vào khoảng [0, 1], biểu thị xác suất lớp."
+    }
+  },
+  {
+    "id": 5,
+    "question": "In Bayes’ Theorem, what is the posterior probability?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The probability of event A occurring."
+      },
+      {
+        "label": "B",
+        "text": "The conditional probability of event B given event A."
+      },
+      {
+        "label": "C",
+        "text": "The conditional probability of event A given event B."
+      },
+      {
+        "label": "D",
+        "text": "The probability of event B occurring."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "The posterior probability is \\\\( P(A|B) \\\\), the probability of event A given that event B is true, per Bayes’ Theorem.",
+      "vi": "Xác suất hậu nghiệm là \\\\( P(A|B) \\\\), xác suất của sự kiện A khi biết sự kiện B là đúng, theo Định lý Bayes."
+    }
+  },
+  {
+    "id": 6,
+    "question": "What is the likelihood in Bayes’ Theorem?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The probability of a class occurring."
+      },
+      {
+        "label": "B",
+        "text": "The conditional probability of event A given event B."
+      },
+      {
+        "label": "C",
+        "text": "The conditional probability of event B given event A."
+      },
+      {
+        "label": "D",
+        "text": "The probability of a predictor occurring."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "The likelihood is \\\\( P(B|A) \\\\), the conditional probability of observing event B given that event A is true.",
+      "vi": "Xác suất khả dĩ là \\\\( P(B|A) \\\\), xác suất có điều kiện của sự kiện B khi biết sự kiện A là đúng."
+    }
+  },
+  {
+    "id": 7,
+    "question": "What does the ‘naïve’ assumption in Naïve Bayes imply?",
+    "options": [
+      {
+        "label": "A",
+        "text": "All features have equal importance."
+      },
+      {
+        "label": "B",
+        "text": "The presence of one feature is independent of others given the class."
+      },
+      {
+        "label": "C",
+        "text": "Data follows a normal distribution."
+      },
+      {
+        "label": "D",
+        "text": "No missing data is allowed."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The ‘naïve’ assumption posits that features are conditionally independent given the class, simplifying probability calculations.",
+      "vi": "Giả định ‘ngây thơ’ cho rằng các đặc trưng độc lập có điều kiện khi biết lớp, đơn giản hóa việc tính toán xác suất."
+    }
+  },
+  {
+    "id": 8,
+    "question": "What is the purpose of Laplace Smoothing in Naïve Bayes?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To normalize input data."
+      },
+      {
+        "label": "B",
+        "text": "To prevent zero probabilities when an event is absent in training data."
+      },
+      {
+        "label": "C",
+        "text": "To reduce the number of features."
+      },
+      {
+        "label": "D",
+        "text": "To speed up model training."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Laplace Smoothing adds a small constant to counts to avoid zero probabilities, ensuring robust probability estimates.",
+      "vi": "Laplace Smoothing thêm một hằng số nhỏ vào số đếm để tránh xác suất bằng 0, đảm bảo ước lượng xác suất ổn định."
+    }
+  },
+  {
+    "id": 9,
+    "question": "Which formula represents the Binary Cross-Entropy (BCE) loss for a single data sample?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( J(\\theta) = -y \\log h_\\theta(x) + (1 - y) \\log (1 - h_\\theta(x)) \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( J(\\theta) = -y \\log h_\\theta(x) - (1 - y) \\log (1 - h_\\theta(x)) \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( J(\\theta) = (h_\\theta(x) - y)^2 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( J(\\theta) = y \\log (1 - h_\\theta(x)) + (1 - y) \\log h_\\theta(x) \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The BCE loss is \\\\( J(\\theta) = -y \\log h_\\theta(x) - (1 - y) \\log (1 - h_\\theta(x)) \\\\), penalizing incorrect predictions.",
+      "vi": "Hàm mất mát BCE là \\\\( J(\\theta) = -y \\log h_\\theta(x) - (1 - y) \\log (1 - h_\\theta(x)) \\\\), trừng phạt các dự đoán sai."
+    }
+  },
+  {
+    "id": 10,
+    "question": "In binary classification, which values typically represent the labels?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( y = \\{-1, 1\\} \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( y = \\{0, 1\\} \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( y = \\{\\text{True}, \\text{False}\\} \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( y = \\{A, B\\} \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Binary classification typically uses labels \\\\( y = \\{0, 1\\} \\\\), where 0 is the negative class and 1 is the positive class.",
+      "vi": "Phân loại nhị phân thường sử dụng nhãn \\\\( y = \\{0, 1\\} \\\\), với 0 là lớp âm tính và 1 là lớp dương tính."
+    }
+  },
+  {
+    "id": 11,
+    "question": "When is the use of log-probabilities recommended in Naïve Bayes?",
+    "options": [
+      {
+        "label": "A",
+        "text": "When features are continuous."
+      },
+      {
+        "label": "B",
+        "text": "To prevent numerical underflow from multiplying small probabilities."
+      },
+      {
+        "label": "C",
+        "text": "When computing mean and variance."
+      },
+      {
+        "label": "D",
+        "text": "To speed up classification."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Log-probabilities prevent underflow by converting products of small probabilities into sums, improving numerical stability.",
+      "vi": "Xác suất logarit ngăn chặn tràn số âm bằng cách chuyển đổi tích các xác suất nhỏ thành tổng, cải thiện độ ổn định số."
+    }
+  },
+  {
+    "id": 12,
+    "question": "Which type of Naïve Bayes uses the Gaussian distribution?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Bernoulli Naïve Bayes."
+      },
+      {
+        "label": "B",
+        "text": "Multinomial Naïve Bayes."
+      },
+      {
+        "label": "C",
+        "text": "Gaussian Naïve Bayes, for continuous features."
+      },
+      {
+        "label": "D",
+        "text": "Discrete Naïve Bayes."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Gaussian Naïve Bayes assumes continuous features follow a Gaussian distribution, using its probability density function.",
+      "vi": "Gaussian Naïve Bayes giả định các đặc trưng liên tục tuân theo phân phối Gaussian, sử dụng hàm mật độ xác suất của nó."
+    }
+  },
+  {
+    "id": 13,
+    "question": "What is the purpose of a confusion matrix in evaluating classification models?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To represent relationships between features."
+      },
+      {
+        "label": "B",
+        "text": "To summarize correct and incorrect predictions of a classification model."
+      },
+      {
+        "label": "C",
+        "text": "To compute gradients for optimization."
+      },
+      {
+        "label": "D",
+        "text": "To normalize input data."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "A confusion matrix summarizes the number of correct and incorrect predictions, providing metrics like Precision and Recall.",
+      "vi": "Ma trận nhầm lẫn tóm tắt số lượng dự đoán đúng và sai, cung cấp các chỉ số như Precision và Recall."
+    }
+  },
+  {
+    "id": 14,
+    "question": "Which formula is used to calculate Precision from a confusion matrix?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\frac{\\text{TP} + \\text{TN}}{\\text{TP} + \\text{FP} + \\text{TN} + \\text{FN}} \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FN}} \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FP}} \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\frac{2 \\cdot (\\text{Precision} \\cdot \\text{Recall})}{\\text{Precision} + \\text{Recall}} \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Precision is calculated as \\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FP}} \\\\), measuring the accuracy of positive predictions.",
+      "vi": "Precision được tính là \\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FP}} \\\\), đo lường độ chính xác của các dự đoán dương tính."
+    }
+  },
+  {
+    "id": 15,
+    "question": "Which formula is used to calculate Recall from a confusion matrix?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\frac{\\text{TP} + \\text{TN}}{\\text{TP} + \\text{FP} + \\text{TN} + \\text{FN}} \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FN}} \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FP}} \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\frac{2 \\cdot (\\text{Precision} \\cdot \\text{Recall})}{\\text{Precision} + \\text{Recall}} \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Recall is calculated as \\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FN}} \\\\), measuring the proportion of actual positives correctly identified.",
+      "vi": "Recall được tính là \\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FN}} \\\\), đo lường tỷ lệ các trường hợp dương tính thực sự được xác định đúng."
+    }
+  },
+  {
+    "id": 16,
+    "question": "Which formula is used to calculate Accuracy from a confusion matrix?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\frac{\\text{TP} + \\text{TN}}{\\text{TP} + \\text{FP} + \\text{TN} + \\text{FN}} \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FN}} \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\frac{\\text{TP}}{\\text{TP} + \\text{FP}} \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\frac{2 \\cdot (\\text{Precision} \\cdot \\text{Recall})}{\\text{Precision} + \\text{Recall}} \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Accuracy is calculated as \\\\( \\frac{\\text{TP} + \\text{TN}}{\\text{TP} + \\text{FP} + \\text{TN} + \\text{FN}} \\\\), measuring overall correctness.",
+      "vi": "Accuracy được tính là \\\\( \\frac{\\text{TP} + \\text{TN}}{\\text{TP} + \\text{FP} + \\text{TN} + \\text{FN}} \\\\), đo lường độ chính xác tổng thể."
+    }
+  },
+  {
+    "id": 17,
+    "question": "Softmax Regression is a generalization of Logistic Regression to address which problem?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Linear regression."
+      },
+      {
+        "label": "B",
+        "text": "Binary classification."
+      },
+      {
+        "label": "C",
+        "text": "Multi-class classification."
+      },
+      {
+        "label": "D",
+        "text": "Clustering."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Softmax Regression extends Logistic Regression to handle multi-class classification by producing a probability distribution over classes.",
+      "vi": "Hồi quy Softmax mở rộng Hồi quy Logistic để xử lý phân loại đa lớp bằng cách tạo ra phân phối xác suất trên các lớp."
+    }
+  },
+  {
+    "id": 18,
+    "question": "In Bayes’ Theorem, what are \\\\( P(A) \\\\) and \\\\( P(B) \\\\) referred to as?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Posterior probabilities."
+      },
+      {
+        "label": "B",
+        "text": "Likelihoods."
+      },
+      {
+        "label": "C",
+        "text": "Prior probabilities."
+      },
+      {
+        "label": "D",
+        "text": "Conditional probabilities."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "\\\\( P(A) \\\\) and \\\\( P(B) \\\\) are the prior probabilities of events A and B, respectively, in Bayes’ Theorem.",
+      "vi": "\\\\( P(A) \\\\) và \\\\( P(B) \\\\) là xác suất tiên nghiệm của các sự kiện A và B, tương ứng, trong Định lý Bayes."
+    }
+  },
+  {
+    "id": 19,
+    "question": "The task of classifying emails as ‘Spam’ or ‘Non-Spam’ is an example of which type of classification?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Multi-class classification."
+      },
+      {
+        "label": "B",
+        "text": "Binary classification."
+      },
+      {
+        "label": "C",
+        "text": "Multi-label classification."
+      },
+      {
+        "label": "D",
+        "text": "Regression."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Classifying emails as ‘Spam’ or ‘Non-Spam’ is a binary classification task, with two mutually exclusive classes.",
+      "vi": "Phân loại email là ‘Spam’ hoặc ‘Non-Spam’ là một nhiệm vụ phân loại nhị phân, với hai lớp loại trừ lẫn nhau."
+    }
+  },
+  {
+    "id": 20,
+    "question": "In Naïve Bayes, what is the purpose of using the argmax function?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To find the minimum value of a function."
+      },
+      {
+        "label": "B",
+        "text": "To find the class that maximizes the posterior probability."
+      },
+      {
+        "label": "C",
+        "text": "To compute the sum of probabilities."
+      },
+      {
+        "label": "D",
+        "text": "To simplify Bayes’ formula."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The argmax function selects the class with the highest posterior probability \\\\( P(C_i|x) \\\\) for classification.",
+      "vi": "Hàm argmax chọn lớp có xác suất hậu nghiệm cao nhất \\\\( P(C_i|x) \\\\) để phân loại."
+    }
+  },
+  {
+    "id": 21,
+    "question": "A machine learning model is trained to detect whether an online transaction is fraudulent (Yes/No). What type of classification task is this?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Multi-class classification."
+      },
+      {
+        "label": "B",
+        "text": "Binary classification."
+      },
+      {
+        "label": "C",
+        "text": "Multi-label classification."
+      },
+      {
+        "label": "D",
+        "text": "Regression."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Detecting fraudulent transactions (Yes/No) is a binary classification task with two classes.",
+      "vi": "Phát hiện giao dịch gian lận (Yes/No) là một nhiệm vụ phân loại nhị phân với hai lớp."
+    }
+  },
+  {
+    "id": 22,
+    "question": "In a Naïve Bayes model predicting whether someone plays tennis based on weather, if no training data shows ‘Rainy’ and ‘Play=Yes,’ leading to \\\\( P(\\text{Rainy}|\\text{Yes}) = 0 \\\\), what problem arises, and what is the solution?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Overfitting; increase dataset size."
+      },
+      {
+        "label": "B",
+        "text": "Zero probability, causing zero posterior; use Laplace Smoothing."
+      },
+      {
+        "label": "C",
+        "text": "Underfitting; add more features."
+      },
+      {
+        "label": "D",
+        "text": "Slow computation; use log-probabilities."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "A zero probability makes the posterior zero, invalidating predictions. Laplace Smoothing adds a small count to avoid this.",
+      "vi": "Xác suất bằng 0 khiến xác suất hậu nghiệm bằng 0, làm dự đoán không hợp lệ. Laplace Smoothing thêm một số đếm nhỏ để tránh điều này."
+    }
+  },
+  {
+    "id": 23,
+    "question": "In a spam email classifier using Logistic Regression, if the Sigmoid function outputs \\\\( \\sigma(z) = 0.88 \\\\) for an email with a threshold of 0.5, how is it classified?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Cannot be determined."
+      },
+      {
+        "label": "B",
+        "text": "Non-spam."
+      },
+      {
+        "label": "C",
+        "text": "Spam."
+      },
+      {
+        "label": "D",
+        "text": "Requires more information about z."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Since \\\\( \\sigma(z) = 0.88 > 0.5 \\\\), the email is classified as spam (class 1).",
+      "vi": "Vì \\\\( \\sigma(z) = 0.88 > 0.5 \\\\), email được phân loại là spam (lớp 1)."
+    }
+  },
+  {
+    "id": 24,
+    "question": "If you use Mean Squared Error (MSE) instead of Binary Cross-Entropy (BCE) for training Logistic Regression, what is the main issue?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The model converges too quickly, missing optimal solutions."
+      },
+      {
+        "label": "B",
+        "text": "MSE is non-convex with the Sigmoid, complicating Gradient Descent convergence."
+      },
+      {
+        "label": "C",
+        "text": "The loss is always zero, preventing learning."
+      },
+      {
+        "label": "D",
+        "text": "The model cannot handle binary data."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "MSE with the Sigmoid function creates a non-convex loss, making it hard for Gradient Descent to find the global minimum.",
+      "vi": "MSE với hàm Sigmoid tạo ra hàm mất mát không lồi, khiến Gradient Descent khó tìm được cực tiểu toàn cục."
+    }
+  },
+  {
+    "id": 25,
+    "question": "To handle multi-class classification (e.g., classifying animals: dog, cat, chicken), how can Logistic Regression be extended?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Add binary classes for each feature."
+      },
+      {
+        "label": "B",
+        "text": "Use One-vs-all or Softmax Regression."
+      },
+      {
+        "label": "C",
+        "text": "Adjust the Sigmoid threshold."
+      },
+      {
+        "label": "D",
+        "text": "Remove unimportant features."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Logistic Regression is extended for multi-class problems using One-vs-all or Softmax Regression to handle multiple classes.",
+      "vi": "Hồi quy Logistic được mở rộng cho bài toán đa lớp bằng phương pháp One-vs-all hoặc Hồi quy Softmax để xử lý nhiều lớp."
+    }
+  },
+  {
+    "id": 26,
+    "question": "In Naïve Bayes, to predict the label for a new sample \\\\( x' \\\\) with independent features, what do you compute and compare?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only the prior probability of each class \\\\( P(C_i) \\\\)."
+      },
+      {
+        "label": "B",
+        "text": "Only the product of likelihoods \\\\( \\prod P(x_m|C_i) \\\\)."
+      },
+      {
+        "label": "C",
+        "text": "The product of the prior \\\\( P(C_i) \\\\) and likelihoods \\\\( \\prod P(x_m|C_i) \\\\) for each class, selecting the highest."
+      },
+      {
+        "label": "D",
+        "text": "The average of all probabilities."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Naïve Bayes computes \\\\( P(C_i|x') \\propto P(C_i) \\cdot \\prod P(x_m|C_i) \\\\) for each class and selects the class with the highest value.",
+      "vi": "Naïve Bayes tính \\\\( P(C_i|x') \\propto P(C_i) \\cdot \\prod P(x_m|C_i) \\\\) cho mỗi lớp và chọn lớp có giá trị cao nhất."
+    }
+  },
+  {
+    "id": 27,
+    "question": "For a disease classification model with continuous features like body temperature and blood pressure, which Naïve Bayes variant is most suitable?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Multinomial Naïve Bayes."
+      },
+      {
+        "label": "B",
+        "text": "Bernoulli Naïve Bayes."
+      },
+      {
+        "label": "C",
+        "text": "Gaussian Naïve Bayes."
+      },
+      {
+        "label": "D",
+        "text": "Discrete Naïve Bayes."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Gaussian Naïve Bayes is suitable for continuous features, assuming they follow a Gaussian distribution.",
+      "vi": "Gaussian Naïve Bayes phù hợp với các đặc trưng liên tục, giả định chúng tuân theo phân phối Gaussian."
+    }
+  },
+  {
+    "id": 28,
+    "question": "In Logistic Regression, if the actual label is \\\\( y = 1 \\\\) but the model predicts \\\\( h_\\theta(x) \\to 0 \\\\), how does the BCE loss \\\\( J(\\theta) \\\\) behave?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( J(\\theta) \\to 0 \\\\)."
+      },
+      {
+        "label": "B",
+        "text": "\\\\( J(\\theta) \\to \\infty \\\\)."
+      },
+      {
+        "label": "C",
+        "text": "\\\\( J(\\theta) \\\\) remains unchanged."
+      },
+      {
+        "label": "D",
+        "text": "\\\\( J(\\theta) \\to \\text{a large negative value} \\\\)."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "For \\\\( y = 1 \\\\), BCE is \\\\( J(\\theta) = -\\log(h_\\theta(x)) \\\\). As \\\\( h_\\theta(x) \\to 0 \\\\), \\\\( -\\log(h_\\theta(x)) \\to \\infty \\\\), heavily penalizing the error.",
+      "vi": "Với \\\\( y = 1 \\\\), BCE là \\\\( J(\\theta) = -\\log(h_\\theta(x)) \\\\). Khi \\\\( h_\\theta(x) \\to 0 \\\\), \\\\( -\\log(h_\\theta(x)) \\to \\infty \\\\), trừng phạt mạnh lỗi."
+    }
+  },
+  {
+    "id": 29,
+    "question": "In an image classification system identifying objects (e.g., table, chair, monitor, keyboard), what type of classification task is this?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Binary classification."
+      },
+      {
+        "label": "B",
+        "text": "Regression."
+      },
+      {
+        "label": "C",
+        "text": "Multi-class classification."
+      },
+      {
+        "label": "D",
+        "text": "Multi-label classification."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Identifying objects like table, chair, etc., is a multi-class classification task, as each image is assigned to one of multiple classes.",
+      "vi": "Xác định các đối tượng như bàn, ghế, v.v., là nhiệm vụ phân loại đa lớp, vì mỗi hình ảnh được gán vào một trong nhiều lớp."
+    }
+  },
+  {
+    "id": 30,
+    "question": "If the Logistic Regression threshold is set above 0.5 (e.g., 0.7), what is the impact on classification?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Fewer instances are predicted as the positive class, reducing recall but potentially increasing precision."
+      },
+      {
+        "label": "B",
+        "text": "More instances are predicted as the positive class."
+      },
+      {
+        "label": "C",
+        "text": "The threshold has no effect on positive class predictions."
+      },
+      {
+        "label": "D",
+        "text": "The model always predicts the negative class."
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "A higher threshold (e.g., 0.7) requires higher confidence for positive predictions, reducing recall but potentially increasing precision.",
+      "vi": "Ngưỡng cao hơn (ví dụ: 0.7) yêu cầu độ tự tin cao hơn cho dự đoán dương tính, giảm recall nhưng có thể tăng precision."
+    }
+  },
+  {
+    "id": 31,
+    "question": "In binary classification, if the probability of an event is \\\\( P(\\text{event}) = 0.75 \\\\), what is \\\\( P(\\neg \\text{event}) \\\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.25"
+      },
+      {
+        "label": "B",
+        "text": "0.75"
+      },
+      {
+        "label": "C",
+        "text": "1.0"
+      },
+      {
+        "label": "D",
+        "text": "0.5"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Since \\\\( P(\\text{event}) + P(\\neg \\text{event}) = 1 \\\\), \\\\( P(\\neg \\text{event}) = 1 - 0.75 = 0.25 \\\\).",
+      "vi": "Vì \\\\( P(\\text{event}) + P(\\neg \\text{event}) = 1 \\\\), nên \\\\( P(\\neg \\text{event}) = 1 - 0.75 = 0.25 \\\\)."
+    }
+  },
+  {
+    "id": 32,
+    "question": "For the Sigmoid function \\\\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\\\), if \\\\( z = 0 \\\\), what is \\\\( \\sigma(z) \\\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "0.5"
+      },
+      {
+        "label": "D",
+        "text": "Cannot be computed"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "For \\\\( z = 0 \\\\), \\\\( \\sigma(0) = \\frac{1}{1 + e^0} = \\frac{1}{1 + 1} = 0.5 \\\\).",
+      "vi": "Với \\\\( z = 0 \\\\), \\\\( \\sigma(0) = \\frac{1}{1 + e^0} = \\frac{1}{1 + 1} = 0.5 \\\\)."
+    }
+  },
+  {
+    "id": 33,
+    "question": "In a spam classification example, if \\\\( P(\\text{Spam}) = 0.2 \\\\) and \\\\( P(\\text{\"free money\"}|\\text{Spam}) = 0.9 \\\\), what additional value is needed to compute \\\\( P(\\text{Spam}|\\text{\"free money\"}) \\\\) using Bayes’ Theorem?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( P(\\text{Non-Spam}) \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( P(\\text{\"free money\"}) \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( P(\\text{Spam}) \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( P(\\text{\"free money\"}|\\text{Non-Spam}) \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Bayes’ Theorem requires \\\\( P(\\text{Spam}|\\text{\"free money\"}) = \\frac{P(\\text{\"free money\"}|\\text{Spam}) \\cdot P(\\text{Spam})}{P(\\text{\"free money\"})} \\\\), so \\\\( P(\\text{\"free money\"}) \\\\) is needed.",
+      "vi": "Định lý Bayes yêu cầu \\\\( P(\\text{Spam}|\\text{\"free money\"}) = \\frac{P(\\text{\"free money\"}|\\text{Spam}) \\cdot P(\\text{Spam})}{P(\\text{\"free money\"})} \\\\), nên cần \\\\( P(\\text{\"free money\"}) \\\\)."
+    }
+  },
+  {
+    "id": 34,
+    "question": "A Logistic Regression model predicts \\\\( h_\\theta(x) = 0.9 \\\\) for a sample with actual label \\\\( y = 1 \\\\). What is the BCE loss?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( -\\log(0.9) \\approx 0.105 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\log(0.9) \\approx -0.105 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( -\\log(0.1) \\approx 2.302 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "For \\\\( y = 1 \\\\), BCE is \\\\( J(\\theta) = -y \\log(h_\\theta(x)) = -\\log(0.9) \\approx 0.105 \\\\).",
+      "vi": "Với \\\\( y = 1 \\\\), BCE là \\\\( J(\\theta) = -y \\log(h_\\theta(x)) = -\\log(0.9) \\approx 0.105 \\\\)."
+    }
+  },
+  {
+    "id": 35,
+    "question": "Given training data for ‘Sky’ and ‘Play?’: Sky=Sunny, Play?=Yes: 2 times; Sky=Rainy, Play?=Yes: 0 times; total Play?=Yes: 3 times. With Laplace Smoothing (Sky has 2 values: Sunny, Rainy), what is \\\\( P(\\text{Sky=Rainy}|\\text{Play?=Yes}) \\\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\frac{0}{3} = 0 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\frac{0+1}{3+2} = \\frac{1}{5} \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\frac{0+1}{3} = \\frac{1}{3} \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\frac{1}{2} \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Laplace Smoothing adds 1 to counts and 2 to the denominator (for 2 values): \\\\( P(\\text{Rainy}|\\text{Yes}) = \\frac{0+1}{3+2} = \\frac{1}{5} \\\\).",
+      "vi": "Laplace Smoothing thêm 1 vào số đếm và 2 vào mẫu số (cho 2 giá trị): \\\\( P(\\text{Rainy}|\\text{Yes}) = \\frac{0+1}{3+2} = \\frac{1}{5} \\\\)."
+    }
+  }
+]

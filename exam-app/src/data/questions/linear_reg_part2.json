@@ -1,0 +1,947 @@
+[
+  {
+    "id": 1,
+    "question": "What is the fundamental difference between Batch, Stochastic, and Mini-batch Gradient Descent?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The initialization method of parameters \\( \\theta \\)."
+      },
+      {
+        "label": "B",
+        "text": "The amount of data used to compute the gradient per iteration."
+      },
+      {
+        "label": "C",
+        "text": "The parameter update formula."
+      },
+      {
+        "label": "D",
+        "text": "The convergence criteria."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The variants differ in the amount of data used for gradient computation: entire dataset, single point, or subset.",
+      "vi": "Các biến thể khác nhau ở lượng dữ liệu được sử dụng để tính toán gradient: toàn bộ tập dữ liệu, một điểm hoặc một tập con."
+    }
+  },
+  {
+    "id": 2,
+    "question": "Why is feature scaling important in machine learning, particularly for Gradient Descent-based algorithms?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To transform non-linear features into linear ones."
+      },
+      {
+        "label": "B",
+        "text": "To reduce the number of features in the dataset."
+      },
+      {
+        "label": "C",
+        "text": "To standardize feature ranges for efficient Gradient Descent convergence."
+      },
+      {
+        "label": "D",
+        "text": "To prevent overfitting by reducing model complexity."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Feature scaling standardizes feature ranges, enabling faster and more stable convergence in Gradient Descent.",
+      "vi": "Chuẩn hóa đặc trưng chuẩn hóa phạm vi đặc trưng, cho phép hội tụ nhanh hơn và ổn định hơn trong Gradient Descent."
+    }
+  },
+  {
+    "id": 3,
+    "question": "If a dataset has 2048 samples and a mini-batch size of 128, how many iterations are in one epoch?",
+    "options": [
+      {
+        "label": "A",
+        "text": "2048"
+      },
+      {
+        "label": "B",
+        "text": "128"
+      },
+      {
+        "label": "C",
+        "text": "16 (2048 / 128)"
+      },
+      {
+        "label": "D",
+        "text": "Cannot be determined without knowing the learning rate."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "One epoch consists of \\( 2048 / 128 = 16 \\) iterations, as each iteration processes one mini-batch.",
+      "vi": "Một epoch bao gồm \\( 2048 / 128 = 16 \\) lần lặp, vì mỗi lần lặp xử lý một lô nhỏ."
+    }
+  },
+  {
+    "id": 4,
+    "question": "Which dataset should be monitored to determine the optimal stopping point for training to prevent overfitting?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Training set"
+      },
+      {
+        "label": "B",
+        "text": "Validation set"
+      },
+      {
+        "label": "C",
+        "text": "Test set"
+      },
+      {
+        "label": "D",
+        "text": "Any dataset as long as \\( J(\\theta) \\) is small."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The validation set is used to monitor performance and prevent overfitting by determining the optimal stopping point.",
+      "vi": "Tập kiểm định được sử dụng để theo dõi hiệu suất và ngăn chặn quá khớp bằng cách xác định thời điểm dừng tối ưu."
+    }
+  },
+  {
+    "id": 5,
+    "question": "How can Linear Regression fit non-linear datasets?",
+    "options": [
+      {
+        "label": "A",
+        "text": "By adding L1 or L2 regularization terms."
+      },
+      {
+        "label": "B",
+        "text": "By reducing the learning rate."
+      },
+      {
+        "label": "C",
+        "text": "By applying transformations (e.g., logarithmic, polynomial) or interactions to input features."
+      },
+      {
+        "label": "D",
+        "text": "By using Gradient Descent variants."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Transformations like logarithmic or polynomial functions on input features allow Linear Regression to model non-linear relationships.",
+      "vi": "Các biến đổi như hàm logarit hoặc đa thức trên các đặc trưng đầu vào cho phép Hồi quy tuyến tính mô hình hóa mối quan hệ phi tuyến."
+    }
+  },
+  {
+    "id": 6,
+    "question": "When does Stochastic Gradient Descent have an advantage over Batch Gradient Descent despite noisy updates?",
+    "options": [
+      {
+        "label": "A",
+        "text": "When precise updates and smooth convergence are needed."
+      },
+      {
+        "label": "B",
+        "text": "When memory is limited and the dataset is small."
+      },
+      {
+        "label": "C",
+        "text": "When the dataset is large, as it is faster and can escape local minima."
+      },
+      {
+        "label": "D",
+        "text": "When the model requires large parameters."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Stochastic Gradient Descent is faster for large datasets and can escape local minima due to its noisy updates.",
+      "vi": "Stochastic Gradient Descent nhanh hơn với các tập dữ liệu lớn và có thể thoát khỏi cực tiểu cục bộ do các cập nhật nhiễu."
+    }
+  },
+  {
+    "id": 7,
+    "question": "What happens to parameters \\( \\theta_j \\) (except \\( \\theta_0 \\)) in L2-regularized Linear Regression with a small \\( \\lambda \\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "They become small, leading to underfitting."
+      },
+      {
+        "label": "B",
+        "text": "They become large, allowing a more complex model and risking overfitting."
+      },
+      {
+        "label": "C",
+        "text": "L2 regularization has no effect."
+      },
+      {
+        "label": "D",
+        "text": "Convergence slows down."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "A small \\( \\lambda \\) allows larger coefficients, enabling a more complex model that may overfit.",
+      "vi": "Một \\( \\lambda \\) nhỏ cho phép các hệ số lớn hơn, dẫn đến mô hình phức tạp hơn và có thể gây quá khớp."
+    }
+  },
+  {
+    "id": 8,
+    "question": "A Linear Regression model with the form \\( h_\\theta(x) = \\theta_0 + \\theta_1 \\log(x_1) + \\theta_2 x_2^2 + \\theta_3 x_3 \\) is an example of which technique?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Variable interaction"
+      },
+      {
+        "label": "B",
+        "text": "Polynomial regression"
+      },
+      {
+        "label": "C",
+        "text": "Quantitative input transformation"
+      },
+      {
+        "label": "D",
+        "text": "Regularization"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "This model uses quantitative transformations (e.g., logarithmic and polynomial) on input features to capture non-linear relationships.",
+      "vi": "Mô hình này sử dụng các biến đổi định lượng (ví dụ: logarit và đa thức) trên các đặc trưng đầu vào để nắm bắt mối quan hệ phi tuyến."
+    }
+  },
+  {
+    "id": 9,
+    "question": "What can happen if the learning rate \\( \\alpha \\) in Gradient Descent is too large?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The algorithm converges too slowly."
+      },
+      {
+        "label": "B",
+        "text": "Parameters \\( \\theta \\) are not updated enough."
+      },
+      {
+        "label": "C",
+        "text": "The algorithm may not converge or oscillate around the minimum."
+      },
+      {
+        "label": "D",
+        "text": "The loss function \\( J(\\theta) \\) always decreases steadily."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "A large learning rate can cause the algorithm to overshoot the minimum, leading to oscillations or divergence.",
+      "vi": "Tốc độ học lớn có thể khiến thuật toán vượt qua cực tiểu, dẫn đến dao động hoặc không hội tụ."
+    }
+  },
+  {
+    "id": 10,
+    "question": "Which feature scaling method always transforms features to a range between 0 and 1?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Standardization (Z-score)"
+      },
+      {
+        "label": "B",
+        "text": "Mean normalization"
+      },
+      {
+        "label": "C",
+        "text": "Min-max scaling"
+      },
+      {
+        "label": "D",
+        "text": "Unit vector scaling"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Min-max scaling transforms features to a fixed range, typically [0, 1].",
+      "vi": "Chuẩn hóa Min-Max biến đổi các đặc trưng sang một phạm vi cố định, thường là [0, 1]."
+    }
+  },
+  {
+    "id": 11,
+    "question": "What is the main advantage of Mini-batch Gradient Descent over Stochastic Gradient Descent?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Much faster for extremely large datasets."
+      },
+      {
+        "label": "B",
+        "text": "Significantly less memory usage."
+      },
+      {
+        "label": "C",
+        "text": "Smoother updates and more stable convergence using a subset of data."
+      },
+      {
+        "label": "D",
+        "text": "Guaranteed global minimum."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Mini-batch Gradient Descent provides smoother updates and more stable convergence by using a subset of data compared to a single point in SGD.",
+      "vi": "Mini-batch Gradient Descent cung cấp các cập nhật mượt mà hơn và hội tụ ổn định hơn bằng cách sử dụng một tập con dữ liệu so với một điểm trong SGD."
+    }
+  },
+  {
+    "id": 12,
+    "question": "What are the parameters \\( \\theta_0, \\theta_1 \\) in Linear Regression called?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Data features"
+      },
+      {
+        "label": "B",
+        "text": "Data labels"
+      },
+      {
+        "label": "C",
+        "text": "Learnable parameters"
+      },
+      {
+        "label": "D",
+        "text": "Hyperparameters"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "The parameters \\( \\theta_0, \\theta_1 \\) are learnable parameters adjusted during training to fit the model to the data.",
+      "vi": "Các tham số \\( \\theta_0, \\theta_1 \\) là các tham số có thể học được, được điều chỉnh trong quá trình huấn luyện để phù hợp với dữ liệu."
+    }
+  },
+  {
+    "id": 13,
+    "question": "When is Gradient Descent considered converged according to the given criteria?",
+    "options": [
+      {
+        "label": "A",
+        "text": "When \\( J(\\theta) \\) starts to increase."
+      },
+      {
+        "label": "B",
+        "text": "When the learning rate \\( \\alpha \\) becomes 0."
+      },
+      {
+        "label": "C",
+        "text": "When \\( J(\\theta) < \\epsilon \\) or the L2-norm of parameter change is less than \\( \\epsilon \\)."
+      },
+      {
+        "label": "D",
+        "text": "When the model is trained on the entire dataset."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Convergence occurs when \\( J(\\theta) < \\epsilon \\) or the L2-norm of parameter change is less than \\( \\epsilon \\).",
+      "vi": "Sự hội tụ xảy ra khi \\( J(\\theta) < \\epsilon \\) hoặc chuẩn L2 của sự thay đổi tham số nhỏ hơn \\( \\epsilon \\)."
+    }
+  },
+  {
+    "id": 14,
+    "question": "Which of the following is not a hyperparameter according to the document?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Batch size"
+      },
+      {
+        "label": "B",
+        "text": "Learning rate"
+      },
+      {
+        "label": "C",
+        "text": "Regularization weight (\\( \\lambda \\))"
+      },
+      {
+        "label": "D",
+        "text": "Regression coefficient \\( \\theta_1 \\)"
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "Regression coefficients like \\( \\theta_1 \\) are learnable parameters, not hyperparameters, which are set before training.",
+      "vi": "Các hệ số hồi quy như \\( \\theta_1 \\) là các tham số có thể học được, không phải siêu tham số, được thiết lập trước khi huấn luyện."
+    }
+  },
+  {
+    "id": 15,
+    "question": "Given two models trained on the same dataset: Model 1: \\( h_\\theta(x) = 1078 + 19254x - 3115x^2 - 982x^3 \\) and Model 2: \\( h_\\theta(x) = 4 - 12x - 7x^2 + 13x^3 \\), which is likely to generalize better to new data and why?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Model 1, because it has larger coefficients, indicating higher complexity."
+      },
+      {
+        "label": "B",
+        "text": "Model 2, because it has smaller coefficients, suggesting less overfitting and better generalization."
+      },
+      {
+        "label": "C",
+        "text": "Both models will generalize equally."
+      },
+      {
+        "label": "D",
+        "text": "Cannot be determined without knowing \\( \\lambda \\)."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Model 2 has smaller coefficients, indicating a simpler model that is less likely to overfit and more likely to generalize better.",
+      "vi": "Mô hình 2 có các hệ số nhỏ hơn, cho thấy mô hình đơn giản hơn, ít có khả năng quá khớp và có khả năng tổng quát hóa tốt hơn."
+    }
+  },
+  {
+    "id": 16,
+    "question": "What does MSE stand for in the context of Linear Regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Mean Standard Error"
+      },
+      {
+        "label": "B",
+        "text": "Mean Squared Error"
+      },
+      {
+        "label": "C",
+        "text": "Maximum Squared Error"
+      },
+      {
+        "label": "D",
+        "text": "Mean Scaled Error"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "MSE stands for Mean Squared Error, a common loss function in Linear Regression.",
+      "vi": "MSE là viết tắt của Mean Squared Error, một hàm mất mát phổ biến trong Hồi quy tuyến tính."
+    }
+  },
+  {
+    "id": 17,
+    "question": "What is another name for L1 Regularization in the context of Linear Regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ridge Regression"
+      },
+      {
+        "label": "B",
+        "text": "Lasso Regression"
+      },
+      {
+        "label": "C",
+        "text": "Elastic Net"
+      },
+      {
+        "label": "D",
+        "text": "Huber Regression"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "L1 Regularization is also known as Lasso Regression.",
+      "vi": "Chuẩn hóa L1 còn được gọi là Hồi quy Lasso."
+    }
+  },
+  {
+    "id": 18,
+    "question": "What is another name for L2 Regularization in the context of Linear Regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Lasso Regression"
+      },
+      {
+        "label": "B",
+        "text": "Ridge Regression"
+      },
+      {
+        "label": "C",
+        "text": "Elastic Net"
+      },
+      {
+        "label": "D",
+        "text": "Huber Regression"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "L2 Regularization is also known as Ridge Regression.",
+      "vi": "Chuẩn hóa L2 còn được gọi là Hồi quy Ridge."
+    }
+  },
+  {
+    "id": 19,
+    "question": "What does SGD stand for in the context of Gradient Descent variants?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Standard Gradient Descent"
+      },
+      {
+        "label": "B",
+        "text": "Stochastic Gradient Descent"
+      },
+      {
+        "label": "C",
+        "text": "Simplified Gradient Descent"
+      },
+      {
+        "label": "D",
+        "text": "Sequential Gradient Descent"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "SGD stands for Stochastic Gradient Descent, which uses a single data point for gradient updates.",
+      "vi": "SGD là viết tắt của Stochastic Gradient Descent, sử dụng một điểm dữ liệu duy nhất cho các cập nhật gradient."
+    }
+  },
+  {
+    "id": 20,
+    "question": "What does Batch GD refer to in the context of Gradient Descent variants?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Batch Gradient Descent"
+      },
+      {
+        "label": "B",
+        "text": "Balanced Gradient Descent"
+      },
+      {
+        "label": "C",
+        "text": "Basic Gradient Descent"
+      },
+      {
+        "label": "D",
+        "text": "Buffered Gradient Descent"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Batch GD refers to Batch Gradient Descent, which uses the entire dataset for gradient computation.",
+      "vi": "Batch GD là viết tắt của Batch Gradient Descent, sử dụng toàn bộ tập dữ liệu để tính toán gradient."
+    }
+  },
+  {
+    "id": 21,
+    "question": "What does Mini-batch GD refer to in the context of Gradient Descent variants?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Micro Gradient Descent"
+      },
+      {
+        "label": "B",
+        "text": "Mini-batch Gradient Descent"
+      },
+      {
+        "label": "C",
+        "text": "Modified Gradient Descent"
+      },
+      {
+        "label": "D",
+        "text": "Mixed Gradient Descent"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Mini-batch GD refers to Mini-batch Gradient Descent, which uses a subset of data for gradient updates.",
+      "vi": "Mini-batch GD là viết tắt của Mini-batch Gradient Descent, sử dụng một tập con dữ liệu cho các cập nhật gradient."
+    }
+  },
+  {
+    "id": 22,
+    "question": "What does GD typically stand for in the context of optimization algorithms discussed in the document?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Generalized Descent"
+      },
+      {
+        "label": "B",
+        "text": "Gradient Descent"
+      },
+      {
+        "label": "C",
+        "text": "Global Descent"
+      },
+      {
+        "label": "D",
+        "text": "Guided Descent"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "GD stands for Gradient Descent, the optimization algorithm used to minimize the loss function.",
+      "vi": "GD là viết tắt của Gradient Descent, thuật toán tối ưu hóa được sử dụng để giảm thiểu hàm mất mát."
+    }
+  },
+  {
+    "id": 23,
+    "question": "What does GPU stand for in the context of accelerating Gradient Descent variants?",
+    "options": [
+      {
+        "label": "A",
+        "text": "General Processing Unit"
+      },
+      {
+        "label": "B",
+        "text": "Graphics Processing Unit"
+      },
+      {
+        "label": "C",
+        "text": "Gradient Processing Unit"
+      },
+      {
+        "label": "D",
+        "text": "Global Processing Unit"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "GPU stands for Graphics Processing Unit, used to accelerate computations in Gradient Descent.",
+      "vi": "GPU là viết tắt của Graphics Processing Unit, được sử dụng để tăng tốc độ tính toán trong Gradient Descent."
+    }
+  },
+  {
+    "id": 24,
+    "question": "What type of parameter is 'batch size' in machine learning?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Learnable parameter"
+      },
+      {
+        "label": "B",
+        "text": "Hyperparameter"
+      },
+      {
+        "label": "C",
+        "text": "Output parameter"
+      },
+      {
+        "label": "D",
+        "text": "Error parameter"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Batch size is a hyperparameter that controls the number of data samples processed per iteration.",
+      "vi": "Kích thước lô là một siêu tham số kiểm soát số lượng mẫu dữ liệu được xử lý trong mỗi lần lặp."
+    }
+  },
+  {
+    "id": 25,
+    "question": "What is the role of the learning rate hyperparameter in Gradient Descent?",
+    "options": [
+      {
+        "label": "A",
+        "text": "It determines the number of epochs."
+      },
+      {
+        "label": "B",
+        "text": "It controls the step size of parameter updates during training."
+      },
+      {
+        "label": "C",
+        "text": "It sets the initial parameter values."
+      },
+      {
+        "label": "D",
+        "text": "It measures the model’s error."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The learning rate controls the step size of parameter updates in Gradient Descent.",
+      "vi": "Tốc độ học kiểm soát kích thước bước của các cập nhật tham số trong Gradient Descent."
+    }
+  },
+  {
+    "id": 26,
+    "question": "What is the first step in setting up a Linear Regression problem?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Define the loss function."
+      },
+      {
+        "label": "B",
+        "text": "Identify the problem and collect the dataset."
+      },
+      {
+        "label": "C",
+        "text": "Initialize the parameters \\( \\theta \\)."
+      },
+      {
+        "label": "D",
+        "text": "Apply feature scaling."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The first step is to identify the problem (e.g., predicting house prices) and collect the dataset.",
+      "vi": "Bước đầu tiên là xác định bài toán (ví dụ: dự đoán giá nhà) và thu thập tập dữ liệu."
+    }
+  },
+  {
+    "id": 27,
+    "question": "After setting up the hypothesis, what is the next step to select optimal values for \\( \\theta_0, \\theta_1 \\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Apply feature scaling."
+      },
+      {
+        "label": "B",
+        "text": "Define the loss function and minimize it."
+      },
+      {
+        "label": "C",
+        "text": "Split the dataset into training and test sets."
+      },
+      {
+        "label": "D",
+        "text": "Evaluate the model on the test set."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The next step is to define the loss function (e.g., MSE) and minimize it to find optimal \\( \\theta_0, \\theta_1 \\).",
+      "vi": "Bước tiếp theo là định nghĩa hàm mất mát (ví dụ: MSE) và giảm thiểu nó để tìm \\( \\theta_0, \\theta_1 \\) tối ưu."
+    }
+  },
+  {
+    "id": 28,
+    "question": "What is the first step in the Gradient Descent algorithm for optimizing the loss function?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Compute the partial derivatives."
+      },
+      {
+        "label": "B",
+        "text": "Initialize the parameters \\( \\theta \\)."
+      },
+      {
+        "label": "C",
+        "text": "Update the parameters."
+      },
+      {
+        "label": "D",
+        "text": "Check for convergence."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The first step in Gradient Descent is to initialize the parameters \\( \\theta \\).",
+      "vi": "Bước đầu tiên trong Gradient Descent là khởi tạo các tham số \\( \\theta \\)."
+    }
+  },
+  {
+    "id": 29,
+    "question": "Which step ensures the generalization ability of a Linear Regression model?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Training on the entire dataset."
+      },
+      {
+        "label": "B",
+        "text": "Monitoring performance on the training set."
+      },
+      {
+        "label": "C",
+        "text": "Splitting data into training, validation, and test sets."
+      },
+      {
+        "label": "D",
+        "text": "Increasing the learning rate."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Splitting data into training, validation, and test sets ensures proper evaluation and prevents overfitting for better generalization.",
+      "vi": "Chia dữ liệu thành tập huấn luyện, kiểm định và kiểm tra đảm bảo đánh giá đúng và ngăn chặn quá khớp để tổng quát hóa tốt hơn."
+    }
+  },
+  {
+    "id": 30,
+    "question": "What is a key preprocessing step before training a Linear Regression model?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Defining the hypothesis function."
+      },
+      {
+        "label": "B",
+        "text": "Feature scaling."
+      },
+      {
+        "label": "C",
+        "text": "Computing the loss function."
+      },
+      {
+        "label": "D",
+        "text": "Initializing parameters."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Feature scaling is a key preprocessing step to standardize feature ranges for efficient training.",
+      "vi": "Chuẩn hóa đặc trưng là một bước tiền xử lý quan trọng để chuẩn hóa phạm vi đặc trưng cho việc huấn luyện hiệu quả."
+    }
+  },
+  {
+    "question": "What is the relationship between the coefficient of determination (R²) and the correlation coefficient (r) in simple linear regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "R² = r"
+      },
+      {
+        "label": "B",
+        "text": "R² = r²"
+      },
+      {
+        "label": "C",
+        "text": "R² = √r"
+      },
+      {
+        "label": "D",
+        "text": "R² = 1/r"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "In simple linear regression, R-squared equals the square of the correlation coefficient (R² = r²).",
+      "vi": "Trong hồi quy tuyến tính đơn giản, R-squared bằng bình phương của hệ số tương quan (R² = r²)."
+    },
+    "id": 31
+  },
+  {
+    "question": "In matrix form, what does the hat matrix H = X(X'X)⁻¹X' represent in linear regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The projection matrix that transforms y into ŷ"
+      },
+      {
+        "label": "B",
+        "text": "The coefficient matrix"
+      },
+      {
+        "label": "C",
+        "text": "The error matrix"
+      },
+      {
+        "label": "D",
+        "text": "The correlation matrix"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "The hat matrix projects the observed values y onto the fitted values ŷ, hence ŷ = Hy.",
+      "vi": "Ma trận hat chiếu các giá trị quan sát y lên các giá trị fitted ŷ, do đó ŷ = Hy."
+    },
+    "id": 32
+  },
+  {
+    "question": "What is the Gauss-Markov theorem's main conclusion about OLS estimators?",
+    "options": [
+      {
+        "label": "A",
+        "text": "OLS estimators are always unbiased"
+      },
+      {
+        "label": "B",
+        "text": "OLS estimators are BLUE (Best Linear Unbiased Estimators)"
+      },
+      {
+        "label": "C",
+        "text": "OLS estimators minimize R-squared"
+      },
+      {
+        "label": "D",
+        "text": "OLS estimators require normally distributed errors"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Under certain assumptions, OLS estimators are BLUE - the best (minimum variance) linear unbiased estimators.",
+      "vi": "Dưới một số giả định nhất định, ước lượng OLS là BLUE - ước lượng tuyến tính không thiên vị tốt nhất (phương sai tối thiểu)."
+    },
+    "id": 33
+  },
+  {
+    "question": "What does the condition number of X'X matrix indicate in linear regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The degree of multicollinearity"
+      },
+      {
+        "label": "B",
+        "text": "The number of observations"
+      },
+      {
+        "label": "C",
+        "text": "The R-squared value"
+      },
+      {
+        "label": "D",
+        "text": "The degrees of freedom"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "A high condition number indicates severe multicollinearity among predictors.",
+      "vi": "Số điều kiện cao cho thấy đa cộng tuyến nghiêm trọng giữa các biến dự đoán."
+    },
+    "id": 34
+  },
+  {
+    "question": "In ridge regression, what happens to coefficients as λ (lambda) increases?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Coefficients approach zero but never become exactly zero"
+      },
+      {
+        "label": "B",
+        "text": "Some coefficients become exactly zero"
+      },
+      {
+        "label": "C",
+        "text": "Coefficients increase in magnitude"
+      },
+      {
+        "label": "D",
+        "text": "Coefficients remain unchanged"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Ridge regression shrinks coefficients toward zero but doesn't set them exactly to zero.",
+      "vi": "Hồi quy Ridge co các hệ số về gần không nhưng không đặt chúng về đúng bằng không."
+    },
+    "id": 35
+  }
+]

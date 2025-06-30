@@ -1,0 +1,682 @@
+[
+    {
+        "id": 1,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "What is the primary difference between supervised and unsupervised learning?",
+        "options": [
+            { "label": "A", "text": "Supervised learning identifies outliers, while unsupervised learning predicts responses." },
+            { "label": "B", "text": "Supervised learning uses a response variable Y, while unsupervised learning does not." },
+            { "label": "C", "text": "Unsupervised learning uses features x1, x2, ..., xp, while supervised learning does not." },
+            { "label": "D", "text": "Supervised learning is more subjective than unsupervised learning." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Supervised learning involves predicting a response variable Y using features, while unsupervised learning analyzes data without a response variable, focusing on patterns or structures.",
+            "vi": "Học có giám sát liên quan đến việc dự đoán biến phản hồi Y bằng các đặc trưng, trong khi học không giám sát phân tích dữ liệu mà không có biến phản hồi, tập trung vào các mẫu hoặc cấu trúc."
+        }
+    },
+    {
+        "id": 2,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "Which is a key characteristic of unsupervised learning?",
+        "options": [
+            { "label": "A", "text": "It involves observing both features and a response variable Y." },
+            { "label": "B", "text": "It aims to predict Y using features." },
+            { "label": "C", "text": "It lacks an associated response variable Y." },
+            { "label": "D", "text": "It is primarily used for classification tasks." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Unsupervised learning does not use a response variable Y, focusing instead on discovering patterns or groupings in data.",
+            "vi": "Học không giám sát không sử dụng biến phản hồi Y, thay vào đó tập trung vào việc khám phá các mẫu hoặc nhóm trong dữ liệu."
+        }
+    },
+    {
+        "id": 3,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "Why is unsupervised learning considered more subjective than supervised learning?",
+        "options": [
+            { "label": "A", "text": "It relies heavily on human intervention." },
+            { "label": "B", "text": "It lacks a simple goal like prediction of a response." },
+            { "label": "C", "text": "It always produces ambiguous results." },
+            { "label": "D", "text": "It requires more complex algorithms." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Unsupervised learning is subjective because it lacks a clear objective like predicting a response variable, requiring domain-specific interpretation of patterns.",
+            "vi": "Học không giám sát mang tính chủ quan vì không có mục tiêu rõ ràng như dự đoán biến phản hồi, đòi hỏi sự diễn giải đặc thù theo lĩnh vực."
+        }
+    },
+    {
+        "id": 4,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "What is a significant advantage of unsupervised learning?",
+        "options": [
+            { "label": "A", "text": "It guarantees a global minimum." },
+            { "label": "B", "text": "Unlabeled data is often easier to obtain than labeled data." },
+            { "label": "C", "text": "It directly predicts a response variable." },
+            { "label": "D", "text": "It is less computationally intensive." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Unlabeled data is more readily available and cheaper to collect than labeled data, making unsupervised learning advantageous.",
+            "vi": "Dữ liệu không nhãn thường dễ thu thập và rẻ hơn dữ liệu có nhãn, khiến học không giám sát trở nên có lợi."
+        }
+    },
+    {
+        "id": 5,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "Which application is increasingly relying on unsupervised learning techniques?",
+        "options": [
+            { "label": "A", "text": "Regression analysis" },
+            { "label": "B", "text": "Customer segmentation" },
+            { "label": "C", "text": "Time series forecasting" },
+            { "label": "D", "text": "Image recognition with labeled data" }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Customer segmentation, which groups customers based on shared characteristics, is a key application of unsupervised learning.",
+            "vi": "Phân đoạn khách hàng, nhóm khách hàng dựa trên các đặc điểm chung, là một ứng dụng quan trọng của học không giám sát."
+        }
+    },
+    {
+        "id": 6,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "What does 'outlier identification' involve in unsupervised learning?",
+        "options": [
+            { "label": "A", "text": "Grouping users into communities." },
+            { "label": "B", "text": "Finding data points that deviate significantly from normal patterns." },
+            { "label": "C", "text": "Predicting future trends based on historical data." },
+            { "label": "D", "text": "Segmenting customers based on purchase history." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Outlier identification detects data points that significantly deviate from typical patterns, often for anomaly detection.",
+            "vi": "Xác định ngoại lệ phát hiện các điểm dữ liệu lệch đáng kể so với các mẫu thông thường, thường dùng để phát hiện bất thường."
+        }
+    },
+    {
+        "id": 7,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "What does clustering refer to in unsupervised learning?",
+        "options": [
+            { "label": "A", "text": "Predicting a response variable based on features." },
+            { "label": "B", "text": "Finding subgroups, or clusters, in a dataset." },
+            { "label": "C", "text": "Classifying data into predefined categories." },
+            { "label": "D", "text": "Identifying influential individuals in social networks." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Clustering involves identifying subgroups (clusters) in data where observations within each cluster are similar.",
+            "vi": "Gom cụm liên quan đến việc xác định các nhóm con (cụm) trong dữ liệu, nơi các quan sát trong mỗi cụm tương tự nhau."
+        }
+    },
+    {
+        "id": 8,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "What is the goal of clustering in a dataset?",
+        "options": [
+            { "label": "A", "text": "To make observations across different groups very similar." },
+            { "label": "B", "text": "To fix the number of groups at K=3." },
+            { "label": "C", "text": "To ensure observations within each group are quite similar." },
+            { "label": "D", "text": "To assign each observation to at most one group without similarity constraints." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Clustering aims to partition data so that observations within each cluster are similar, while those in different clusters are distinct.",
+            "vi": "Gom cụm nhằm phân chia dữ liệu sao cho các quan sát trong mỗi cụm tương tự nhau, trong khi các cụm khác nhau thì khác biệt."
+        }
+    },
+    {
+        "id": 9,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "What is a domain-specific consideration in clustering?",
+        "options": [
+            { "label": "A", "text": "The number of features (x1, x2, ..., xp) in the dataset." },
+            { "label": "B", "text": "Defining what it means for observations to be similar or different." },
+            { "label": "C", "text": "The computational power required for the algorithm." },
+            { "label": "D", "text": "The total number of data samples (m)." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Defining similarity or difference between observations is domain-specific, as it depends on the context (e.g., customer behavior vs. image pixels).",
+            "vi": "Xác định sự tương tự hoặc khác biệt giữa các quan sát là đặc thù theo lĩnh vực, vì nó phụ thuộc vào bối cảnh (ví dụ: hành vi khách hàng so với pixel ảnh)."
+        }
+    },
+    {
+        "id": 10,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "What does customer segmentation involve as a marketing strategy?",
+        "options": [
+            { "label": "A", "text": "Predicting customer loyalty using a response variable." },
+            { "label": "B", "text": "Dividing a customer base into groups based on shared characteristics." },
+            { "label": "C", "text": "Manually categorizing each customer into predefined segments." },
+            { "label": "D", "text": "Analyzing individual customer behavior without grouping." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Customer segmentation groups customers based on shared traits (e.g., demographics, behavior) to tailor marketing strategies.",
+            "vi": "Phân đoạn khách hàng nhóm khách hàng dựa trên các đặc điểm chung (ví dụ: nhân khẩu học, hành vi) để điều chỉnh chiến lược tiếp thị."
+        }
+    },
+    {
+        "id": 11,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "Which is NOT a benefit of customer segmentation?",
+        "options": [
+            { "label": "A", "text": "Better understanding of customers." },
+            { "label": "B", "text": "Anticipating customer needs." },
+            { "label": "C", "text": "Decreased engagement and loyalty." },
+            { "label": "D", "text": "Personalizing marketing efforts." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Customer segmentation improves understanding, anticipation, and personalization, but does not decrease engagement or loyalty.",
+            "vi": "Phân đoạn khách hàng cải thiện sự hiểu biết, dự đoán và cá nhân hóa, nhưng không làm giảm sự tương tác hoặc lòng trung thành."
+        }
+    },
+    {
+        "id": 12,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "Which two clustering methods are explicitly mentioned in the source?",
+        "options": [
+            { "label": "A", "text": "Regression and Classification" },
+            { "label": "B", "text": "K-means clustering and Hierarchical clustering" },
+            { "label": "C", "text": "Decision Trees and Support Vector Machines" },
+            { "label": "D", "text": "Principal Component Analysis and Factor Analysis" }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The source highlights K-means and Hierarchical clustering as key unsupervised clustering methods.",
+            "vi": "Nguồn nhấn mạnh K-means và Gom cụm phân cấp là các phương pháp gom cụm không giám sát chính."
+        }
+    },
+    {
+        "id": 13,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "What is a key characteristic of K-means clustering regarding the number of clusters?",
+        "options": [
+            { "label": "A", "text": "The number of clusters is determined automatically." },
+            { "label": "B", "text": "It partitions observations into a pre-specified number of clusters K." },
+            { "label": "C", "text": "A tree-like representation determines the number of clusters." },
+            { "label": "D", "text": "It does not require choosing K." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "K-means requires a pre-specified number of clusters K, which is a defining feature of the algorithm.",
+            "vi": "K-means yêu cầu một số lượng cụm K được xác định trước, là đặc điểm chính của thuật toán."
+        }
+    },
+    {
+        "id": 14,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "What properties must K-means cluster sets (C1, ..., CK) satisfy?",
+        "options": [
+            { "label": "A", "text": "\\\\( C_1 \\cup C_2 \\cup ... \\cup C_K = \\{1, ..., n\\} \\\\) and \\\\( C_k \\cap C_{k'} = \\emptyset \\\\) for all \\\\( k \\neq k' \\\\)." },
+            { "label": "B", "text": "Each observation belongs to at most one cluster, and some may not belong to any." },
+            { "label": "C", "text": "Clusters can overlap, but all observations must be covered." },
+            { "label": "D", "text": "The number of clusters K must be less than n." }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "K-means clusters are mutually exclusive (\\\\( C_k \\cap C_{k'} = \\emptyset \\\\)) and cover all observations (\\\\( C_1 \\cup ... \\cup C_K = \\{1, ..., n\\} \\\\)).",
+            "vi": "Các cụm K-means không giao nhau (\\\\( C_k \\cap C_{k'} = \\emptyset \\\\)) và bao phủ tất cả các quan sát (\\\\( C_1 \\cup ... \\cup C_K = \\{1, ..., n\\} \\\\))."
+        }
+    },
+    {
+        "id": 15,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "What are centroids in K-means clustering?",
+        "options": [
+            { "label": "A", "text": "The farthest data points from the cluster center." },
+            { "label": "B", "text": "Randomly selected data points excluded from clusters." },
+            { "label": "C", "text": "The representatives of the clusters." },
+            { "label": "D", "text": "The boundaries between different clusters." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Centroids are the mean points of all data points in a cluster, representing the cluster’s center.",
+            "vi": "Centroid là các điểm trung bình của tất cả các điểm dữ liệu trong một cụm, đại diện cho trung tâm của cụm."
+        }
+    },
+    {
+        "id": 16,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "What is the purpose of the objective function in K-means clustering?",
+        "options": [
+            { "label": "A", "text": "To calculate the number of iterations for convergence." },
+            { "label": "B", "text": "To measure how well data points are grouped within their clusters." },
+            { "label": "C", "text": "To determine the optimal number of clusters K." },
+            { "label": "D", "text": "To identify outliers not belonging to any cluster." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The objective function in K-means measures the sum of squared distances between points and their cluster centroids, assessing clustering quality.",
+            "vi": "Hàm mục tiêu trong K-means đo tổng bình phương khoảng cách giữa các điểm và centroid của cụm, đánh giá chất lượng gom cụm."
+        }
+    },
+    {
+        "id": 17,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "In the K-means objective function, what does \\\\( ||x_i^{(j)} - c_j||^2 \\\\) represent?",
+        "options": [
+            { "label": "A", "text": "The centroid of cluster j." },
+            { "label": "B", "text": "The number of data samples." },
+            { "label": "C", "text": "The squared distance between a data point and its cluster centroid." },
+            { "label": "D", "text": "The total number of clusters." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "\\\\( ||x_i^{(j)} - c_j||^2 \\\\) is the squared Euclidean distance between data point \\\\( x_i^{(j)} \\\\) and centroid \\\\( c_j \\\\), used in the objective function.",
+            "vi": "\\\\( ||x_i^{(j)} - c_j||^2 \\\\) là khoảng cách Euclidean bình phương giữa điểm dữ liệu \\\\( x_i^{(j)} \\\\) và centroid \\\\( c_j \\\\), được dùng trong hàm mục tiêu."
+        }
+    },
+    {
+        "id": 18,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "What is the first step in the K-means algorithm after choosing K?",
+        "options": [
+            { "label": "A", "text": "Recalculating the centroids of the clusters." },
+            { "label": "B", "text": "Assigning each data point to a cluster." },
+            { "label": "C", "text": "Randomly selecting K data points as initial centroids." },
+            { "label": "D", "text": "Plotting the objective function value." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "K-means begins by randomly selecting K data points as initial centroids to initialize the clustering process.",
+            "vi": "K-means bắt đầu bằng cách chọn ngẫu nhiên K điểm dữ liệu làm centroid ban đầu để khởi tạo quá trình gom cụm."
+        }
+    },
+    {
+        "id": 19,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "During the K-means 'Assignment' step, each data point is assigned to:",
+        "options": [
+            { "label": "A", "text": "A randomly chosen cluster." },
+            { "label": "B", "text": "The cluster whose centroid is furthest from it." },
+            { "label": "C", "text": "The cluster whose centroid is closest to it." },
+            { "label": "D", "text": "A cluster with the fewest data points." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "In the Assignment step, each data point is assigned to the cluster with the nearest centroid, minimizing the objective function.",
+            "vi": "Trong bước Gán, mỗi điểm dữ liệu được gán vào cụm có centroid gần nhất, tối thiểu hóa hàm mục tiêu."
+        }
+    },
+    {
+        "id": 20,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "How are centroids recalculated in the K-means 'Update' step?",
+        "options": [
+            { "label": "A", "text": "By randomly selecting new data points." },
+            { "label": "B", "text": "By taking the mean of all data points in each cluster." },
+            { "label": "C", "text": "By moving them to the cluster boundary." },
+            { "label": "D", "text": "By selecting the median of all data points in each cluster." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "In the Update step, centroids are recalculated as the mean of all data points assigned to each cluster.",
+            "vi": "Trong bước Cập nhật, centroid được tính lại bằng trung bình của tất cả các điểm dữ liệu được gán vào mỗi cụm."
+        }
+    },
+    {
+        "id": 21,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "What does convergence mean in the context of the K-means algorithm?",
+        "options": [
+            { "label": "A", "text": "The algorithm reaches a global minimum of the objective function." },
+            { "label": "B", "text": "Assignments no longer change significantly, or a set number of iterations is reached." },
+            { "label": "C", "text": "All data points are assigned to a single cluster." },
+            { "label": "D", "text": "The number of clusters K changes automatically." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Convergence occurs when cluster assignments stabilize or a maximum number of iterations is reached.",
+            "vi": "Hội tụ xảy ra khi các gán cụm ổn định hoặc đạt đến số lần lặp tối đa."
+        }
+    },
+    {
+        "id": 22,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Hard",
+        "question": "Does each iteration of K-means guarantee a decrease in the objective function?",
+        "options": [
+            { "label": "A", "text": "No, it can increase in some iterations." },
+            { "label": "B", "text": "Yes, both assignment and update steps ensure a monotonic decrease." },
+            { "label": "C", "text": "Only the assignment step ensures a decrease." },
+            { "label": "D", "text": "Only the update step ensures a decrease." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Both the assignment (assigning points to nearest centroids) and update (recomputing centroids) steps reduce or maintain the objective function, ensuring a monotonic decrease.",
+            "vi": "Cả bước gán (gán điểm vào centroid gần nhất) và cập nhật (tính lại centroid) đều giảm hoặc duy trì hàm mục tiêu, đảm bảo giảm đơn điệu."
+        }
+    },
+    {
+        "id": 23,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "Why does the assignment step in K-means reduce the objective function?",
+        "options": [
+            { "label": "A", "text": "It randomly reassigns points." },
+            { "label": "B", "text": "Moving a point to a closer centroid reduces its squared distance." },
+            { "label": "C", "text": "It removes outliers from clusters." },
+            { "label": "D", "text": "It increases the number of clusters." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Assigning a point to the nearest centroid minimizes its squared distance, reducing the objective function \\\\( \\sum_{j=1}^K \\sum_{i \\in C_j} ||x_i^{(j)} - c_j||^2 \\\\).",
+            "vi": "Gán điểm vào centroid gần nhất tối thiểu hóa khoảng cách bình phương, giảm hàm mục tiêu \\\\( \\sum_{j=1}^K \\sum_{i \\in C_j} ||x_i^{(j)} - c_j||^2 \\\\)."
+        }
+    },
+    {
+        "id": 24,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Hard",
+        "question": "Does K-means guarantee convergence to the global minimum?",
+        "options": [
+            { "label": "A", "text": "Yes, always." },
+            { "label": "B", "text": "Only if initial centroids are optimally chosen." },
+            { "label": "C", "text": "No, it may converge to a local minimum." },
+            { "label": "D", "text": "Only if the dataset is small." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "K-means is sensitive to initial centroid placement and may converge to a local minimum, not necessarily the global minimum.",
+            "vi": "K-means nhạy cảm với vị trí centroid ban đầu và có thể hội tụ đến cực tiểu cục bộ, không nhất thiết là cực tiểu toàn cục."
+        }
+    },
+    {
+        "id": 25,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "What is a common method for choosing the number of clusters K in K-means?",
+        "options": [
+            { "label": "A", "text": "Random selection." },
+            { "label": "B", "text": "The Elbow method." },
+            { "label": "C", "text": "Hierarchical dendrogram analysis." },
+            { "label": "D", "text": "Using a fixed K=3." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The Elbow method plots the objective function against K, selecting K at the 'elbow' where additional clusters yield diminishing returns.",
+            "vi": "Phương pháp Elbow vẽ hàm mục tiêu theo K, chọn K tại điểm 'khuỷu tay' nơi các cụm bổ sung mang lại lợi ích giảm dần."
+        }
+    },
+    {
+        "id": 26,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "In the Elbow method, what indicates the appropriate number of clusters?",
+        "options": [
+            { "label": "A", "text": "Where the objective function value increases rapidly." },
+            { "label": "B", "text": "The bend (knee) in the plot of objective function values versus K." },
+            { "label": "C", "text": "The highest objective function value." },
+            { "label": "D", "text": "Where the objective function value becomes zero." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "The 'elbow' in the plot indicates a point where adding more clusters does not significantly reduce the objective function.",
+            "vi": "Điểm 'khuỷu tay' trong biểu đồ cho thấy điểm mà việc thêm cụm không làm giảm đáng kể hàm mục tiêu."
+        }
+    },
+    {
+        "id": 27,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Hard",
+        "question": "What is a key advantage of Hierarchical clustering over K-means?",
+        "options": [
+            { "label": "A", "text": "It always converges to a global minimum." },
+            { "label": "B", "text": "It requires a pre-specified number of clusters K." },
+            { "label": "C", "text": "It does not require choosing K in advance." },
+            { "label": "D", "text": "It is faster for large datasets." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Hierarchical clustering builds a dendrogram, allowing the number of clusters to be chosen after analysis, unlike K-means which requires K upfront.",
+            "vi": "Gom cụm phân cấp xây dựng dendrogram, cho phép chọn số lượng cụm sau khi phân tích, không như K-means yêu cầu K trước."
+        }
+    },
+    {
+        "id": 28,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "What is the 'bottom-up' type of hierarchical clustering called?",
+        "options": [
+            { "label": "A", "text": "Divisive clustering" },
+            { "label": "B", "text": "Agglomerative clustering" },
+            { "label": "C", "text": "K-medoids clustering" },
+            { "label": "D", "text": "Spectral clustering" }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Agglomerative clustering is a bottom-up approach, starting with each point as a cluster and merging them iteratively.",
+            "vi": "Gom cụm hợp nhất là phương pháp từ dưới lên, bắt đầu với mỗi điểm là một cụm và hợp nhất chúng theo từng bước."
+        }
+    },
+    {
+        "id": 29,
+        "category": "Terminology",
+        "difficulty": "Easy",
+        "question": "What is the visual representation produced by hierarchical clustering called?",
+        "options": [
+            { "label": "A", "text": "A scatter plot" },
+            { "label": "B", "text": "A histogram" },
+            { "label": "C", "text": "A dendrogram" },
+            { "label": "D", "text": "A centroid plot" }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "A dendrogram is a tree-like diagram showing the hierarchical merging of clusters in hierarchical clustering.",
+            "vi": "Dendrogram là biểu đồ dạng cây thể hiện sự hợp nhất phân cấp của các cụm trong gom cụm phân cấp."
+        }
+    },
+    {
+        "id": 30,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "What is the starting point of the agglomerative hierarchical clustering algorithm?",
+        "options": [
+            { "label": "A", "text": "All points in a single cluster." },
+            { "label": "B", "text": "Each point in its own cluster." },
+            { "label": "C", "text": "Randomly selected K clusters." },
+            { "label": "D", "text": "Two pre-defined clusters." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Agglomerative hierarchical clustering starts with each data point as its own cluster, merging them iteratively.",
+            "vi": "Gom cụm phân cấp hợp nhất bắt đầu với mỗi điểm dữ liệu là một cụm riêng, hợp nhất chúng theo từng bước."
+        }
+    },
+    {
+        "id": 31,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Medium",
+        "question": "In agglomerative hierarchical clustering, what is the next step after starting with each point in its own cluster?",
+        "options": [
+            { "label": "A", "text": "Splitting the largest cluster into two." },
+            { "label": "B", "text": "Merging the farthest two clusters." },
+            { "label": "C", "text": "Merging the closest two clusters." },
+            { "label": "D", "text": "Recalculating cluster centroids." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "The algorithm merges the two closest clusters based on a linkage criterion, building the hierarchy bottom-up.",
+            "vi": "Thuật toán hợp nhất hai cụm gần nhất dựa trên tiêu chí liên kết, xây dựng phân cấp từ dưới lên."
+        }
+    },
+    {
+        "id": 32,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "Which linkage in hierarchical clustering measures the distance between the closest elements of two clusters?",
+        "options": [
+            { "label": "A", "text": "Complete link" },
+            { "label": "B", "text": "Average link" },
+            { "label": "C", "text": "Single link" },
+            { "label": "D", "text": "Centroid link" }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Single link measures the distance between the closest pair of points in two clusters, often leading to elongated clusters.",
+            "vi": "Liên kết đơn đo khoảng cách giữa cặp điểm gần nhất trong hai cụm, thường dẫn đến các cụm kéo dài."
+        }
+    },
+    {
+        "id": 33,
+        "category": "Terminology",
+        "difficulty": "Medium",
+        "question": "In hierarchical clustering with 'Complete link,' what distance is used between clusters C1 and C2?",
+        "options": [
+            { "label": "A", "text": "The average of all pairwise distances." },
+            { "label": "B", "text": "The distance between the centroids of the clusters." },
+            { "label": "C", "text": "The distance between the farthest elements in the clusters." },
+            { "label": "D", "text": "The distance between the closest elements in the clusters." }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Complete link uses the maximum distance between any pair of points in clusters C1 and C2, ensuring compact clusters.",
+            "vi": "Liên kết hoàn chỉnh sử dụng khoảng cách lớn nhất giữa bất kỳ cặp điểm nào trong cụm C1 và C2, đảm bảo các cụm gọn."
+        }
+    },
+    {
+        "id": 34,
+        "category": "Calculations",
+        "difficulty": "Medium",
+        "question": "What is the formula for Manhattan distance between vectors x and y?",
+        "options": [
+            { "label": "A", "text": "\\\\( D_E(x, y) = \\sqrt{\\sum (x_i - y_i)^2} \\\\)" },
+            { "label": "B", "text": "\\\\( D_M(x, y) = \\sum |x_i - y_i| \\\\)" },
+            { "label": "C", "text": "\\\\( D_M(x, y) = \\max(|x_i - y_i|) \\\\)" },
+            { "label": "D", "text": "\\\\( D_E(x, y) = \\sum x_i \\cdot y_i \\\\)" }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Manhattan distance is \\\\( D_M(x, y) = \\sum |x_i - y_i| \\\\), summing the absolute differences of coordinates.",
+            "vi": "Khoảng cách Manhattan là \\\\( D_M(x, y) = \\sum |x_i - y_i| \\\\), tính tổng các chênh lệch tuyệt đối của tọa độ."
+        }
+    },
+    {
+        "id": 35,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Hard",
+        "question": "Which linkage in hierarchical clustering may produce 'long stretched clusters'?",
+        "options": [
+            { "label": "A", "text": "Complete link" },
+            { "label": "B", "text": "Average link" },
+            { "label": "C", "text": "Single link" },
+            { "label": "D", "text": "Centroid link" }
+        ],
+        "answer": "C",
+        "explanation": {
+            "en": "Single link, by merging clusters based on the closest points, can create elongated, chain-like clusters.",
+            "vi": "Liên kết đơn, bằng cách hợp nhất cụm dựa trên các điểm gần nhất, có thể tạo ra các cụm kéo dài, giống chuỗi."
+        }
+    },
+    {
+        "id": 36,
+        "category": "Calculations",
+        "difficulty": "Hard",
+        "question": "Given points [1, 2] and [3, 5], what is the Manhattan distance?",
+        "options": [
+            { "label": "A", "text": "\\\\( \\sqrt{(3-1)^2 + (5-2)^2} = \\sqrt{13} \\approx 3.61 \\\\)" },
+            { "label": "B", "text": "\\\\( |3-1| + |5-2| = 5 \\\\)" },
+            { "label": "C", "text": "\\\\( \\max(|3-1|, |5-2|) = 3 \\\\)" },
+            { "label": "D", "text": "\\\\( (3-1)^2 + (5-2)^2 = 13 \\\\)" }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Manhattan distance = \\\\( |3-1| + |5-2| = 2 + 3 = 5 \\\\).",
+            "vi": "Khoảng cách Manhattan = \\\\( |3-1| + |5-2| = 2 + 3 = 5 \\\\)."
+        }
+    },
+    {
+        "id": 37,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Hard",
+        "question": "How does the K-means++ initialization improve over random centroid selection?",
+        "options": [
+            { "label": "A", "text": "It guarantees convergence to the global minimum." },
+            { "label": "B", "text": "It selects initial centroids to be farther apart, improving convergence." },
+            { "label": "C", "text": "It reduces the number of clusters needed." },
+            { "label": "D", "text": "It eliminates the need for the assignment step." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "K-means++ selects initial centroids probabilistically, favoring points farther apart, which often leads to better convergence.",
+            "vi": "K-means++ chọn centroid ban đầu theo xác suất, ưu tiên các điểm xa nhau, thường dẫn đến hội tụ tốt hơn."
+        }
+    },
+    {
+        "id": 38,
+        "category": "Calculations",
+        "difficulty": "Challenging",
+        "question": "For a K-means cluster with points [1, 1], [2, 2], [3, 3], what is the centroid?",
+        "options": [
+            { "label": "A", "text": "[1, 1]" },
+            { "label": "B", "text": "[2, 2]" },
+            { "label": "C", "text": "[3, 3]" },
+            { "label": "D", "text": "[2, 2]" }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "Centroid is the mean: \\\\( \\left( \\frac{1+2+3}{3}, \\frac{1+2+3}{3} \\right) = (2, 2) \\\\).",
+            "vi": "Centroid là trung bình: \\\\( \\left( \\frac{1+2+3}{3}, \\frac{1+2+3}{3} \\right) = (2, 2) \\\\)."
+        }
+    },
+    {
+        "id": 39,
+        "category": "Problem-Solving Scenarios",
+        "difficulty": "Hard",
+        "question": "What is a limitation of K-means when applied to non-spherical clusters?",
+        "options": [
+            { "label": "A", "text": "It cannot handle high-dimensional data." },
+            { "label": "B", "text": "It assumes clusters are spherical and may misassign points." },
+            { "label": "C", "text": "It requires a dendrogram for visualization." },
+            { "label": "D", "text": "It always produces overlapping clusters." }
+        ],
+        "answer": "B",
+        "explanation": {
+            "en": "K-means assumes spherical clusters (based on Euclidean distance), which can lead to poor performance on non-spherical or irregular clusters.",
+            "vi": "K-means giả định các cụm hình cầu (dựa trên khoảng cách Euclidean), có thể dẫn đến hiệu suất kém trên các cụm không hình cầu hoặc không đều."
+        }
+    },
+    {
+        "id": 40,
+        "category": "Calculations",
+        "difficulty": "Challenging",
+        "question": "Given a cluster with points [1, 1], [2, 2], [3, 3], what is the K-means objective function value if the centroid is [2, 2]?",
+        "options": [
+            { "label": "A", "text": "\\\\( (1-2)^2 + (1-2)^2 + (2-2)^2 + (2-2)^2 + (3-2)^2 + (3-2)^2 = 4 \\\\)" },
+            { "label": "B", "text": "\\\\( \\sqrt{(1-2)^2 + (2-2)^2 + (3-2)^2} \\approx 1.414 \\\\)" },
+            { "label": "C", "text": "\\\\( (1-2)^2 + (2-2)^2 + (3-2)^2 = 2 \\\\)" },
+            { "label": "D", "text": "\\\\( |1-2| + |2-2| + |3-2| = 2 \\\\)" }
+        ],
+        "answer": "A",
+        "explanation": {
+            "en": "Objective function = \\\\( \\sum ||x_i - c||^2 = (1-2)^2 + (1-2)^2 + (2-2)^2 + (2-2)^2 + (3-2)^2 + (3-2)^2 = 1+1+0+0+1+1 = 4 \\\\).",
+            "vi": "Hàm mục tiêu = \\\\( \\sum ||x_i - c||^2 = (1-2)^2 + (1-2)^2 + (2-2)^2 + (2-2)^2 + (3-2)^2 + (3-2)^2 = 1+1+0+0+1+1 = 4 \\\\)."
+        }
+    }
+]

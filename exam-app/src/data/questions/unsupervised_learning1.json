@@ -1,0 +1,951 @@
+{
+  "title": "Unsupervised Learning - K-means & Hierarchical Clustering",
+  "description": "Comprehensive exam covering unsupervised learning techniques including K-means clustering and hierarchical clustering methods",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main characteristic of unsupervised learning?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It uses labeled data to train the model."
+        },
+        {
+          "label": "B",
+          "text": "It learns patterns from data without labeled examples."
+        },
+        {
+          "label": "C",
+          "text": "It requires a validation set for training."
+        },
+        {
+          "label": "D",
+          "text": "It only works with numerical data."
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Unsupervised learning discovers hidden patterns in data without using labeled examples or target values.",
+        "vi": "Học không giám sát khám phá các mẫu ẩn trong dữ liệu mà không sử dụng các ví dụ có nhãn hoặc giá trị mục tiêu."
+      }
+    },
+    {
+      "id": 2,
+      "question": "What are the two main types of unsupervised learning tasks?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Classification and regression"
+        },
+        {
+          "label": "B",
+          "text": "Clustering and dimensionality reduction"
+        },
+        {
+          "label": "C",
+          "text": "Supervised and semi-supervised learning"
+        },
+        {
+          "label": "D",
+          "text": "Training and testing"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The two main types of unsupervised learning are clustering (grouping similar data points) and dimensionality reduction (reducing feature space).",
+        "vi": "Hai loại chính của học không giám sát là phân cụm (nhóm các điểm dữ liệu tương tự) và giảm chiều (giảm không gian đặc trưng)."
+      }
+    },
+    {
+      "id": 3,
+      "question": "What is the primary goal of clustering algorithms?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To predict future values"
+        },
+        {
+          "label": "B",
+          "text": "To group similar data points together"
+        },
+        {
+          "label": "C",
+          "text": "To reduce the number of features"
+        },
+        {
+          "label": "D",
+          "text": "To classify data into predefined categories"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Clustering algorithms aim to group similar data points together while keeping dissimilar points in different groups.",
+        "vi": "Các thuật toán phân cụm nhằm nhóm các điểm dữ liệu tương tự lại với nhau trong khi giữ các điểm không tương tự ở các nhóm khác nhau."
+      }
+    },
+    {
+      "id": 4,
+      "question": "Which distance metric is most commonly used in K-means clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Manhattan distance"
+        },
+        {
+          "label": "B",
+          "text": "Euclidean distance"
+        },
+        {
+          "label": "C",
+          "text": "Cosine similarity"
+        },
+        {
+          "label": "D",
+          "text": "Hamming distance"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "K-means clustering typically uses Euclidean distance to measure the similarity between data points and cluster centroids.",
+        "vi": "Phân cụm K-means thường sử dụng khoảng cách Euclidean để đo độ tương tự giữa các điểm dữ liệu và tâm cụm."
+      }
+    },
+    {
+      "id": 5,
+      "question": "How is the centroid of a cluster calculated in K-means?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The median of all points in the cluster"
+        },
+        {
+          "label": "B",
+          "text": "The mean (average) of all points in the cluster"
+        },
+        {
+          "label": "C",
+          "text": "The point closest to all other points"
+        },
+        {
+          "label": "D",
+          "text": "A randomly selected point from the cluster"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The centroid in K-means is calculated as the mean (average) of all data points assigned to that cluster.",
+        "vi": "Tâm cụm trong K-means được tính là trung bình của tất cả các điểm dữ liệu được gán cho cụm đó."
+      }
+    },
+    {
+      "id": 6,
+      "question": "What is the objective function that K-means tries to minimize?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sum of squared distances between all data points"
+        },
+        {
+          "label": "B",
+          "text": "Within-cluster sum of squared distances (WCSS)"
+        },
+        {
+          "label": "C",
+          "text": "Between-cluster sum of squared distances"
+        },
+        {
+          "label": "D",
+          "text": "Maximum distance between any two points"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "K-means minimizes the Within-Cluster Sum of Squared distances (WCSS), which measures the compactness of clusters.",
+        "vi": "K-means giảm thiểu Tổng bình phương khoảng cách trong cụm (WCSS), đo độ compact của các cụm."
+      }
+    },
+    {
+      "id": 7,
+      "question": "What is the mathematical formula for WCSS in K-means?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\( \\\\sum_{i=1}^{k} \\\\sum_{x \\\\in C_i} ||x - \\\\mu_i|| \\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\( \\\\sum_{i=1}^{k} \\\\sum_{x \\\\in C_i} ||x - \\\\mu_i||^2 \\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\( \\\\sum_{i=1}^{k} ||\\\\mu_i||^2 \\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\( \\\\sum_{i=1}^{k} \\\\sum_{x \\\\in C_i} |x - \\\\mu_i| \\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "WCSS is calculated as \\\\( \\\\sum_{i=1}^{k} \\\\sum_{x \\\\in C_i} ||x - \\\\mu_i||^2 \\\\), where \\\\( \\\\mu_i \\\\) is the centroid of cluster \\\\( C_i \\\\).",
+        "vi": "WCSS được tính là \\\\( \\\\sum_{i=1}^{k} \\\\sum_{x \\\\in C_i} ||x - \\\\mu_i||^2 \\\\), trong đó \\\\( \\\\mu_i \\\\) là tâm của cụm \\\\( C_i \\\\)."
+      }
+    },
+    {
+      "id": 8,
+      "question": "What are the main steps of the K-means algorithm?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Initialize centroids, assign points, update centroids, repeat until convergence"
+        },
+        {
+          "label": "B",
+          "text": "Sort data, divide into k groups, calculate means"
+        },
+        {
+          "label": "C",
+          "text": "Calculate distances, find minimum, create clusters"
+        },
+        {
+          "label": "D",
+          "text": "Normalize data, apply PCA, then cluster"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "K-means follows these steps: 1) Initialize k centroids, 2) Assign each point to nearest centroid, 3) Update centroids, 4) Repeat until convergence.",
+        "vi": "K-means theo các bước: 1) Khởi tạo k tâm cụm, 2) Gán mỗi điểm tới tâm gần nhất, 3) Cập nhật tâm cụm, 4) Lặp lại cho đến hội tụ."
+      }
+    },
+    {
+      "id": 9,
+      "question": "What is a major limitation of K-means clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It works only with categorical data"
+        },
+        {
+          "label": "B",
+          "text": "It requires knowing the number of clusters (k) in advance"
+        },
+        {
+          "label": "C",
+          "text": "It cannot handle large datasets"
+        },
+        {
+          "label": "D",
+          "text": "It only works in 2D space"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A major limitation of K-means is that you must specify the number of clusters (k) beforehand, which may not be known.",
+        "vi": "Hạn chế lớn của K-means là bạn phải chỉ định số lượng cụm (k) trước, điều này có thể không biết trước."
+      }
+    },
+    {
+      "id": 10,
+      "question": "What is the Elbow Method used for in K-means?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To initialize centroids optimally"
+        },
+        {
+          "label": "B",
+          "text": "To determine the optimal number of clusters (k)"
+        },
+        {
+          "label": "C",
+          "text": "To measure clustering accuracy"
+        },
+        {
+          "label": "D",
+          "text": "To handle outliers in the data"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The Elbow Method plots WCSS vs number of clusters and looks for an 'elbow' point to determine the optimal k.",
+        "vi": "Phương pháp Elbow vẽ đồ thị WCSS theo số cụm và tìm điểm 'khuỷu tay' để xác định k tối ưu."
+      }
+    },
+    {
+      "id": 11,
+      "question": "What does the 'elbow' represent in the Elbow Method?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The point where WCSS is maximum"
+        },
+        {
+          "label": "B",
+          "text": "The point where adding more clusters provides diminishing returns"
+        },
+        {
+          "label": "C",
+          "text": "The point where all clusters have equal size"
+        },
+        {
+          "label": "D",
+          "text": "The point where clustering accuracy is highest"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The 'elbow' represents the point where adding more clusters provides diminishing returns in reducing WCSS.",
+        "vi": "'Khuỷu tay' đại diện cho điểm mà việc thêm cụm mang lại lợi ích giảm dần trong việc giảm WCSS."
+      }
+    },
+    {
+      "id": 12,
+      "question": "What is the Silhouette Score used to measure?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The speed of the clustering algorithm"
+        },
+        {
+          "label": "B",
+          "text": "The quality of clustering results"
+        },
+        {
+          "label": "C",
+          "text": "The number of outliers in the data"
+        },
+        {
+          "label": "D",
+          "text": "The computational complexity"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The Silhouette Score measures how well-separated clusters are and how similar points are within their own cluster.",
+        "vi": "Điểm Silhouette đo mức độ tách biệt của các cụm và độ tương tự của các điểm trong cụm của chúng."
+      }
+    },
+    {
+      "id": 13,
+      "question": "What is the range of Silhouette Score values?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 to 1"
+        },
+        {
+          "label": "B",
+          "text": "-1 to 1"
+        },
+        {
+          "label": "C",
+          "text": "0 to infinity"
+        },
+        {
+          "label": "D",
+          "text": "-infinity to infinity"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Silhouette Score ranges from -1 to 1, where 1 indicates perfect clustering and -1 indicates poor clustering.",
+        "vi": "Điểm Silhouette có giá trị từ -1 đến 1, trong đó 1 cho thấy phân cụm hoàn hảo và -1 cho thấy phân cụm kém."
+      }
+    },
+    {
+      "id": 14,
+      "question": "What does K-means++ initialization improve compared to random initialization?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It reduces the number of iterations needed"
+        },
+        {
+          "label": "B",
+          "text": "It chooses initial centroids that are spread out"
+        },
+        {
+          "label": "C",
+          "text": "It automatically determines the optimal k"
+        },
+        {
+          "label": "D",
+          "text": "It handles categorical data better"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "K-means++ initialization selects initial centroids that are spread out, leading to better convergence and results.",
+        "vi": "Khởi tạo K-means++ chọn các tâm cụm ban đầu được phân tán, dẫn đến hội tụ và kết quả tốt hơn."
+      }
+    },
+    {
+      "id": 15,
+      "question": "What is hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A clustering method that creates a tree-like structure of clusters"
+        },
+        {
+          "label": "B",
+          "text": "A method that only works with ordered data"
+        },
+        {
+          "label": "C",
+          "text": "A supervised learning technique"
+        },
+        {
+          "label": "D",
+          "text": "A method that requires specifying k in advance"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Hierarchical clustering creates a tree-like structure (dendrogram) showing relationships between clusters at different levels.",
+        "vi": "Phân cụm phân tầng tạo ra cấu trúc dạng cây (dendrogram) hiển thị mối quan hệ giữa các cụm ở các mức khác nhau."
+      }
+    },
+    {
+      "id": 16,
+      "question": "What are the two main types of hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Supervised and unsupervised"
+        },
+        {
+          "label": "B",
+          "text": "Agglomerative and divisive"
+        },
+        {
+          "label": "C",
+          "text": "Linear and non-linear"
+        },
+        {
+          "label": "D",
+          "text": "Static and dynamic"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The two types are agglomerative (bottom-up) and divisive (top-down) hierarchical clustering.",
+        "vi": "Hai loại là phân cụm phân tầng tích tụ (từ dưới lên) và phân chia (từ trên xuống)."
+      }
+    },
+    {
+      "id": 17,
+      "question": "How does agglomerative hierarchical clustering work?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Starts with one cluster and recursively splits it"
+        },
+        {
+          "label": "B",
+          "text": "Starts with individual points and merges closest pairs"
+        },
+        {
+          "label": "C",
+          "text": "Randomly assigns points to clusters"
+        },
+        {
+          "label": "D",
+          "text": "Uses k centroids to group points"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Agglomerative clustering starts with each point as its own cluster and iteratively merges the closest pairs.",
+        "vi": "Phân cụm tích tụ bắt đầu với mỗi điểm là một cụm riêng và lặp đi lặp lại ghép các cặp gần nhất."
+      }
+    },
+    {
+      "id": 18,
+      "question": "What is a dendrogram in hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A 3D visualization of clusters"
+        },
+        {
+          "label": "B",
+          "text": "A tree-like diagram showing the merging process"
+        },
+        {
+          "label": "C",
+          "text": "A confusion matrix for clustering"
+        },
+        {
+          "label": "D",
+          "text": "A scatter plot of data points"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "A dendrogram is a tree-like diagram that shows the hierarchical relationship and merging process of clusters.",
+        "vi": "Dendrogram là sơ đồ dạng cây hiển thị mối quan hệ phân tầng và quá trình ghép của các cụm."
+      }
+    },
+    {
+      "id": 19,
+      "question": "What are linkage criteria in hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Methods to determine which clusters to merge"
+        },
+        {
+          "label": "B",
+          "text": "Ways to initialize the algorithm"
+        },
+        {
+          "label": "C",
+          "text": "Techniques to handle missing data"
+        },
+        {
+          "label": "D",
+          "text": "Metrics to evaluate clustering quality"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Linkage criteria determine how distances between clusters are calculated to decide which clusters to merge.",
+        "vi": "Tiêu chí liên kết xác định cách tính khoảng cách giữa các cụm để quyết định cụm nào sẽ được ghép."
+      }
+    },
+    {
+      "id": 20,
+      "question": "What is single linkage in hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Distance between cluster centroids"
+        },
+        {
+          "label": "B",
+          "text": "Minimum distance between any two points in different clusters"
+        },
+        {
+          "label": "C",
+          "text": "Maximum distance between any two points in different clusters"
+        },
+        {
+          "label": "D",
+          "text": "Average distance between all pairs of points"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Single linkage uses the minimum distance between any two points in different clusters as the cluster distance.",
+        "vi": "Liên kết đơn sử dụng khoảng cách tối thiểu giữa hai điểm bất kỳ trong các cụm khác nhau làm khoảng cách cụm."
+      }
+    },
+    {
+      "id": 21,
+      "question": "What is complete linkage in hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Distance between cluster centroids"
+        },
+        {
+          "label": "B",
+          "text": "Minimum distance between any two points in different clusters"
+        },
+        {
+          "label": "C",
+          "text": "Maximum distance between any two points in different clusters"
+        },
+        {
+          "label": "D",
+          "text": "Average distance between all pairs of points"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Complete linkage uses the maximum distance between any two points in different clusters as the cluster distance.",
+        "vi": "Liên kết hoàn chỉnh sử dụng khoảng cách tối đa giữa hai điểm bất kỳ trong các cụm khác nhau làm khoảng cách cụm."
+      }
+    },
+    {
+      "id": 22,
+      "question": "What is average linkage in hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Distance between cluster centroids"
+        },
+        {
+          "label": "B",
+          "text": "Minimum distance between any two points in different clusters"
+        },
+        {
+          "label": "C",
+          "text": "Maximum distance between any two points in different clusters"
+        },
+        {
+          "label": "D",
+          "text": "Average distance between all pairs of points in different clusters"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Average linkage uses the average distance between all pairs of points in different clusters as the cluster distance.",
+        "vi": "Liên kết trung bình sử dụng khoảng cách trung bình giữa tất cả các cặp điểm trong các cụm khác nhau làm khoảng cách cụm."
+      }
+    },
+    {
+      "id": 23,
+      "question": "What is Ward linkage in hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Minimizes the increase in within-cluster variance when merging"
+        },
+        {
+          "label": "B",
+          "text": "Uses Euclidean distance only"
+        },
+        {
+          "label": "C",
+          "text": "Maximizes between-cluster distance"
+        },
+        {
+          "label": "D",
+          "text": "Uses the median distance between clusters"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Ward linkage minimizes the increase in within-cluster sum of squared distances when merging two clusters.",
+        "vi": "Liên kết Ward giảm thiểu việc tăng tổng bình phương khoảng cách trong cụm khi ghép hai cụm."
+      }
+    },
+    {
+      "id": 24,
+      "question": "What is the time complexity of agglomerative hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "O(n)"
+        },
+        {
+          "label": "B",
+          "text": "O(n log n)"
+        },
+        {
+          "label": "C",
+          "text": "O(n²)"
+        },
+        {
+          "label": "D",
+          "text": "O(n³)"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "Agglomerative hierarchical clustering has O(n³) time complexity due to the need to compute and update distance matrices.",
+        "vi": "Phân cụm phân tầng tích tụ có độ phức tạp thời gian O(n³) do cần tính toán và cập nhật ma trận khoảng cách."
+      }
+    },
+    {
+      "id": 25,
+      "question": "How do you determine the number of clusters from a dendrogram?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Count the number of leaf nodes"
+        },
+        {
+          "label": "B",
+          "text": "Draw a horizontal line and count the vertical lines it crosses"
+        },
+        {
+          "label": "C",
+          "text": "Count the number of merges"
+        },
+        {
+          "label": "D",
+          "text": "Use the height of the tree"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "To get k clusters, draw a horizontal line through the dendrogram and count the number of vertical lines it intersects.",
+        "vi": "Để có k cụm, vẽ một đường ngang qua dendrogram và đếm số đường dọc mà nó cắt qua."
+      }
+    },
+    {
+      "id": 26,
+      "question": "What is the main advantage of hierarchical clustering over K-means?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It's faster to compute"
+        },
+        {
+          "label": "B",
+          "text": "It doesn't require specifying the number of clusters beforehand"
+        },
+        {
+          "label": "C",
+          "text": "It works better with large datasets"
+        },
+        {
+          "label": "D",
+          "text": "It only works with spherical clusters"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Hierarchical clustering doesn't require specifying k in advance and provides a hierarchy of clustering solutions.",
+        "vi": "Phân cụm phân tầng không yêu cầu chỉ định k trước và cung cấp một hệ thống phân cấp các giải pháp phân cụm."
+      }
+    },
+    {
+      "id": 27,
+      "question": "What is the main disadvantage of hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It requires labeled data"
+        },
+        {
+          "label": "B",
+          "text": "It has high computational complexity for large datasets"
+        },
+        {
+          "label": "C",
+          "text": "It only works with numerical data"
+        },
+        {
+          "label": "D",
+          "text": "It cannot handle outliers"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Hierarchical clustering has O(n³) complexity, making it computationally expensive for large datasets.",
+        "vi": "Phân cụm phân tầng có độ phức tạp O(n³), làm cho nó tốn kém về mặt tính toán đối với các tập dữ liệu lớn."
+      }
+    },
+    {
+      "id": 28,
+      "question": "When should you use K-means instead of hierarchical clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "When you have small datasets"
+        },
+        {
+          "label": "B",
+          "text": "When you have large datasets and know the number of clusters"
+        },
+        {
+          "label": "C",
+          "text": "When you need a dendrogram"
+        },
+        {
+          "label": "D",
+          "text": "When clusters have irregular shapes"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "K-means is preferred for large datasets when you know the approximate number of clusters due to its efficiency.",
+        "vi": "K-means được ưa thích cho các tập dữ liệu lớn khi bạn biết số lượng cụm gần đúng do tính hiệu quả của nó."
+      }
+    },
+    {
+      "id": 29,
+      "question": "What type of clusters does K-means work best with?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Elongated clusters"
+        },
+        {
+          "label": "B",
+          "text": "Spherical and well-separated clusters"
+        },
+        {
+          "label": "C",
+          "text": "Clusters of different sizes"
+        },
+        {
+          "label": "D",
+          "text": "Overlapping clusters"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "K-means works best with spherical, well-separated clusters of similar size due to its use of Euclidean distance.",
+        "vi": "K-means hoạt động tốt nhất với các cụm hình cầu, tách biệt rõ ràng và có kích thước tương tự do sử dụng khoảng cách Euclidean."
+      }
+    },
+    {
+      "id": 30,
+      "question": "How do outliers affect K-means clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "They don't affect the results"
+        },
+        {
+          "label": "B",
+          "text": "They can significantly shift centroid positions"
+        },
+        {
+          "label": "C",
+          "text": "They improve clustering accuracy"
+        },
+        {
+          "label": "D",
+          "text": "They are automatically removed"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Outliers can significantly affect K-means by pulling centroids away from the main cluster mass.",
+        "vi": "Các ngoại lệ có thể ảnh hưởng đáng kể đến K-means bằng cách kéo các tâm cụm ra khỏi khối lượng cụm chính."
+      }
+    },
+    {
+      "id": 31,
+      "question": "What is the purpose of feature scaling before clustering?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To reduce the number of features"
+        },
+        {
+          "label": "B",
+          "text": "To ensure all features contribute equally to distance calculations"
+        },
+        {
+          "label": "C",
+          "text": "To remove outliers"
+        },
+        {
+          "label": "D",
+          "text": "To improve visualization"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Feature scaling ensures that all features contribute equally to distance calculations, preventing features with larger scales from dominating.",
+        "vi": "Chuẩn hóa đặc trưng đảm bảo tất cả các đặc trưng đóng góp đều nhau vào tính toán khoảng cách, ngăn không cho các đặc trưng có thang đo lớn hơn chiếm ưu thế."
+      }
+    },
+    {
+      "id": 32,
+      "question": "What is DBSCAN and how does it differ from K-means?",
+      "options": [
+        {
+          "label": "A",
+          "text": "DBSCAN is a hierarchical method, K-means is partitional"
+        },
+        {
+          "label": "B",
+          "text": "DBSCAN is density-based and can find arbitrary shapes"
+        },
+        {
+          "label": "C",
+          "text": "DBSCAN requires more parameters than K-means"
+        },
+        {
+          "label": "D",
+          "text": "DBSCAN is faster than K-means"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "DBSCAN is a density-based clustering algorithm that can discover clusters of arbitrary shapes and handle noise.",
+        "vi": "DBSCAN là thuật toán phân cụm dựa trên mật độ có thể khám phá các cụm có hình dạng bất kỳ và xử lý nhiễu."
+      }
+    },
+    {
+      "id": 33,
+      "question": "What is the Gap Statistic used for?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To measure clustering speed"
+        },
+        {
+          "label": "B",
+          "text": "To determine the optimal number of clusters"
+        },
+        {
+          "label": "C",
+          "text": "To handle missing values"
+        },
+        {
+          "label": "D",
+          "text": "To evaluate cluster stability"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The Gap Statistic compares the within-cluster dispersion to that expected under a null distribution to find optimal k.",
+        "vi": "Gap Statistic so sánh độ phân tán trong cụm với kỳ vọng dưới phân phối null để tìm k tối ưu."
+      }
+    },
+    {
+      "id": 34,
+      "question": "What is cluster validation in unsupervised learning?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Comparing clusters to ground truth labels"
+        },
+        {
+          "label": "B",
+          "text": "Assessing the quality of clustering results without external labels"
+        },
+        {
+          "label": "C",
+          "text": "Testing on a separate validation set"
+        },
+        {
+          "label": "D",
+          "text": "Cross-validating different algorithms"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Cluster validation assesses clustering quality using internal measures like cohesion and separation without external labels.",
+        "vi": "Xác thực cụm đánh giá chất lượng phân cụm bằng các thước đo nội bộ như tính gắn kết và tách biệt mà không cần nhãn bên ngoài."
+      }
+    },
+    {
+      "id": 35,
+      "question": "What are some applications of clustering in real-world scenarios?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Customer segmentation, image segmentation, gene analysis"
+        },
+        {
+          "label": "B",
+          "text": "Linear regression, classification, time series forecasting"
+        },
+        {
+          "label": "C",
+          "text": "Neural networks, deep learning, reinforcement learning"
+        },
+        {
+          "label": "D",
+          "text": "Data preprocessing, feature selection, model evaluation"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "Clustering is widely used in customer segmentation, medical image analysis, bioinformatics, and market research.",
+        "vi": "Phân cụm được sử dụng rộng rãi trong phân khúc khách hàng, phân tích hình ảnh y tế, tin sinh học và nghiên cứu thị trường."
+      }
+    }
+  ]
+}

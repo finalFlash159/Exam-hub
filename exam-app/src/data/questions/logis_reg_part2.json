@@ -1,0 +1,893 @@
+[
+  {
+    "id": 1,
+    "question": "How does a high \\\\( \\\\lambda \\\\) value in L2 regularization affect a Logistic Regression model?",
+    "options": [
+      {
+        "label": "A",
+        "text": "It increases parameter values, risking overfitting."
+      },
+      {
+        "label": "B",
+        "text": "It shrinks parameter values, risking underfitting."
+      },
+      {
+        "label": "C",
+        "text": "It speeds up convergence."
+      },
+      {
+        "label": "D",
+        "text": "It has no effect on parameters."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "A high \\\\( \\\\lambda \\\\) increases the regularization penalty, shrinking parameters and potentially causing underfitting by simplifying the model.",
+      "vi": "Một \\\\( \\\\lambda \\\\) cao tăng hình phạt chuẩn hóa, thu nhỏ các tham số và có thể gây thiếu khớp bằng cách đơn giản hóa mô hình."
+    }
+  },
+  {
+    "id": 2,
+    "question": "In a customer churn prediction system, you want to minimize false predictions of churn (predicting churn when the customer stays). Which metric should you prioritize?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Recall"
+      },
+      {
+        "label": "B",
+        "text": "Precision"
+      },
+      {
+        "label": "C",
+        "text": "Accuracy"
+      },
+      {
+        "label": "D",
+        "text": "F1-score"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Precision should be prioritized to minimize False Positives (predicting churn when the customer stays), ensuring Positive predictions are accurate.",
+      "vi": "Precision nên được ưu tiên để giảm thiểu False Positives (dự đoán rời bỏ khi khách hàng ở lại), đảm bảo dự đoán Dương tính là chính xác."
+    }
+  },
+  {
+    "id": 3,
+    "question": "If a Logistic Regression model predicts a probability of 0.8 with a threshold of 0.5, what is the predicted class?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Negative class (class 0)"
+      },
+      {
+        "label": "B",
+        "text": "Positive class (class 1)"
+      },
+      {
+        "label": "C",
+        "text": "Cannot be classified"
+      },
+      {
+        "label": "D",
+        "text": "Requires more information"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Since the predicted probability (0.8) exceeds the threshold (0.5), the sample is classified as the Positive class (1).",
+      "vi": "Vì xác suất dự đoán (0.8) vượt ngưỡng (0.5), mẫu được phân loại là lớp Dương tính (1)."
+    }
+  },
+  {
+    "id": 4,
+    "question": "In a text classification system, why might you choose a threshold lower than 0.5 for predicting Positive labels?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To increase False Positives."
+      },
+      {
+        "label": "B",
+        "text": "To increase Recall by classifying more instances as Positive."
+      },
+      {
+        "label": "C",
+        "text": "To reduce the learning rate."
+      },
+      {
+        "label": "D",
+        "text": "To simplify the model."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "A lower threshold increases Positive predictions, boosting Recall by reducing False Negatives, though it may increase False Positives.",
+      "vi": "Ngưỡng thấp hơn tăng dự đoán Dương tính, tăng Recall bằng cách giảm False Negatives, mặc dù có thể tăng False Positives."
+    }
+  },
+  {
+    "id": 5,
+    "question": "What is a real-world scenario where the One-vs-all method might struggle in multi-class classification?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Classifying images with highly correlated classes (e.g., dog breeds)."
+      },
+      {
+        "label": "B",
+        "text": "Predicting a single class from numerical data."
+      },
+      {
+        "label": "C",
+        "text": "Clustering data into groups."
+      },
+      {
+        "label": "D",
+        "text": "Predicting continuous values."
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "One-vs-all struggles with correlated classes (e.g., dog breeds) as it treats classes independently, potentially leading to ambiguous predictions.",
+      "vi": "One-vs-all gặp khó khăn với các lớp tương quan cao (ví dụ: giống chó) vì nó xử lý các lớp độc lập, có thể dẫn đến dự đoán mơ hồ."
+    }
+  },
+  {
+    "id": 6,
+    "question": "For an email with \\\\( z = -2 \\\\), calculate the Sigmoid output \\\\( \\\\sigma(z) \\\\) and determine the class with a threshold of 0.5.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\\\sigma(-2) \\\\approx 0.12 \\\\), classified as spam."
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\\\sigma(-2) \\\\approx 0.88 \\\\), classified as non-spam."
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\\\sigma(-2) \\\\approx 0.12 \\\\), classified as non-spam."
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\\\sigma(-2) \\\\approx 0.88 \\\\), classified as spam."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Using \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(-2) = \\\\frac{1}{1 + e^2} \\\\approx 0.119 \\\\). Since 0.119 < 0.5, it is classified as non-spam (class 0).",
+      "vi": "Sử dụng \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(-2) = \\\\frac{1}{1 + e^2} \\\\approx 0.119 \\\\). Vì 0.119 < 0.5, mẫu được phân loại là non-spam (lớp 0)."
+    }
+  },
+  {
+    "id": 7,
+    "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.9 \\\\) but the actual label is \\\\( y = 0 \\\\), calculate the BCE loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( J(\\\\theta) = -\\\\log(0.9) \\\\approx 0.105 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( J(\\\\theta) = -\\\\log(1 - 0.9) = -\\\\log(0.1) \\\\approx 2.302 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( J(\\\\theta) = 0 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( J(\\\\theta) = 1 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "For \\\\( y = 0 \\\\), BCE is \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.9) = -\\\\log(0.1) \\\\approx 2.302 \\\\), penalizing the large error.",
+      "vi": "Với \\\\( y = 0 \\\\), BCE là \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.9) = -\\\\log(0.1) \\\\approx 2.302 \\\\), trừng phạt lỗi lớn."
+    }
+  },
+  {
+    "id": 8,
+    "question": "As \\\\( z \\\\to +\\\\infty \\\\), what does the Sigmoid function \\\\( \\\\sigma(z) \\\\) approach?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "0.5"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "-\\\\( \\\\infty \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "As \\\\( z \\\\to +\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 1 \\\\), indicating a high probability for the Positive class.",
+      "vi": "Khi \\\\( z \\\\to +\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 1 \\\\), biểu thị xác suất cao cho lớp Dương tính."
+    }
+  },
+  {
+    "id": 9,
+    "question": "Given a confusion matrix: TP = 50, FP = 5, FN = 20, TN = 25, calculate Precision.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 50 / (50 + 20) = 0.714 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 50 / (50 + 5) = 0.909 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( (50 + 25) / (50 + 5 + 20 + 25) = 0.75 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 25 / (20 + 25) = 0.556 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{50}{50 + 5} = 0.909 \\\\).",
+      "vi": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{50}{50 + 5} = 0.909 \\\\)."
+    }
+  },
+  {
+    "id": 10,
+    "question": "Using the same confusion matrix (TP = 50, FP = 5, FN = 20, TN = 25), calculate Recall.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 50 / (50 + 5) = 0.909 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 50 / (50 + 20) = 0.714 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( (50 + 25) / (50 + 5 + 20 + 25) = 0.75 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 25 / (20 + 25) = 0.556 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{50}{50 + 20} = 0.714 \\\\).",
+      "vi": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{50}{50 + 20} = 0.714 \\\\)."
+    }
+  },
+  {
+    "id": 11,
+    "question": "Using the same confusion matrix (TP = 50, FP = 5, FN = 20, TN = 25), calculate Accuracy.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 50 / (50 + 5) = 0.909 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 50 / (50 + 20) = 0.714 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( (50 + 25) / (50 + 5 + 20 + 25) = 0.75 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 25 / (20 + 25) = 0.556 \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{50 + 25}{50 + 5 + 20 + 25} = 0.75 \\\\).",
+      "vi": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{50 + 25}{50 + 5 + 20 + 25} = 0.75 \\\\)."
+    }
+  },
+  {
+    "id": 12,
+    "question": "Using the same confusion matrix (TP = 50, FP = 5, FN = 20, TN = 25), calculate the F1-score (Precision ≈ 0.909, Recall ≈ 0.714).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 2 \\\\times (0.909 \\\\times 0.714) / (0.909 + 0.714) \\\\approx 0.799 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( (0.909 + 0.714) / 2 = 0.8115 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( 0.909 \\\\times 0.714 = 0.649 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 0.909 \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.714}{0.909 + 0.714} \\\\approx 0.799 \\\\).",
+      "vi": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.714}{0.909 + 0.714} \\\\approx 0.799 \\\\)."
+    }
+  },
+  {
+    "id": 13,
+    "question": "In Softmax Regression, a sample belongs to class 'cat' (one-hot: [0, 1, 0]) and predicted probabilities are [0.2, 0.7, 0.1] for [dog, cat, chicken]. Calculate the Cross-Entropy Loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( -1 \\\\times \\\\log(0.2) \\\\approx 1.61 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( -1 \\\\times \\\\log(0.7) \\\\approx 0.357 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( -1 \\\\times \\\\log(0.1) \\\\approx 2.3 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( -(0 \\\\times \\\\log(0.2) + 1 \\\\times \\\\log(0.7) + 0 \\\\times \\\\log(0.1)) \\\\approx 0.357 \\\\)"
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "Cross-Entropy Loss = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -(0 \\\\times \\\\log(0.2) + 1 \\\\times \\\\log(0.7) + 0 \\\\times \\\\log(0.1)) = -\\\\log(0.7) \\\\approx 0.357 \\\\).",
+      "vi": "Hàm mất mát Cross-Entropy = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -(0 \\\\times \\\\log(0.2) + 1 \\\\times \\\\log(0.7) + 0 \\\\times \\\\log(0.1)) = -\\\\log(0.7) \\\\approx 0.357 \\\\)."
+    }
+  },
+  {
+    "id": 14,
+    "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.1 \\\\) but the actual label is \\\\( y = 1 \\\\), calculate the BCE loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( J(\\\\theta) = -\\\\log(0.1) \\\\approx 2.302 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( J(\\\\theta) = -\\\\log(1 - 0.1) \\\\approx 0.105 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( J(\\\\theta) = 0 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( J(\\\\theta) = 1 \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "For \\\\( y = 1 \\\\), BCE is \\\\( J(\\\\theta) = -y \\\\log(h_\\\\theta(x)) = -\\\\log(0.1) \\\\approx 2.302 \\\\), penalizing the large error.",
+      "vi": "Với \\\\( y = 1 \\\\), BCE là \\\\( J(\\\\theta) = -y \\\\log(h_\\\\theta(x)) = -\\\\log(0.1) \\\\approx 2.302 \\\\), trừng phạt lỗi lớn."
+    }
+  },
+  {
+    "id": 15,
+    "question": "As \\\\( z \\\\to -\\\\infty \\\\), what does the Sigmoid function \\\\( \\\\sigma(z) \\\\) approach?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "0.5"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "+\\\\( \\\\infty \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "As \\\\( z \\\\to -\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 0 \\\\), indicating a low probability for the Positive class.",
+      "vi": "Khi \\\\( z \\\\to -\\\\infty \\\\), \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\to 0 \\\\), biểu thị xác suất thấp cho lớp Dương tính."
+    }
+  },
+  {
+    "id": 16,
+    "question": "In a Softmax Regression model with classes [A, B, C] and predicted probabilities [0.1, 0.6, 0.3] for a sample with actual class B (one-hot: [0, 1, 0]), calculate the Cross-Entropy Loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( -\\\\log(0.1) \\\\approx 2.302 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( -\\\\log(0.6) \\\\approx 0.511 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( -\\\\log(0.3) \\\\approx 1.204 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( -(0 \\\\times \\\\log(0.1) + 1 \\\\times \\\\log(0.6) + 0 \\\\times \\\\log(0.3)) \\\\approx 0.511 \\\\)"
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "Cross-Entropy Loss = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.6) \\\\approx 0.511 \\\\), as only the probability for class B contributes.",
+      "vi": "Hàm mất mát Cross-Entropy = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.6) \\\\approx 0.511 \\\\), vì chỉ xác suất cho lớp B đóng góp."
+    }
+  },
+  {
+    "id": 17,
+    "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.7 \\\\) and \\\\( y = 1 \\\\), calculate the BCE loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( -\\\\log(0.7) \\\\approx 0.357 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( -\\\\log(1 - 0.7) \\\\approx 1.204 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( -\\\\log(0.3) \\\\approx 1.204 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 0 \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "For \\\\( y = 1 \\\\), BCE is \\\\( J(\\\\theta) = -\\\\log(h_\\\\theta(x)) = -\\\\log(0.7) \\\\approx 0.357 \\\\).",
+      "vi": "Với \\\\( y = 1 \\\\), BCE là \\\\( J(\\\\theta) = -\\\\log(h_\\\\theta(x)) = -\\\\log(0.7) \\\\approx 0.357 \\\\)."
+    }
+  },
+  {
+    "id": 18,
+    "question": "Given a confusion matrix: TP = 100, FP = 10, FN = 5, TN = 85, calculate Precision.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 100 / (100 + 5) = 0.952 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 100 / (100 + 10) = 0.909 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( (100 + 85) / (100 + 10 + 5 + 85) = 0.925 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 85 / (5 + 85) = 0.944 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{100}{100 + 10} = 0.909 \\\\).",
+      "vi": "Precision = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FP}} = \\\\frac{100}{100 + 10} = 0.909 \\\\)."
+    }
+  },
+  {
+    "id": 19,
+    "question": "Using the same confusion matrix (TP = 100, FP = 10, FN = 5, TN = 85), calculate Recall.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 100 / (100 + 10) = 0.909 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 100 / (100 + 5) = 0.952 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( (100 + 85) / (100 + 10 + 5 + 85) = 0.925 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 85 / (5 + 85) = 0.944 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{100}{100 + 5} = 0.952 \\\\).",
+      "vi": "Recall = \\\\( \\\\frac{\\\\text{TP}}{\\\\text{TP} + \\\\text{FN}} = \\\\frac{100}{100 + 5} = 0.952 \\\\)."
+    }
+  },
+  {
+    "id": 20,
+    "question": "Using the same confusion matrix (TP = 100, FP = 10, FN = 5, TN = 85), calculate Accuracy.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 100 / (100 + 10) = 0.909 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 100 / (100 + 5) = 0.952 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( (100 + 85) / (100 + 10 + 5 + 85) = 0.925 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 85 / (5 + 85) = 0.944 \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{100 + 85}{100 + 10 + 5 + 85} = 0.925 \\\\).",
+      "vi": "Accuracy = \\\\( \\\\frac{\\\\text{TP} + \\\\text{TN}}{\\\\text{TP} + \\\\text{FP} + \\\\text{FN} + \\\\text{TN}} = \\\\frac{100 + 85}{100 + 10 + 5 + 85} = 0.925 \\\\)."
+    }
+  },
+  {
+    "id": 21,
+    "question": "Using the same confusion matrix (TP = 100, FP = 10, FN = 5, TN = 85), calculate the F1-score (Precision ≈ 0.909, Recall ≈ 0.952).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 2 \\\\times (0.909 \\\\times 0.952) / (0.909 + 0.952) \\\\approx 0.930 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( (0.909 + 0.952) / 2 = 0.9305 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( 0.909 \\\\times 0.952 = 0.866 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 0.909 \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.952}{0.909 + 0.952} \\\\approx 0.930 \\\\).",
+      "vi": "F1-score = \\\\( \\\\frac{2 \\\\times \\\\text{Precision} \\\\times \\\\text{Recall}}{\\\\text{Precision} + \\\\text{Recall}} = \\\\frac{2 \\\\times 0.909 \\\\times 0.952}{0.909 + 0.952} \\\\approx 0.930 \\\\)."
+    }
+  },
+  {
+    "id": 22,
+    "question": "For \\\\( z = 3 \\\\), calculate the Sigmoid output \\\\( \\\\sigma(z) \\\\) and determine the class with a threshold of 0.5.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\\\sigma(3) \\\\approx 0.047, \\\\text{class 0}"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\\\sigma(3) \\\\approx 0.953, \\\\text{class 1}"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\\\sigma(3) \\\\approx 0.047, \\\\text{class 1}"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\\\sigma(3) \\\\approx 0.953, \\\\text{class 0}"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Using \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(3) = \\\\frac{1}{1 + e^{-3}} \\\\approx 0.953 \\\\). Since 0.953 > 0.5, it is classified as class 1.",
+      "vi": "Sử dụng \\\\( \\\\sigma(z) = \\\\frac{1}{1 + e^{-z}} \\\\), \\\\( \\\\sigma(3) = \\\\frac{1}{1 + e^{-3}} \\\\approx 0.953 \\\\). Vì 0.953 > 0.5, mẫu được phân loại là lớp 1."
+    }
+  },
+  {
+    "id": 23,
+    "question": "In Softmax Regression with classes [X, Y, Z] and predicted probabilities [0.4, 0.4, 0.2] for a sample with actual class Y (one-hot: [0, 1, 0]), calculate the Cross-Entropy Loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( -\\\\log(0.4) \\\\approx 0.916 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( -\\\\log(0.2) \\\\approx 1.609 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( -\\\\log(0.4) + -\\\\log(0.2) \\\\approx 2.525 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( -(0 \\\\times \\\\log(0.4) + 1 \\\\times \\\\log(0.4) + 0 \\\\times \\\\log(0.2)) \\\\approx 0.916 \\\\)"
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "Cross-Entropy Loss = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.4) \\\\approx 0.916 \\\\), as only the probability for class Y contributes.",
+      "vi": "Hàm mất mát Cross-Entropy = \\\\( \\\\sum_{i=1}^K -y_i \\\\log(\\\\hat{y}_i) = -\\\\log(0.4) \\\\approx 0.916 \\\\), vì chỉ xác suất cho lớp Y đóng góp."
+    }
+  },
+  {
+    "id": 24,
+    "question": "If a Logistic Regression model predicts \\\\( h_\\\\theta(x) = 0.3 \\\\) and \\\\( y = 0 \\\\), calculate the BCE loss.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( -\\\\log(0.3) \\\\approx 1.204 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( -\\\\log(1 - 0.3) \\\\approx 0.357 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( -\\\\log(0.7) \\\\approx 0.357 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 0 \\\\)"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "For \\\\( y = 0 \\\\), BCE is \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.3) = -\\\\log(0.7) \\\\approx 0.357 \\\\).",
+      "vi": "Với \\\\( y = 0 \\\\), BCE là \\\\( J(\\\\theta) = -(1-y) \\\\log(1 - h_\\\\theta(x)) = -\\\\log(1 - 0.3) = -\\\\log(0.7) \\\\approx 0.357 \\\\)."
+    }
+  },
+  {
+    "id": 25,
+    "question": "Given a confusion matrix: TP = 80, FP = 15, FN = 10, TN = 95, calculate the F1-score (Precision ≈ 0.842, Recall ≈ 0.889).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( 2 \\\\times (0.842 \\\\times 0.889) / (0.842 + 0.889) \\\\approx 0.865 \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( (0.842 + 0.889) / 2 = 0.8655 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( 0.842 \\\\times 0.889 = 0.749 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 0.842 \\\\)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Precision = \\\\( \\\\frac{80}{80 + 15} \\\\approx 0.842 \\\\), Recall = \\\\( \\\\frac{80}{80 + 10} \\\\approx 0.889 \\\\). F1-score = \\\\( \\\\frac{2 \\\\times 0.842 \\\\times 0.889}{0.842 + 0.889} \\\\approx 0.865 \\\\).",
+      "vi": "Precision = \\\\( \\\\frac{80}{80 + 15} \\\\approx 0.842 \\\\), Recall = \\\\( \\\\frac{80}{80 + 10} \\\\approx 0.889 \\\\). F1-score = \\\\( \\\\frac{2 \\\\times 0.842 \\\\times 0.889}{0.842 + 0.889} \\\\approx 0.865 \\\\)."
+    }
+  },
+  {
+    "question": "What is the mathematical relationship between odds and probability in logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "odds = p / (1-p)"
+      },
+      {
+        "label": "B",
+        "text": "odds = (1-p) / p"
+      },
+      {
+        "label": "C",
+        "text": "odds = p * (1-p)"
+      },
+      {
+        "label": "D",
+        "text": "odds = p + (1-p)"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Odds represent the ratio of probability of success to probability of failure: odds = p/(1-p).",
+      "vi": "Tỷ lệ cược biểu thị tỷ số giữa xác suất thành công và xác suất thất bại: odds = p/(1-p)."
+    },
+    "id": 26
+  },
+  {
+    "question": "Why can't we use linear regression directly for binary classification problems?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Linear regression can predict values outside [0,1] range"
+      },
+      {
+        "label": "B",
+        "text": "Linear regression assumes continuous outcomes"
+      },
+      {
+        "label": "C",
+        "text": "Linear regression violates the assumption of constant variance"
+      },
+      {
+        "label": "D",
+        "text": "All of the above"
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "Linear regression has multiple issues with binary outcomes: predictions outside [0,1], assumption violations, and inappropriate error structure.",
+      "vi": "Hồi quy tuyến tính có nhiều vấn đề với kết quả nhị phân: dự đoán ngoài [0,1], vi phạm giả định và cấu trúc lỗi không phù hợp."
+    },
+    "id": 27
+  },
+  {
+    "question": "What is the logit function in logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "logit(p) = log(p/(1-p))"
+      },
+      {
+        "label": "B",
+        "text": "logit(p) = log(p)"
+      },
+      {
+        "label": "C",
+        "text": "logit(p) = p/(1-p)"
+      },
+      {
+        "label": "D",
+        "text": "logit(p) = 1/(1+e^(-p))"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "The logit function is the natural logarithm of the odds: logit(p) = ln(p/(1-p)).",
+      "vi": "Hàm logit là logarit tự nhiên của tỷ lệ cược: logit(p) = ln(p/(1-p))."
+    },
+    "id": 28
+  },
+  {
+    "question": "What optimization algorithm is typically used to find parameters in logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ordinary Least Squares"
+      },
+      {
+        "label": "B",
+        "text": "Maximum Likelihood Estimation"
+      },
+      {
+        "label": "C",
+        "text": "Gradient Descent"
+      },
+      {
+        "label": "D",
+        "text": "Both B and C"
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "Logistic regression uses Maximum Likelihood Estimation, often solved using iterative algorithms like gradient descent.",
+      "vi": "Hồi quy logistic sử dụng Ước lượng Khả năng Tối đa, thường được giải bằng các thuật toán lặp như gradient descent."
+    },
+    "id": 29
+  },
+  {
+    "question": "What does the deviance measure in logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The goodness of fit of the model"
+      },
+      {
+        "label": "B",
+        "text": "The correlation between variables"
+      },
+      {
+        "label": "C",
+        "text": "The number of parameters"
+      },
+      {
+        "label": "D",
+        "text": "The sample size"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Deviance measures how well the logistic model fits the data, similar to residual sum of squares in linear regression.",
+      "vi": "Deviance đo lường mức độ phù hợp của mô hình logistic với dữ liệu, tương tự như tổng bình phương phần dư trong hồi quy tuyến tính."
+    },
+    "id": 30
+  },
+  {
+    "question": "What is the purpose of regularization (L1 or L2) in logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To prevent overfitting and improve generalization"
+      },
+      {
+        "label": "B",
+        "text": "To speed up computation"
+      },
+      {
+        "label": "C",
+        "text": "To increase model accuracy on training data"
+      },
+      {
+        "label": "D",
+        "text": "To handle missing values"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Regularization adds penalty terms to prevent overfitting and improve the model's ability to generalize to new data.",
+      "vi": "Chính quy hóa thêm các số hạng phạt để ngăn chặn overfitting và cải thiện khả năng tổng quát hóa của mô hình với dữ liệu mới."
+    },
+    "id": 31
+  },
+  {
+    "question": "What is the difference between multinomial and ordinal logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Multinomial: unordered categories, Ordinal: ordered categories"
+      },
+      {
+        "label": "B",
+        "text": "Multinomial: binary outcomes, Ordinal: multiple outcomes"
+      },
+      {
+        "label": "C",
+        "text": "They are the same thing"
+      },
+      {
+        "label": "D",
+        "text": "Multinomial: continuous, Ordinal: discrete"
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Multinomial logistic regression handles unordered categorical outcomes, while ordinal logistic regression handles ordered categorical outcomes.",
+      "vi": "Hồi quy logistic đa thức xử lý các kết quả phân loại không có thứ tự, trong khi hồi quy logistic thứ tự xử lý các kết quả phân loại có thứ tự."
+    },
+    "id": 32
+  },
+  {
+    "question": "What is the interpretation of a coefficient β in logistic regression?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Change in probability for unit change in X"
+      },
+      {
+        "label": "B",
+        "text": "Change in log-odds for unit change in X"
+      },
+      {
+        "label": "C",
+        "text": "Change in odds ratio for unit change in X"
+      },
+      {
+        "label": "D",
+        "text": "Change in variance for unit change in X"
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "In logistic regression, coefficients represent the change in log-odds for a one-unit change in the predictor.",
+      "vi": "Trong hồi quy logistic, các hệ số biểu thị sự thay đổi trong log-odds cho một đơn vị thay đổi trong biến dự đoán."
+    },
+    "id": 33
+  }
+]

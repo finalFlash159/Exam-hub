@@ -1,0 +1,546 @@
+{
+  "title": "Support Vector Machine - Advanced Theory",
+  "description": "Extremely difficult questions covering advanced SVM theory, optimization, kernels, and mathematical foundations",
+  "questions": [
+    {
+      "id": 1,
+      "question": "In the dual formulation of SVM, what is the mathematical relationship between the primal and dual optimal values when strong duality holds?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The primal optimal value is always greater than the dual optimal value"
+        },
+        {
+          "label": "B",
+          "text": "The primal and dual optimal values are equal"
+        },
+        {
+          "label": "C",
+          "text": "The dual optimal value is always greater than the primal optimal value"
+        },
+        {
+          "label": "D",
+          "text": "There is no relationship between primal and dual optimal values"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "When strong duality holds (which it does for SVM due to Slater's condition), the primal and dual optimal values are equal, known as zero duality gap.",
+        "vi": "Khi tính đối ngẫu mạnh có hiệu lực (điều này xảy ra với SVM do điều kiện Slater), các giá trị tối ưu nguyên và đối ngẫu bằng nhau, được gọi là khoảng cách đối ngẫu bằng không."
+      }
+    },
+    {
+      "id": 2,
+      "question": "Given the KKT conditions for SVM, which statement about the Lagrange multipliers \\\\(\\\\alpha_i\\\\) is correct?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(\\\\alpha_i > 0\\\\) for all data points"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(\\\\alpha_i = 0\\\\) for support vectors only"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(\\\\alpha_i > 0\\\\) only for support vectors, \\\\(\\\\alpha_i = 0\\\\) for non-support vectors"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(\\\\alpha_i\\\\) can be negative for outliers"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "From complementary slackness in KKT conditions: \\\\(\\\\alpha_i[y_i(w^T x_i + b) - 1] = 0\\\\). This means \\\\(\\\\alpha_i > 0\\\\) only when \\\\(y_i(w^T x_i + b) = 1\\\\) (support vectors).",
+        "vi": "Từ điều kiện bù trừ trong KKT: \\\\(\\\\alpha_i[y_i(w^T x_i + b) - 1] = 0\\\\). Điều này có nghĩa \\\\(\\\\alpha_i > 0\\\\) chỉ khi \\\\(y_i(w^T x_i + b) = 1\\\\) (support vectors)."
+      }
+    },
+    {
+      "id": 3,
+      "question": "For the RBF kernel \\\\(K(x_i, x_j) = \\\\exp(-\\\\gamma ||x_i - x_j||^2)\\\\), what happens to the decision boundary as \\\\(\\\\gamma \\\\to \\\\infty\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The decision boundary becomes linear"
+        },
+        {
+          "label": "B",
+          "text": "The model becomes equivalent to 1-NN classifier"
+        },
+        {
+          "label": "C",
+          "text": "The decision boundary becomes smoother"
+        },
+        {
+          "label": "D",
+          "text": "All points become support vectors"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "As \\\\(\\\\gamma \\\\to \\\\infty\\\\), the RBF kernel becomes very peaked, making the model memorize training data and behave like a 1-nearest neighbor classifier.",
+        "vi": "Khi \\\\(\\\\gamma \\\\to \\\\infty\\\\), kernel RBF trở nên rất nhọn, làm cho mô hình ghi nhớ dữ liệu huấn luyện và hoạt động như bộ phân loại 1-láng giềng gần nhất."
+      }
+    },
+    {
+      "id": 4,
+      "question": "In ν-SVM, what is the theoretical relationship between the parameter ν and the fraction of support vectors?",
+      "options": [
+        {
+          "label": "A",
+          "text": "ν is exactly equal to the fraction of support vectors"
+        },
+        {
+          "label": "B",
+          "text": "ν is an upper bound on the fraction of support vectors"
+        },
+        {
+          "label": "C",
+          "text": "ν is a lower bound on the fraction of support vectors"
+        },
+        {
+          "label": "D",
+          "text": "ν is both an upper bound on the fraction of margin errors and a lower bound on the fraction of support vectors"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "In ν-SVM, ν serves as both an upper bound on the fraction of margin errors and a lower bound on the fraction of support vectors.",
+        "vi": "Trong ν-SVM, ν vừa là cận trên của tỷ lệ lỗi margin vừa là cận dưới của tỷ lệ support vectors."
+      }
+    },
+    {
+      "id": 5,
+      "question": "What is the VC dimension of linear SVM in \\\\(\\\\mathbb{R}^d\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(d\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(d + 1\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(2d\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(\\\\infty\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The VC dimension of linear classifiers (including linear SVM) in \\\\(\\\\mathbb{R}^d\\\\) is \\\\(d + 1\\\\), representing the maximum number of points that can be shattered.",
+        "vi": "Chiều VC của bộ phân loại tuyến tính (bao gồm SVM tuyến tính) trong \\\\(\\\\mathbb{R}^d\\\\) là \\\\(d + 1\\\\), đại diện cho số điểm tối đa có thể được phá vỡ."
+      }
+    },
+    {
+      "id": 6,
+      "question": "In the SMO (Sequential Minimal Optimization) algorithm, why must at least two Lagrange multipliers be optimized simultaneously?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To ensure faster convergence"
+        },
+        {
+          "label": "B",
+          "text": "To satisfy the equality constraint \\\\(\\\\sum_{i=1}^n \\\\alpha_i y_i = 0\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "To avoid local minima"
+        },
+        {
+          "label": "D",
+          "text": "To maintain sparsity of the solution"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "SMO must optimize at least two multipliers simultaneously to satisfy the equality constraint \\\\(\\\\sum_{i=1}^n \\\\alpha_i y_i = 0\\\\) from the dual formulation.",
+        "vi": "SMO phải tối ưu ít nhất hai nhân tử đồng thời để thỏa mãn ràng buộc đẳng thức \\\\(\\\\sum_{i=1}^n \\\\alpha_i y_i = 0\\\\) từ công thức đối ngẫu."
+      }
+    },
+    {
+      "id": 7,
+      "question": "For the polynomial kernel \\\\(K(x_i, x_j) = (x_i^T x_j + c)^d\\\\), what is the dimension of the feature space when \\\\(x \\\\in \\\\mathbb{R}^n\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(n^d\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(\\\\binom{n+d}{d}\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(nd\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(\\\\binom{n+d-1}{d}\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The polynomial kernel of degree d maps to a feature space of dimension \\\\(\\\\binom{n+d}{d}\\\\), which counts all monomials of degree at most d in n variables.",
+        "vi": "Kernel đa thức bậc d ánh xạ đến không gian đặc trưng có chiều \\\\(\\\\binom{n+d}{d}\\\\), đếm tất cả đơn thức bậc không quá d trong n biến."
+      }
+    },
+    {
+      "id": 8,
+      "question": "In the context of structural risk minimization, how does SVM achieve the trade-off between empirical risk and model complexity?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By minimizing \\\\(||w||^2\\\\) which controls the VC dimension"
+        },
+        {
+          "label": "B",
+          "text": "By maximizing the margin which is inversely related to model complexity"
+        },
+        {
+          "label": "C",
+          "text": "Both A and B are correct"
+        },
+        {
+          "label": "D",
+          "text": "By using cross-validation to select optimal parameters"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "SVM implements structural risk minimization by maximizing margin (minimizing \\\\(||w||^2\\\\)), which controls model complexity and VC dimension simultaneously.",
+        "vi": "SVM thực hiện giảm thiểu rủi ro cấu trúc bằng cách tối đa hóa margin (giảm thiểu \\\\(||w||^2\\\\)), kiểm soát độ phức tạp mô hình và chiều VC đồng thời."
+      }
+    },
+    {
+      "id": 9,
+      "question": "What is the effect of the regularization parameter C on the bias-variance trade-off in SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Large C increases bias, decreases variance"
+        },
+        {
+          "label": "B",
+          "text": "Large C decreases bias, increases variance"
+        },
+        {
+          "label": "C",
+          "text": "C only affects computational complexity"
+        },
+        {
+          "label": "D",
+          "text": "C has no effect on bias-variance trade-off"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Large C allows more complex decision boundaries (low bias) but makes the model more sensitive to training data (high variance). Small C does the opposite.",
+        "vi": "C lớn cho phép ranh giới quyết định phức tạp hơn (bias thấp) nhưng làm mô hình nhạy cảm hơn với dữ liệu huấn luyện (variance cao). C nhỏ có tác động ngược lại."
+      }
+    },
+    {
+      "id": 10,
+      "question": "In multi-class SVM using the one-vs-one approach, how many binary classifiers are needed for k classes?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(k\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(k-1\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(\\\\binom{k}{2}\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(k^2\\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "One-vs-one requires \\\\(\\\\binom{k}{2} = \\\\frac{k(k-1)}{2}\\\\) binary classifiers, one for each pair of classes.",
+        "vi": "Phương pháp một-với-một cần \\\\(\\\\binom{k}{2} = \\\\frac{k(k-1)}{2}\\\\) bộ phân loại nhị phân, một cho mỗi cặp lớp."
+      }
+    },
+    {
+      "id": 11,
+      "question": "What is the key difference between SVR (Support Vector Regression) and standard SVM classification in terms of the loss function?",
+      "options": [
+        {
+          "label": "A",
+          "text": "SVR uses squared loss while SVM uses hinge loss"
+        },
+        {
+          "label": "B",
+          "text": "SVR uses ε-insensitive loss while SVM uses hinge loss"
+        },
+        {
+          "label": "C",
+          "text": "SVR uses absolute loss while SVM uses squared loss"
+        },
+        {
+          "label": "D",
+          "text": "There is no difference in loss functions"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "SVR uses ε-insensitive loss: \\\\(L_ε(y, f(x)) = \\\\max(0, |y - f(x)| - ε)\\\\), while SVM classification uses hinge loss.",
+        "vi": "SVR sử dụng mất mát ε-không nhạy cảm: \\\\(L_ε(y, f(x)) = \\\\max(0, |y - f(x)| - ε)\\\\), trong khi SVM phân loại sử dụng hinge loss."
+      }
+    },
+    {
+      "id": 12,
+      "question": "In the kernel trick, what mathematical property must a function satisfy to be a valid kernel?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It must be symmetric"
+        },
+        {
+          "label": "B",
+          "text": "It must be positive definite"
+        },
+        {
+          "label": "C",
+          "text": "It must satisfy Mercer's condition"
+        },
+        {
+          "label": "D",
+          "text": "All of the above"
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "en": "A valid kernel must be symmetric, positive semi-definite, and satisfy Mercer's theorem, which ensures the existence of a feature mapping.",
+        "vi": "Một kernel hợp lệ phải đối xứng, nửa xác định dương, và thỏa mãn định lý Mercer, đảm bảo sự tồn tại của ánh xạ đặc trưng."
+      }
+    },
+    {
+      "id": 13,
+      "question": "What is the computational complexity of training an SVM with n samples using standard quadratic programming solvers?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(O(n)\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(O(n^2)\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(O(n^3)\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(O(n \\\\log n)\\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "Standard QP solvers for SVM have \\\\(O(n^3)\\\\) complexity due to matrix operations and constraint handling. SMO reduces this in practice.",
+        "vi": "Các bộ giải QP chuẩn cho SVM có độ phức tạp \\\\(O(n^3)\\\\) do các phép toán ma trận và xử lý ràng buộc. SMO giảm điều này trong thực tế."
+      }
+    },
+    {
+      "id": 14,
+      "question": "In the dual formulation, what happens when we set all Lagrange multipliers \\\\(\\\\alpha_i = 0\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "We get the optimal solution"
+        },
+        {
+          "label": "B",
+          "text": "We get a decision boundary that classifies all points as positive"
+        },
+        {
+          "label": "C",
+          "text": "We get \\\\(w = 0\\\\) and the decision depends only on the bias term"
+        },
+        {
+          "label": "D",
+          "text": "The dual problem becomes infeasible"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "When all \\\\(\\\\alpha_i = 0\\\\), we have \\\\(w = \\\\sum_{i=1}^n \\\\alpha_i y_i x_i = 0\\\\), so the decision function becomes \\\\(f(x) = b\\\\), depending only on bias.",
+        "vi": "Khi tất cả \\\\(\\\\alpha_i = 0\\\\), ta có \\\\(w = \\\\sum_{i=1}^n \\\\alpha_i y_i x_i = 0\\\\), nên hàm quyết định trở thành \\\\(f(x) = b\\\\), chỉ phụ thuộc vào bias."
+      }
+    },
+    {
+      "id": 15,
+      "question": "What is the relationship between the margin and the norm of the weight vector in SVM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Margin = \\\\(||w||\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "Margin = \\\\(\\\\frac{1}{||w||}\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "Margin = \\\\(\\\\frac{2}{||w||}\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "Margin = \\\\(\\\\frac{1}{||w||^2}\\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "en": "The geometric margin is \\\\(\\\\frac{2}{||w||}\\\\), which is the distance between the two parallel hyperplanes defining the margin.",
+        "vi": "Margin hình học là \\\\(\\\\frac{2}{||w||}\\\\), là khoảng cách giữa hai siêu phẳng song song xác định margin."
+      }
+    },
+    {
+      "id": 16,
+      "question": "In soft-margin SVM, what do the slack variables \\\\(\\\\xi_i\\\\) represent geometrically?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The distance from correctly classified points to the margin"
+        },
+        {
+          "label": "B",
+          "text": "The amount by which a point violates the margin or is misclassified"
+        },
+        {
+          "label": "C",
+          "text": "The confidence score of the classification"
+        },
+        {
+          "label": "D",
+          "text": "The kernel value for each point"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Slack variables \\\\(\\\\xi_i\\\\) measure how much a point violates the margin constraint or is misclassified, allowing for non-separable data.",
+        "vi": "Biến slack \\\\(\\\\xi_i\\\\) đo lường mức độ một điểm vi phạm ràng buộc margin hoặc bị phân loại sai, cho phép dữ liệu không tách được."
+      }
+    },
+    {
+      "id": 17,
+      "question": "What is the primary advantage of the kernel trick in computational terms?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It reduces the number of support vectors"
+        },
+        {
+          "label": "B",
+          "text": "It allows implicit computation in high-dimensional feature spaces without explicit mapping"
+        },
+        {
+          "label": "C",
+          "text": "It makes the optimization problem convex"
+        },
+        {
+          "label": "D",
+          "text": "It eliminates the need for regularization"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "The kernel trick enables computation of dot products in high-dimensional (even infinite) feature spaces without explicitly computing the feature mapping.",
+        "vi": "Thủ thuật kernel cho phép tính toán tích vô hướng trong không gian đặc trưng chiều cao (thậm chí vô hạn) mà không cần tính toán rõ ràng ánh xạ đặc trưng."
+      }
+    },
+    {
+      "id": 18,
+      "question": "In the context of SVM optimization, what is the significance of the complementary slackness condition?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It ensures the solution is unique"
+        },
+        {
+          "label": "B",
+          "text": "It determines which points become support vectors"
+        },
+        {
+          "label": "C",
+          "text": "It guarantees global optimality"
+        },
+        {
+          "label": "D",
+          "text": "It makes the problem computationally tractable"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Complementary slackness (\\\\(\\\\alpha_i[y_i(w^T x_i + b) - 1] = 0\\\\)) determines that only points on the margin boundary have non-zero \\\\(\\\\alpha_i\\\\) and become support vectors.",
+        "vi": "Điều kiện bù trừ (\\\\(\\\\alpha_i[y_i(w^T x_i + b) - 1] = 0\\\\)) xác định rằng chỉ những điểm trên ranh giới margin mới có \\\\(\\\\alpha_i\\\\) khác không và trở thành support vectors."
+      }
+    },
+    {
+      "id": 19,
+      "question": "For an RBF SVM with very small \\\\(\\\\gamma\\\\) (large bandwidth), what type of decision boundary is expected?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Highly complex and overfitted"
+        },
+        {
+          "label": "B",
+          "text": "Nearly linear and smooth"
+        },
+        {
+          "label": "C",
+          "text": "Discontinuous and irregular"
+        },
+        {
+          "label": "D",
+          "text": "Circular around each support vector"
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "en": "Small \\\\(\\\\gamma\\\\) (large bandwidth) in RBF kernel creates smooth, broad influence regions, resulting in nearly linear decision boundaries.",
+        "vi": "\\\\(\\\\gamma\\\\) nhỏ (băng thông lớn) trong kernel RBF tạo ra vùng ảnh hưởng mượt mà, rộng, dẫn đến ranh giới quyết định gần như tuyến tính."
+      }
+    },
+    {
+      "id": 20,
+      "question": "What is the theoretical justification for why SVM often generalizes well despite potentially infinite VC dimension with certain kernels?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The margin maximization principle provides generalization bounds independent of feature space dimension"
+        },
+        {
+          "label": "B",
+          "text": "Kernels automatically perform feature selection"
+        },
+        {
+          "label": "C",
+          "text": "SVM always produces sparse solutions"
+        },
+        {
+          "label": "D",
+          "text": "The convex optimization guarantees good generalization"
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "en": "SVM's generalization ability comes from margin-based bounds (like Rademacher complexity) that depend on the margin rather than the dimensionality of the feature space.",
+        "vi": "Khả năng tổng quát hóa của SVM đến từ các ràng buộc dựa trên margin (như độ phức tạp Rademacher) phụ thuộc vào margin chứ không phải chiều của không gian đặc trưng."
+      }
+    }
+  ]
+}

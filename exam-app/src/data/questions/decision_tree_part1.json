@@ -1,0 +1,947 @@
+[
+  {
+    "id": 1,
+    "question": "In machine learning, what is a Decision Tree primarily used for?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only for clustering data."
+      },
+      {
+        "label": "B",
+        "text": "Only for dimensionality reduction."
+      },
+      {
+        "label": "C",
+        "text": "For classification or regression based on a tree structure."
+      },
+      {
+        "label": "D",
+        "text": "To build deep neural networks."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Decision Trees are used for classification (predicting categorical labels) or regression (predicting continuous values) by constructing a tree structure.",
+      "vi": "Cây Quyết định được sử dụng để phân loại (dự đoán nhãn phân loại) hoặc hồi quy (dự đoán giá trị liên tục) bằng cách xây dựng cấu trúc cây."
+    }
+  },
+  {
+    "id": 2,
+    "question": "What is the main objective of the ID3 algorithm in building a Decision Tree?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To compute the entropy of the dataset."
+      },
+      {
+        "label": "B",
+        "text": "To find the best attribute to split examples at each node."
+      },
+      {
+        "label": "C",
+        "text": "To combine multiple decision trees into a forest."
+      },
+      {
+        "label": "D",
+        "text": "To map inputs to a higher-dimensional space."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "The ID3 algorithm aims to select the attribute that maximizes information gain to split data at each node effectively.",
+      "vi": "Thuật toán ID3 nhằm chọn thuộc tính tối đa hóa độ lợi thông tin để chia dữ liệu tại mỗi nút một cách hiệu quả."
+    }
+  },
+  {
+    "id": 3,
+    "question": "According to the ID3 algorithm, when does the splitting of a node stop?",
+    "options": [
+      {
+        "label": "A",
+        "text": "When the dataset cannot be physically split further."
+      },
+      {
+        "label": "B",
+        "text": "When the tree reaches a predefined maximum depth."
+      },
+      {
+        "label": "C",
+        "text": "When all examples in the subset belong to the same class (pure subset)."
+      },
+      {
+        "label": "D",
+        "text": "When all attributes have been used."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Splitting stops when the subset is pure, meaning all examples belong to the same class, achieving perfect classification.",
+      "vi": "Việc chia nút dừng lại khi tập con thuần khiết, nghĩa là tất cả các ví dụ thuộc cùng một lớp, đạt được phân loại hoàn hảo."
+    }
+  },
+  {
+    "id": 4,
+    "question": "What is the first step in the splitting process of the ID3 algorithm?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Create child nodes for the selected attribute."
+      },
+      {
+        "label": "B",
+        "text": "Split the training set into child nodes."
+      },
+      {
+        "label": "C",
+        "text": "Repeat the process for new child nodes."
+      },
+      {
+        "label": "D",
+        "text": "Find the best attribute to split the examples."
+      }
+    ],
+    "answer": "D",
+    "explanation": {
+      "en": "The ID3 algorithm first identifies the attribute with the highest information gain to use for splitting.",
+      "vi": "Thuật toán ID3 đầu tiên xác định thuộc tính có độ lợi thông tin cao nhất để sử dụng cho việc chia."
+    }
+  },
+  {
+    "id": 5,
+    "question": "What type of labels are used in a Classification Tree?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Categorical/discrete values."
+      },
+      {
+        "label": "B",
+        "text": "Numeric/continuous values."
+      },
+      {
+        "label": "C",
+        "text": "Only integer values."
+      },
+      {
+        "label": "D",
+        "text": "Any type of values."
+      }
+    ],
+    "answer": "A",
+    "explanation": {
+      "en": "Classification Trees predict categorical or discrete labels, such as 'Yes' or 'No.'",
+      "vi": "Cây phân loại dự đoán nhãn phân loại hoặc rời rạc, như 'Yes' hoặc 'No.'"
+    }
+  },
+  {
+    "id": 6,
+    "question": "Which algorithm is specifically mentioned in the material for building Decision Trees?",
+    "options": [
+      {
+        "label": "A",
+        "text": "CART."
+      },
+      {
+        "label": "B",
+        "text": "C4.5."
+      },
+      {
+        "label": "C",
+        "text": "ID3."
+      },
+      {
+        "label": "D",
+        "text": "Gini."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "The ID3 algorithm is explicitly mentioned as a method for constructing Decision Trees in the provided material.",
+      "vi": "Thuật toán ID3 được đề cập rõ ràng như một phương pháp xây dựng Cây Quyết định trong tài liệu cung cấp."
+    }
+  },
+  {
+    "id": 7,
+    "question": "When is a data subset considered 'pure' in Decision Tree training?",
+    "options": [
+      {
+        "label": "A",
+        "text": "When it contains an equal number of examples from all classes."
+      },
+      {
+        "label": "B",
+        "text": "When the information gain is maximized."
+      },
+      {
+        "label": "C",
+        "text": "When all examples belong to the same class (perfect classification)."
+      },
+      {
+        "label": "D",
+        "text": "When no attributes remain for splitting."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "A subset is pure when all examples belong to the same class, indicating perfect classification for that node.",
+      "vi": "Một tập con thuần khiết khi tất cả các ví dụ thuộc cùng một lớp, biểu thị phân loại hoàn hảo cho nút đó."
+    }
+  },
+  {
+    "id": 8,
+    "question": "What is the primary purpose of the Entropy function \\\\( H(S) \\\\) in Decision Trees?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To measure the model's complexity."
+      },
+      {
+        "label": "B",
+        "text": "To measure the uncertainty or impurity of a dataset."
+      },
+      {
+        "label": "C",
+        "text": "To compute the probability of a specific class."
+      },
+      {
+        "label": "D",
+        "text": "To evaluate the tree's performance after training."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Entropy \\\\( H(S) \\\\) quantifies the uncertainty or impurity in a dataset, guiding attribute selection in Decision Trees.",
+      "vi": "Entropy \\\\( H(S) \\\\) đo lường độ không chắc chắn hoặc độ không thuần khiết của tập dữ liệu, định hướng việc chọn thuộc tính trong Cây Quyết định."
+    }
+  },
+  {
+    "id": 9,
+    "question": "What is the correct formula for the Entropy of a dataset \\\\( S \\\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( H(S) = \\sum_{c} p_c \\log_2(p_c) \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( H(S) = 1 - \\sum_{c} p_c^2 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( H(S) = - \\sum_{c} p_c \\log_2(p_c) \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( H(S) = \\text{Gain}(S,A) - \\text{SplitEntropy}(S,A) \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Entropy is defined as \\\\( H(S) = - \\sum_{c} p_c \\log_2(p_c) \\\\), where \\\\( p_c \\\\) is the proportion of class \\\\( c \\\\) in \\\\( S \\\\).",
+      "vi": "Entropy được định nghĩa là \\\\( H(S) = - \\sum_{c} p_c \\log_2(p_c) \\\\), trong đó \\\\( p_c \\\\) là tỷ lệ của lớp \\\\( c \\\\) trong \\\\( S \\\\)."
+    }
+  },
+  {
+    "id": 10,
+    "question": "In the Entropy formula \\\\( H(S) = - \\sum_{c} p_c \\log_2(p_c) \\\\), what does \\\\( p_c \\\\) represent?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The number of examples in class \\\\( c \\\\) in \\\\( S \\\\)."
+      },
+      {
+        "label": "B",
+        "text": "The total number of examples in \\\\( S \\\\)."
+      },
+      {
+        "label": "C",
+        "text": "The percentage of examples in class \\\\( c \\\\) in \\\\( S \\\\)."
+      },
+      {
+        "label": "D",
+        "text": "The prior probability of class \\\\( c \\\\)."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "\\\\( p_c \\\\) is the proportion (or percentage) of examples in class \\\\( c \\\\) relative to the total examples in \\\\( S \\\\).",
+      "vi": "\\\\( p_c \\\\) là tỷ lệ (hoặc phần trăm) các ví dụ trong lớp \\\\( c \\\\) so với tổng số ví dụ trong \\\\( S \\\\)."
+    }
+  },
+  {
+    "id": 11,
+    "question": "What is the main goal of computing Information Gain in Decision Tree construction?",
+    "options": [
+      {
+        "label": "A",
+        "text": "To minimize the final classification error."
+      },
+      {
+        "label": "B",
+        "text": "To select the best attribute for splitting data at each node."
+      },
+      {
+        "label": "C",
+        "text": "To prevent overfitting of the model."
+      },
+      {
+        "label": "D",
+        "text": "To ensure a balanced tree structure."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Information Gain measures the reduction in entropy after a split, used to select the best attribute for splitting.",
+      "vi": "Độ lợi thông tin đo lường sự giảm entropy sau khi chia, được sử dụng để chọn thuộc tính tốt nhất để chia."
+    }
+  },
+  {
+    "id": 12,
+    "question": "What is the first step in finding the best cut point for a continuous variable in a Decision Tree?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Compute the entropy of the entire dataset."
+      },
+      {
+        "label": "B",
+        "text": "Split the dataset into two random parts."
+      },
+      {
+        "label": "C",
+        "text": "Sort the values of the continuous variable, including their class labels."
+      },
+      {
+        "label": "D",
+        "text": "Apply Gini Impurity to all possible points."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Sorting the continuous variable's values with their class labels allows evaluation of potential cut points.",
+      "vi": "Sắp xếp các giá trị của biến liên tục cùng với nhãn lớp của chúng cho phép đánh giá các điểm cắt tiềm năng."
+    }
+  },
+  {
+    "id": 13,
+    "question": "How is the best cut point for a continuous attribute selected according to the material?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Always choose the mean value of the attribute."
+      },
+      {
+        "label": "B",
+        "text": "Select a random point and test its performance."
+      },
+      {
+        "label": "C",
+        "text": "Evaluate all possible cut points and choose the one with the highest information gain."
+      },
+      {
+        "label": "D",
+        "text": "Use only predefined cut points."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "The best cut point is selected by evaluating all possible splits and choosing the one with the highest information gain.",
+      "vi": "Điểm cắt tốt nhất được chọn bằng cách đánh giá tất cả các điểm chia có thể và chọn điểm có độ lợi thông tin cao nhất."
+    }
+  },
+  {
+    "id": 14,
+    "question": "Given 6 samples with 4 'yes' and 2 'no' for \\\\( \\text{Temp} < 71.5 \\\\), what is \\\\( H(\\text{Temp} < 71.5) \\\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( - \\frac{4}{6} \\log_2\\left(\\frac{4}{6}\\right) + \\frac{2}{6} \\log_2\\left(\\frac{2}{6}\\right) \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 1 - \\left(\\frac{4}{6}\\right)^2 - \\left(\\frac{2}{6}\\right)^2 \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( - \\frac{4}{6} \\log_2\\left(\\frac{4}{6}\\right) - \\frac{2}{6} \\log_2\\left(\\frac{2}{6}\\right) \\approx 0.918 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( 0.940 - \\frac{6}{14} \\cdot 0.918 - \\frac{8}{14} \\cdot 0.954 \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Entropy is \\\\( H(S) = - \\frac{4}{6} \\log_2\\left(\\frac{4}{6}\\right) - \\frac{2}{6} \\log_2\\left(\\frac{2}{6}\\right) \\approx 0.918 \\\\).",
+      "vi": "Entropy là \\\\( H(S) = - \\frac{4}{6} \\log_2\\left(\\frac{4}{6}\\right) - \\frac{2}{6} \\log_2\\left(\\frac{2}{6}\\right) \\approx 0.918 \\\\)."
+    }
+  },
+  {
+    "id": 15,
+    "question": "What is a proposed method to avoid overfitting in Decision Trees?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Always grow the tree to its maximum depth."
+      },
+      {
+        "label": "B",
+        "text": "Increase model complexity by adding more attributes."
+      },
+      {
+        "label": "C",
+        "text": "Stop growing the tree when splitting is statistically insignificant."
+      },
+      {
+        "label": "D",
+        "text": "Use a very small training dataset."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Stopping growth when splits lack statistical significance prevents overly complex trees, reducing overfitting.",
+      "vi": "Dừng phát triển cây khi việc chia không còn ý nghĩa thống kê giúp tránh cây quá phức tạp, giảm quá khớp."
+    }
+  },
+  {
+    "id": 16,
+    "question": "Besides stopping growth for insignificant splits, what other method is suggested to avoid overfitting?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Randomly reduce the number of attributes."
+      },
+      {
+        "label": "B",
+        "text": "Use only Gini Impurity instead of Entropy."
+      },
+      {
+        "label": "C",
+        "text": "Collect more training data."
+      },
+      {
+        "label": "D",
+        "text": "Train only on the validation dataset."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "More training data improves generalization, helping to mitigate overfitting in Decision Trees.",
+      "vi": "Thu thập thêm dữ liệu huấn luyện cải thiện khả năng tổng quát hóa, giúp giảm quá khớp trong Cây Quyết định."
+    }
+  },
+  {
+    "id": 17,
+    "question": "What is 'post-pruning' as a technique to avoid overfitting in Decision Trees?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Stop growing the tree before completion."
+      },
+      {
+        "label": "B",
+        "text": "Prune only the root nodes of the tree."
+      },
+      {
+        "label": "C",
+        "text": "Fully grow the tree, then remove unnecessary parts."
+      },
+      {
+        "label": "D",
+        "text": "Remove all irrelevant attributes before building the tree."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Post-pruning involves growing the full tree and then trimming branches that do not improve performance, reducing overfitting.",
+      "vi": "Tỉa sau bao gồm phát triển cây đầy đủ và sau đó loại bỏ các nhánh không cải thiện hiệu suất, giảm quá khớp."
+    }
+  },
+  {
+    "id": 18,
+    "question": "To select the 'best tree' and avoid overfitting, what is a recommended approach?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Measure performance only on the training data."
+      },
+      {
+        "label": "B",
+        "text": "Measure performance on a separate validation dataset."
+      },
+      {
+        "label": "C",
+        "text": "Focus only on maximizing Information Gain."
+      },
+      {
+        "label": "D",
+        "text": "Manually remove irrelevant attributes."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Using a separate validation dataset ensures the tree generalizes well, helping to select the best model.",
+      "vi": "Sử dụng tập dữ liệu validation riêng biệt đảm bảo cây tổng quát hóa tốt, giúp chọn mô hình tốt nhất."
+    }
+  },
+  {
+    "id": 19,
+    "question": "To support selecting the 'best tree' and avoid overfitting, what can be added to the performance metric?",
+    "options": [
+      {
+        "label": "A",
+        "text": "A penalty for low accuracy."
+      },
+      {
+        "label": "B",
+        "text": "A penalty for training time."
+      },
+      {
+        "label": "C",
+        "text": "A complexity penalty."
+      },
+      {
+        "label": "D",
+        "text": "A penalty for the number of leaf nodes."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "A complexity penalty discourages overly complex trees, balancing accuracy and generalization to prevent overfitting.",
+      "vi": "Hình phạt độ phức tạp ngăn cản cây quá phức tạp, cân bằng giữa độ chính xác và khả năng tổng quát hóa để tránh quá khớp."
+    }
+  },
+  {
+    "id": 20,
+    "question": "A Random Forest is a machine learning algorithm that combines multiple what?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Linear regression models."
+      },
+      {
+        "label": "B",
+        "text": "Neural networks."
+      },
+      {
+        "label": "C",
+        "text": "Decision Trees."
+      },
+      {
+        "label": "D",
+        "text": "Support Vector Machines."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Random Forests combine multiple Decision Trees to improve predictive performance through ensemble learning.",
+      "vi": "Rừng ngẫu nhiên kết hợp nhiều Cây Quyết định để cải thiện hiệu suất dự đoán thông qua học tập tổng hợp."
+    }
+  },
+  {
+    "id": 21,
+    "question": "In Random Forest training, how is each Decision Tree trained?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Using the entire training dataset."
+      },
+      {
+        "label": "B",
+        "text": "Using a random subset of training examples (Srandom)."
+      },
+      {
+        "label": "C",
+        "text": "Using a random subset of attributes."
+      },
+      {
+        "label": "D",
+        "text": "Using only the validation dataset."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Each tree in a Random Forest is trained on a random subset of training examples (bootstrap sampling).",
+      "vi": "Mỗi cây trong Rừng ngẫu nhiên được huấn luyện trên một tập con ngẫu nhiên của các ví dụ huấn luyện (lấy mẫu bootstrap)."
+    }
+  },
+  {
+    "id": 22,
+    "question": "In Random Forest, information gain for a tree is calculated based on which dataset?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The entire training dataset."
+      },
+      {
+        "label": "B",
+        "text": "A random subset (Srandom) instead of the full set."
+      },
+      {
+        "label": "C",
+        "text": "A separate validation dataset."
+      },
+      {
+        "label": "D",
+        "text": "The test dataset."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Information gain is computed on the random subset (Srandom) used to train each tree in the Random Forest.",
+      "vi": "Độ lợi thông tin được tính trên tập con ngẫu nhiên (Srandom) dùng để huấn luyện mỗi cây trong Rừng ngẫu nhiên."
+    }
+  },
+  {
+    "id": 23,
+    "question": "How does a Random Forest make predictions for a new data point X?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Use the prediction from the first tree in the forest."
+      },
+      {
+        "label": "B",
+        "text": "Average the predictions from all trees."
+      },
+      {
+        "label": "C",
+        "text": "Use majority voting from the predictions of each tree (K trees)."
+      },
+      {
+        "label": "D",
+        "text": "Select the prediction with the highest confidence."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Random Forests use majority voting across K trees' predictions for classification tasks to determine the final output.",
+      "vi": "Rừng ngẫu nhiên sử dụng biểu quyết đa số từ dự đoán của K cây để xác định đầu ra cuối cùng cho bài toán phân loại."
+    }
+  },
+  {
+    "id": 24,
+    "question": "Are trees in a Random Forest pruned during construction?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Yes, all trees are carefully pruned to avoid overfitting."
+      },
+      {
+        "label": "B",
+        "text": "No, each tree is grown fully without pruning."
+      },
+      {
+        "label": "C",
+        "text": "Only some trees are selected for pruning."
+      },
+      {
+        "label": "D",
+        "text": "Pruning is done after all trees are built and combined."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Random Forest trees are grown fully without pruning, relying on ensemble averaging to reduce overfitting.",
+      "vi": "Các cây trong Rừng ngẫu nhiên được phát triển đầy đủ mà không tỉa, dựa vào trung bình tổng hợp để giảm quá khớp."
+    }
+  },
+  {
+    "id": 25,
+    "question": "What does the material say about the number of trees (K) in a Random Forest?",
+    "options": [
+      {
+        "label": "A",
+        "text": "K is always set to 100."
+      },
+      {
+        "label": "B",
+        "text": "Trees are grown by iterating K times, implying K is a parameter for the number of trees."
+      },
+      {
+        "label": "C",
+        "text": "K is automatically computed by the algorithm."
+      },
+      {
+        "label": "D",
+        "text": "K depends directly on the number of output classes."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "K is a parameter defining the number of trees, with the algorithm iterating K times to build the forest.",
+      "vi": "K là tham số xác định số lượng cây, với thuật toán lặp K lần để xây dựng rừng."
+    }
+  },
+  {
+    "id": 26,
+    "question": "What does the Gini Impurity of a dataset D represent?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The probability a random sample belongs to a specific class."
+      },
+      {
+        "label": "B",
+        "text": "The probability a random sample is misclassified if assigned a random class label based on D's class distribution."
+      },
+      {
+        "label": "C",
+        "text": "The computational complexity of building the tree."
+      },
+      {
+        "label": "D",
+        "text": "The number of attributes in the dataset."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "Gini Impurity measures the likelihood of misclassification if a sample is randomly labeled according to the class distribution.",
+      "vi": "Gini Impurity đo lường khả năng phân loại sai nếu một mẫu được gán nhãn ngẫu nhiên theo phân phối lớp."
+    }
+  },
+  {
+    "id": 27,
+    "question": "What is the correct formula for Gini Impurity of a dataset D?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\sum_{i=1}^{k} p_i \\log_2(p_i) \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( 1 - \\sum_{i=1}^{k} (1 - p_i) \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( 1 - \\sum_{i=1}^{k} p_i^2 \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\sum_{i=1}^{k} p_i \\log_2(1 - p_i) \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Gini Impurity is \\\\( 1 - \\sum_{i=1}^{k} p_i^2 \\\\), where \\\\( p_i \\\\) is the probability of class \\\\( i \\\\).",
+      "vi": "Gini Impurity là \\\\( 1 - \\sum_{i=1}^{k} p_i^2 \\\\), trong đó \\\\( p_i \\\\) là xác suất của lớp \\\\( i \\\\)."
+    }
+  },
+  {
+    "id": 28,
+    "question": "In the Gini Impurity formula \\\\( 1 - \\sum_{i=1}^{k} p_i^2 \\\\), what does \\\\( p_i \\\\) represent?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The probability a sample is not classified into class \\\\( i \\\\)."
+      },
+      {
+        "label": "B",
+        "text": "The probability a sample belongs to class \\\\( i \\\\)."
+      },
+      {
+        "label": "C",
+        "text": "The number of samples in class \\\\( i \\\\)."
+      },
+      {
+        "label": "D",
+        "text": "The total number of classes in the dataset."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "\\\\( p_i \\\\) is the probability that a sample belongs to class \\\\( i \\\\), calculated as the proportion of class \\\\( i \\\\) samples.",
+      "vi": "\\\\( p_i \\\\) là xác suất một mẫu thuộc về lớp \\\\( i \\\\), được tính là tỷ lệ mẫu của lớp \\\\( i \\\\)."
+    }
+  },
+  {
+    "id": 29,
+    "question": "What does a Gini Impurity of 0 indicate about a dataset?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The dataset has a random class distribution."
+      },
+      {
+        "label": "B",
+        "text": "The dataset has an even distribution across some classes."
+      },
+      {
+        "label": "C",
+        "text": "The dataset is pure, with all samples in one class."
+      },
+      {
+        "label": "D",
+        "text": "The dataset lacks critical information."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "A Gini Impurity of 0 means the dataset is pure, with all samples belonging to a single class.",
+      "vi": "Gini Impurity bằng 0 nghĩa là tập dữ liệu thuần khiết, với tất cả các mẫu thuộc về một lớp duy nhất."
+    }
+  },
+  {
+    "id": 30,
+    "question": "If a dataset's Gini Impurity is 0.5 (e.g., 5/0/5/0/0 in 5 classes), what does this imply?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The dataset is pure."
+      },
+      {
+        "label": "B",
+        "text": "There is an even distribution across some classes."
+      },
+      {
+        "label": "C",
+        "text": "There is a random distribution across all classes."
+      },
+      {
+        "label": "D",
+        "text": "The dataset cannot be classified effectively."
+      }
+    ],
+    "answer": "B",
+    "explanation": {
+      "en": "A Gini Impurity of 0.5 indicates an even distribution across some classes, e.g., two classes with equal proportions.",
+      "vi": "Gini Impurity bằng 0.5 biểu thị phân phối đồng đều giữa một số lớp, ví dụ, hai lớp có tỷ lệ bằng nhau."
+    }
+  },
+  {
+    "id": 31,
+    "question": "If a dataset's Gini Impurity is 1 (e.g., 1/2/3/2/2 in 5 classes), what does this imply?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The dataset is pure."
+      },
+      {
+        "label": "B",
+        "text": "There is an even distribution across some classes."
+      },
+      {
+        "label": "C",
+        "text": "There is a random distribution across all classes."
+      },
+      {
+        "label": "D",
+        "text": "The dataset is perfectly classified."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "A Gini Impurity of 1 implies a highly random distribution across classes, indicating maximum impurity.",
+      "vi": "Gini Impurity bằng 1 biểu thị phân phối rất ngẫu nhiên trên các lớp, cho thấy độ không thuần khiết tối đa."
+    }
+  },
+  {
+    "id": 32,
+    "question": "In multi-class classification, what is the range of Gini Impurity values?",
+    "options": [
+      {
+        "label": "A",
+        "text": "From -1 to 1."
+      },
+      {
+        "label": "B",
+        "text": "From 0 to 0.5."
+      },
+      {
+        "label": "C",
+        "text": "From 0 to 1."
+      },
+      {
+        "label": "D",
+        "text": "From 0.5 to 1."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Gini Impurity ranges from 0 (pure dataset) to 1 (maximum impurity with random class distribution).",
+      "vi": "Gini Impurity dao động từ 0 (tập dữ liệu thuần khiết) đến 1 (độ không thuần khiết tối đa với phân phối lớp ngẫu nhiên)."
+    }
+  },
+  {
+    "id": 33,
+    "question": "If a dataset D is split on attribute A into m subsets {D1, ..., Dm}, what is the formula for Gini Impurity of attribute A?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\\\( \\sum_{s=1}^{m} \\text{Gini}(D_s) \\\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\\\( \\sum_{s=1}^{m} \\frac{|D_s|}{|D|} \\text{Gini}(D) \\\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\\\( \\sum_{s=1}^{m} \\frac{|D_s|}{|D|} \\text{Gini}(D_s) \\\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\\\( \\sum_{s=1}^{m} p_s \\text{Gini}(D_s) \\\\)"
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Gini Impurity for attribute A is the weighted sum of subset impurities: \\\\( \\sum_{s=1}^{m} \\frac{|D_s|}{|D|} \\text{Gini}(D_s) \\\\).",
+      "vi": "Gini Impurity cho thuộc tính A là tổng có trọng số của độ không thuần khiết các tập con: \\\\( \\sum_{s=1}^{m} \\frac{|D_s|}{|D|} \\text{Gini}(D_s) \\\\)."
+    }
+  },
+  {
+    "id": 34,
+    "question": "To split a node in a Decision Tree using Gini Impurity, which attribute is selected?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The attribute with the highest Gini Impurity."
+      },
+      {
+        "label": "B",
+        "text": "The attribute with the highest Information Gain."
+      },
+      {
+        "label": "C",
+        "text": "The attribute that minimizes Gini Impurity."
+      },
+      {
+        "label": "D",
+        "text": "The attribute with the most unique values."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "The attribute that results in the lowest weighted Gini Impurity after splitting is chosen.",
+      "vi": "Thuộc tính dẫn đến Gini Impurity có trọng số thấp nhất sau khi chia được chọn."
+    }
+  },
+  {
+    "id": 35,
+    "question": "How is Gini Information Gain for an attribute A defined?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The sum of Gini Impurities of all child branches."
+      },
+      {
+        "label": "B",
+        "text": "Gini Impurity of attribute A minus the original dataset's Gini Impurity."
+      },
+      {
+        "label": "C",
+        "text": "Original dataset's Gini Impurity minus the weighted sum of child branches' Gini Impurities."
+      },
+      {
+        "label": "D",
+        "text": "Gini Impurity of the largest subset."
+      }
+    ],
+    "answer": "C",
+    "explanation": {
+      "en": "Gini Information Gain is \\\\( \\Delta \\text{Gini}(A) = \\text{Gini}(D) - \\sum_{s=1}^{m} \\frac{|D_s|}{|D|} \\text{Gini}(D_s) \\\\).",
+      "vi": "Độ lợi thông tin Gini là \\\\( \\Delta \\text{Gini}(A) = \\text{Gini}(D) - \\sum_{s=1}^{m} \\frac{|D_s|}{|D|} \\text{Gini}(D_s) \\\\)."
+    }
+  }
+]
