@@ -1,185 +1,158 @@
 import os
 import json
 import logging
-import google.generativeai as genai
 from dotenv import load_dotenv
+
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain.schema import HumanMessage
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Thiết lập logging
-logging.basicConfig(level=logging.INFO)
+# Thiết lập logging chi tiết
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 logger = logging.getLogger(__name__)
-
-# Configure the Gemini API
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    logger.error("API KEY không tồn tại trong file .env - vui lòng thêm GEMINI_API_KEY=your_api_key")
-
-# Cấu hình API Gemini
-genai.configure(api_key=GEMINI_API_KEY)
 
 class ExamGenerator:
     def __init__(self):
         try:
-            # Liệt kê các model có sẵn để debug
-            available_models = [m.name for m in genai.list_models()]
-            logger.info(f"Các model có sẵn: {available_models}")
+            api_key = os.getenv("GEMINI_API_KEY")
             
-            # Sử dụng phiên bản mới nhất của Gemini
-            model_name = "models/gemini-1.5-pro" if "models/gemini-1.5-pro" in str(available_models) else "models/gemini-pro"
-            logger.info(f"Sử dụng model: {model_name}")
+            if not api_key:
+                raise Exception("❌ Không tìm thấy GEMINI_API_KEY trong file .env")
             
-            # Khởi tạo model
-            self.model = genai.GenerativeModel(model_name)
+            # Khởi tạo LangChain ChatGoogleGenerativeAI
+            self.llm = ChatGoogleGenerativeAI(
+                model="gemini-2.5-flash",
+                google_api_key=api_key,
+                temperature=0.7,
+                max_tokens=8192,
+                top_p=0.8
+            )
+            
+            logger.info("✅ Đã khởi tạo ExamGenerator với LangChain và Gemini API")
+            
         except Exception as e:
-            logger.error(f"Lỗi khởi tạo model: {str(e)}")
-            raise Exception(f"Không thể khởi tạo model: {str(e)}")
-    
+            logger.error(f"Lỗi khởi tạo ExamGenerator: {str(e)}")
+            raise Exception(f"Không thể khởi tạo ExamGenerator: {str(e)}")
+
     def generate_from_text(self, text, exam_title, question_count=10):
-        """
-        Generate an exam with multiple-choice questions from the provided text
-        
-        Args:
-            text: The document text content
-            exam_title: Title for the generated exam
-            question_count: Number of questions to generate (default: 10)
-            
-        Returns:
-            JSON-formatted exam data conforming to the Exam Hub format
-        """
-        # Create a prompt for the LLM
+        """Synchronous method để tương thích với code hiện tại"""
         prompt = self._create_prompt(text, question_count)
         
         try:
-            # Generate response from Gemini
             logger.info(f"Đang tạo câu hỏi với {len(text)} ký tự và {question_count} câu hỏi")
             
-            generation_config = {
-                "temperature": 0.7,
-                "top_p": 0.8,
-                "top_k": 40,
-                "max_output_tokens": 8192,
-            }
+            # Gọi LangChain để tạo câu hỏi (sync)
+            response = self.llm.invoke([HumanMessage(content=prompt)])
             
-            safety_settings = [
-                {
-                    "category": "HARM_CATEGORY_HARASSMENT",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                },
-                {
-                    "category": "HARM_CATEGORY_HATE_SPEECH",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                },
-                {
-                    "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                },
-                {
-                    "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                }
-            ]
+            # Parse response từ LangChain
+            exam_data = self._parse_response(response.content)
             
-            response = self.model.generate_content(
-                prompt,
-                generation_config=generation_config,
-                safety_settings=safety_settings
-            )
-            
-            # Parse the response to extract JSON
-            exam_data = self._parse_response(response.text)
-            
-            # Add exam title to the data dictionary
-            exam_data_with_meta = {
+            return {
                 "title": exam_title,
                 "questions": exam_data
             }
             
-            return exam_data_with_meta
+        except Exception as e:
+            logger.error(f"Lỗi khi tạo câu hỏi: {str(e)}")
+            return {"error": "Không thể tạo câu hỏi", "details": str(e)}
+
+    async def generate_from_text_async(self, text, exam_title, question_count=10):
+        """Asynchronous method cho FastAPI"""
+        prompt = self._create_prompt(text, question_count)
+        
+        try:
+            logger.info(f"Đang tạo câu hỏi với {len(text)} ký tự và {question_count} câu hỏi (async)")
+            
+            # Gọi LangChain để tạo câu hỏi (async)
+            response = await self.llm.ainvoke([HumanMessage(content=prompt)])
+            
+            # Parse response từ LangChain
+            exam_data = self._parse_response(response.content)
+            
+            return {
+                "title": exam_title,
+                "questions": exam_data
+            }
             
         except Exception as e:
             logger.error(f"Lỗi khi tạo câu hỏi: {str(e)}")
             return {"error": "Không thể tạo câu hỏi", "details": str(e)}
-    
-    def _create_prompt(self, text, question_count):
-            """Create a prompt for the LLM to generate exam questions"""
-            
-            prompt = f"""
-            Based on the following text content, generate {question_count} multiple-choice quiz questions.
-            
-            TEXT CONTENT:
-            {text[:10000]}  # Limiting to first 10000 chars to stay within token limits
-            
-            Please create {question_count} quiz questions with 4 options each (labeled A, B, C, D). 
-            Format your response as a valid JSON array where each question has the following structure:
-            
-            ```json
-            [
-            {{
-                "id": 1,
-                "question": "The question text",
-                "options": [
-                {{ "label": "A", "text": "First option" }},
-                {{ "label": "B", "text": "Second option" }},
-                {{ "label": "C", "text": "Third option" }},
-                {{ "label": "D", "text": "Fourth option" }}
-                ],
-                "answer": "B",  // The correct option label
-                "explanation": {{
-                "en": "Explanation in English"
-                "vi": "Giải thích bằng tiếng Việt"
-                }}
-            }},
-            // More questions...
-            ]
-            ```
-            
-            Ensure each question:
-            1. Is based on the content provided
-            2. Has exactly one correct answer
-            3. Has clear and concise explanations
-            4. Is diverse in difficulty and topic coverage
-            
-            Return ONLY the JSON array, no additional text or formatting.
-            """
-            
 
-            prompt = prompt.strip()
-            
-            return prompt
-    
+    def _create_prompt(self, text, question_count):
+        prompt = f"""
+        Based on the following text content, generate {question_count} multiple-choice quiz questions.
+
+        TEXT CONTENT:
+        {text[:10000]}
+
+        Please create {question_count} quiz questions with 4 options each (labeled A, B, C, D). 
+        Format your response as a valid JSON array where each question has the following structure:
+
+        ```json
+        [
+        {{
+            "id": 1,
+            "question": "The question text",
+            "options": [
+            {{ "label": "A", "text": "First option" }},
+            {{ "label": "B", "text": "Second option" }},
+            {{ "label": "C", "text": "Third option" }},
+            {{ "label": "D", "text": "Fourth option" }}
+            ],
+            "answer": "B",
+            "explanation": {{
+            "en": "Explanation in English",
+            "vi": "Giải thích bằng tiếng Việt"
+            }}
+        }},
+        ...
+        ]
+        ```
+        
+        Ensure each question:
+        - Is based on the content provided
+        - Has exactly one correct answer
+        - Has clear and concise explanations
+        - Is diverse in difficulty and topic coverage
+
+        Return ONLY the JSON array, no additional text or formatting.
+        """
+        return prompt.strip()
+
     def _parse_response(self, response_text):
-        """Extract and parse JSON from LLM response"""
         try:
-            # Ghi log phản hồi gốc để debug
-            logger.info(f"Phản hồi gốc từ LLM: {response_text[:200]}...")
+            logger.info(f"Phản hồi từ LangChain: {response_text[:200]}...")
             
-            # Tìm phần JSON trong phản hồi
+            # Tìm JSON array trong response
             json_start = response_text.find('[')
             json_end = response_text.rfind(']') + 1
             
             if json_start >= 0 and json_end > json_start:
                 json_str = response_text[json_start:json_end]
-                logger.info(f"Đã tìm thấy chuỗi JSON từ vị trí {json_start} đến {json_end}")
                 return json.loads(json_str)
             else:
-                # Nếu không tìm thấy dấu ngoặc, thử phân tích toàn bộ văn bản
-                logger.info("Không tìm thấy dấu ngoặc vuông, thử phân tích toàn bộ văn bản")
+                # Thử parse trực tiếp
                 return json.loads(response_text)
                 
         except json.JSONDecodeError as e:
-            # Nếu phân tích thất bại, thử làm sạch phản hồi
-            logger.warning(f"JSONDecodeError: {str(e)}, đang thử làm sạch phản hồi")
+            logger.warning(f"JSONDecodeError: {e}, đang thử làm sạch phản hồi")
             try:
-                # Xóa các dấu code block nếu có
+                # Làm sạch response
                 cleaned_text = response_text.replace("```json", "").replace("```", "").strip()
-                return json.loads(cleaned_text)
+                json_start = cleaned_text.find('[')
+                json_end = cleaned_text.rfind(']') + 1
+                
+                if json_start >= 0 and json_end > json_start:
+                    json_str = cleaned_text[json_start:json_end]
+                    return json.loads(json_str)
+                else:
+                    return json.loads(cleaned_text)
+                    
             except json.JSONDecodeError:
-                # Nếu vẫn thất bại, trả về phản hồi dự phòng
                 logger.error("Không thể phân tích phản hồi JSON, trả về mảng trống")
                 return []
-
-
-
-
