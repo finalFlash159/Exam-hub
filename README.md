@@ -111,12 +111,6 @@ GEMINI_API_KEY=your_api_key_here
 - Development: localhost:5001 (automatic)
 - Production: Railway URL (default)
 
-## Deployment
-
-Auto-deployment on push to main branch:
-- Frontend → Vercel
-- Backend → Railway
-
 ## License
 
 MIT License
