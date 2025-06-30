@@ -11,9 +11,12 @@ logger = logging.getLogger(__name__)
 
 def get_settings():
     """Get application settings"""
+    # Try to get API key from environment variables first (Railway), then from .env file (local)
+    gemini_api_key = os.getenv("GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY")
+    
     return {
         "env": os.getenv('ENV', 'production'),
-        "gemini_api_key": os.getenv("GEMINI_API_KEY"),
+        "gemini_api_key": gemini_api_key,
         "upload_folder": "uploads",
         "allowed_extensions": {'pdf', 'docx'},
         "max_upload_size": 16 * 1024 * 1024,  # 16MB
@@ -30,8 +33,9 @@ def configure_gemini():
     logger.debug(f"API key được tìm thấy: {bool(api_key)}")
     
     if not api_key:
-        logger.error("Không tìm thấy GEMINI_API_KEY trong file .env")
-        raise Exception("Không tìm thấy GEMINI_API_KEY trong file .env")
+        logger.error("Không tìm thấy GEMINI_API_KEY trong environment variables hoặc file .env")
+        logger.error("Vui lòng set environment variable GEMINI_API_KEY trên Railway")
+        raise Exception("Không tìm thấy GEMINI_API_KEY trong environment variables")
     
     try:
         logger.info("Đang khởi tạo ChatGoogleGenerativeAI...")
