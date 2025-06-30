@@ -33,7 +33,7 @@ export default function ExamApp() {
 
   // Custom hooks for exam state and timer
   const examState = useExamState(questions);
-  const timer = useExamTimer(examState.finishExam);
+  const timer = useExamTimer(examState.finishExam, questions.length);
   
 
   
@@ -335,10 +335,23 @@ export default function ExamApp() {
               label="Select Exam"
               onChange={handleExamTypeChange}
               disabled={loading}
+              MenuProps={{
+                PaperProps: {
+                  style: {
+                    maxHeight: 400,
+                    overflow: 'auto'
+                  }
+                }
+              }}
             >
               {examTypes.map((type) => (
                 <MenuItem key={type.value} value={type.value}>
-                  {type.label}
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <Typography variant="body1">{type.label}</Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {type.questionCount} câu - {type.durationText}
+                    </Typography>
+                  </Box>
                 </MenuItem>
               ))}
             </Select>

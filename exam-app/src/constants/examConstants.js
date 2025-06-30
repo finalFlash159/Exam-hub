@@ -2,6 +2,21 @@
 export const EXAM_TIME_MINUTES = 120;
 export const EXAM_TIME_SECONDS = EXAM_TIME_MINUTES * 60;
 
+// Dynamic exam timing based on number of questions
+export const getExamDuration = (questionCount) => {
+  if (questionCount <= 35) {
+    return 60; // 60 minutes for ≤35 questions
+  } else if (questionCount <= 50) {
+    return 90; // 90 minutes for 35-50 questions
+  } else {
+    return 120; // 120 minutes for >50 questions
+  }
+};
+
+export const getExamTimeSeconds = (questionCount) => {
+  return getExamDuration(questionCount) * 60;
+};
+
 // Scoring constants
 export const PASSING_SCORE = 70;
 
