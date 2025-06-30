@@ -11,7 +11,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 // Backend URL - Railway production URL
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://clever-abundance-production.up.railway.app';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://exam-hub-production-c8b2.up.railway.app';
 
 export default function ExamGenerator() {
   const [activeStep, setActiveStep] = useState(0);
