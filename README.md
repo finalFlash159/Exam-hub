@@ -1,144 +1,205 @@
-# Exam Hub
+# Exam Hub - AI-Powered Exam Generator
 
-Smart exam application with AI-powered automatic exam generation from PDF/DOCX documents.
+An intelligent exam generation application that creates multiple-choice questions from documents using Google Gemini AI.
 
-![Main Page](images/main_page.png)
+## Screenshots
 
-## 🚀 Live Demo
+### Main Interface
+![Main Interface](images/main_page.png)
 
-**🌐 Frontend:** https://exam-app-gules.vercel.app/  
-**🔧 Backend API:** https://exam-hub-production.up.railway.app  
+### AI Generation Process
+![Generation Step 1](images/genai1.png)
+![Generation Step 2](images/genai2.png)
+![Generation Step 3](images/genai3.png)
 
-*Try the live application now! Upload your PDF/DOCX documents and generate AI-powered exams instantly.*
+## Features
 
-## Key Features
+- Upload PDF and DOCX documents
+- Automatic question generation using Google Gemini AI
+- Multiple-choice questions with explanations
+- Timed exam system with instant scoring
+- Modern responsive web interface
+- FastAPI backend with async support
+- LangChain integration for AI operations
 
-- **Online Multiple Choice Exams**: User-friendly interface with timer and progress tracking
-- **AI-Powered Exam Generation**: Create questions automatically from PDF/DOCX documents
-- **Results Management**: View detailed correct/incorrect answers with explanations
-- **Multi-language Support**: Vietnamese and English
-- **Flexible Customization**: Easy to add new exams
+## Technology Stack
 
-![GenAI Feature 1](images/genai1.png)
-![GenAI Feature 2](images/genai2.png)
-![GenAI Feature 3](images/genai3.png)
+**Backend:**
+- FastAPI (Python web framework)
+- LangChain (LLM integration)
+- Google Gemini AI
+- Pydantic (data validation)
 
-## Quick Setup
+**Frontend:**
+- React.js
+- Material-UI components
+- Context API for state management
 
-### System Requirements
-- Node.js 18+
-- Python 3.9+
-- Google Gemini API Key
+**Deployment:**
+- Railway (backend hosting)
+- Vercel (frontend hosting)
 
-### Step 1: Clone repository
+## Prerequisites
+
+- Python 3.11 or higher
+- Node.js 18 or higher
+- Google Gemini API key
+
+## Installation
+
+### 1. Clone Repository
 ```bash
-git clone https://github.com/finalFlash159/Exam-hub.git
+git clone https://github.com/yourusername/Exam-hub.git
 cd Exam-hub
 ```
 
-### Step 2: Frontend Setup
+### 2. Backend Setup
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+pip install -r requirements.txt
+
+# Create .env file with your API key
+echo "GEMINI_API_KEY=your_api_key_here" > .env
+```
+
+### 3. Frontend Setup
 ```bash
 cd exam-app
 npm install
-npm start
 ```
-Frontend will run at http://localhost:3000
 
-### Step 3: Backend Setup
+### 4. Start Development
 ```bash
-cd backend
-pip install -r requirements.txt
-python app.py
-```
-Backend will run at http://localhost:5001
-
-### Step 4: Configure API Key
-Create `.env` file in `backend` folder:
-```
-GEMINI_API_KEY=your_gemini_api_key_here
+# From project root
+./start-dev.sh
 ```
 
-## How to Use
+## Development URLs
 
-### Take Available Exams
-1. Open http://localhost:3000
-2. Select an exam
-3. Start taking the exam
-4. View results and explanations
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5001
+- API Documentation: http://localhost:5001/docs
 
-### Generate Exam from Documents
-1. Go to "Create Exam" page
-2. Upload PDF or DOCX file
-3. Fill in exam information
-4. Click "Generate Exam"
-5. New exam will be added to the system
+## Production URLs
 
-### Add Manual Exams
-1. Create JSON file in `exam-app/src/data/questions/`
-2. Question format:
-```json
-{
-  "id": 1,
-  "question": "Your question here?",
-  "options": [
-    {"label": "A", "text": "Option A"},
-    {"label": "B", "text": "Option B"},
-    {"label": "C", "text": "Option C"},
-    {"label": "D", "text": "Option D"}
-  ],
-  "answer": "B",
-  "explanation": {
-    "en": "Explanation in English",
-    "vi": "Giải thích bằng tiếng Việt"
-  }
-}
-```
-3. Update `exam-app/src/data/index.js` file
+- Frontend: https://exam-app-gules.vercel.app
+- Backend API: https://exam-hub-production.up.railway.app
+
+## API Endpoints
+
+### Core Endpoints
+- `POST /api/upload` - Upload document files
+- `POST /api/generate-exam` - Generate questions from uploaded document
+- `POST /api/save-exam` - Save generated exam to system
+
+### System Endpoints
+- `GET /health` - Health check
+- `GET /api/test-connection` - Test Gemini API connectivity
+- `GET /docs` - Interactive API documentation
 
 ## Project Structure
 
 ```
 Exam-hub/
-├── exam-app/           # Frontend React
+├── backend/
+│   ├── app.py                 # Main FastAPI application
+│   ├── api/                   # API endpoints (modular)
+│   │   ├── upload.py          # File upload handling
+│   │   ├── exam.py            # Exam generation & saving
+│   │   └── health.py          # Health checks
+│   ├── core/                  # Core functionality
+│   │   ├── config.py          # Configuration management
+│   │   └── logging_config.py  # Logging setup
+│   ├── models/                # Pydantic models
+│   ├── llm_generator.py       # AI question generation
+│   └── document_processor.py  # File processing
+├── exam-app/
 │   ├── src/
-│   │   ├── components/ # React components
-│   │   ├── data/       # Exam data
-│   │   └── styles/     # CSS styles
-│   └── public/
-├── backend/            # Backend Python Flask
-│   ├── app.py         # Main application
-│   ├── document_processor.py
-│   ├── llm_generator.py
-│   └── requirements.txt
-└── uploads/           # Document upload folder
+│   │   ├── components/        # React components
+│   │   ├── contexts/          # State management
+│   │   └── data/              # Question data storage
+│   └── public/                # Static assets
+└── start-dev.sh               # Development startup script
 ```
+
+## Usage Flow
+
+1. Upload a PDF or DOCX document
+2. Configure exam settings (title, question count)
+3. AI generates multiple-choice questions automatically
+4. Review and save exam to system or download JSON
+5. Take exam with timer and get instant results
+
+## Environment Variables
+
+### Backend (.env)
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+ENV=development  # Optional, for local development only
+```
+
+### Frontend
+Development automatically uses localhost:5001
+Production uses Railway backend URL by default
 
 ## Deployment
 
-Project supports automatic CI/CD with GitHub Actions:
-- Frontend: Deploy to Vercel
-- Backend: Deploy to Railway
-- Database: PostgreSQL on Railway
+Both frontend and backend deploy automatically when pushing to the main branch:
 
-See `Quick-Setup-Guide.md` for details
+```bash
+git add .
+git commit -m "your commit message"
+git push origin main
+```
 
-## Technologies Used
+- Railway auto-deploys backend from GitHub
+- Vercel auto-deploys frontend from GitHub
 
-**Frontend:**
-- React 18
-- Material-UI
-- React Router
+## Testing
 
-**Backend:**
-- Python Flask
-- Google Gemini AI
-- PyPDF2, python-docx
+### Backend
+```bash
+cd backend
+python -m pytest tests/ -v
+```
 
-**Deployment:**
-- Vercel (Frontend)
-- Railway (Backend + Database)
-- GitHub Actions (CI/CD)
+### Frontend
+```bash
+cd exam-app
+npm test
+```
+
+## Troubleshooting
+
+### Common Issues
+
+**Backend fails to start:**
+- Verify Python 3.11+ is installed
+- Check GEMINI_API_KEY is set in .env file
+- Ensure virtual environment is activated
+
+**Frontend build errors:**
+- Verify Node.js 18+ is installed
+- Try: `rm -rf node_modules package-lock.json && npm install`
+
+**API connection errors:**
+- Verify Gemini API key is valid
+- Check network connectivity
+- Visit `/api/test-connection` endpoint
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file
+MIT License - see LICENSE file for details.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+---
+
+Built with FastAPI, React, and Google Gemini AI
