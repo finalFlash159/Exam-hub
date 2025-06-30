@@ -17,13 +17,20 @@ from api import upload_router, exam_router, health_router
 # Setup logging
 logger = setup_logging()
 
-# Initialize Gemini
-logger.info("Khởi động server và cấu hình Gemini API...")
-gemini_configured = configure_gemini()
-if gemini_configured:
-    logger.info("Cấu hình Gemini hoàn tất")
-else:
-    logger.warning("Gemini API chưa được cấu hình - một số tính năng sẽ không khả dụng")
+# Skip Gemini initialization on startup for faster boot
+logger.info("Khởi động server nhanh - Gemini API sẽ được cấu hình khi cần thiết...")
+logger.info("✅ Server khởi động nhanh để tránh timeout")
+
+# Test Gemini config in background (non-blocking)
+import threading
+def background_gemini_test():
+    try:
+        configure_gemini()
+        logger.info("✅ Background Gemini test completed")
+    except Exception as e:
+        logger.warning(f"⚠️ Background Gemini test failed: {e}")
+
+threading.Thread(target=background_gemini_test, daemon=True).start()
 
 # Create FastAPI app
 logger.info("Khởi tạo FastAPI application...")

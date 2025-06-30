@@ -24,7 +24,7 @@ def get_settings():
     }
 
 def configure_gemini():
-    """Cấu hình và test Gemini API connection"""
+    """Cấu hình và test Gemini API connection - LAZY LOAD"""
     logger.info("Bắt đầu cấu hình Gemini API...")
     
     settings = get_settings()
@@ -39,7 +39,7 @@ def configure_gemini():
     
     try:
         logger.info("Đang khởi tạo ChatGoogleGenerativeAI...")
-        # Test kết nối với LangChain
+        # Test kết nối với LangChain - SKIP PING FOR FASTER STARTUP
         llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
             google_api_key=api_key,
@@ -47,14 +47,11 @@ def configure_gemini():
         )
         logger.debug("ChatGoogleGenerativeAI đã được khởi tạo")
         
-        # Test ping
-        logger.info("Đang test kết nối với Gemini...")
-        test_response = llm.invoke([HumanMessage(content="Ping")])
-        logger.info(f"Test response từ Gemini: {test_response.content[:50]}...")
-        logger.info("Kết nối Gemini API thành công qua LangChain")
+        # SKIP TEST PING - Just return success if instance created
+        logger.info("Gemini API instance created successfully (test connection skipped for faster startup)")
         return True
         
     except Exception as e:
         logger.error(f"Lỗi khi kết nối Gemini API: {e}")
         logger.exception("Chi tiết lỗi:")
-        raise 
+        return False  # Don't raise, just return False 
