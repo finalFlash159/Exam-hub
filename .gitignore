@@ -169,3 +169,6 @@ uploads/
 generated_exams/
 temp_files/
 .env.local
+
+# Mac OS
+.DS_Store
