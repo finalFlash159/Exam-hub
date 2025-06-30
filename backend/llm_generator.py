@@ -84,44 +84,37 @@ class ExamGenerator:
             return {"error": "Không thể tạo câu hỏi", "details": str(e)}
 
     def _create_prompt(self, text, question_count):
-        prompt = f"""
-        Based on the following text content, generate {question_count} multiple-choice quiz questions.
+        prompt = f"""Create {question_count} multiple-choice questions based on the provided text content.
 
-        TEXT CONTENT:
-        {text[:10000]}
+TEXT CONTENT:
+{text[:10000]}
 
-        Please create {question_count} quiz questions with 4 options each (labeled A, B, C, D). 
-        Format your response as a valid JSON array where each question has the following structure:
+INSTRUCTIONS:
+- Generate exactly {question_count} questions
+- Each question must have 4 options (A, B, C, D)
+- Include explanations in both English and Vietnamese
+- Use simple text only - avoid special characters or complex formatting
+- Return ONLY valid JSON array, no markdown or extra text
 
-        ```json
-        [
-        {{
-            "id": 1,
-            "question": "The question text",
-            "options": [
-            {{ "label": "A", "text": "First option" }},
-            {{ "label": "B", "text": "Second option" }},
-            {{ "label": "C", "text": "Third option" }},
-            {{ "label": "D", "text": "Fourth option" }}
-            ],
-            "answer": "B",
-            "explanation": {{
-            "en": "Explanation in English",
-            "vi": "Giải thích bằng tiếng Việt"
-            }}
-        }},
-        ...
-        ]
-        ```
-        
-        Ensure each question:
-        - Is based on the content provided
-        - Has exactly one correct answer
-        - Has clear and concise explanations
-        - Is diverse in difficulty and topic coverage
+REQUIRED JSON FORMAT:
+[
+{{
+    "id": 1,
+    "question": "Question text here",
+    "options": [
+        {{"label": "A", "text": "Option A text"}},
+        {{"label": "B", "text": "Option B text"}},
+        {{"label": "C", "text": "Option C text"}},
+        {{"label": "D", "text": "Option D text"}}
+    ],
+    "answer": "A",
+    "explanation": {{
+        "en": "English explanation",
+        "vi": "Vietnamese explanation"
+    }}
+}}]
 
-        Return ONLY the JSON array, no additional text or formatting.
-        """
+IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code blocks, or any other text."""
         return prompt.strip()
 
     def _parse_response(self, response_text):
@@ -142,17 +135,51 @@ class ExamGenerator:
         except json.JSONDecodeError as e:
             logger.warning(f"JSONDecodeError: {e}, đang thử làm sạch phản hồi")
             try:
-                # Làm sạch response
+                # Làm sạch response - bước 1: loại bỏ markdown
                 cleaned_text = response_text.replace("```json", "").replace("```", "").strip()
+                
+                # Bước 2: Fix các escape characters phổ biến
+                cleaned_text = self._fix_json_escapes(cleaned_text)
+                
+                # Bước 3: Tìm JSON array
                 json_start = cleaned_text.find('[')
                 json_end = cleaned_text.rfind(']') + 1
                 
                 if json_start >= 0 and json_end > json_start:
                     json_str = cleaned_text[json_start:json_end]
+                    logger.debug(f"Cleaned JSON: {json_str[:300]}...")
                     return json.loads(json_str)
                 else:
                     return json.loads(cleaned_text)
                     
-            except json.JSONDecodeError:
-                logger.error("Không thể phân tích phản hồi JSON, trả về mảng trống")
+            except json.JSONDecodeError as e2:
+                logger.error(f"Không thể phân tích phản hồi JSON sau khi làm sạch: {e2}")
+                logger.debug(f"Raw response: {response_text}")
                 return []
+
+    def _fix_json_escapes(self, text):
+        """Sửa các ký tự escape không hợp lệ trong JSON"""
+        try:
+            # Fix các escape characters phổ biến
+            fixes = {
+                '\\"': '"',      # Fix quote escapes
+                '\\n': ' ',      # Replace newlines with spaces
+                '\\r': ' ',      # Replace carriage returns
+                '\\t': ' ',      # Replace tabs with spaces
+                '\\\\': '\\',    # Fix double backslashes
+                '\\/': '/',      # Fix forward slash escapes
+            }
+            
+            for old, new in fixes.items():
+                text = text.replace(old, new)
+            
+            # Remove any remaining invalid escape sequences
+            import re
+            # Remove invalid escape sequences like \x, \u without proper format
+            text = re.sub(r'\\(?!["\\/bfnrt])', '', text)
+            
+            return text
+            
+        except Exception as e:
+            logger.warning(f"Lỗi khi sửa escape characters: {e}")
+            return text

@@ -69,34 +69,70 @@ async def save_exam(request: SaveExamRequest):
     settings = get_settings()
     questions_dir = settings["questions_dir"]
     
+    logger.info("Starting save exam process...")
+    logger.debug(f"Questions directory: {questions_dir}")
+    
     try:
         exam_data = request.exam_data
         exam_title = exam_data.get('title', 'Exam Generated')
         questions = exam_data.get('questions', [])
 
+        logger.info(f"Saving exam: '{exam_title}' with {len(questions)} questions")
+
         if not questions:
+            logger.error("No questions provided")
             raise HTTPException(status_code=400, detail='Không có câu hỏi')
 
         Path(questions_dir).mkdir(parents=True, exist_ok=True)
+        logger.debug(f"Questions directory created/verified: {questions_dir}")
 
+        # Tìm ID mới thông minh hơn - check cả file questions và examData
         existing_files = [f for f in os.listdir(questions_dir) if f.startswith('questions') and f.endswith('.json')]
-        existing_ids = [int(f.replace('questions', '').replace('.json', '')) for f in existing_files if f[9:-5].isdigit()]
-        new_id = max(existing_ids) + 1 if existing_ids else 1
+        file_ids = [int(f.replace('questions', '').replace('.json', '')) for f in existing_files if f[9:-5].isdigit()]
+        
+        # Đọc index.js để check IDs đã dùng trong examData
+        index_file = '../exam-app/src/data/index.js'
+        used_ids = set(file_ids)
+        
+        try:
+            with open(index_file, 'r', encoding='utf-8') as f:
+                index_content = f.read()
+            
+            # Extract tất cả IDs từ examData (dạng "số:")
+            import re
+            id_matches = re.findall(r'(\d+):\s*\{', index_content)
+            used_ids.update(int(id_str) for id_str in id_matches)
+            
+        except Exception as e:
+            logger.warning(f"Không thể đọc index.js để check IDs: {e}")
+        
+        # Tìm ID nhỏ nhất chưa được sử dụng
+        new_id = 1
+        while new_id in used_ids:
+            new_id += 1
+            
+        logger.info(f"Selected new exam ID: {new_id} (used IDs: {sorted(used_ids)})")
 
         new_file_name = f'questions{new_id}.json'
         file_path = os.path.join(questions_dir, new_file_name)
 
+        logger.info(f"Saving to file: {file_path}")
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(questions, f, ensure_ascii=False, indent=2)
+        logger.info(f"Questions file saved successfully")
 
+        logger.info("Updating index.js...")
         update_index_js(new_id, exam_title, new_file_name, questions_dir)
+        logger.info("index.js updated successfully")
 
-        return {
+        response_data = {
             'success': True,
             'message': f"Đã lưu bài kiểm tra '{exam_title}'",
             'exam_id': new_id,
             'file_name': new_file_name
         }
+        logger.info(f"Save exam completed successfully: {response_data}")
+        return response_data
 
     except HTTPException:
         raise
@@ -111,30 +147,57 @@ def update_index_js(exam_id: int, exam_title: str, file_name: str, questions_dir
         with open(index_file, 'r', encoding='utf-8') as f:
             content = f.read()
 
+        # 1. Thêm import statement ở đúng vị trí (cùng với các import khác)
         import_stmt = f'import questions{exam_id} from \'./questions/{file_name}\';\n'
-        insert_pos = content.find('// Map of exam types to question data')
-        if insert_pos == -1:
-            insert_pos = content.find('export const examData')
-
-        if insert_pos != -1:
-            content = content[:insert_pos] + import_stmt + content[insert_pos:]
+        
+        # Tìm vị trí cuối cùng của các import statements (trước import { getExamDuration })
+        import_position = content.find('import { getExamDuration }')
+        if import_position != -1:
+            # Thêm import trước import { getExamDuration }
+            content = content[:import_position] + import_stmt + content[import_position:]
         else:
+            # Fallback: thêm ở đầu file
             content = import_stmt + content
-
-        exam_entry = f'''
-  {exam_id}: {{
+        
+        # 2. Thêm exam entry vào examData object
+        exam_entry = f'''  {exam_id}: {{
     title: "{exam_title}",
-    questions: questions{exam_id}
-  }},'''
+    questions: questions{exam_id},
+    ...calculateExamInfo(questions{exam_id})
+  }},
+'''
 
-        data_pos = content.find('export const examData = {')
-        if data_pos != -1:
-            brace_pos = content.find('{', data_pos)
-            if brace_pos != -1:
-                content = content[:brace_pos+1] + exam_entry + content[brace_pos+1:]
+        # Tìm vị trí cuối của examData object (trước dấu } cuối)
+        exam_data_start = content.find('export const examData = {')
+        if exam_data_start != -1:
+            # Tìm dấu } đóng của examData object
+            brace_count = 0
+            closing_brace_pos = -1
+            
+            for i in range(exam_data_start, len(content)):
+                if content[i] == '{':
+                    brace_count += 1
+                elif content[i] == '}':
+                    brace_count -= 1
+                    if brace_count == 0:
+                        closing_brace_pos = i
+                        break
+            
+            if closing_brace_pos != -1:
+                # Thêm exam mới trước dấu } cuối
+                content = content[:closing_brace_pos] + exam_entry + content[closing_brace_pos:]
+            else:
+                logger.error("Không tìm thấy closing brace của examData")
+                raise Exception("Không thể tìm vị trí để thêm exam mới")
+        else:
+            logger.error("Không tìm thấy examData export")
+            raise Exception("Không thể tìm examData trong index.js")
 
+        # 3. Ghi lại file
         with open(index_file, 'w', encoding='utf-8') as f:
             f.write(content)
+            
+        logger.info(f"Successfully updated index.js: added import and exam entry for ID {exam_id}")
 
     except Exception as e:
         raise Exception(f"Không thể cập nhật danh sách bài kiểm tra: {str(e)}") 
