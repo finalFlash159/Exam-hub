@@ -12,6 +12,12 @@ An intelligent exam generation application that creates multiple-choice question
 ![Generation Step 2](images/genai2.png)
 ![Generation Step 3](images/genai3.png)
 
+## Demo
+
+**Live Demo:** https://exam-app-gules.vercel.app/
+
+**Backend API:** https://exam-hub-production.up.railway.app
+
 ## Features
 
 - Upload PDF and DOCX documents
@@ -19,187 +25,100 @@ An intelligent exam generation application that creates multiple-choice question
 - Multiple-choice questions with explanations
 - Timed exam system with instant scoring
 - Modern responsive web interface
-- FastAPI backend with async support
-- LangChain integration for AI operations
 
-## Technology Stack
+## Tech Stack
 
-**Backend:**
-- FastAPI (Python web framework)
-- LangChain (LLM integration)
-- Google Gemini AI
-- Pydantic (data validation)
+- **Frontend:** React.js + Material-UI
+- **Backend:** FastAPI + LangChain + Google Gemini AI
+- **Deployment:** Vercel (frontend) + Railway (backend)
 
-**Frontend:**
-- React.js
-- Material-UI components
-- Context API for state management
+## Quick Start
 
-**Deployment:**
-- Railway (backend hosting)
-- Vercel (frontend hosting)
-
-## Prerequisites
-
-- Python 3.11 or higher
-- Node.js 18 or higher
+### Prerequisites
+- Python 3.11+
+- Node.js 18+
 - Google Gemini API key
 
-## Installation
+### Installation
 
-### 1. Clone Repository
 ```bash
+# 1. Clone repository
 git clone https://github.com/yourusername/Exam-hub.git
 cd Exam-hub
-```
 
-### 2. Backend Setup
-```bash
+# 2. Backend setup
 cd backend
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
+source venv/bin/activate
 pip install -r requirements.txt
-
-# Create .env file with your API key
 echo "GEMINI_API_KEY=your_api_key_here" > .env
-```
 
-### 3. Frontend Setup
-```bash
-cd exam-app
+# 3. Frontend setup  
+cd ../exam-app
 npm install
-```
 
-### 4. Start Development
-```bash
-# From project root
+# 4. Start development
+cd ..
 ./start-dev.sh
 ```
 
-## Development URLs
-
+### Development URLs
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:5001
-- API Documentation: http://localhost:5001/docs
-
-## Production URLs
-
-- Frontend: https://exam-app-gules.vercel.app
-- Backend API: https://exam-hub-production.up.railway.app
+- Backend: http://localhost:5001
+- API Docs: http://localhost:5001/docs
 
 ## API Endpoints
 
-### Core Endpoints
-- `POST /api/upload` - Upload document files
-- `POST /api/generate-exam` - Generate questions from uploaded document
-- `POST /api/save-exam` - Save generated exam to system
+```
+POST /api/upload         # Upload document
+POST /api/generate-exam  # Generate questions
+POST /api/save-exam      # Save exam to system
+GET  /health             # Health check
+GET  /docs               # API documentation
+```
 
-### System Endpoints
-- `GET /health` - Health check
-- `GET /api/test-connection` - Test Gemini API connectivity
-- `GET /docs` - Interactive API documentation
+## Usage
+
+1. Upload a PDF or DOCX document
+2. Configure exam title and question count
+3. AI generates multiple-choice questions
+4. Review questions and save to system
+5. Take exam with timer and get instant results
 
 ## Project Structure
 
 ```
-Exam-hub/
-├── backend/
-│   ├── app.py                 # Main FastAPI application
-│   ├── api/                   # API endpoints (modular)
-│   │   ├── upload.py          # File upload handling
-│   │   ├── exam.py            # Exam generation & saving
-│   │   └── health.py          # Health checks
-│   ├── core/                  # Core functionality
-│   │   ├── config.py          # Configuration management
-│   │   └── logging_config.py  # Logging setup
-│   ├── models/                # Pydantic models
-│   ├── llm_generator.py       # AI question generation
-│   └── document_processor.py  # File processing
-├── exam-app/
-│   ├── src/
-│   │   ├── components/        # React components
-│   │   ├── contexts/          # State management
-│   │   └── data/              # Question data storage
-│   └── public/                # Static assets
-└── start-dev.sh               # Development startup script
+backend/
+├── app.py              # Main FastAPI app
+├── api/                # Modular endpoints
+├── core/               # Configuration & logging
+├── models/             # Pydantic models
+├── llm_generator.py    # AI question generation
+└── document_processor.py
+
+exam-app/
+├── src/components/     # React components
+├── src/contexts/       # State management
+└── src/data/           # Question storage
 ```
-
-## Usage Flow
-
-1. Upload a PDF or DOCX document
-2. Configure exam settings (title, question count)
-3. AI generates multiple-choice questions automatically
-4. Review and save exam to system or download JSON
-5. Take exam with timer and get instant results
 
 ## Environment Variables
 
-### Backend (.env)
+**Backend (.env):**
 ```
-GEMINI_API_KEY=your_gemini_api_key_here
-ENV=development  # Optional, for local development only
+GEMINI_API_KEY=your_api_key_here
 ```
 
-### Frontend
-Development automatically uses localhost:5001
-Production uses Railway backend URL by default
+**Frontend:**
+- Development: localhost:5001 (automatic)
+- Production: Railway URL (default)
 
 ## Deployment
 
-Both frontend and backend deploy automatically when pushing to the main branch:
-
-```bash
-git add .
-git commit -m "your commit message"
-git push origin main
-```
-
-- Railway auto-deploys backend from GitHub
-- Vercel auto-deploys frontend from GitHub
-
-## Testing
-
-### Backend
-```bash
-cd backend
-python -m pytest tests/ -v
-```
-
-### Frontend
-```bash
-cd exam-app
-npm test
-```
-
-## Troubleshooting
-
-### Common Issues
-
-**Backend fails to start:**
-- Verify Python 3.11+ is installed
-- Check GEMINI_API_KEY is set in .env file
-- Ensure virtual environment is activated
-
-**Frontend build errors:**
-- Verify Node.js 18+ is installed
-- Try: `rm -rf node_modules package-lock.json && npm install`
-
-**API connection errors:**
-- Verify Gemini API key is valid
-- Check network connectivity
-- Visit `/api/test-connection` endpoint
+Auto-deployment on push to main branch:
+- Frontend → Vercel
+- Backend → Railway
 
 ## License
 
-MIT License - see LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
----
-
-Built with FastAPI, React, and Google Gemini AI
+MIT License
