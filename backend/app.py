@@ -58,11 +58,7 @@ async def root():
     """Root endpoint"""
     return {"message": "Exam Hub API v2.0 - FastAPI", "docs": "/docs"}
 
-# Simple health check (backup)
-@app.get("/health")
-async def simple_health():
-    """Simple health check endpoint"""
-    return {"status": "ok", "service": "exam-hub-api"}
+# Health endpoint moved to health router - no duplicate needed
 
 # Include routers
 app.include_router(health_router)
