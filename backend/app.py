@@ -59,9 +59,10 @@ logger.info("✅ All routers included successfully")
 
 if __name__ == "__main__":
     import uvicorn
+    port = int(os.environ.get("PORT", 5001))
     logger.info("Starting FastAPI server...")
-    logger.info("Server will be available at: http://localhost:5001")
-    logger.info("API Documentation: http://localhost:5001/docs")
-    logger.info("Redoc Documentation: http://localhost:5001/redoc")
+    logger.info(f"Server will be available at: http://0.0.0.0:{port}")
+    logger.info(f"API Documentation: http://0.0.0.0:{port}/docs")
+    logger.info(f"Redoc Documentation: http://0.0.0.0:{port}/redoc")
     
-    uvicorn.run("app:app", host="0.0.0.0", port=5001, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)
