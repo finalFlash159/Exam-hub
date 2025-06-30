@@ -12,11 +12,9 @@ An intelligent exam generation application that creates multiple-choice question
 ![Generation Step 2](images/genai2.png)
 ![Generation Step 3](images/genai3.png)
 
-## Demo
+## 🚀 Live Demo
 
 **Live Demo:** https://exam-app-gules.vercel.app/
-
-**Backend API:** https://exam-hub-production.up.railway.app
 
 ## Features
 
