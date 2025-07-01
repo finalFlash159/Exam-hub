@@ -27,6 +27,13 @@ echo -e "${BLUE}  - ENV: $ENV (enables DEBUG logging)${NC}"
 # Check if python virtual environment is activated
 if [[ "$VIRTUAL_ENV" == "" ]]; then
     echo -e "${YELLOW}Warning: No virtual environment detected. Make sure you're in the right environment.${NC}"
+    echo -e "${YELLOW}Run: cd backend && source venv/bin/activate${NC}"
+fi
+
+# Check if uploads directory exists
+if [ ! -d "backend/uploads" ]; then
+    echo -e "${YELLOW}Creating uploads directory...${NC}"
+    mkdir -p backend/uploads
 fi
 
 # Start backend
@@ -48,11 +55,13 @@ FRONTEND_PID=$!
 echo -e "${GREEN}Frontend started with PID: $FRONTEND_PID${NC}"
 
 echo ""
-echo -e "${GREEN}🎉 Development Environment Started!${NC}"
+echo -e "${GREEN}Development Environment Started!${NC}"
 echo ""
-echo -e "${BLUE}📊 Backend API:${NC} http://localhost:5001"
-echo -e "${BLUE}📖 API Docs:${NC} http://localhost:5001/docs"
-echo -e "${BLUE}🌐 Frontend:${NC} http://localhost:3000"
+echo -e "${BLUE}Backend API:${NC} http://localhost:5001"
+echo -e "${BLUE}API Docs:${NC} http://localhost:5001/docs"
+echo -e "${BLUE}Redoc:${NC} http://localhost:5001/redoc"
+echo -e "${BLUE}Health Check:${NC} http://localhost:5001/health"
+echo -e "${BLUE}Frontend:${NC} http://localhost:3000"
 echo ""
 echo -e "${RED}To stop:${NC} Press Ctrl+C"
 

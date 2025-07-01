@@ -1,55 +1,58 @@
-import os
+"""
+Exam Generator using LangChain and Google Gemini API
+Generates multiple-choice questions from text content
+"""
+
 import json
 import logging
-from dotenv import load_dotenv
+import re
+from typing import Dict, Any, List, Optional
 
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema import HumanMessage
+from core.config import create_gemini_instance
 
-# Load environment variables from .env file
-load_dotenv()
-
-# Thiết lập logging chi tiết
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
 logger = logging.getLogger(__name__)
 
-class ExamGenerator:
-    def __init__(self):
-        try:
-            api_key = os.getenv("GEMINI_API_KEY")
-            
-            if not api_key:
-                raise Exception("❌ Không tìm thấy GEMINI_API_KEY trong file .env")
-            
-            # Khởi tạo LangChain ChatGoogleGenerativeAI
-            self.llm = ChatGoogleGenerativeAI(
-                model="gemini-2.5-flash",
-                google_api_key=api_key,
-                temperature=0.7,
-                max_tokens=8192,
-                top_p=0.8
-            )
-            
-            logger.info("✅ Đã khởi tạo ExamGenerator với LangChain và Gemini API")
-            
-        except Exception as e:
-            logger.error(f"Lỗi khởi tạo ExamGenerator: {str(e)}")
-            raise Exception(f"Không thể khởi tạo ExamGenerator: {str(e)}")
 
-    def generate_from_text(self, text, exam_title, question_count=10):
-        """Synchronous method để tương thích với code hiện tại"""
+class ExamGenerator:
+    """Generate exam questions from text using Google Gemini API"""
+    
+    def __init__(self):
+        """Initialize ExamGenerator with lazy-loaded Gemini instance"""
+        self._llm = None
+        logger.info("ExamGenerator initialized with lazy loading")
+    
+    @property
+    def llm(self):
+        """Lazy-load Gemini instance when needed"""
+        if self._llm is None:
+            self._llm = create_gemini_instance()
+            if self._llm is None:
+                raise Exception("Cannot create Gemini instance - API key not configured")
+            logger.info("Gemini instance created for ExamGenerator")
+        return self._llm
+    
+    def generate_from_text(self, text: str, exam_title: str, question_count: int = 10) -> Dict[str, Any]:
+        """
+        Generate exam questions from text (synchronous)
+        
+        Args:
+            text: Source text content
+            exam_title: Title for the exam
+            question_count: Number of questions to generate
+            
+        Returns:
+            Dict containing exam data or error information
+        """
         prompt = self._create_prompt(text, question_count)
         
         try:
-            logger.info(f"Đang tạo câu hỏi với {len(text)} ký tự và {question_count} câu hỏi")
+            logger.info(f"Generating {question_count} questions from {len(text)} characters")
             
-            # Gọi LangChain để tạo câu hỏi (sync)
+            # Call LangChain to generate questions
             response = self.llm.invoke([HumanMessage(content=prompt)])
             
-            # Parse response từ LangChain
+            # Parse response from LangChain
             exam_data = self._parse_response(response.content)
             
             return {
@@ -58,20 +61,30 @@ class ExamGenerator:
             }
             
         except Exception as e:
-            logger.error(f"Lỗi khi tạo câu hỏi: {str(e)}")
-            return {"error": "Không thể tạo câu hỏi", "details": str(e)}
+            logger.error(f"Error generating questions: {str(e)}")
+            return {"error": "Failed to generate questions", "details": str(e)}
 
-    async def generate_from_text_async(self, text, exam_title, question_count=10):
-        """Asynchronous method cho FastAPI"""
+    async def generate_from_text_async(self, text: str, exam_title: str, question_count: int = 10) -> Dict[str, Any]:
+        """
+        Generate exam questions from text (asynchronous)
+        
+        Args:
+            text: Source text content
+            exam_title: Title for the exam
+            question_count: Number of questions to generate
+            
+        Returns:
+            Dict containing exam data or error information
+        """
         prompt = self._create_prompt(text, question_count)
         
         try:
-            logger.info(f"Đang tạo câu hỏi với {len(text)} ký tự và {question_count} câu hỏi (async)")
+            logger.info(f"Generating {question_count} questions from {len(text)} characters (async)")
             
-            # Gọi LangChain để tạo câu hỏi (async)
+            # Call LangChain to generate questions (async)
             response = await self.llm.ainvoke([HumanMessage(content=prompt)])
             
-            # Parse response từ LangChain
+            # Parse response from LangChain
             exam_data = self._parse_response(response.content)
             
             return {
@@ -80,10 +93,11 @@ class ExamGenerator:
             }
             
         except Exception as e:
-            logger.error(f"Lỗi khi tạo câu hỏi: {str(e)}")
-            return {"error": "Không thể tạo câu hỏi", "details": str(e)}
+            logger.error(f"Error generating questions: {str(e)}")
+            return {"error": "Failed to generate questions", "details": str(e)}
 
-    def _create_prompt(self, text, question_count):
+    def _create_prompt(self, text: str, question_count: int) -> str:
+        """Create prompt for question generation"""
         prompt = f"""Create {question_count} multiple-choice questions based on the provided text content.
 
 TEXT CONTENT:
@@ -117,11 +131,20 @@ REQUIRED JSON FORMAT:
 IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code blocks, or any other text."""
         return prompt.strip()
 
-    def _parse_response(self, response_text):
-        try:
-            logger.info(f"Phản hồi từ LangChain: {response_text[:200]}...")
+    def _parse_response(self, response_text: str) -> List[Dict[str, Any]]:
+        """
+        Parse and clean response from Gemini API
+        
+        Args:
+            response_text: Raw response from API
             
-            # Tìm JSON array trong response
+        Returns:
+            List of question dictionaries
+        """
+        try:
+            logger.info(f"Parsing response: {response_text[:200]}...")
+            
+            # Find JSON array in response
             json_start = response_text.find('[')
             json_end = response_text.rfind(']') + 1
             
@@ -129,19 +152,19 @@ IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code 
                 json_str = response_text[json_start:json_end]
                 return json.loads(json_str)
             else:
-                # Thử parse trực tiếp
+                # Try direct parsing
                 return json.loads(response_text)
                 
         except json.JSONDecodeError as e:
-            logger.warning(f"JSONDecodeError: {e}, đang thử làm sạch phản hồi")
+            logger.warning(f"JSONDecodeError: {e}, attempting to clean response")
             try:
-                # Làm sạch response - bước 1: loại bỏ markdown
+                # Clean response - Step 1: remove markdown
                 cleaned_text = response_text.replace("```json", "").replace("```", "").strip()
                 
-                # Bước 2: Fix các escape characters phổ biến
+                # Step 2: Fix common escape characters
                 cleaned_text = self._fix_json_escapes(cleaned_text)
                 
-                # Bước 3: Tìm JSON array
+                # Step 3: Find JSON array
                 json_start = cleaned_text.find('[')
                 json_end = cleaned_text.rfind(']') + 1
                 
@@ -153,14 +176,22 @@ IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code 
                     return json.loads(cleaned_text)
                     
             except json.JSONDecodeError as e2:
-                logger.error(f"Không thể phân tích phản hồi JSON sau khi làm sạch: {e2}")
+                logger.error(f"Cannot parse JSON response after cleaning: {e2}")
                 logger.debug(f"Raw response: {response_text}")
                 return []
 
-    def _fix_json_escapes(self, text):
-        """Sửa các ký tự escape không hợp lệ trong JSON"""
+    def _fix_json_escapes(self, text: str) -> str:
+        """
+        Fix invalid escape characters in JSON
+        
+        Args:
+            text: Text to fix
+            
+        Returns:
+            Cleaned text
+        """
         try:
-            # Fix các escape characters phổ biến
+            # Fix common escape characters
             fixes = {
                 '\\"': '"',      # Fix quote escapes
                 '\\n': ' ',      # Replace newlines with spaces
@@ -174,12 +205,11 @@ IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code 
                 text = text.replace(old, new)
             
             # Remove any remaining invalid escape sequences
-            import re
             # Remove invalid escape sequences like \x, \u without proper format
             text = re.sub(r'\\(?!["\\/bfnrt])', '', text)
             
             return text
             
         except Exception as e:
-            logger.warning(f"Lỗi khi sửa escape characters: {e}")
+            logger.warning(f"Error fixing escape characters: {e}")
             return text

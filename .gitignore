@@ -172,3 +172,24 @@ temp_files/
 
 # Mac OS
 .DS_Store
+*/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+app.log
+minimal_app.py
+
+# Railway/Deployment
+.railway/
+
+# Backup files
+*.bak
+*.backup
