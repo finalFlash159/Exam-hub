@@ -1,0 +1,727 @@
+{
+  "title": "XLNet và Các Mô hình Tiền Huấn luyện Ngôn ngữ",
+  "description": "Câu hỏi trắc nghiệm về kiến trúc XLNet, mô hình hóa ngôn ngữ hoán vị, so sánh với BERT và các khái niệm NLP nâng cao",
+  "timeLimit": 45,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Hai phương pháp tiền huấn luyện (pretraining) chính đã thúc đẩy sự phát triển của Xử lý Ngôn ngữ Tự nhiên (NLP) là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Autoregressive (AR) language modeling và Reinforcement Learning (RL)"
+        },
+        {
+          "label": "B",
+          "text": "Autoregressive (AR) language modeling và Autoencoding (AE)"
+        },
+        {
+          "label": "C",
+          "text": "Autoencoding (AE) và Generative Adversarial Networks (GANs)"
+        },
+        {
+          "label": "D",
+          "text": "Supervised Learning và Unsupervised Learning"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Hai phương pháp tiền huấn luyện chính đã thúc đẩy mạnh mẽ sự phát triển của NLP là Autoregressive (AR) language modeling (như GPT) và Autoencoding (AE) (như BERT). Các phương pháp này đã cách mạng hóa cách chúng ta tiếp cận các tác vụ hiểu và tạo sinh ngôn ngữ."
+    },
+    {
+      "id": 2,
+      "question": "Mô hình Autoregressive (AR) ngôn ngữ thường gặp khó khăn gì, mặc dù nó có thể nắm bắt ngữ cảnh một chiều?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Không thể học được mối quan hệ giữa các từ"
+        },
+        {
+          "label": "B",
+          "text": "Khó khăn trong việc mô hình hóa các phụ thuộc hai chiều (bidirectional dependencies)"
+        },
+        {
+          "label": "C",
+          "text": "Yêu cầu lượng dữ liệu huấn luyện rất lớn"
+        },
+        {
+          "label": "D",
+          "text": "Dẫn đến vấn đề pretrain-finetune discrepancy"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Các mô hình AR như GPT chỉ có thể truy cập ngữ cảnh từ một hướng (thường từ trái sang phải), làm cho việc mô hình hóa các phụ thuộc hai chiều trở nên khó khăn, trong khi điều này lại rất quan trọng cho nhiều tác vụ NLP cần hiểu toàn bộ ngữ cảnh."
+    },
+    {
+      "id": 3,
+      "question": "Hạn chế chính của các mô hình Autoencoding (AE) như BERT liên quan đến token [MASK] là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các token [MASK] làm giảm tốc độ huấn luyện"
+        },
+        {
+          "label": "B",
+          "text": "Sự xuất hiện của các token [MASK] trong giai đoạn tiền huấn luyện nhưng không có trong giai đoạn tinh chỉnh (finetuning) gây ra sự không khớp (pretrain-finetune discrepancy)"
+        },
+        {
+          "label": "C",
+          "text": "Token [MASK] không cung cấp đủ thông tin ngữ cảnh"
+        },
+        {
+          "label": "D",
+          "text": "Token [MASK] yêu cầu một kiến trúc mô hình phức tạp hơn"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT sử dụng các token [MASK] nhân tạo trong quá trình tiền huấn luyện để dự đoán các từ bị che, nhưng những token này không bao giờ xuất hiện trong các tác vụ thực tế trong giai đoạn tinh chỉnh, tạo ra sự không khớp giữa hai giai đoạn huấn luyện."
+    },
+    {
+      "id": 4,
+      "question": "Ngoại trừ việc sử dụng token [MASK], hạn chế khác của BERT là gì khi dự đoán các token được che?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT bỏ qua ngữ cảnh của câu"
+        },
+        {
+          "label": "B",
+          "text": "BERT giả định sự độc lập giữa các token được dự đoán, giới hạn khả năng mô hình hóa xác suất đồng thời"
+        },
+        {
+          "label": "C",
+          "text": "BERT chỉ có thể dự đoán một token được che tại một thời điểm"
+        },
+        {
+          "label": "D",
+          "text": "BERT yêu cầu đầu vào được gắn nhãn để dự đoán"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Mục tiêu masked language modeling của BERT giả định rằng các token bị che được dự đoán độc lập với nhau, điều này ngăn cản mô hình nắm bắt các phụ thuộc giữa các token được dự đoán đồng thời."
+    },
+    {
+      "id": 5,
+      "question": "XLNet được mô tả là một phương pháp autoregressive được tổng quát hóa. Điều này có nghĩa là XLNet làm gì để nắm bắt ngữ cảnh hai chiều một cách tự nhiên?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó sử dụng một cơ chế masking phức tạp hơn BERT"
+        },
+        {
+          "label": "B",
+          "text": "Nó tối đa hóa log-likelihood kỳ vọng trên tất cả các hoán vị có thể của thứ tự nhân tử hóa"
+        },
+        {
+          "label": "C",
+          "text": "Nó huấn luyện hai mô hình AR riêng biệt, một xuôi và một ngược"
+        },
+        {
+          "label": "D",
+          "text": "Nó kết hợp nhiều mục tiêu huấn luyện cùng một lúc"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet sử dụng Permutation Language Modeling (PLM), tối đa hóa log-likelihood kỳ vọng trên tất cả các thứ tự nhân tử hóa có thể của chuỗi, cho phép nó thấy ngữ cảnh hai chiều trong khi vẫn duy trì tính chất autoregressive."
+    },
+    {
+      "id": 6,
+      "question": "Một trong những lợi thế chính của XLNet so với BERT là gì về dữ liệu đầu vào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "XLNet có thể xử lý các chuỗi dài hơn BERT"
+        },
+        {
+          "label": "B",
+          "text": "XLNet không yêu cầu dữ liệu đầu vào bị hỏng một cách nhân tạo, do đó tránh được sự không khớp pretrain-finetune"
+        },
+        {
+          "label": "C",
+          "text": "XLNet sử dụng ít dữ liệu huấn luyện hơn"
+        },
+        {
+          "label": "D",
+          "text": "XLNet có thể học từ dữ liệu không có nhãn tốt hơn"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Khác với BERT, XLNet không sử dụng token [MASK] nhân tạo trong quá trình tiền huấn luyện, do đó phân phối đầu vào trong tiền huấn luyện khớp với giai đoạn tinh chỉnh, loại bỏ vấn đề pretrain-finetune discrepancy."
+    },
+    {
+      "id": 7,
+      "question": "So với BERT, XLNet xử lý mối quan hệ giữa các token được dự đoán như thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giống như BERT, XLNet cũng giả định sự độc lập giữa chúng"
+        },
+        {
+          "label": "B",
+          "text": "XLNet mô hình hóa xác suất đồng thời của các token được dự đoán một cách trực tiếp, nắm bắt các phụ thuộc"
+        },
+        {
+          "label": "C",
+          "text": "XLNet dự đoán các token được che theo một trình tự cụ thể"
+        },
+        {
+          "label": "D",
+          "text": "XLNet bỏ qua mối quan hệ giữa các token được dự đoán để đơn giản hóa mô hình"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Tính chất autoregressive của XLNet cho phép nó mô hình hóa xác suất đồng thời của các token được dự đoán một cách tự nhiên, nắm bắt các phụ thuộc giữa chúng, khác với giả định độc lập của BERT."
+    },
+    {
+      "id": 8,
+      "question": "Mục tiêu tiền huấn luyện của mô hình ngôn ngữ AR cổ điển là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tối đa hóa \\\\(\\log p(x) = \\sum_t \\log p(x_t | x_{<t})\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "Tối đa hóa \\\\(\\log p(\\bar{x} | \\hat{x})\\\\) với \\\\(\\bar{x}\\\\) là các token được che"
+        },
+        {
+          "label": "C",
+          "text": "Giảm thiểu mất mát dựa trên sự khác biệt giữa đầu vào và đầu ra"
+        },
+        {
+          "label": "D",
+          "text": "Học một biểu diễn không gian ngữ nghĩa"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Các mô hình ngôn ngữ AR truyền thống tối đa hóa log-likelihood của một chuỗi bằng cách dự đoán mỗi token dựa trên tất cả các token trước đó trong chuỗi, tuân theo quy tắc chuỗi của xác suất."
+    },
+    {
+      "id": 9,
+      "question": "BERT và AR language modeling khác nhau như thế nào về giả định độc lập?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cả BERT và AR đều giả định sự độc lập"
+        },
+        {
+          "label": "B",
+          "text": "BERT giả định các token được che được tái tạo độc lập, trong khi AR factorizes \\\\(p_\\theta(x)\\\\) mà không có giả định độc lập này"
+        },
+        {
+          "label": "C",
+          "text": "AR giả định sự độc lập, trong khi BERT thì không"
+        },
+        {
+          "label": "D",
+          "text": "Giả định độc lập không phải là sự khác biệt giữa chúng"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Masked language modeling của BERT coi mỗi token bị che như độc lập trong quá trình dự đoán, trong khi các mô hình AR tự nhiên phân tích xác suất mà không giả định độc lập giữa các token."
+    },
+    {
+      "id": 10,
+      "question": "Mục tiêu mô hình hóa ngôn ngữ hoán vị (Permutation Language Modeling) trong XLNet là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tối đa hóa xác suất của một chuỗi theo thứ tự đọc xuôi"
+        },
+        {
+          "label": "B",
+          "text": "Tối đa hóa log-likelihood kỳ vọng trên tất cả các hoán vị có thể của thứ tự token, kết hợp lợi thế của AR và ngữ cảnh hai chiều"
+        },
+        {
+          "label": "C",
+          "text": "Dự đoán các token bị che trong một chuỗi"
+        },
+        {
+          "label": "D",
+          "text": "Tạo ra các chuỗi văn bản mới"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Permutation Language Modeling tối đa hóa log-likelihood kỳ vọng trên tất cả các thứ tự nhân tử hóa có thể, cho phép mô hình thấy tất cả ngữ cảnh có thể trong khi duy trì tính chất autoregressive."
+    },
+    {
+      "id": 11,
+      "question": "Tại sao tham số hóa \"ngây thơ\" (naive parameterization) trong mô hình hóa ngôn ngữ hoán vị lại là một vấn đề?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó quá phức tạp để tính toán"
+        },
+        {
+          "label": "B",
+          "text": "Biểu diễn ẩn \\\\(h_\\theta(x_{z_{<t}})\\\\) không phụ thuộc vào vị trí mục tiêu \\\\(z_t\\\\), dẫn đến các dự đoán không nhận biết vị trí"
+        },
+        {
+          "label": "C",
+          "text": "Nó yêu cầu quá nhiều bộ nhớ"
+        },
+        {
+          "label": "D",
+          "text": "Nó không thể học được các phụ thuộc dài hạn"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Trong tham số hóa ngây thơ, biểu diễn ẩn không mã hóa vị trí nào đang được dự đoán, làm cho việc thực hiện dự đoán nhận biết vị trí trở nên không thể, điều này rất quan trọng cho mô hình hóa ngôn ngữ."
+    },
+    {
+      "id": 12,
+      "question": "XLNet giải quyết vấn đề tham số hóa \"ngây thơ\" bằng cách nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Bằng cách sử dụng một mạng nơ-ron sâu hơn"
+        },
+        {
+          "label": "B",
+          "text": "Bằng cách tái tham số hóa phân phối token tiếp theo để \\\\(g_\\theta(x_{z_{<t}}, z_t)\\\\) được điều kiện theo vị trí mục tiêu \\\\(z_t\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "Bằng cách tăng kích thước của bộ từ vựng"
+        },
+        {
+          "label": "D",
+          "text": "Bằng cách áp dụng dropout trong quá trình huấn luyện"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet tái tham số hóa phân phối token tiếp theo để điều kiện hóa rõ ràng theo vị trí mục tiêu, đảm bảo rằng mô hình biết vị trí nào nó đang dự đoán."
+    },
+    {
+      "id": 13,
+      "question": "XLNet sử dụng hai loại biểu diễn ẩn (hidden representations) trong cơ chế Two-Stream Self-Attention. Chúng là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Biểu diễn Query (Q) và Biểu diễn Key (K)"
+        },
+        {
+          "label": "B",
+          "text": "Biểu diễn Content (\\\\(h_\\theta(x_{z_{\\leq t}})\\\\)) và Biểu diễn Query (\\\\(g_\\theta(x_{z_{<t}}, z_t)\\\\))"
+        },
+        {
+          "label": "C",
+          "text": "Biểu diễn đầu vào và biểu diễn đầu ra"
+        },
+        {
+          "label": "D",
+          "text": "Biểu diễn theo thứ tự xuôi và biểu diễn theo thứ tự ngược"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet sử dụng hai luồng: luồng content mã hóa cả ngữ cảnh và nội dung tại vị trí zt, và luồng query chỉ mã hóa ngữ cảnh và vị trí zt mà không có nội dung tại zt."
+    },
+    {
+      "id": 14,
+      "question": "Sự khác biệt chính giữa Biểu diễn Content (\\\\(h_{z_t}\\\\)) và Biểu diễn Query (\\\\(g_{z_t}\\\\)) trong XLNet là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(h_{z_t}\\\\) mã hóa ngữ cảnh và nội dung tại vị trí \\\\(z_t\\\\), trong khi \\\\(g_{z_t}\\\\) chỉ mã hóa ngữ cảnh và vị trí \\\\(z_t\\\\), không bao gồm nội dung tại \\\\(z_t\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(h_{z_t}\\\\) được sử dụng trong giai đoạn tiền huấn luyện, trong khi \\\\(g_{z_t}\\\\) được sử dụng trong giai đoạn tinh chỉnh"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(h_{z_t}\\\\) chỉ mã hóa ngữ cảnh, trong khi \\\\(g_{z_t}\\\\) mã hóa ngữ cảnh và nội dung"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(h_{z_t}\\\\) được dùng cho các chuỗi ngắn, \\\\(g_{z_t}\\\\) cho các chuỗi dài"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Luồng content (h) có quyền truy cập vào tất cả token bao gồm nội dung của token hiện tại, trong khi luồng query (g) chỉ có quyền truy cập vào thông tin vị trí và ngữ cảnh, không có nội dung của token hiện tại."
+    },
+    {
+      "id": 15,
+      "question": "Trong quá trình tinh chỉnh (finetuning) của XLNet, luồng biểu diễn nào được sử dụng?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cả luồng Content và luồng Query"
+        },
+        {
+          "label": "B",
+          "text": "Chỉ luồng Query"
+        },
+        {
+          "label": "C",
+          "text": "Chỉ luồng Content"
+        },
+        {
+          "label": "D",
+          "text": "Không luồng nào trong số đó"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Trong quá trình tinh chỉnh, chỉ luồng content được sử dụng vì chúng ta cần truy cập vào tất cả thông tin token cho các tác vụ downstream, không chỉ thông tin query được sử dụng trong tiền huấn luyện."
+    },
+    {
+      "id": 16,
+      "question": "Tại sao XLNet sử dụng \"Dự đoán một phần\" (Partial Prediction)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Để làm cho mô hình trở nên phức tạp hơn"
+        },
+        {
+          "label": "B",
+          "text": "Để giảm chi phí tính toán và tăng tốc độ hội tụ vì việc tối ưu hóa trên tất cả các hoán vị là tốn kém"
+        },
+        {
+          "label": "C",
+          "text": "Để đảm bảo mô hình chỉ dự đoán một token tại một thời điểm"
+        },
+        {
+          "label": "D",
+          "text": "Để đơn giản hóa cấu trúc của Transformer-XL"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Dự đoán một phần giảm gánh nặng tính toán bằng cách chỉ dự đoán một tập con token trong mỗi hoán vị, làm cho quá trình huấn luyện hiệu quả hơn trong khi vẫn duy trì lợi ích của permutation language modeling."
+    },
+    {
+      "id": 17,
+      "question": "Trong Dự đoán một phần của XLNet, hoán vị z được chia thành những phần nào và phần nào là mục tiêu dự đoán?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(z_{target}\\\\) và \\\\(z_{non-target}\\\\), với \\\\(z_{target}\\\\) là phần không được chọn"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(z_{target}\\\\) và \\\\(z_{non-target}\\\\), với \\\\(z_{target}\\\\) là phần cuối cùng của hoán vị (\\\\(z_{>c}\\\\))"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(z_{first\\_half}\\\\) và \\\\(z_{second\\_half}\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(z_{prefix}\\\\) và \\\\(z_{suffix}\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Trong dự đoán một phần, hoán vị được chia tại điểm cắt c, trong đó chỉ các token sau điểm cắt (z>c) được chọn làm mục tiêu dự đoán, trong khi các token trước đó cung cấp ngữ cảnh."
+    },
+    {
+      "id": 18,
+      "question": "Điều gì xảy ra với các token không được chọn làm mục tiêu dự đoán trong cơ chế Dự đoán một phần của XLNet?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chúng được bỏ qua hoàn toàn"
+        },
+        {
+          "label": "B",
+          "text": "Chúng vẫn cần biểu diễn truy vấn (query representation)"
+        },
+        {
+          "label": "C",
+          "text": "Chúng không cần biểu diễn truy vấn"
+        },
+        {
+          "label": "D",
+          "text": "Chúng được xử lý độc lập với các token khác"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Các token không được chọn làm mục tiêu dự đoán không cần biểu diễn query vì chúng không được dự đoán, chỉ biểu diễn content của chúng được sử dụng để cung cấp ngữ cảnh."
+    },
+    {
+      "id": 19,
+      "question": "XLNet tích hợp hai kỹ thuật chính nào từ Transformer-XL?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cơ chế masking động và attention đa đầu"
+        },
+        {
+          "label": "B",
+          "text": "Mã hóa vị trí tuyệt đối và cơ chế gated recurrent unit (GRU)"
+        },
+        {
+          "label": "C",
+          "text": "Mã hóa vị trí tương đối và cơ chế lặp lại phân đoạn"
+        },
+        {
+          "label": "D",
+          "text": "Cơ chế bộ nhớ ngoài và cơ chế tự điều chỉnh"
+        }
+      ],
+      "answer": "C",
+      "explanation": "XLNet tích hợp mã hóa vị trí tương đối và cơ chế lặp lại phân đoạn của Transformer-XL để xử lý các chuỗi dài hơn hiệu quả và nắm bắt thông tin vị trí tương đối."
+    },
+    {
+      "id": 20,
+      "question": "Cơ chế lặp lại phân đoạn (segment recurrence mechanism) trong XLNet giúp gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tăng kích thước mô hình một cách hiệu quả"
+        },
+        {
+          "label": "B",
+          "text": "Tái sử dụng các trạng thái ẩn (bộ nhớ) từ các phân đoạn trước để cải thiện hiệu quả và hiệu suất, đặc biệt với ngữ cảnh dài"
+        },
+        {
+          "label": "C",
+          "text": "Giảm thiểu lỗi dự đoán"
+        },
+        {
+          "label": "D",
+          "text": "Huấn luyện mô hình nhanh hơn trên các chuỗi ngắn"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Cơ chế lặp lại phân đoạn cho phép mô hình duy trì và tái sử dụng các trạng thái ẩn từ các phân đoạn trước, giúp nó xử lý hiệu quả các ngữ cảnh dài hơn so với việc chỉ xử lý trong một phân đoạn duy nhất."
+    },
+    {
+      "id": 21,
+      "question": "Mã hóa vị trí tương đối khác với Mã hóa vị trí tuyệt đối như thế nào khi một câu được rút ngắn?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Mã hóa tuyệt đối vẫn duy trì các vector vị trí giống nhau, còn mã hóa tương đối thì không"
+        },
+        {
+          "label": "B",
+          "text": "Mã hóa tuyệt đối thay đổi các vector vị trí khi vị trí của token thay đổi, trong khi mã hóa tương đối duy trì khoảng cách tương đối nhất quán"
+        },
+        {
+          "label": "C",
+          "text": "Cả hai đều không bị ảnh hưởng bởi việc rút ngắn câu"
+        },
+        {
+          "label": "D",
+          "text": "Mã hóa tương đối yêu cầu nhiều bộ nhớ hơn"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Mã hóa vị trí tương đối tập trung vào khoảng cách tương đối giữa các token thay vì vị trí tuyệt đối, làm cho nó mạnh mẽ hơn trước các thay đổi về độ dài chuỗi và vị trí token."
+    },
+    {
+      "id": 22,
+      "question": "Điều nào sau đây là một lợi ích của việc sử dụng Mã hóa vị trí tương đối?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó giúp mô hình học các mối quan hệ không đổi bất chấp sự thay đổi vị trí"
+        },
+        {
+          "label": "B",
+          "text": "Nó làm cho quá trình huấn luyện nhanh hơn"
+        },
+        {
+          "label": "C",
+          "text": "Nó đảm bảo mọi token đều có một vector vị trí duy nhất"
+        },
+        {
+          "label": "D",
+          "text": "Nó làm tăng tính đa dạng của các biểu diễn token"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Mã hóa vị trí tương đối cho phép mô hình học các mối quan hệ bất biến với những thay đổi vị trí tuyệt đối, tập trung vào cấu trúc tương đối và các phụ thuộc giữa các token."
+    },
+    {
+      "id": 23,
+      "question": "Cả BERT và XLNet đều thực hiện \"dự đoán một phần\". Sự khác biệt chính về mục tiêu tối ưu giữa chúng khi dự đoán nhiều token là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT có thể dự đoán \"York\" dựa trên \"New\", trong khi XLNet thì không"
+        },
+        {
+          "label": "B",
+          "text": "BERT giả định sự độc lập giữa các mục tiêu dự đoán, trong khi XLNet nắm bắt được sự phụ thuộc giữa chúng"
+        },
+        {
+          "label": "C",
+          "text": "XLNet chỉ có thể dự đoán một token mỗi lần, còn BERT thì không"
+        },
+        {
+          "label": "D",
+          "text": "BERT và XLNet có cùng mục tiêu tối ưu cho dự đoán một phần"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Tính chất autoregressive của XLNet cho phép nó mô hình hóa các phụ thuộc giữa các token được dự đoán, trong khi BERT coi mỗi token bị che như độc lập trong quá trình tính toán loss."
+    },
+    {
+      "id": 24,
+      "question": "Vấn đề chính với khả năng của BERT trong việc mô hình hóa các phụ thuộc đồng thời là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT chỉ có thể xử lý các chuỗi ngắn"
+        },
+        {
+          "label": "B",
+          "text": "Mục tiêu tối ưu của BERT coi các token được che là độc lập khi tính toán mất mát, bỏ qua mối tương quan giữa chúng"
+        },
+        {
+          "label": "C",
+          "text": "BERT không sử dụng cơ chế self-attention"
+        },
+        {
+          "label": "D",
+          "text": "BERT không thể xử lý các token ngoài từ vựng"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Mục tiêu masked language modeling của BERT giả định sự độc lập giữa các token bị che trong quá trình tính toán loss, ngăn cản nó học các phụ thuộc đồng thời giữa các token được dự đoán cùng lúc."
+    },
+    {
+      "id": 25,
+      "question": "Điều gì gây ra sự không khớp pretrain-finetune trong BERT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Việc sử dụng quá nhiều lớp Transformer"
+        },
+        {
+          "label": "B",
+          "text": "Sự hiện diện của các token [MASK] nhân tạo trong đầu vào tiền huấn luyện mà không có trong các tác vụ downstream"
+        },
+        {
+          "label": "C",
+          "text": "Tốc độ học tập không phù hợp"
+        },
+        {
+          "label": "D",
+          "text": "Kích thước batch quá lớn"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT sử dụng các token [MASK] nhân tạo trong quá trình tiền huấn luyện mà không bao giờ xuất hiện trong các tác vụ downstream thực tế, tạo ra sự không khớp phân phối giữa giai đoạn tiền huấn luyện và tinh chỉnh."
+    },
+    {
+      "id": 26,
+      "question": "Mặc dù mô hình AR chỉ sử dụng ngữ cảnh một chiều và BERT sử dụng ngữ cảnh hai chiều, XLNet kết hợp lợi thế của cả hai bằng cách nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Bằng cách thêm một lớp kết nối hoàn toàn"
+        },
+        {
+          "label": "B",
+          "text": "Bằng cách sử dụng mục tiêu mô hình hóa ngôn ngữ hoán vị"
+        },
+        {
+          "label": "C",
+          "text": "Bằng cách huấn luyện hai mô hình riêng biệt và kết hợp chúng"
+        },
+        {
+          "label": "D",
+          "text": "Bằng cách loại bỏ hoàn toàn cơ chế attention"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Permutation language modeling cho phép XLNet duy trì tính chất autoregressive (tránh pretrain-finetune discrepancy) trong khi truy cập ngữ cảnh hai chiều thông qua các thứ tự nhân tử hóa khác nhau."
+    },
+    {
+      "id": 27,
+      "question": "Trong cơ chế Attention, nếu một vị trí bị che (masked), điều gì xảy ra với đầu ra của Attention (o) và gradient từ truy vấn cụ thể đó?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Đầu ra o vẫn sử dụng \\\\(v_4\\\\), và gradient \\\\(\\partial L/\\partial v_4\\\\) là dương"
+        },
+        {
+          "label": "B",
+          "text": "Đầu ra o không sử dụng \\\\(v_4\\\\) (\\\\(\\alpha_4 = 0\\\\)), và gradient \\\\(\\partial L/\\partial v_4\\\\) từ truy vấn này là 0"
+        },
+        {
+          "label": "C",
+          "text": "Đầu ra o bị vô hiệu hóa hoàn toàn"
+        },
+        {
+          "label": "D",
+          "text": "Chỉ gradient \\\\(\\partial L/\\partial v_4\\\\) là 0, nhưng o vẫn sử dụng \\\\(v_4\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Khi một vị trí bị che trong attention, trọng số attention của nó trở thành 0, do đó nó không đóng góp vào đầu ra, và do đó không nhận gradient từ truy vấn cụ thể đó."
+    },
+    {
+      "id": 28,
+      "question": "Khi một token \\\\(v_4\\\\) bị che trong một đường dẫn attention, liệu nó có hoàn toàn không nhận được cập nhật gradient nào không?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Có, nó hoàn toàn không nhận được cập nhật gradient"
+        },
+        {
+          "label": "B",
+          "text": "Không, \\\\(v_4\\\\) vẫn nhận được gradient từ truy vấn riêng của nó (\\\\(g_4\\\\)) và từ các truy vấn khác (\\\\(g_1, g_2\\\\)) đang chú ý đến \\\\(v_4\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "Chỉ khi \\\\(v_4\\\\) là token cuối cùng trong chuỗi"
+        },
+        {
+          "label": "D",
+          "text": "Chỉ khi không có token nào khác bị che"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Ngay cả khi bị che khỏi một số truy vấn nhất định, một token vẫn có thể nhận gradient từ các đường dẫn attention khác nơi nó không bị che, cho phép nó được cập nhật thông qua nhiều luồng gradient."
+    },
+    {
+      "id": 29,
+      "question": "Mục đích của cơ chế lặp lại phân đoạn trong XLNet là gì khi xử lý các chuỗi dài?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giới hạn số lượng token có thể được xử lý bởi mô hình"
+        },
+        {
+          "label": "B",
+          "text": "Cho phép mô hình tái sử dụng các trạng thái ẩn từ các phân đoạn trước, giúp tăng hiệu quả và khả năng xử lý ngữ cảnh dài"
+        },
+        {
+          "label": "C",
+          "text": "Để đảm bảo rằng các phân đoạn được xử lý độc lập"
+        },
+        {
+          "label": "D",
+          "text": "Để loại bỏ nhu cầu về mã hóa vị trí"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Lặp lại phân đoạn cho phép XLNet duy trì và tái sử dụng thông tin từ các phân đoạn trước, mở rộng hiệu quả cửa sổ ngữ cảnh vượt ra ngoài những gì có thể vừa trong một phân đoạn đơn."
+    },
+    {
+      "id": 30,
+      "question": "Các mã hóa vị trí trong XLNet, khi tích hợp Transformer-XL, phụ thuộc vào yếu tố nào, cho phép việc lưu trữ bộ nhớ độc lập với thứ tự hoán vị?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phụ thuộc vào loại token (ví dụ: danh từ, động từ)"
+        },
+        {
+          "label": "B",
+          "text": "Phụ thuộc vào độ dài của chuỗi"
+        },
+        {
+          "label": "C",
+          "text": "Phụ thuộc vào vị trí ban đầu của các token trong chuỗi"
+        },
+        {
+          "label": "D",
+          "text": "Phụ thuộc vào ngữ cảnh xung quanh"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Các mã hóa vị trí phụ thuộc vào vị trí token gốc thay vì vị trí của chúng trong thứ tự hoán vị, cho phép bộ nhớ từ các phân đoạn trước được tái sử dụng bất kể hoán vị hiện tại."
+    }
+  ]
+} 

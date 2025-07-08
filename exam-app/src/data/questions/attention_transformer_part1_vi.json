@@ -1,0 +1,79 @@
+{
+  "title": "Cơ chế Attention & Mô hình Transformer - Phần 1",
+  "description": "Câu hỏi trắc nghiệm về cơ chế Attention, mô hình Sequence-to-Sequence, Self-attention và kiến trúc Transformer (Câu 1-35)",
+  "timeLimit": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Ý tưởng ban đầu để học các quan hệ đầu vào-đầu ra tuần tự trước khi có mô hình Attention là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Xử lý câu từng từ một mà không có bộ nhớ."
+        },
+        {
+          "label": "B",
+          "text": "Nén đầu vào tuần tự thành vector có kích thước cố định và đưa vào Mạng Neural Hồi quy (RNN) để tạo đầu ra."
+        },
+        {
+          "label": "C",
+          "text": "Sử dụng mạng neural feed-forward để ánh xạ trực tiếp đầu vào thành đầu ra."
+        },
+        {
+          "label": "D",
+          "text": "Sử dụng mạng neural tích chập cho dữ liệu tuần tự."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Ý tưởng giới thiệu được đề cập để học các quan hệ đầu vào-đầu ra tuần tự, như trong Dịch máy Neural (NMT) hoặc Tạo chú thích ảnh, là nén đầu vào tuần tự thành vector có kích thước cố định rồi đưa vector này vào mạng neural hồi quy (RNN) để tạo chuỗi đầu ra. Cách tiếp cận này tạo nền tảng cho các mô hình sequence-to-sequence ban đầu."
+    },
+    {
+      "id": 2,
+      "question": "Trong bối cảnh thị giác máy tính, Attention bắt đầu như một nỗ lực mô phỏng khả năng nào của con người?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trí nhớ con người."
+        },
+        {
+          "label": "B",
+          "text": "Nhận thức con người."
+        },
+        {
+          "label": "C",
+          "text": "Suy luận con người."
+        },
+        {
+          "label": "D",
+          "text": "Vận động con người."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Cơ chế Attention, đặc biệt trong lĩnh vực thị giác máy tính, bắt đầu như một nỗ lực mô phỏng nhận thức con người. Ý tưởng là con người hiếm khi sử dụng tất cả đầu vào cảm giác có sẵn cho các nhiệm vụ cụ thể, và Attention nhằm mô phỏng lại khả năng tập trung chọn lọc này."
+    },
+    {
+      "id": 3,
+      "question": "Mô hình Sequence-to-Sequence (seq2seq) chủ yếu bao gồm những thành phần nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một mạng neural feed-forward đơn."
+        },
+        {
+          "label": "B",
+          "text": "Hai mạng neural hồi quy (RNN) với kiến trúc encoder-decoder."
+        },
+        {
+          "label": "C",
+          "text": "Một mạng neural tích chập và một RNN."
+        },
+        {
+          "label": "D",
+          "text": "Một encoder Transformer và một decoder Transformer."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Mô hình Sequence-to-Sequence (seq2seq) được mô tả bao gồm hai mạng neural hồi quy (RNN) với kiến trúc encoder-decoder. Encoder đọc các từ đầu vào, và decoder tạo ra các từ đầu ra."
+    }
+  ]
+} 

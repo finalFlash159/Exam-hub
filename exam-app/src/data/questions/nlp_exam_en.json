@@ -1,0 +1,883 @@
+{
+  "title": "Natural Language Processing Fundamentals",
+  "description": "Comprehensive exam covering NLP fundamentals including machine learning basics, representation learning, word embeddings, and language models",
+  "timeLimit": 60,
+  "totalQuestions": 35,
+  "questions": [
+    {
+      "id": 1,
+      "question": "According to the sources, how many components does a typical machine learning system consist of?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources state that a typical machine learning system consists of three components: Representation, Objective, and Optimization.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Which of the following is NOT listed as a core component of a typical machine learning system?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Representation"
+        },
+        {
+          "label": "B",
+          "text": "Objective"
+        },
+        {
+          "label": "C",
+          "text": "Optimization"
+        },
+        {
+          "label": "D",
+          "text": "Data Collection"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The three components of machine learning are explicitly defined as Representation, Objective, and Optimization.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Deep learning is presented as a typical approach for what specific type of learning?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Supervised learning"
+        },
+        {
+          "label": "B",
+          "text": "Unsupervised learning"
+        },
+        {
+          "label": "C",
+          "text": "Reinforcement learning"
+        },
+        {
+          "label": "D",
+          "text": "Representation learning"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The sources state, 'Deep learning is a typical approach for representation learning'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Which of the following areas is specifically mentioned as having achieved great success with deep learning recently?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Financial forecasting"
+        },
+        {
+          "label": "B",
+          "text": "Traditional database management"
+        },
+        {
+          "label": "C",
+          "text": "Natural language processing"
+        },
+        {
+          "label": "D",
+          "text": "Robotics control systems"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources highlight that deep learning has 'achieved great success in speech recognition, computer vision, and natural language processing'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "question": "What are the two distinguishing features of deep learning, as described in the sources?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Large datasets and high computational power"
+        },
+        {
+          "label": "B",
+          "text": "Distributed Representation and Deep Architecture"
+        },
+        {
+          "label": "C",
+          "text": "Supervised learning and hand-crafted features"
+        },
+        {
+          "label": "D",
+          "text": "Simple models and fast training"
+        }
+      ],
+      "answer": "B",
+      "explanation": "These two points are explicitly listed as the distinguishing features of deep learning.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "question": "How do deep learning algorithms typically represent each object, according to the sources' description of 'Distributed Representation'?",
+      "options": [
+        {
+          "label": "A",
+          "text": "With a high-dimensional, sparse vector"
+        },
+        {
+          "label": "B",
+          "text": "With a single numerical value"
+        },
+        {
+          "label": "C",
+          "text": "With a low-dimensional real-valued dense vector"
+        },
+        {
+          "label": "D",
+          "text": "With a symbolic label"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Deep learning algorithms typically represent each object with a low-dimensional real-valued dense vector, which is named as distributed representation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "question": "What is considered an important reason for the great success of deep learning in fields like speech recognition and computer vision, related to its architecture?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Its reliance on conventional representation schemes like bag-of-words"
+        },
+        {
+          "label": "B",
+          "text": "Its ability to only process raw data without abstractive features"
+        },
+        {
+          "label": "C",
+          "text": "Its use of one-hot representation, leading to sparse data"
+        },
+        {
+          "label": "D",
+          "text": "Its ability to learn a hierarchical deep architecture to extract abstractive features"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The sources state this is 'regarded as an important reason for the great success of deep learning for speech recognition and computer vision'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "question": "What is the primary objective of Natural Language Processing (NLP) according to the sources?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To translate languages for humans"
+        },
+        {
+          "label": "B",
+          "text": "To extract numerical data from texts"
+        },
+        {
+          "label": "C",
+          "text": "To build linguistic-specific programs for machines to understand languages"
+        },
+        {
+          "label": "D",
+          "text": "To generate random text sequences"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The motivation section for NLP clearly states this aim.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Natural language texts are characterized in the sources as what kind of data?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Structured data"
+        },
+        {
+          "label": "B",
+          "text": "Categorical data"
+        },
+        {
+          "label": "C",
+          "text": "Unstructured data"
+        },
+        {
+          "label": "D",
+          "text": "Time-series data"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources directly state, 'Natural language texts are typical unstructured data'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "When NLP 'concerns about multiple levels of language entries, including but not limited to characters, words, phrases, sentences, paragraphs, and documents,' this refers to which characteristic of natural language texts?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Multiple Tasks"
+        },
+        {
+          "label": "B",
+          "text": "Multiple Domains"
+        },
+        {
+          "label": "C",
+          "text": "Multiple Granularities"
+        },
+        {
+          "label": "D",
+          "text": "Multiple Algorithms"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources explicitly define 'Multiple Granularities' as NLP concerning 'multiple levels of language entries, including but not limited to characters, words, phrases, sentences, paragraphs, and documents'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "question": "All of the following are examples of NLP tasks mentioned that can be performed based on the same input sentence EXCEPT:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Word segmentation"
+        },
+        {
+          "label": "B",
+          "text": "Part-of-speech tagging"
+        },
+        {
+          "label": "C",
+          "text": "Machine translation"
+        },
+        {
+          "label": "D",
+          "text": "Image recognition"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Word segmentation, part-of-speech tagging, named entity recognition, relation extraction, and machine translation are listed as NLP tasks based on sentence input.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "question": "What does 'Multiple Domains' signify in the context of NLP, as described in the sources?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The use of multiple programming domains for NLP development"
+        },
+        {
+          "label": "B",
+          "text": "The application of NLP across various semantic spaces"
+        },
+        {
+          "label": "C",
+          "text": "Natural language texts generated from various sources such as news articles, scientific articles, or online user-generated content"
+        },
+        {
+          "label": "D",
+          "text": "The ability of NLP models to learn from different data types simultaneously"
+        }
+      ],
+      "answer": "C",
+      "explanation": "This is the definition provided for 'Multiple Domains'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 13,
+      "question": "In the early stages of NLP, semantic representations often came from which approach, rather than from an optimization process?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Supervised Learning"
+        },
+        {
+          "label": "B",
+          "text": "Self-supervised Learning"
+        },
+        {
+          "label": "C",
+          "text": "Statistical Features"
+        },
+        {
+          "label": "D",
+          "text": "Deep Learning"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources indicate that 'semantic representations for NLP in the early stage often come from statistics, instead of emerging from the optimization process'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Under what learning approach do distributed representations primarily emerge from the optimization process of neural networks?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Hand-craft Features"
+        },
+        {
+          "label": "B",
+          "text": "Statistical Features"
+        },
+        {
+          "label": "C",
+          "text": "Supervised Learning"
+        },
+        {
+          "label": "D",
+          "text": "Unsupervised Learning"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources state, 'Distributed representations emerge from the optimization process of neural networks under supervised learning'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 15,
+      "question": "What is the primary goal of Self-supervised Learning for representation learning in NLP?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To directly solve complex NLP tasks without any prior training"
+        },
+        {
+          "label": "B",
+          "text": "To eliminate the need for human input in feature engineering"
+        },
+        {
+          "label": "C",
+          "text": "To obtain good representations for elements that can be transferred to other tasks"
+        },
+        {
+          "label": "D",
+          "text": "To fine-tune pre-trained models on specific, small datasets"
+        }
+      ],
+      "answer": "C",
+      "explanation": "In some cases, we simply want to get good representations for certain elements, so that these representations can be transferred to other tasks.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 16,
+      "question": "If a vocabulary V contains 50,000 unique words, what would be the dimensionality of a one-hot vector used to represent a single word from this vocabulary?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "100"
+        },
+        {
+          "label": "C",
+          "text": "1,000"
+        },
+        {
+          "label": "D",
+          "text": "50,000"
+        }
+      ],
+      "answer": "D",
+      "explanation": "A one-hot vector is represented with a |V|-dimensional vector, where |V| is the size of the vocabulary.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Which of the following is explicitly listed as a weakness of one-hot vectors?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Decreased dimensionality"
+        },
+        {
+          "label": "B",
+          "text": "Dense data"
+        },
+        {
+          "label": "C",
+          "text": "Difficulty with high-cardinality features"
+        },
+        {
+          "label": "D",
+          "text": "Retention of ordinal relationships"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The listed weaknesses include 'Increased dimensionality, sparse data, loss of ordinal relationships, and difficulty with high-cardinality features'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "question": "Consider a vocabulary V = {apple, banana, orange}. If 'banana' is represented by a one-hot vector, how many dimensions will have a value of 0?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "3"
+        }
+      ],
+      "answer": "C",
+      "explanation": "If the vocabulary size is 3, the vector will be 3-dimensional. Only one dimension will be 1 (for 'banana'), and all other dimensions (2 in this case) will be 0.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 19,
+      "question": "According to the sources, what is a 3-gram (trigram)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A single word sequence"
+        },
+        {
+          "label": "B",
+          "text": "A two-word sequence"
+        },
+        {
+          "label": "C",
+          "text": "A three-word sequence of words"
+        },
+        {
+          "label": "D",
+          "text": "Any sequence of N words"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources define a trigram as 'a three-word sequence of words'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "In the context of spell correction, a probabilistic language model would typically assign a higher probability to which phrase?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(P(\\text{Then office is})\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(P(\\text{The Office is})\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "Both would have equal probability"
+        },
+        {
+          "label": "D",
+          "text": "The model cannot differentiate between them"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The example given for spell correction shows '\\\\(P(\\text{The Office is}) > P(\\text{Then office is})\\\\)'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "question": "When augmenting sentences for Maximum Likelihood Estimation of bigrams, what special symbol is added at the end of each sentence?",
+      "options": [
+        {
+          "label": "A",
+          "text": "</s>"
+        },
+        {
+          "label": "B",
+          "text": "<s>"
+        },
+        {
+          "label": "C",
+          "text": "<EOS>"
+        },
+        {
+          "label": "D",
+          "text": "<EOL>"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The sources state, 'We'll also need a special end-symbol </s>'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 22,
+      "question": "Using the mini-corpus: 1. <s> I am Sam </s> 2. <s> Sam I am </s> 3. <s> I do not like green eggs and ham </s>. What is the maximum likelihood estimate for \\\\(P(\\text{Sam}|\\langle s \\rangle)\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(\\frac{1}{3}\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(\\frac{1}{3}\\\\) (Count('\\\\(\\langle s \\rangle\\\\) Sam') = 1; Count('\\\\(\\langle s \\rangle\\\\)') = 3)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(\\frac{2}{3}\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The sequence '\\\\(\\langle s \\rangle\\\\) Sam' appears 1 time (in sentence 2). The special start symbol '\\\\(\\langle s \\rangle\\\\)' appears 3 times in total. Therefore, \\\\(P(\\text{Sam}|\\langle s \\rangle) = \\frac{\\text{Count}(\\langle s \\rangle \\text{ Sam})}{\\text{Count}(\\langle s \\rangle)} = \\frac{1}{3}\\\\).",
+      "difficulty": "medium"
+    },
+    {
+      "id": 23,
+      "question": "Using the same mini-corpus from Question 22, what is the maximum likelihood estimate for \\\\(P(\\text{am}|\\text{I})\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(\\frac{1}{2}\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(\\frac{2}{3}\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(\\frac{1}{3}\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The sequence 'I am' appears 2 times (in sentence 1 and sentence 2). The word 'I' appears as a predecessor 3 times: 'I am' (sentence 1), 'I am' (sentence 2), 'I do' (sentence 3). Therefore, \\\\(P(\\text{am}|\\text{I}) = \\frac{\\text{Count}(\\text{I am})}{\\text{Count}(\\text{I as predecessor})} = \\frac{2}{3}\\\\).",
+      "difficulty": "hard"
+    },
+    {
+      "id": 24,
+      "question": "Latent Semantic Analysis (LSA) aims to explore latent factors for words and documents primarily through what mathematical technique?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Regression analysis"
+        },
+        {
+          "label": "B",
+          "text": "Clustering algorithms"
+        },
+        {
+          "label": "C",
+          "text": "Matrix factorization"
+        },
+        {
+          "label": "D",
+          "text": "Neural network training"
+        }
+      ],
+      "answer": "C",
+      "explanation": "LSA 'aims to explore latent factors for words and documents by matrix factorization'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "In the context of LSA, what do the elements of the term-document matrix typically represent?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The presence or absence of a term"
+        },
+        {
+          "label": "B",
+          "text": "The semantic similarity between terms"
+        },
+        {
+          "label": "C",
+          "text": "The chronological order of terms"
+        },
+        {
+          "label": "D",
+          "text": "The frequency of a term in a document"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The sources state, 'Create a term-document matrix where each row corresponds to a term, each column corresponds to a document, and the matrix elements represent the frequency of a term in a document'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "question": "When applying Singular Value Decomposition (SVD) in LSA to a term-document matrix \\\\(X\\\\), which three matrices are yielded?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(X, Y, Z\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(P, Q, R\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(U, \\Sigma, V^T\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(A, B, C\\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources explicitly state: 'The SVD of word-document matrix \\\\(M\\\\) yields three matrices \\\\(U\\\\), \\\\(\\Sigma\\\\) and \\\\(V\\\\) such that: \\\\(X = U\\Sigma V^T\\\\)'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "question": "Which of the following is a significant limitation of LSA regarding its adaptability to new data?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It requires a fixed vocabulary size"
+        },
+        {
+          "label": "B",
+          "text": "It can only handle short documents"
+        },
+        {
+          "label": "C",
+          "text": "The decomposition needs to be recomputed from scratch whenever new data arrives"
+        },
+        {
+          "label": "D",
+          "text": "It cannot capture semantic relationships between words"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources identify this as a key limitation: 'The method is not incremental – the decomposition needs to be recomputed from scratch whenever new data arrives'.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 28,
+      "question": "Consider an LSA implementation with \\\\(w\\\\) terms and \\\\(d\\\\) documents. If \\\\(w = 100,000\\\\) and \\\\(d = 1,000\\\\), what would be the dominant factor in the running time complexity for SVD computation, according to the rule of thumb \\\\(O(\\max(w, d) \\times \\min(w, d)^2)\\\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(O(100,000 \\times 1,000)\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(O(100,000 \\times 1,000^2)\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(O(100,000^2 \\times 1,000)\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(O(1,000^3)\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The formula given is \\\\(O(\\max(w, d) \\times \\min(w, d)^2)\\\\). Given \\\\(w = 100,000\\\\) and \\\\(d = 1,000\\\\): \\\\(\\max(w, d) = 100,000\\\\), \\\\(\\min(w, d) = 1,000\\\\). So, the complexity is approximately \\\\(100,000 \\times (1,000)^2 = 100,000 \\times 1,000,000 = 10^{11}\\\\).",
+      "difficulty": "hard"
+    },
+    {
+      "id": 29,
+      "question": "Why are raw counts for word co-occurrence often considered problematic, especially for function words like 'the' or 'she'?",
+      "options": [
+        {
+          "label": "A",
+          "text": "They are difficult to compute"
+        },
+        {
+          "label": "B",
+          "text": "They only work for rare words"
+        },
+        {
+          "label": "C",
+          "text": "They give too much weight to frequently occurring function words"
+        },
+        {
+          "label": "D",
+          "text": "They do not capture word order"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources explicitly state, 'Raw counts give too much weight to function words such as the, she, has, and too little weight to cheese, bread, sheep'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "How is the associative strength between a target word 'w' and a context 'c' measured using Pointwise Mutual Information (PMI)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(\\text{PMI}(w, c) = P(w, c) - P(w) - P(c)\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(\\text{PMI}(w, c) = \\frac{P(w) \\cdot P(c)}{P(w, c)}\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(\\text{PMI}(w, c) = \\log \\left(\\frac{P(w, c)}{P(w) \\cdot P(c)}\\right)\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(\\text{PMI}(w, c) = P(w, c) + P(w) + P(c)\\\\)"
+        }
+      ],
+      "answer": "C",
+      "explanation": "This is the formal definition provided in the sources.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 31,
+      "question": "What is the main reason Positive Pointwise Mutual Information (PPMI) is preferred over raw PMI in practice?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It makes the calculations simpler and faster"
+        },
+        {
+          "label": "B",
+          "text": "It ensures that all values are exactly 1 or 0"
+        },
+        {
+          "label": "C",
+          "text": "It handles cases where PMI values would be negative infinity (log 0) by replacing them with zero"
+        },
+        {
+          "label": "D",
+          "text": "It only focuses on very common word pairs"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources state, 'Because the rows of co-occurrence matrices are sparse, many PMI values will be log 0 = −∞. A common approach is to use positive pointwise mutual information (PPMI), and replace all negative values with zero'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 32,
+      "question": "The Word2vec models (CBOW and Skip-gram) are based on what core assumption about word meaning?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Words gain meaning through their phonetic sounds"
+        },
+        {
+          "label": "B",
+          "text": "Word meaning is predefined in a dictionary"
+        },
+        {
+          "label": "C",
+          "text": "The meaning of a word can be learned from its context"
+        },
+        {
+          "label": "D",
+          "text": "Words have intrinsic meaning independent of their usage"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources state, 'Based on the assumption that the meaning of a word can be learned from its context'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 33,
+      "question": "Which Word2vec model is optimized to predict a target word given its surrounding context words?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Skip-gram"
+        },
+        {
+          "label": "B",
+          "text": "Continuous Bag-of-Words (CBOW)"
+        },
+        {
+          "label": "C",
+          "text": "Latent Semantic Analysis (LSA)"
+        },
+        {
+          "label": "D",
+          "text": "One-Hot Representation"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The sources explain, 'CBOW optimizes the embeddings so that they can predict a target word given its context words'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "question": "In contrast to CBOW, what is the primary prediction task of the Skip-gram model?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Predicting the center word given its context"
+        },
+        {
+          "label": "B",
+          "text": "Predicting the next word in a sequence"
+        },
+        {
+          "label": "C",
+          "text": "Predicting the context words given a target (center) word"
+        },
+        {
+          "label": "D",
+          "text": "Predicting the sentiment of a sentence"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources state, 'Skip-gram, on the contrary, learns the embeddings that can predict the context words given a target word' and 'On the contrary to CBOW, Skip-gram predicts the context given the center word'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 35,
+      "question": "When re-using pre-trained word embeddings for a new task (Task B), what are the two main strategies mentioned for handling the pre-trained weights in the embedding layers?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Initialize with random values or set all weights to zero"
+        },
+        {
+          "label": "B",
+          "text": "Train as usual (fine-tuning) or freeze the weights"
+        },
+        {
+          "label": "C",
+          "text": "Convert them to one-hot vectors or discard them completely"
+        },
+        {
+          "label": "D",
+          "text": "Use only statistical features or hand-crafted features"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The sources describe these two alternatives: 'Alternative 1: Train as usual, effectively fine-tuning the pretrained embeddings to the task at hand. Alternative 2: Freeze the weights of the embedding layers, to prevent the pre-trained embeddings from being modified'.",
+      "difficulty": "hard"
+    }
+  ]
+} 

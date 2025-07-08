@@ -13,6 +13,14 @@ import unsupervised_learning2 from './questions/unsupervised_learning2.json';
 import svm_advanced from './questions/svm_advanced.json';
 import svm_exam_a from './questions/svm_exam_a.json';
 import svm_exam_b from './questions/svm_exam_b.json';
+import nlp_exam_en from './questions/nlp_exam_en.json';
+import nlp_exam_vi from './questions/nlp_exam_vi.json';
+import rnn_exam_en from './questions/rnn_exam_en.json';
+import attention_transformer_part1_en from './questions/attention_transformer_part1_en.json';
+import attention_transformer_part2_en from './questions/attention_transformer_part2_en.json';
+import attention_transformer_part1_vi from './questions/attention_transformer_part1_vi.json';
+import xlnet_exam_en from './questions/xlnet_exam_en.json';
+import xlnet_exam_vi from './questions/xlnet_exam_vi.json';
 import { getExamDuration } from '../constants/examConstants';
 
 // Helper function to get exam duration info
@@ -98,6 +106,46 @@ export const examData = {
     title: "Support Vector Machine - Advanced",
     questions: svm_advanced.questions,
     ...calculateExamInfo(svm_advanced.questions)
+  },
+  15: {
+    title: "Natural Language Processing Fundamentals (English)",
+    questions: nlp_exam_en.questions,
+    ...calculateExamInfo(nlp_exam_en.questions)
+  },
+  16: {
+    title: "Cơ bản về Xử lý Ngôn ngữ Tự nhiên (Tiếng Việt)",
+    questions: nlp_exam_vi.questions,
+    ...calculateExamInfo(nlp_exam_vi.questions)
+  },
+  17: {
+    title: "Recurrent Neural Networks (RNNs) and Related Concepts",
+    questions: rnn_exam_en.questions,
+    ...calculateExamInfo(rnn_exam_en.questions)
+  },
+  18: {
+    title: "Attention & Transformer Models - Part 1 (English)",
+    questions: attention_transformer_part1_en.questions,
+    ...calculateExamInfo(attention_transformer_part1_en.questions)
+  },
+  19: {
+    title: "Attention & Transformer Models - Part 2 (English)",
+    questions: attention_transformer_part2_en.questions,
+    ...calculateExamInfo(attention_transformer_part2_en.questions)
+  },
+  20: {
+    title: "Cơ chế Attention & Mô hình Transformer - Phần 1 (Tiếng Việt)",
+    questions: attention_transformer_part1_vi.questions,
+    ...calculateExamInfo(attention_transformer_part1_vi.questions)
+  },
+  21: {
+    title: "XLNet and Pre-trained Language Models (English)",
+    questions: xlnet_exam_en.questions,
+    ...calculateExamInfo(xlnet_exam_en.questions)
+  },
+  22: {
+    title: "XLNet và Các Mô hình Tiền Huấn luyện Ngôn ngữ (Tiếng Việt)",
+    questions: xlnet_exam_vi.questions,
+    ...calculateExamInfo(xlnet_exam_vi.questions)
   }
 };
 

@@ -25,7 +25,7 @@ def setup_background_gemini():
         try:
             configure_gemini()
             logger.info("Background Gemini initialization completed")
-        except Exception as e:
+    except Exception as e:
             logger.warning(f"Background Gemini initialization failed: {e}")
 
     logger.info("Starting server with background Gemini initialization...")

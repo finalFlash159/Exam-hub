@@ -1,0 +1,727 @@
+{
+  "title": "Recurrent Neural Networks (RNNs) and Related Concepts",
+  "description": "Multiple-choice questions covering RNNs, LSTM, GRU, vanishing gradient, and exploding gradient problems",
+  "timeLimit": 45,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which of the following is a primary motivation for the development of Recurrent Neural Networks (RNNs)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vanilla neural networks can process sequential data effectively."
+        },
+        {
+          "label": "B", 
+          "text": "Humans start their thinking from scratch every second."
+        },
+        {
+          "label": "C",
+          "text": "Vanilla neural networks do not work with sequential data."
+        },
+        {
+          "label": "D",
+          "text": "RNNs are designed for image classification only."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The source states that \"Vanilla neural network does not work with sequential data\" and that Recurrent Neural Networks (RNNs) \"can solve the issue\"."
+    },
+    {
+      "id": 2,
+      "question": "What is a key characteristic of Recurrent Neural Networks (RNNs) that allows them to handle sequential data?",
+      "options": [
+        {
+          "label": "A",
+          "text": "They use heterogeneous weights."
+        },
+        {
+          "label": "B",
+          "text": "They have memory to remember what they have seen from sequential data."
+        },
+        {
+          "label": "C",
+          "text": "They only process data in parallel."
+        },
+        {
+          "label": "D",
+          "text": "They rely solely on sigmoid activation functions."
+        }
+      ],
+      "answer": "B",
+      "explanation": "RNNs are described as having \"memory to remember what it has seen from sequential data\"."
+    },
+    {
+      "id": 3,
+      "question": "Which of the following is an application that RNNs are able to perform?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Next word prediction."
+        },
+        {
+          "label": "B",
+          "text": "Music composition."
+        },
+        {
+          "label": "C",
+          "text": "Stock market prediction."
+        },
+        {
+          "label": "D",
+          "text": "All of the above."
+        }
+      ],
+      "answer": "D",
+      "explanation": "The sources list \"next word prediction, music composition, image captioning, speech recognition, time series anomaly detection, stock market prediction, etc.\" as capabilities of RNNs."
+    },
+    {
+      "id": 4,
+      "question": "Which type of neural network is specifically designed to solve the issue of processing sequential data, unlike vanilla neural networks?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Deep Neural Network (DNN)."
+        },
+        {
+          "label": "B",
+          "text": "Convolutional Neural Network (CNN)."
+        },
+        {
+          "label": "C",
+          "text": "Recurrent Neural Network (RNN)."
+        },
+        {
+          "label": "D",
+          "text": "Perceptron."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The source explicitly notes that \"Recurrent neural network (RNN) can solve the issue\" of vanilla neural networks not working with sequential data."
+    },
+    {
+      "id": 5,
+      "question": "What is a known problem associated with Recurrent Neural Networks (RNNs) regarding their ability to remember past information over long sequences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Long-term memory retention."
+        },
+        {
+          "label": "B",
+          "text": "Short-term memory."
+        },
+        {
+          "label": "C",
+          "text": "Infinite memory capacity."
+        },
+        {
+          "label": "D",
+          "text": "Perfect recall."
+        }
+      ],
+      "answer": "B",
+      "explanation": "RNNs are \"known as short-term memory\" and this is listed as one of the \"Problems with RNNs\"."
+    },
+    {
+      "id": 6,
+      "question": "The short-term memory issue in RNNs is primarily caused by which phenomenon?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Exploding Gradient."
+        },
+        {
+          "label": "B",
+          "text": "Vanishing Gradient."
+        },
+        {
+          "label": "C",
+          "text": "Overfitting."
+        },
+        {
+          "label": "D",
+          "text": "Infinite memory."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The source states that \"The short-term memory is caused by Vanishing Gradient\"."
+    },
+    {
+      "id": 7,
+      "question": "Which two main problems are identified with RNNs, making them \"not easy to train\"?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Overfitting and Underfitting."
+        },
+        {
+          "label": "B",
+          "text": "Short-term memory and Vanishing Gradient."
+        },
+        {
+          "label": "C",
+          "text": "Exploding Gradient and Long-term memory."
+        },
+        {
+          "label": "D",
+          "text": "High computational cost and Lack of data."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The problems listed for RNNs are \"Short-term memory\" and \"Not easy to train (vanishing gradient)\"."
+    },
+    {
+      "id": 8,
+      "question": "Vanishing Gradient occurs when the gradients of the loss function approach what value?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Infinity."
+        },
+        {
+          "label": "B",
+          "text": "One."
+        },
+        {
+          "label": "C",
+          "text": "Zero."
+        },
+        {
+          "label": "D",
+          "text": "Negative one."
+        }
+      ],
+      "answer": "C",
+      "explanation": "Vanishing Gradient happens \"As more layers using certain activation functions (e.g., sigmoid) are added to neural networks, the gradients of the loss function approaches zero\"."
+    },
+    {
+      "id": 9,
+      "question": "How does the Vanishing Gradient problem compare between Deep Neural Networks (DNNs) and Recurrent Neural Networks (RNNs)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It happens in DNNs but not in RNNs."
+        },
+        {
+          "label": "B",
+          "text": "It happens in RNNs but not in DNNs."
+        },
+        {
+          "label": "C",
+          "text": "It happens in DNNs, but is much worse in RNNs."
+        },
+        {
+          "label": "D",
+          "text": "It happens equally in both DNNs and RNNs."
+        }
+      ],
+      "answer": "C",
+      "explanation": "\"Vanishing gradient also happens in DNN, but much worse in RNN\"."
+    },
+    {
+      "id": 10,
+      "question": "What is a common characteristic of weights in RNNs that contributes to the vanishing gradient problem, especially when compared to DNNs?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Heterogeneous weights W."
+        },
+        {
+          "label": "B",
+          "text": "Large initial values."
+        },
+        {
+          "label": "C",
+          "text": "Homogeneous weights W."
+        },
+        {
+          "label": "D",
+          "text": "Randomly initialized weights."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The source highlights \"RNN - Homogeneous weights W\" under the Vanishing Gradient section, indicating this as a factor, particularly in contrast to DNN's \"Heterogeneous weights W\"."
+    },
+    {
+      "id": 11,
+      "question": "If a shallow network with only a few layers uses activation functions like sigmoid, is vanishing gradient typically a big problem?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Yes, it's always a big problem."
+        },
+        {
+          "label": "B",
+          "text": "No, it's generally not a big problem."
+        },
+        {
+          "label": "C",
+          "text": "It depends on the number of output layers."
+        },
+        {
+          "label": "D",
+          "text": "Only if the learning rate is high."
+        }
+      ],
+      "answer": "B",
+      "explanation": "\"For shallow network with only a few layers that use these activations, this isn't a big problem\"."
+    },
+    {
+      "id": 12,
+      "question": "What happens to the gradient as it propagates down to the initial layers in a network with many hidden layers using activation functions like sigmoid?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It increases exponentially."
+        },
+        {
+          "label": "B",
+          "text": "It decreases exponentially."
+        },
+        {
+          "label": "C",
+          "text": "It remains constant."
+        },
+        {
+          "label": "D",
+          "text": "It becomes infinite."
+        }
+      ],
+      "answer": "B",
+      "explanation": "When \"n hidden layers use an activation like the sigmoid function, n small derivatives are multiplied together. Thus, the gradient decreases exponentially as we propagate down to the initial layers\"."
+    },
+    {
+      "id": 13,
+      "question": "Which activation function is explicitly stated to distribute gradient better than sigmoid, helping to mitigate vanishing gradient?",
+      "options": [
+        {
+          "label": "A",
+          "text": "ReLU."
+        },
+        {
+          "label": "B",
+          "text": "Tanh."
+        },
+        {
+          "label": "C",
+          "text": "Softmax."
+        },
+        {
+          "label": "D",
+          "text": "Linear."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The source directly states, \"tanh distributes gradient better than sigmoid\"."
+    },
+    {
+      "id": 14,
+      "question": "Which of the following is a proposed solution to the vanishing gradient issue?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Use sigmoid activation functions."
+        },
+        {
+          "label": "B",
+          "text": "Add more layers without residual connections."
+        },
+        {
+          "label": "C",
+          "text": "Use residual connections."
+        },
+        {
+          "label": "D",
+          "text": "Decrease the learning rate significantly."
+        }
+      ],
+      "answer": "C",
+      "explanation": "To solve the vanishing gradient issue, one solution is to \"Use residual connections as they provide connections straight to earlier layers\"."
+    },
+    {
+      "id": 15,
+      "question": "How do LSTM and GRU specifically address the vanishing gradient issue?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By using traditional activation functions like sigmoid."
+        },
+        {
+          "label": "B",
+          "text": "By introducing gating functions instead of activation functions."
+        },
+        {
+          "label": "C",
+          "text": "By reducing the number of layers in the network."
+        },
+        {
+          "label": "D",
+          "text": "By initializing weights to very small values."
+        }
+      ],
+      "answer": "B",
+      "explanation": "LSTM and GRU solve the vanishing gradient issue by using \"gating (pass or block / 1 or 0) function, not activation function à able to let the information go through\"."
+    },
+    {
+      "id": 16,
+      "question": "What is Exploding Gradient a problem of?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Small error gradients leading to small weight updates."
+        },
+        {
+          "label": "B",
+          "text": "Large error gradients accumulate and result in very large updates to neural network model weights during training."
+        },
+        {
+          "label": "C",
+          "text": "Gradients approaching zero."
+        },
+        {
+          "label": "D",
+          "text": "Gradients becoming constant."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Exploding gradient is defined as \"a problem where large error gradients accumulate and result in very large updates to neural network model weights during training\"."
+    },
+    {
+      "id": 17,
+      "question": "Which of the following is listed as a reason why gradient explodes?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Use of ReLU activation function."
+        },
+        {
+          "label": "B",
+          "text": "Poor choice of learning rate results in large weight updates."
+        },
+        {
+          "label": "C",
+          "text": "Residual connections."
+        },
+        {
+          "label": "D",
+          "text": "Using gating functions."
+        }
+      ],
+      "answer": "B",
+      "explanation": "A stated reason for why gradient explodes is \"Poor choice of learning rate results in large weight updates\"."
+    },
+    {
+      "id": 18,
+      "question": "Which of the following is listed as a cause of exploding gradients?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Good initialization of weight matrices."
+        },
+        {
+          "label": "B",
+          "text": "Poor choice of loss function, allowing the calculation of large error values."
+        },
+        {
+          "label": "C",
+          "text": "Small learning rate."
+        },
+        {
+          "label": "D",
+          "text": "Gradient clipping."
+        }
+      ],
+      "answer": "B",
+      "explanation": "One cause of exploding gradients is \"Poor choice of loss function, allowing the calculation of large error values\"."
+    },
+    {
+      "id": 19,
+      "question": "What is one method to solve the exploding gradient problem?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Larger learning rate."
+        },
+        {
+          "label": "B",
+          "text": "Weight regularization."
+        },
+        {
+          "label": "C",
+          "text": "No initialization of weights."
+        },
+        {
+          "label": "D",
+          "text": "Using more layers."
+        }
+      ],
+      "answer": "B",
+      "explanation": "\"Weight regularization\" is listed as a method to solve the exploding gradient problem."
+    },
+    {
+      "id": 20,
+      "question": "Gradient clipping is a solution for exploding gradients that modifies which aspect of the gradient vector?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Its direction only."
+        },
+        {
+          "label": "B",
+          "text": "Its magnitude only."
+        },
+        {
+          "label": "C",
+          "text": "Both its magnitude and direction."
+        },
+        {
+          "label": "D",
+          "text": "Its variance."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Gradient clipping \"only change the magnitude, not the direction of the gradient vector\"."
+    },
+    {
+      "id": 21,
+      "question": "What is LSTM (Long Short-Term Memory) a special kind of?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Deep Neural Network (DNN)."
+        },
+        {
+          "label": "B",
+          "text": "Convolutional Neural Network (CNN)."
+        },
+        {
+          "label": "C",
+          "text": "Recurrent Neural Network (RNN)."
+        },
+        {
+          "label": "D",
+          "text": "Feedforward Neural Network."
+        }
+      ],
+      "answer": "C",
+      "explanation": "LSTM is defined as a \"Special kind of RNN\"."
+    },
+    {
+      "id": 22,
+      "question": "What is the key to LSTM's ability to learn long-term dependencies?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The hidden state."
+        },
+        {
+          "label": "B",
+          "text": "The cell state."
+        },
+        {
+          "label": "C",
+          "text": "The input layer."
+        },
+        {
+          "label": "D",
+          "text": "The output layer."
+        }
+      ],
+      "answer": "B",
+      "explanation": "\"The key to LSTM is the cell state, the horizontal line running through the top of the diagram à information can flow through (long term memory)\"."
+    },
+    {
+      "id": 23,
+      "question": "In LSTM, what do Sigmoid activation functions primarily represent?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Weights."
+        },
+        {
+          "label": "B",
+          "text": "Gates."
+        },
+        {
+          "label": "C",
+          "text": "Biases."
+        },
+        {
+          "label": "D",
+          "text": "Loss functions."
+        }
+      ],
+      "answer": "B",
+      "explanation": "\"Sigmoid activation function represent gates. Gates are a way to optionally let information through\"."
+    },
+    {
+      "id": 24,
+      "question": "Which LSTM gate decides what information to keep or get rid of from the cell state from the previous time step (Ct-1)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Input gate."
+        },
+        {
+          "label": "B",
+          "text": "Output gate."
+        },
+        {
+          "label": "C",
+          "text": "Forget gate."
+        },
+        {
+          "label": "D",
+          "text": "Cell state gate."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The \"Forget gate\" outputs a number between 0 and 1, where \"A 1 represents 'completely keep this' while a 0 represents 'completely get rid of this'\" for the cell state Ct-1."
+    },
+    {
+      "id": 25,
+      "question": "What is the primary purpose of the Input gate in LSTM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To forget information from the cell state."
+        },
+        {
+          "label": "B",
+          "text": "To decide what to add and how to add new information to the cell state."
+        },
+        {
+          "label": "C",
+          "text": "To directly output the hidden state."
+        },
+        {
+          "label": "D",
+          "text": "To regularize the output to [-1,1]."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The Input gate works to \"selectively add information to the cell state, then update the old cell state Ct-1 to Ct à decide what to add (sigmoid) and how to add (tanh à regularize [-1,1]) to cell state\"."
+    },
+    {
+      "id": 26,
+      "question": "How is the new cell state (Ct) updated in an LSTM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By only adding new candidate values."
+        },
+        {
+          "label": "B",
+          "text": "By multiplying the old state by the forget gate's output and adding new candidate values scaled by the input gate's output."
+        },
+        {
+          "label": "C",
+          "text": "By directly copying the hidden state."
+        },
+        {
+          "label": "D",
+          "text": "By subtracting the output gate's value."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The update involves multiplying \"the old state by ft, forgetting the things we decided to forget earlier, then add it∗Cft,\" where it*Cft represents new candidate values scaled by how much to update each state value."
+    },
+    {
+      "id": 27,
+      "question": "The output (hidden state ht) of an LSTM is a filtered version of what?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The input xt."
+        },
+        {
+          "label": "B",
+          "text": "The previous hidden state ht-1."
+        },
+        {
+          "label": "C",
+          "text": "The cell state."
+        },
+        {
+          "label": "D",
+          "text": "The forget gate's output."
+        }
+      ],
+      "answer": "C",
+      "explanation": "\"The output (hidden state ht) will be based on the cell state, but will be a filtered version\"."
+    },
+    {
+      "id": 28,
+      "question": "What is the primary function of the Reset gate (rt) in a GRU?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To decide what new information to add."
+        },
+        {
+          "label": "B",
+          "text": "To decide how much past information to forget."
+        },
+        {
+          "label": "C",
+          "text": "To update the cell state."
+        },
+        {
+          "label": "D",
+          "text": "To output the hidden state."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The \"Reset gate (rt): decide how much past information to forget\"."
+    },
+    {
+      "id": 29,
+      "question": "Which GRU gate is responsible for deciding what information to throw away and what new information to add?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Reset gate."
+        },
+        {
+          "label": "B",
+          "text": "Update gate."
+        },
+        {
+          "label": "C",
+          "text": "Output gate."
+        },
+        {
+          "label": "D",
+          "text": "Forget gate."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The \"Update gate (zt): decides what information to throw away and what new information to add\"."
+    },
+    {
+      "id": 30,
+      "question": "Regarding performance and training speed, which statement accurately compares GRU and LSTM?",
+      "options": [
+        {
+          "label": "A",
+          "text": "LSTM is always faster to train than GRU."
+        },
+        {
+          "label": "B",
+          "text": "GRU has more tensor operations, making it slower than LSTM."
+        },
+        {
+          "label": "C",
+          "text": "GRU has fewer tensor operations, thus (little) faster to train than LSTM."
+        },
+        {
+          "label": "D",
+          "text": "GRU and LSTM have vastly different performance, one always superior."
+        }
+      ],
+      "answer": "C",
+      "explanation": "\"GRU has fewer tensor operations, thus (little) faster to train then LSTM.\" Additionally, \"GRU and LSTM have comparable performance and there is no simple way to recommend one or the other for a specific task\"."
+    }
+  ]
+} 

@@ -1,0 +1,847 @@
+{
+  "title": "Attention & Transformer Models - Part 1",
+  "description": "Multiple-choice questions covering Attention mechanisms, Sequence-to-Sequence models, Self-attention, and Transformer architecture (Questions 1-35)",
+  "timeLimit": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What was the initial idea for learning sequential input-output relations before the advent of Attention models?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Processing sentences word by word without memory."
+        },
+        {
+          "label": "B",
+          "text": "Compressing a sequential input into a fixed-size vector and feeding it to a Recurrent Neural Network (RNN) to generate output."
+        },
+        {
+          "label": "C",
+          "text": "Using a feed-forward neural network to directly map input to output."
+        },
+        {
+          "label": "D",
+          "text": "Employing a convolutional neural network for sequential data."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The introductory idea mentioned for learning sequential input-output relations, such as in Neural Machine Translation (NMT) or Image Captioning, was to compress a sequential input into a fixed-size vector and then feed this vector to a recurrent neural network (RNN) to generate a sequence of outputs. This approach formed the basis of early sequence-to-sequence models."
+    },
+    {
+      "id": 2,
+      "question": "In the context of computer vision, Attention started as an attempt to mimic which human capability?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Human memory."
+        },
+        {
+          "label": "B",
+          "text": "Human perception."
+        },
+        {
+          "label": "C",
+          "text": "Human reasoning."
+        },
+        {
+          "label": "D",
+          "text": "Human locomotion."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Attention mechanisms, particularly in the field of computer vision, began as an effort to mimic human perception. The idea is that humans rarely use all available sensory inputs for specific tasks, and Attention aims to replicate this selective focus."
+    },
+    {
+      "id": 3,
+      "question": "What is a Sequence-to-Sequence (seq2seq) model primarily composed of, according to the sources?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A single feed-forward neural network."
+        },
+        {
+          "label": "B",
+          "text": "Two recurrent neural networks (RNNs) with an encoder-decoder architecture."
+        },
+        {
+          "label": "C",
+          "text": "A convolutional neural network and an RNN."
+        },
+        {
+          "label": "D",
+          "text": "A Transformer encoder and a Transformer decoder."
+        }
+      ],
+      "answer": "B",
+      "explanation": "A Sequence-to-Sequence (seq2seq) model is described as consisting of two recurrent neural networks (RNNs) with an encoder-decoder architecture. The encoder reads the input words, and the decoder generates the output words."
+    },
+    {
+      "id": 4,
+      "question": "What is the main function of the Encoder in a seq2seq model?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To generate output words one by one."
+        },
+        {
+          "label": "B",
+          "text": "To read input words one by one and obtain an embedding vector."
+        },
+        {
+          "label": "C",
+          "text": "To condition the output words based on previous outputs."
+        },
+        {
+          "label": "D",
+          "text": "To calculate attention scores."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The Encoder in a seq2seq model is responsible for reading the input words one by one to obtain an embedding vector of a fixed dimensionality. This embedding vector then serves as a representation of the input sequence."
+    },
+    {
+      "id": 5,
+      "question": "What is the main function of the Decoder in a seq2seq model?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To read the entire input sequence at once."
+        },
+        {
+          "label": "B",
+          "text": "To compress the input into a single vector."
+        },
+        {
+          "label": "C",
+          "text": "To extract output words one by one, conditioned on the inputs, using another RNN."
+        },
+        {
+          "label": "D",
+          "text": "To only focus on the last hidden state of the encoder."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Decoder in a seq2seq model is designed to extract the output words one by one using another RNN, conditioned on these inputs."
+    },
+    {
+      "id": 6,
+      "question": "What was a significant issue with the traditional Sequence-to-Sequence (seq2seq) model, especially for long input texts?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It was too computationally expensive."
+        },
+        {
+          "label": "B",
+          "text": "It only used a fixed number of input words."
+        },
+        {
+          "label": "C",
+          "text": "The decoder only received the last encoder hidden state, leading to severe loss of information."
+        },
+        {
+          "label": "D",
+          "text": "It could not process sequential inputs."
+        }
+      ],
+      "answer": "C",
+      "explanation": "A critical issue with the traditional seq2seq model was that the decoder only received the last encoder hidden state (h4(s)), which acted as a numerical summary of the input sequence. For long input texts, relying on just this single vector representation for translation resulted in a severe loss of information from the input."
+    },
+    {
+      "id": 7,
+      "question": "What is the \"basic idea\" of the Attention mechanism regarding vector representation?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To always learn a single, fixed-size vector representation for each sentence."
+        },
+        {
+          "label": "B",
+          "text": "To avoid attempting to learn a single vector representation for each sentence, instead paying attention to specific input vectors based on attention weights."
+        },
+        {
+          "label": "C",
+          "text": "To use multiple fixed-size vectors for each sentence without any weighting."
+        },
+        {
+          "label": "D",
+          "text": "To entirely remove the need for vector representations."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The basic idea of the Attention mechanism is explicitly stated as to \"avoid attempting to learn a single vector representation for each sentence, instead, it pays attention to specific input vectors of the input sequence based on the attention weights\". This allows the model to selectively focus on relevant parts of the input."
+    },
+    {
+      "id": 8,
+      "question": "How does Attention improve the information flow between the encoder and decoder in a seq2seq model?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It allows the decoder to directly access the original input without any encoding."
+        },
+        {
+          "label": "B",
+          "text": "It only provides the last encoder hidden state to the decoder."
+        },
+        {
+          "label": "C",
+          "text": "It provides the decoder with information from every encoder hidden state, not just the last one."
+        },
+        {
+          "label": "D",
+          "text": "It compresses all encoder hidden states into a single, much smaller vector."
+        }
+      ],
+      "answer": "C",
+      "explanation": "Attention acts as an interface that significantly improves information flow by providing the decoder with information from every encoder hidden state, apart from just the last one. This addresses the information loss issue of traditional seq2seq models."
+    },
+    {
+      "id": 9,
+      "question": "What does \"alignment\" mean in the context of sequence-to-sequence models with Attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Matching the overall length of the input and output sequences."
+        },
+        {
+          "label": "B",
+          "text": "Ensuring the grammatical correctness of the output."
+        },
+        {
+          "label": "C",
+          "text": "Matching segments of the original text (input) with their corresponding segments of the translation (output)."
+        },
+        {
+          "label": "D",
+          "text": "The process of preparing encoder hidden states for the decoder."
+        }
+      ],
+      "answer": "C",
+      "explanation": "\"Alignment\" is defined as matching segments of original text (input) with their corresponding segments of the translation (output). This is a key capability of Attention, allowing the model to know which input parts are relevant for generating specific output parts."
+    },
+    {
+      "id": 10,
+      "question": "In the first step of \"seq2seq with attention: (0) prepare hidden states,\" what is fed as input to the first time step of the decoder?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A randomly initialized vector."
+        },
+        {
+          "label": "B",
+          "text": "The last consolidated encoder hidden state."
+        },
+        {
+          "label": "C",
+          "text": "The sum of all encoder hidden states."
+        },
+        {
+          "label": "D",
+          "text": "The first encoder hidden state."
+        }
+      ],
+      "answer": "B",
+      "explanation": "In the initial preparation step for seq2seq with attention, the last consolidated encoder hidden state is fed as input to the first time step of the decoder."
+    },
+    {
+      "id": 11,
+      "question": "How is a \"score\" obtained for every encoder hidden state in the attention mechanism?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By averaging all encoder hidden states."
+        },
+        {
+          "label": "B",
+          "text": "By using a score function like dot product, concatenation, or cosine similarity."
+        },
+        {
+          "label": "C",
+          "text": "By taking the maximum value of the encoder hidden state."
+        },
+        {
+          "label": "D",
+          "text": "By directly using the encoder hidden state vector as the score."
+        }
+      ],
+      "answer": "B",
+      "explanation": "A score (scalar) for each encoder hidden state is obtained by a score function, with examples provided such as (scaled) dot product, concatenation, or cosine similarity. This score indicates how much attention the next output word will pay to that specific encoder hidden state."
+    },
+    {
+      "id": 12,
+      "question": "What do \"softmaxed scores\" represent in the attention mechanism?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The raw importance of each encoder hidden state."
+        },
+        {
+          "label": "B",
+          "text": "The attention distribution over all input elements."
+        },
+        {
+          "label": "C",
+          "text": "The final output prediction of the decoder."
+        },
+        {
+          "label": "D",
+          "text": "The dimensionality of the encoder hidden states."
+        }
+      ],
+      "answer": "B",
+      "explanation": "After scores are calculated, they are passed through a softmax function. These softmaxed scores represent the attention distribution, normalizing them into probabilities that sum to one, indicating the relative importance of each input element."
+    },
+    {
+      "id": 13,
+      "question": "What is produced by multiplying each encoder hidden state with its softmaxed score?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The context vector."
+        },
+        {
+          "label": "B",
+          "text": "The decoder hidden state."
+        },
+        {
+          "label": "C",
+          "text": "The alignment vector."
+        },
+        {
+          "label": "D",
+          "text": "The input embedding."
+        }
+      ],
+      "answer": "C",
+      "explanation": "Multiplying each encoder hidden state with its softmaxed score (scalar) produces the alignment vector. This step effectively weights each hidden state by its importance, causing \"unimportant encoder hidden states [to be] ignored\"."
+    },
+    {
+      "id": 14,
+      "question": "What is the result of summing up all the \"alignment vectors\" in the attention mechanism?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The final output word."
+        },
+        {
+          "label": "B",
+          "text": "The context vector."
+        },
+        {
+          "label": "C",
+          "text": "A new encoder hidden state."
+        },
+        {
+          "label": "D",
+          "text": "The attention scores."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The alignment vectors are summed up to produce the context vector, which represents an aggregation of information. This context vector then guides the decoder."
+    },
+    {
+      "id": 15,
+      "question": "Compare the intuition of a traditional seq2seq model with a seq2seq + attention model using the translator analogy.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Seq2seq: A translator reads, then translates word by word, potentially forgetting early parts if the sentence is long. Seq2seq + attention: A translator reads and writes down keywords, then uses these keywords while translating each word."
+        },
+        {
+          "label": "B",
+          "text": "Seq2seq: A translator translates backward. Seq2seq + attention: A translator translates forward."
+        },
+        {
+          "label": "C",
+          "text": "Seq2seq: A translator always remembers everything. Seq2seq + attention: A translator forgets everything."
+        },
+        {
+          "label": "D",
+          "text": "Seq2seq: A translator uses keywords. Seq2seq + attention: A translator does not use keywords."
+        }
+      ],
+      "answer": "A",
+      "explanation": "The sources provide a clear analogy: Seq2seq: \"A translator reads the French text from start till the end. Once done, he starts translating to English word by word. It is possible that if the sentence is extremely long, he might have forgotten what he has read in the earlier parts of the text\". This highlights the information bottleneck. Seq2seq + attention: \"A translator reads the French text while writing down the keywords from the start till the end, after which he starts translating to English. While translating each French word, he makes use of the keywords he has written down\". This illustrates how Attention provides relevant context for each output word."
+    },
+    {
+      "id": 16,
+      "question": "What is another name for Self-attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cross-attention."
+        },
+        {
+          "label": "B",
+          "text": "Intra-attention."
+        },
+        {
+          "label": "C",
+          "text": "Inter-attention."
+        },
+        {
+          "label": "D",
+          "text": "Global attention."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Self-attention is also known as intra-attention. This term emphasizes that the attention mechanism operates within a single sequence to compute a representation of that same sequence."
+    },
+    {
+      "id": 17,
+      "question": "What is the primary purpose of Self-attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To relate different positions of two separate sequences."
+        },
+        {
+          "label": "B",
+          "text": "To relate different positions of a single sequence to compute a representation of the same sequence."
+        },
+        {
+          "label": "C",
+          "text": "To compress an entire sequence into a single fixed-size vector."
+        },
+        {
+          "label": "D",
+          "text": "To convert text into images."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Self-attention's introduction states its purpose is \"relating different positions of a single sequence in order to compute a representation of the same sequence\"."
+    },
+    {
+      "id": 18,
+      "question": "For each input in Self-attention, what three representations does it have?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Input, Output, Hidden."
+        },
+        {
+          "label": "B",
+          "text": "Query, Key, Value."
+        },
+        {
+          "label": "C",
+          "text": "Encoder, Decoder, Attention."
+        },
+        {
+          "label": "D",
+          "text": "Score, Softmax, Sum."
+        }
+      ],
+      "answer": "B",
+      "explanation": "In Self-attention, every input has three representations: key, query, and value. These are derived from the input embedding vector using learnable weight matrices."
+    },
+    {
+      "id": 19,
+      "question": "In Self-attention, how is the \"score\" for an input (e.g., Input #1) calculated with respect to other inputs?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By summing Input #1's query with all other queries."
+        },
+        {
+          "label": "B",
+          "text": "By taking the dot product between Input #1's query and all keys, including its own."
+        },
+        {
+          "label": "C",
+          "text": "By multiplying Input #1's value with all other values."
+        },
+        {
+          "label": "D",
+          "text": "By averaging Input #1's key with all other keys."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The score for a given input (e.g., Input #1) is calculated by taking the dot product between that input's query with all keys, including its own. This indicates \"how much attention the Input #1 pays to the other inputs\"."
+    },
+    {
+      "id": 20,
+      "question": "What is the motivation behind applying softmax to the attention scores in Self-attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To increase the magnitude of the scores."
+        },
+        {
+          "label": "B",
+          "text": "To make the scores negative."
+        },
+        {
+          "label": "C",
+          "text": "To normalize the attention scores to a probability distribution over all inputs."
+        },
+        {
+          "label": "D",
+          "text": "To derive new query, key, and value matrices."
+        }
+      ],
+      "answer": "C",
+      "explanation": "Taking the softmax across the attention scores is motivated by the need to normalize them into a probability distribution over all inputs. This makes the scores comparable and interpretable as weights."
+    },
+    {
+      "id": 21,
+      "question": "What is the final step in calculating the output for a given input in Self-attention, after multiplying scores with values?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Multiplying the weighted values again."
+        },
+        {
+          "label": "B",
+          "text": "Summing the weighted values (alignment vectors) to get the final output embedding."
+        },
+        {
+          "label": "C",
+          "text": "Applying a ReLU activation."
+        },
+        {
+          "label": "D",
+          "text": "Feeding the weighted values to a separate decoder."
+        }
+      ],
+      "answer": "B",
+      "explanation": "After deriving weighted value representations by multiplying scores with values, the final step for a given input is to sum these weighted values to get its output. This results in a \"new embedding value of Input #1 in consideration of other inputs (with attention)\"."
+    },
+    {
+      "id": 22,
+      "question": "Can the dimension of the 'value' vector in Self-attention be different from the dimension of the 'query' and 'key' vectors?",
+      "options": [
+        {
+          "label": "A",
+          "text": "No, they must always have the same dimension."
+        },
+        {
+          "label": "B",
+          "text": "Yes, the dimension of value may be different, while query and key dimensions are the same due to the dot product."
+        },
+        {
+          "label": "C",
+          "text": "Only if the input sequence length varies."
+        },
+        {
+          "label": "D",
+          "text": "Only if the model is multi-headed."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The sources explicitly state: \"Note: dimension of value may be different from query and key dimension (which are the same due dot product) -> output follows the dimension of value\". This flexibility allows the model to project information into a different latent space for the value, influencing the output dimension."
+    },
+    {
+      "id": 23,
+      "question": "What is one of the main weaknesses of LSTM that the Transformer aims to improve upon?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Its ability to handle short sentences."
+        },
+        {
+          "label": "B",
+          "text": "Its efficiency in processing parallel data."
+        },
+        {
+          "label": "C",
+          "text": "Sequential processing, which prevents parallelization, and inability to deal with long sentences without attention."
+        },
+        {
+          "label": "D",
+          "text": "Its low memory usage."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Transformer was introduced to address weaknesses of LSTM, specifically: sequential processing (sentences must be processed word by word, preventing parallelization) and a lack of inherent attention mechanisms to deal with long sentences. These issues made LSTMs \"slow and inefficient\"."
+    },
+    {
+      "id": 24,
+      "question": "What is one key innovation introduced in the Transformer to replace recurrence and account for word order?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Convolutional layers."
+        },
+        {
+          "label": "B",
+          "text": "Gated Recurrent Units (GRUs)."
+        },
+        {
+          "label": "C",
+          "text": "Positional embeddings."
+        },
+        {
+          "label": "D",
+          "text": "Skip connections."
+        }
+      ],
+      "answer": "C",
+      "explanation": "One of the innovations brought by the Transformer to replace recurrence (which inherently handles sequence order) is positional embeddings. These embeddings encode information related to a specific position of a token in a sentence."
+    },
+    {
+      "id": 25,
+      "question": "The Transformer architecture is primarily composed of what two main components?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A single large neural network."
+        },
+        {
+          "label": "B",
+          "text": "An Encoding component and a Decoding component."
+        },
+        {
+          "label": "C",
+          "text": "A Recurrent Neural Network and a Feed-Forward Network."
+        },
+        {
+          "label": "D",
+          "text": "A Convolutional Layer and a Pooling Layer."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The Transformer's architecture overview shows it is comprised of an Encoding component and a Decoding component. Both are stacks of N identical encoders and decoders, respectively."
+    },
+    {
+      "id": 26,
+      "question": "In the Transformer's encoder, what does the Self-attention layer help the encoder do?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Generate output words."
+        },
+        {
+          "label": "B",
+          "text": "Look at other words in the input sentence as it encodes a specific word."
+        },
+        {
+          "label": "C",
+          "text": "Focus on relevant parts of the output sentence."
+        },
+        {
+          "label": "D",
+          "text": "Reduce the dimensionality of the input."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The Self-attention layer within the Transformer's encoder helps \"the encoder look at other words in the input sentence as it encodes a specific word\". This allows it to gather context from the entire input sequence."
+    },
+    {
+      "id": 27,
+      "question": "What are the two main sub-layers within each Transformer encoder?",
+      "options": [
+        {
+          "label": "A",
+          "text": "LSTM and GRU."
+        },
+        {
+          "label": "B",
+          "text": "Self-attention layer and Feed-forward neural network."
+        },
+        {
+          "label": "C",
+          "text": "Convolutional layer and Pooling layer."
+        },
+        {
+          "label": "D",
+          "text": "Input embedding and Positional encoding."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Each encoder in the Transformer consists of two main sub-layers: a Self-attention layer and a Feed-forward neural network."
+    },
+    {
+      "id": 28,
+      "question": "What is the purpose of the \"Encoder-decoder attention layer\" in the Transformer's decoder?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To process only the decoder input itself."
+        },
+        {
+          "label": "B",
+          "text": "To generate the final output word."
+        },
+        {
+          "label": "C",
+          "text": "To help the decoder focus on relevant parts of the input sentence (similar to attention in seq2seq)."
+        },
+        {
+          "label": "D",
+          "text": "To calculate positional encodings."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Encoder-decoder attention layer (also known as decoder's Multi-head attention) in the Transformer's decoder is crucial because it helps the decoder focus on relevant parts of the input sentence, a function similar to what attention does in traditional seq2seq models. It takes encoder output and decoder input as its own input."
+    },
+    {
+      "id": 29,
+      "question": "How does the Transformer support parallelization in its encoding process?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It uses a single large recurrent neural network."
+        },
+        {
+          "label": "B",
+          "text": "It processes sentences word by word sequentially."
+        },
+        {
+          "label": "C",
+          "text": "Each word (or position) passes through self-attention and then a feed-forward network separately and identically, supporting parallel processing."
+        },
+        {
+          "label": "D",
+          "text": "It relies on a global pooling layer."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Transformer significantly improves speed and efficiency by processing sentences as a whole rather than word by word. This is enabled because \"the word at each position passes through a self-attention process. Then, they each pass through a feed-forward neural network. The exact same network with each vector flowing through it separately -> support parallelization\"."
+    },
+    {
+      "id": 30,
+      "question": "What is the purpose of dividing the dot product by \\\\(\\sqrt{d_k}\\\\) in Scaled Dot-Product Self-attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To increase the attention scores."
+        },
+        {
+          "label": "B",
+          "text": "To make the gradients more stable."
+        },
+        {
+          "label": "C",
+          "text": "To reduce the dimensionality of the key vectors."
+        },
+        {
+          "label": "D",
+          "text": "To normalize the input embeddings."
+        }
+      ],
+      "answer": "B",
+      "explanation": "In Scaled Dot-Product Self-attention, the dot product is \"divided by sqrt(d_k) (i.e., the square root (8) of the dimension of the key vectors used in the paper (64)) to have a more stable gradient\"."
+    },
+    {
+      "id": 31,
+      "question": "What is the core \"idea\" behind Multi-head attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To simplify the attention mechanism by using fewer parameters."
+        },
+        {
+          "label": "B",
+          "text": "To give the attention layer multiple representation subspaces, allowing diversity in attention targets."
+        },
+        {
+          "label": "C",
+          "text": "To process only a single input at a time."
+        },
+        {
+          "label": "D",
+          "text": "To eliminate the need for query, key, and value vectors."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The core idea of Multi-head attention is to \"give the attention layer multiple representation subspaces -> rich diversity in attention targets\". This allows the model to learn different types of semantic information through separate attention \"heads.\""
+    },
+    {
+      "id": 32,
+      "question": "How does Multi-head attention achieve its goal of learning different representation subspaces?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By using a single set of Query/Key/Value weight matrices across all heads."
+        },
+        {
+          "label": "B",
+          "text": "By maintaining multiple (e.g., eight) sets of Query/Key/Value weight matrices, each randomly initialized and used to project inputs into different subspaces."
+        },
+        {
+          "label": "C",
+          "text": "By applying the same attention calculation eight times to the same single set of Q/K/V matrices."
+        },
+        {
+          "label": "D",
+          "text": "By combining all attention scores before applying softmax."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Multi-head attention works by maintaining \"multiple sets of Query/Key/Value weight matrices (the Transformer uses eight attention heads, eight sets for each encoder/decoder). Each of these sets is randomly initialized. After training, each set is used to project the input embeddings into a different representation subspace\". It then \"Run[s] the attention N (eight) times with different random initial weights\"."
+    },
+    {
+      "id": 33,
+      "question": "Why is Positional Encoding necessary in the Transformer architecture?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To increase the model's training speed."
+        },
+        {
+          "label": "B",
+          "text": "Because the Transformer removes the sequential order of input words, unlike RNNs/LSTMs, and needs a way to account for word order."
+        },
+        {
+          "label": "C",
+          "text": "To reduce the number of parameters in the model."
+        },
+        {
+          "label": "D",
+          "text": "To make the model more robust to noisy inputs."
+        }
+      ],
+      "answer": "B",
+      "explanation": "Positional Encoding is crucial because the \"Transformer removes the sequence order of input words (which exists in RNN/LSTM), so we need a way to account for the order of the words in the input sequence\". It achieves this by adding a position vector to each input word embedding."
+    },
+    {
+      "id": 34,
+      "question": "How does the Transformer ensure that positional information is not lost as it moves through layers?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By re-calculating positional encoding at every layer."
+        },
+        {
+          "label": "B",
+          "text": "By using fixed weights that prevent information loss."
+        },
+        {
+          "label": "C",
+          "text": "Through the use of residual connections."
+        },
+        {
+          "label": "D",
+          "text": "By using only one encoder layer."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Transformer architecture is equipped with residual connections, which help ensure that \"position information does not get vanished once it reaches the upper layers\". Residual connections are applied around each of the two sub-layers (attention and feed-forward)."
+    },
+    {
+      "id": 35,
+      "question": "What is the typical dimensionality of the inner-layer of the Feed Forward Network within a Transformer encoder, when \\\\(d_{model}\\\\) is 512?",
+      "options": [
+        {
+          "label": "A",
+          "text": "512."
+        },
+        {
+          "label": "B",
+          "text": "1024."
+        },
+        {
+          "label": "C",
+          "text": "2048."
+        },
+        {
+          "label": "D",
+          "text": "4096."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Feed Forward Network in the Transformer consists of two linear transformations. For a dmodel of 512, the \"inner-layer has dimensionality dff = 2048\"."
+    }
+  ]
+} 

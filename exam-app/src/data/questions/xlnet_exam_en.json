@@ -1,0 +1,847 @@
+{
+  "title": "XLNet and Pre-trained Language Models",
+  "description": "Multiple-choice questions covering XLNet architecture, permutation language modeling, autoregressive vs autoencoding approaches, and advanced NLP concepts",
+  "timeLimit": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are the two main pretraining methods that have driven the development of Natural Language Processing (NLP)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Autoregressive (AR) language modeling and Reinforcement Learning (RL)"
+        },
+        {
+          "label": "B",
+          "text": "Autoregressive (AR) language modeling and Autoencoding (AE)"
+        },
+        {
+          "label": "C",
+          "text": "Autoencoding (AE) and Generative Adversarial Networks (GANs)"
+        },
+        {
+          "label": "D",
+          "text": "Supervised Learning and Unsupervised Learning"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The two main pretraining approaches that have significantly advanced NLP are Autoregressive (AR) language modeling (like GPT) and Autoencoding (AE) approaches (like BERT). These methods have revolutionized how we approach language understanding and generation tasks."
+    },
+    {
+      "id": 2,
+      "question": "What is the main difficulty that Autoregressive (AR) language models face, despite being able to capture unidirectional context?",
+      "options": [
+        {
+          "label": "A",
+          "text": "They cannot learn relationships between words"
+        },
+        {
+          "label": "B",
+          "text": "Difficulty in modeling bidirectional dependencies"
+        },
+        {
+          "label": "C",
+          "text": "They require very large amounts of training data"
+        },
+        {
+          "label": "D",
+          "text": "They lead to pretrain-finetune discrepancy issues"
+        }
+      ],
+      "answer": "B",
+      "explanation": "AR language models like GPT can only access context from one direction (typically left-to-right), making it challenging to model bidirectional dependencies that are crucial for many NLP tasks requiring full context understanding."
+    },
+    {
+      "id": 3,
+      "question": "What is the main limitation of Autoencoding (AE) models like BERT related to the [MASK] token?",
+      "options": [
+        {
+          "label": "A",
+          "text": "[MASK] tokens slow down training speed"
+        },
+        {
+          "label": "B",
+          "text": "The presence of [MASK] tokens during pretraining but absence during finetuning causes pretrain-finetune discrepancy"
+        },
+        {
+          "label": "C",
+          "text": "[MASK] tokens don't provide enough contextual information"
+        },
+        {
+          "label": "D",
+          "text": "[MASK] tokens require a more complex model architecture"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT uses artificial [MASK] tokens during pretraining to predict masked words, but these tokens never appear in real downstream tasks during finetuning, creating a mismatch between pretraining and finetuning phases."
+    },
+    {
+      "id": 4,
+      "question": "Besides using [MASK] tokens, what is another limitation of BERT when predicting masked tokens?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT ignores sentence context"
+        },
+        {
+          "label": "B",
+          "text": "BERT assumes independence between predicted tokens, limiting its ability to model joint probability"
+        },
+        {
+          "label": "C",
+          "text": "BERT can only predict one masked token at a time"
+        },
+        {
+          "label": "D",
+          "text": "BERT requires labeled input for prediction"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT's masked language modeling objective assumes that masked tokens are predicted independently of each other, which prevents the model from capturing dependencies between simultaneously predicted tokens."
+    },
+    {
+      "id": 5,
+      "question": "XLNet is described as a generalized autoregressive method. What does XLNet do to naturally capture bidirectional context?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It uses a more complex masking mechanism than BERT"
+        },
+        {
+          "label": "B",
+          "text": "It maximizes the expected log-likelihood over all possible permutations of factorization order"
+        },
+        {
+          "label": "C",
+          "text": "It trains two separate AR models, one forward and one backward"
+        },
+        {
+          "label": "D",
+          "text": "It combines multiple training objectives simultaneously"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet uses Permutation Language Modeling (PLM), which maximizes the expected log-likelihood over all possible factorization orders of the sequence, allowing it to see bidirectional context while maintaining the autoregressive property."
+    },
+    {
+      "id": 6,
+      "question": "What is one of the main advantages of XLNet over BERT regarding input data?",
+      "options": [
+        {
+          "label": "A",
+          "text": "XLNet can process longer sequences than BERT"
+        },
+        {
+          "label": "B",
+          "text": "XLNet does not require artificially corrupted input data (e.g., masked tokens), thus avoiding pretrain-finetune discrepancy"
+        },
+        {
+          "label": "C",
+          "text": "XLNet uses less training data"
+        },
+        {
+          "label": "D",
+          "text": "XLNet can learn from unlabeled data better"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Unlike BERT, XLNet doesn't use artificial [MASK] tokens during pretraining, so the input distribution during pretraining matches that during finetuning, eliminating the pretrain-finetune discrepancy problem."
+    },
+    {
+      "id": 7,
+      "question": "How does XLNet handle the relationship between predicted tokens compared to BERT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Like BERT, XLNet also assumes independence between them"
+        },
+        {
+          "label": "B",
+          "text": "XLNet directly models the joint probability of predicted tokens, capturing dependencies"
+        },
+        {
+          "label": "C",
+          "text": "XLNet predicts masked tokens in a specific sequence"
+        },
+        {
+          "label": "D",
+          "text": "XLNet ignores relationships between predicted tokens to simplify the model"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet's autoregressive nature allows it to model the joint probability of predicted tokens naturally, capturing dependencies between them, unlike BERT's independence assumption."
+    },
+    {
+      "id": 8,
+      "question": "What is the pretraining objective of traditional AR language models?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Maximize \\\\(\\log p(x) = \\sum_t \\log p(x_t | x_{<t})\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "Maximize \\\\(\\log p(\\bar{x} | \\hat{x})\\\\) where \\\\(\\bar{x}\\\\) are masked tokens"
+        },
+        {
+          "label": "C",
+          "text": "Minimize loss based on input-output difference"
+        },
+        {
+          "label": "D",
+          "text": "Learn a semantic space representation"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Traditional AR language models maximize the log-likelihood of a sequence by predicting each token given all previous tokens in the sequence, following the chain rule of probability."
+    },
+    {
+      "id": 9,
+      "question": "How do BERT and AR language modeling differ in terms of independence assumptions?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both BERT and AR assume independence"
+        },
+        {
+          "label": "B",
+          "text": "BERT assumes masked tokens are reconstructed independently, while AR factorizes \\\\(p_\\theta(x)\\\\) without this independence assumption"
+        },
+        {
+          "label": "C",
+          "text": "AR assumes independence, while BERT does not"
+        },
+        {
+          "label": "D",
+          "text": "Independence assumption is not a difference between them"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT's masked language modeling treats each masked token as independent during prediction, while AR models naturally factor the probability without assuming independence between tokens."
+    },
+    {
+      "id": 10,
+      "question": "What is the goal of Permutation Language Modeling in XLNet?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Maximize the probability of a sequence in forward reading order"
+        },
+        {
+          "label": "B",
+          "text": "Maximize the expected log-likelihood over all possible permutations of token order, combining AR advantages with bidirectional context"
+        },
+        {
+          "label": "C",
+          "text": "Predict masked tokens in a sequence"
+        },
+        {
+          "label": "D",
+          "text": "Generate new text sequences"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Permutation Language Modeling maximizes the expected log-likelihood over all possible factorization orders, allowing the model to see all possible contexts while maintaining the autoregressive property."
+    },
+    {
+      "id": 11,
+      "question": "Why is the \"naive\" parameterization in permutation language modeling problematic?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It's too complex to compute"
+        },
+        {
+          "label": "B",
+          "text": "The hidden representation \\\\(h_\\theta(x_{z_{<t}})\\\\) does not depend on the target position \\\\(z_t\\\\), leading to position-unaware predictions"
+        },
+        {
+          "label": "C",
+          "text": "It requires too much memory"
+        },
+        {
+          "label": "D",
+          "text": "It cannot learn long-term dependencies"
+        }
+      ],
+      "answer": "B",
+      "explanation": "In naive parameterization, the hidden representation doesn't encode which position is being predicted, making it impossible to make position-aware predictions, which is crucial for language modeling."
+    },
+    {
+      "id": 12,
+      "question": "How does XLNet solve the naive parameterization problem?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By using a deeper neural network"
+        },
+        {
+          "label": "B",
+          "text": "By reparameterizing the next-token distribution so that \\\\(g_\\theta(x_{z_{<t}}, z_t)\\\\) is conditioned on the target position \\\\(z_t\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "By increasing the vocabulary size"
+        },
+        {
+          "label": "D",
+          "text": "By applying dropout during training"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet reparameterizes the next-token distribution to explicitly condition on the target position, ensuring that the model knows which position it's predicting."
+    },
+    {
+      "id": 13,
+      "question": "XLNet uses two types of hidden representations in its Two-Stream Self-Attention mechanism. What are they?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Query (Q) and Key (K) representations"
+        },
+        {
+          "label": "B",
+          "text": "Content representation (\\\\(h_\\theta(x_{z_{\\leq t}})\\\\)) and Query representation (\\\\(g_\\theta(x_{z_{<t}}, z_t)\\\\))"
+        },
+        {
+          "label": "C",
+          "text": "Input representation and output representation"
+        },
+        {
+          "label": "D",
+          "text": "Forward representation and backward representation"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet uses two streams: the content stream that encodes both context and content at position zt, and the query stream that only encodes context and position zt without the content at zt."
+    },
+    {
+      "id": 14,
+      "question": "What is the main difference between Content representation (\\\\(h_{z_t}\\\\)) and Query representation (\\\\(g_{z_t}\\\\)) in XLNet?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(h_{z_t}\\\\) encodes context and content at position \\\\(z_t\\\\), while \\\\(g_{z_t}\\\\) only encodes context and position \\\\(z_t\\\\), excluding content at \\\\(z_t\\\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(h_{z_t}\\\\) is used during pretraining, while \\\\(g_{z_t}\\\\) is used during finetuning"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(h_{z_t}\\\\) only encodes context, while \\\\(g_{z_t}\\\\) encodes context and content"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(h_{z_t}\\\\) is for short sequences, \\\\(g_{z_t}\\\\) for long sequences"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The content stream (h) has access to all tokens including the current token's content, while the query stream (g) only has access to positional information and context, not the current token's content."
+    },
+    {
+      "id": 15,
+      "question": "During XLNet's finetuning process, which representation stream is used?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Content and Query streams"
+        },
+        {
+          "label": "B",
+          "text": "Only Query stream"
+        },
+        {
+          "label": "C",
+          "text": "Only Content stream"
+        },
+        {
+          "label": "D",
+          "text": "Neither stream"
+        }
+      ],
+      "answer": "C",
+      "explanation": "During finetuning, only the content stream is used since we need access to all token information for downstream tasks, not just the query information used during pretraining."
+    },
+    {
+      "id": 16,
+      "question": "Why does XLNet use \"Partial Prediction\"?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To make the model more complex"
+        },
+        {
+          "label": "B",
+          "text": "To reduce computational cost and speed up convergence since optimizing over all permutations is expensive"
+        },
+        {
+          "label": "C",
+          "text": "To ensure the model only predicts one token at a time"
+        },
+        {
+          "label": "D",
+          "text": "To simplify the Transformer-XL architecture"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Partial prediction reduces the computational burden by only predicting a subset of tokens in each permutation, making training more efficient while still maintaining the benefits of permutation language modeling."
+    },
+    {
+      "id": 17,
+      "question": "In XLNet's Partial Prediction, how is the permutation z divided and which part is the prediction target?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\\\(z_{target}\\\\) and \\\\(z_{non-target}\\\\), with \\\\(z_{target}\\\\) being the unselected part"
+        },
+        {
+          "label": "B",
+          "text": "\\\\(z_{target}\\\\) and \\\\(z_{non-target}\\\\), with \\\\(z_{target}\\\\) being the last part of the permutation (\\\\(z_{>c}\\\\))"
+        },
+        {
+          "label": "C",
+          "text": "\\\\(z_{first\\_half}\\\\) and \\\\(z_{second\\_half}\\\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\\\(z_{prefix}\\\\) and \\\\(z_{suffix}\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": "In partial prediction, the permutation is split at a cutting point c, where only the tokens after the cutting point (z>c) are selected as prediction targets, while earlier tokens provide context."
+    },
+    {
+      "id": 18,
+      "question": "What happens to tokens not selected as prediction targets in XLNet's Partial Prediction mechanism?",
+      "options": [
+        {
+          "label": "A",
+          "text": "They are completely ignored"
+        },
+        {
+          "label": "B",
+          "text": "They still need query representation"
+        },
+        {
+          "label": "C",
+          "text": "They do not need query representation"
+        },
+        {
+          "label": "D",
+          "text": "They are processed independently from other tokens"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Tokens not selected as prediction targets don't need query representations since they're not being predicted, only their content representations are used to provide context."
+    },
+    {
+      "id": 19,
+      "question": "XLNet integrates which two main techniques from Transformer-XL?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dynamic masking and multi-head attention"
+        },
+        {
+          "label": "B",
+          "text": "Absolute positional encoding and gated recurrent unit (GRU)"
+        },
+        {
+          "label": "C",
+          "text": "Relative positional encoding and segment recurrence mechanism"
+        },
+        {
+          "label": "D",
+          "text": "External memory mechanism and self-correction mechanism"
+        }
+      ],
+      "answer": "C",
+      "explanation": "XLNet incorporates Transformer-XL's relative positional encoding and segment recurrence mechanism to handle longer sequences more effectively and capture relative position information."
+    },
+    {
+      "id": 20,
+      "question": "How does the segment recurrence mechanism in XLNet help?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Effectively increases model size"
+        },
+        {
+          "label": "B",
+          "text": "Reuses hidden states (memory) from previous segments to improve efficiency and performance, especially with long contexts"
+        },
+        {
+          "label": "C",
+          "text": "Minimizes prediction errors"
+        },
+        {
+          "label": "D",
+          "text": "Trains the model faster on short sequences"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The segment recurrence mechanism allows the model to maintain and reuse hidden states from previous segments, enabling it to effectively handle longer contexts than would fit in a single segment."
+    },
+    {
+      "id": 21,
+      "question": "How does Relative Positional Encoding differ from Absolute Positional Encoding when a sentence is shortened?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Absolute encoding maintains the same position vectors, while relative encoding does not"
+        },
+        {
+          "label": "B",
+          "text": "Absolute encoding changes position vectors when token positions change, while relative encoding maintains consistent relative distances"
+        },
+        {
+          "label": "C",
+          "text": "Both are unaffected by sentence shortening"
+        },
+        {
+          "label": "D",
+          "text": "Relative encoding requires more memory"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Relative positional encoding focuses on the relative distances between tokens rather than absolute positions, making it more robust to changes in sequence length and token positions."
+    },
+    {
+      "id": 22,
+      "question": "What is a benefit of using Relative Positional Encoding?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It helps the model learn invariant relationships despite position changes"
+        },
+        {
+          "label": "B",
+          "text": "It makes training faster"
+        },
+        {
+          "label": "C",
+          "text": "It ensures every token has a unique position vector"
+        },
+        {
+          "label": "D",
+          "text": "It increases diversity of token representations"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Relative positional encoding allows the model to learn relationships that are invariant to absolute position changes, focusing on the relative structure and dependencies between tokens."
+    },
+    {
+      "id": 23,
+      "question": "Both BERT and XLNet perform \"partial prediction\". What is the main difference in optimization objective when predicting multiple tokens (e.g., \"New\" and \"York\")?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT can predict \"York\" based on \"New\", while XLNet cannot"
+        },
+        {
+          "label": "B",
+          "text": "BERT assumes independence between prediction targets, while XLNet captures dependencies between them (e.g., p(York | New, is a city))"
+        },
+        {
+          "label": "C",
+          "text": "XLNet can only predict one token at a time, while BERT cannot"
+        },
+        {
+          "label": "D",
+          "text": "BERT and XLNet have the same optimization objective for partial prediction"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet's autoregressive nature allows it to model dependencies between predicted tokens, while BERT treats each masked token as independent during loss computation."
+    },
+    {
+      "id": 24,
+      "question": "What is the main issue with BERT's ability to model joint dependencies?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT can only handle short sequences"
+        },
+        {
+          "label": "B",
+          "text": "BERT's optimization objective treats masked tokens as independent when computing loss, ignoring correlations between them"
+        },
+        {
+          "label": "C",
+          "text": "BERT doesn't use self-attention mechanism"
+        },
+        {
+          "label": "D",
+          "text": "BERT cannot handle out-of-vocabulary tokens"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT's masked language modeling objective assumes independence between masked tokens during loss computation, preventing it from learning joint dependencies between simultaneously predicted tokens."
+    },
+    {
+      "id": 25,
+      "question": "What causes the pretrain-finetune discrepancy in BERT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Using too many Transformer layers"
+        },
+        {
+          "label": "B",
+          "text": "The presence of artificial [MASK] tokens in pretraining input that don't exist in downstream tasks"
+        },
+        {
+          "label": "C",
+          "text": "Inappropriate learning rate"
+        },
+        {
+          "label": "D",
+          "text": "Batch size too large"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BERT uses artificial [MASK] tokens during pretraining which never appear in real downstream tasks, creating a distribution mismatch between pretraining and finetuning phases."
+    },
+    {
+      "id": 26,
+      "question": "Although AR models only use unidirectional context and BERT uses bidirectional context, how does XLNet combine the advantages of both?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By adding a fully connected layer"
+        },
+        {
+          "label": "B",
+          "text": "By using the permutation language modeling objective"
+        },
+        {
+          "label": "C",
+          "text": "By training two separate models and combining them"
+        },
+        {
+          "label": "D",
+          "text": "By completely removing the attention mechanism"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Permutation language modeling allows XLNet to maintain the autoregressive property (avoiding pretrain-finetune discrepancy) while accessing bidirectional context through different factorization orders."
+    },
+    {
+      "id": 27,
+      "question": "In the Attention mechanism, if a position (e.g., position 4) is masked, what happens to the attention output (o) and the gradient from that specific query (\\\\(\\partial L/\\partial v_4\\\\))?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Output o still uses \\\\(v_4\\\\), and gradient \\\\(\\partial L/\\partial v_4\\\\) is positive"
+        },
+        {
+          "label": "B",
+          "text": "Output o doesn't use \\\\(v_4\\\\) (\\\\(\\alpha_4 = 0\\\\)), and gradient \\\\(\\partial L/\\partial v_4\\\\) from this query is 0"
+        },
+        {
+          "label": "C",
+          "text": "Output o is completely disabled"
+        },
+        {
+          "label": "D",
+          "text": "Only gradient \\\\(\\partial L/\\partial v_4\\\\) is 0, but o still uses \\\\(v_4\\\\)"
+        }
+      ],
+      "answer": "B",
+      "explanation": "When a position is masked in attention, its attention weight becomes 0, so it doesn't contribute to the output, and consequently receives no gradient from that particular query."
+    },
+    {
+      "id": 28,
+      "question": "When a token \\\\(v_4\\\\) is masked in an attention path, does it receive no gradient updates at all?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Yes, it receives no gradient updates at all"
+        },
+        {
+          "label": "B",
+          "text": "No, \\\\(v_4\\\\) still receives gradients from its own query (\\\\(g_4\\\\)) and from other queries (\\\\(g_1, g_2\\\\)) that attend to \\\\(v_4\\\\)"
+        },
+        {
+          "label": "C",
+          "text": "Only when \\\\(v_4\\\\) is the last token in the sequence"
+        },
+        {
+          "label": "D",
+          "text": "Only when no other tokens are masked"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Even when masked from certain queries, a token can still receive gradients from other attention paths where it's not masked, allowing it to be updated through multiple gradient flows."
+    },
+    {
+      "id": 29,
+      "question": "What is the purpose of the segment recurrence mechanism in XLNet when processing long sequences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Limit the number of tokens that can be processed by the model"
+        },
+        {
+          "label": "B",
+          "text": "Allow the model to reuse hidden states from previous segments, improving efficiency and long context handling"
+        },
+        {
+          "label": "C",
+          "text": "Ensure segments are processed independently"
+        },
+        {
+          "label": "D",
+          "text": "Eliminate the need for positional encoding"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Segment recurrence allows XLNet to maintain and reuse information from previous segments, effectively extending the context window beyond what would fit in a single segment."
+    },
+    {
+      "id": 30,
+      "question": "The positional encodings in XLNet, when integrating Transformer-XL, depend on what factor that allows memory caching independent of permutation order?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Token type (e.g., noun, verb)"
+        },
+        {
+          "label": "B",
+          "text": "Sequence length"
+        },
+        {
+          "label": "C",
+          "text": "Original positions of tokens in the sequence"
+        },
+        {
+          "label": "D",
+          "text": "Surrounding context"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Positional encodings depend on the original token positions rather than their positions in the permuted order, allowing memory from previous segments to be reused regardless of the current permutation."
+    },
+    {
+      "id": 31,
+      "question": "What is the main advantage of XLNet's Two-Stream Self-Attention over standard self-attention?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It reduces computational complexity"
+        },
+        {
+          "label": "B",
+          "text": "It enables position-aware predictions by separating content and query information"
+        },
+        {
+          "label": "C",
+          "text": "It eliminates the need for positional encoding"
+        },
+        {
+          "label": "D",
+          "text": "It allows processing of longer sequences"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Two-Stream Self-Attention separates content information (what tokens are present) from query information (what position is being predicted), enabling the model to make position-aware predictions in permutation language modeling."
+    },
+    {
+      "id": 32,
+      "question": "How does XLNet handle the problem of predicting multiple tokens that should be correlated (like \"New York\")?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It treats them as completely independent"
+        },
+        {
+          "label": "B",
+          "text": "It uses autoregressive factorization to model dependencies between them"
+        },
+        {
+          "label": "C",
+          "text": "It only predicts one token at a time"
+        },
+        {
+          "label": "D",
+          "text": "It uses a separate correlation matrix"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet's autoregressive approach naturally models dependencies between tokens through conditional probability factorization, allowing it to predict correlated tokens like 'New York' with proper dependencies."
+    },
+    {
+      "id": 33,
+      "question": "What is the key insight behind Permutation Language Modeling that makes it superior to traditional approaches?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It only requires forward pass computation"
+        },
+        {
+          "label": "B",
+          "text": "It maintains autoregressive properties while accessing bidirectional context through different factorization orders"
+        },
+        {
+          "label": "C",
+          "text": "It eliminates the need for attention mechanisms"
+        },
+        {
+          "label": "D",
+          "text": "It reduces the vocabulary size requirements"
+        }
+      ],
+      "answer": "B",
+      "explanation": "PLM's key insight is that by considering all possible factorization orders of a sequence, the model can access bidirectional context while maintaining the autoregressive property that avoids pretrain-finetune discrepancy."
+    },
+    {
+      "id": 34,
+      "question": "In XLNet's architecture, why is it important that the query stream cannot see the content of the token being predicted?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To reduce computational cost"
+        },
+        {
+          "label": "B",
+          "text": "To prevent the model from trivially copying the input token"
+        },
+        {
+          "label": "C",
+          "text": "To enable parallel processing"
+        },
+        {
+          "label": "D",
+          "text": "To maintain compatibility with BERT"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The query stream must not see the content of the token being predicted to ensure the model actually learns to predict based on context and position, rather than simply copying the input token."
+    },
+    {
+      "id": 35,
+      "question": "How does XLNet's approach to language modeling contribute to better performance on downstream tasks?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By using larger model parameters"
+        },
+        {
+          "label": "B",
+          "text": "By learning better bidirectional representations without pretrain-finetune discrepancy and capturing token dependencies"
+        },
+        {
+          "label": "C",
+          "text": "By training on more diverse datasets"
+        },
+        {
+          "label": "D",
+          "text": "By using more sophisticated optimization algorithms"
+        }
+      ],
+      "answer": "B",
+      "explanation": "XLNet's permutation language modeling learns richer bidirectional representations while avoiding the pretrain-finetune mismatch of BERT, and its autoregressive nature captures token dependencies better, leading to improved downstream task performance."
+    }
+  ]
+} 

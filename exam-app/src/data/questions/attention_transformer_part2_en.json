@@ -1,0 +1,847 @@
+{
+  "title": "Attention & Transformer Models - Part 2",
+  "description": "Multiple-choice questions covering advanced Transformer concepts, BERT, and combined concepts (Questions 36-70)",
+  "timeLimit": 50,
+  "questions": [
+    {
+      "id": 36,
+      "question": "In the Transformer's decoder, what is the specific modification made to the self-attention layer, and why?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It is allowed to attend to all positions, past and future, to capture full context."
+        },
+        {
+          "label": "B",
+          "text": "It is only allowed to attend to future positions in the output sequence to enable parallel decoding."
+        },
+        {
+          "label": "C",
+          "text": "It is only allowed to attend to earlier positions in the output sequence by masking future positions, to prevent cheating during training."
+        },
+        {
+          "label": "D",
+          "text": "It is replaced entirely by the encoder-decoder attention layer."
+        }
+      ],
+      "answer": "C",
+      "explanation": "In the decoder, the self-attention layer is specifically modified to be \"only allowed to attend to earlier positions in the output sequence\". This is achieved by masking future positions (setting them to -inf) before the softmax step in the self-attention calculation. This masking prevents the decoder from \"cheating\" by seeing future tokens in the target sequence during training, thus simulating a realistic decoding scenario where only previous tokens are available."
+    },
+    {
+      "id": 37,
+      "question": "Describe the flow of information into the Decoder's Multi-head attention (also known as Encoder-Decoder attention) layer.",
+      "options": [
+        {
+          "label": "A",
+          "text": "It only receives vectors from the Decoder's Masked Multi-Head attention."
+        },
+        {
+          "label": "B",
+          "text": "It only receives vectors from the Encoder's multi-head attention."
+        },
+        {
+          "label": "C",
+          "text": "It receives vectors from the Encoder's multi-head attention AND the Decoder's Masked Multi-Head attention."
+        },
+        {
+          "label": "D",
+          "text": "It receives raw input embeddings from both encoder and decoder."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Decoder's Multi-head attention (or Encoder-Decoder attention) layer is a key component that brings together information from both the encoder and the decoder. It \"receives vectors from the Encoder's multi-head attention and Decoder's Masked Multi-Head attention\" to \"determine how related each word vector is with respect to each other\"."
+    },
+    {
+      "id": 38,
+      "question": "What is the final step in the Transformer's decoding phase, after the decoder stack outputs a vector of floats?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Applying another self-attention layer."
+        },
+        {
+          "label": "B",
+          "text": "Feeding the vector back to the encoder."
+        },
+        {
+          "label": "C",
+          "text": "Converting the vector to a word using a linear layer followed by a softmax layer."
+        },
+        {
+          "label": "D",
+          "text": "Calculating the BLEU score directly."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The decoder stack's output vector of floats needs to be converted into a word. This is done using a linear layer followed by a softmax layer. The linear layer projects the vector into a \"logits vector\" (size of vocabulary), and the softmax layer then turns these scores into probabilities, from which the most likely next word can be selected."
+    },
+    {
+      "id": 39,
+      "question": "What is BLEU score primarily used for?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Evaluating the computational efficiency of a model."
+        },
+        {
+          "label": "B",
+          "text": "Measuring the grammatical correctness of a translation."
+        },
+        {
+          "label": "C",
+          "text": "Evaluating Machine Translation based on n-gram string-matching."
+        },
+        {
+          "label": "D",
+          "text": "Assessing the creativity of generated text."
+        }
+      ],
+      "answer": "C",
+      "explanation": "BLEU (BiLingual Evaluation Understudy) is defined as \"A n-gram-based string-matching algorithm for evaluating Machine Translation\". A higher score indicates a higher degree of similarity with a reference translation."
+    },
+    {
+      "id": 40,
+      "question": "What is a notable characteristic of the Vision Transformer regarding its input processing?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It primarily uses Convolutional Neural Networks (CNNs) for feature extraction."
+        },
+        {
+          "label": "B",
+          "text": "It treats an input image as a sequence of patches, similar to word embeddings in NLP Transformers, and uses attention on these patches."
+        },
+        {
+          "label": "C",
+          "text": "It only works on video inputs, not static images."
+        },
+        {
+          "label": "D",
+          "text": "It relies solely on recurrent connections for visual tasks."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The Vision Transformer is described as treating \"an input image as a sequence of patches, akin to a series of word embeddings generated by a natural language processing (NLP) Transformer\" and uses \"attention on image patches; no use of CNN\". This showcases its cross-domain adaptation."
+    },
+    {
+      "id": 41,
+      "question": "How does BERT relate to the Transformer architecture?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT uses both an encoder and a decoder from the Transformer."
+        },
+        {
+          "label": "B",
+          "text": "BERT only includes an encoder from the Transformer."
+        },
+        {
+          "label": "C",
+          "text": "BERT only includes a decoder from the Transformer."
+        },
+        {
+          "label": "D",
+          "text": "BERT is a completely different architecture unrelated to the Transformer."
+        }
+      ],
+      "answer": "B",
+      "explanation": "While the Transformer \"consists of an encoder (reads the text input) and a decoder (produces a prediction)\", BERT \"only includes an encoder\". This encoder is used to generate a language model."
+    },
+    {
+      "id": 42,
+      "question": "What are the two new pre-training objectives proposed by BERT to train a deep bidirectional Transformer?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Image Captioning and Neural Machine Translation."
+        },
+        {
+          "label": "B",
+          "text": "Sentiment Analysis and Text Summarization."
+        },
+        {
+          "label": "C",
+          "text": "Masked Language Model (MLM) and Next Sentence Prediction (NSP)."
+        },
+        {
+          "label": "D",
+          "text": "Word Embeddings and Contextual Embeddings."
+        }
+      ],
+      "answer": "C",
+      "explanation": "BERT proposes two key pre-training objectives for training a deep bidirectional Transformer: Masked Language Model (MLM) and Next Sentence Prediction (NSP)."
+    },
+    {
+      "id": 43,
+      "question": "What is the primary task of the Masked Language Model (MLM) in BERT's pre-training?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To predict the next word in a sequence."
+        },
+        {
+          "label": "B",
+          "text": "To translate masked words into a different language."
+        },
+        {
+          "label": "C",
+          "text": "To predict the original word of a masked word based only on its context."
+        },
+        {
+          "label": "D",
+          "text": "To generate new sentences from masked inputs."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Masked Language Model (MLM) objective requires BERT to \"predict the original word of a masked word based only on its context\". During pre-training, 15% of words are replaced with a [MASK] token, and the model tries to recover the original word."
+    },
+    {
+      "id": 44,
+      "question": "What is the primary purpose of the Next Sentence Prediction (NSP) task in BERT's pre-training?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To predict the sentiment of a sentence."
+        },
+        {
+          "label": "B",
+          "text": "To understand the relationship between two sentences."
+        },
+        {
+          "label": "C",
+          "text": "To identify named entities in text."
+        },
+        {
+          "label": "D",
+          "text": "To generate summaries of long texts."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The Next Sentence Prediction (NSP) task is included in BERT's training process specifically \"in order to understand relationship between two sentences\". This understanding is relevant for downstream tasks like question answering."
+    },
+    {
+      "id": 45,
+      "question": "How are sentence pairs structured for the Next Sentence Prediction (NSP) task during BERT's training?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both sentences are always consecutive."
+        },
+        {
+          "label": "B",
+          "text": "50% of the time the second sentence is consecutive (IsNext), and 50% of the time it is a random sentence (NotNext)."
+        },
+        {
+          "label": "C",
+          "text": "The second sentence is always a random sentence from the corpus."
+        },
+        {
+          "label": "D",
+          "text": "Only one sentence is fed as input."
+        }
+      ],
+      "answer": "B",
+      "explanation": "For NSP training, BERT is fed with two input sentences separated by a special [SEP] token. \"50% of the time the second sentence comes after the first one (IsNext). 50% of the time it is a a random sentence from the full corpus (NotNext)\". The model then predicts whether the second sentence is truly the subsequent one or a random one."
+    },
+    {
+      "id": 46,
+      "question": "What is a major merit of BERT regarding its use for specific tasks after pre-training?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It requires training from scratch for every new task."
+        },
+        {
+          "label": "B",
+          "text": "It can only perform one specific task after pre-training."
+        },
+        {
+          "label": "C",
+          "text": "Users just need to fine-tune BERT model (initialized with pre-trained weights) to achieve state-of-the-art performance for specific tasks."
+        },
+        {
+          "label": "D",
+          "text": "It can only be used for language generation."
+        }
+      ],
+      "answer": "C",
+      "explanation": "A significant merit of BERT is that after its extensive pre-training on unlabeled data, users \"Just need to fine-tune BERT model (initialized with the pre-trained weights) for specific tasks to achieve state-of-the-art performance\". This greatly simplifies its application to various NLP problems."
+    },
+    {
+      "id": 47,
+      "question": "In BERT's Masked Language Model (MLM), what percentage of words in each sequence are replaced with a [MASK] token before being fed into BERT?",
+      "options": [
+        {
+          "label": "A",
+          "text": "5%."
+        },
+        {
+          "label": "B",
+          "text": "10%."
+        },
+        {
+          "label": "C",
+          "text": "15%."
+        },
+        {
+          "label": "D",
+          "text": "20%."
+        }
+      ],
+      "answer": "C",
+      "explanation": "Before feeding word sequences into BERT for MLM, \"15% of the words in each sequence are replaced with a [MASK] token\"."
+    },
+    {
+      "id": 48,
+      "question": "After the encoder output in BERT's MLM, what is the classification layer multiplied by to transform vectors into the vocabulary dimension?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The input embedding matrix."
+        },
+        {
+          "label": "B",
+          "text": "The attention weights."
+        },
+        {
+          "label": "C",
+          "text": "A random matrix."
+        },
+        {
+          "label": "D",
+          "text": "The query matrix."
+        }
+      ],
+      "answer": "A",
+      "explanation": "For MLM, a classification layer is added on top of the encoder output. To transform the output vectors into the vocabulary dimension, \"the each output vector [is multiplied] by the embedding matrix\". This allows probabilities for each word in the vocabulary to be calculated with softmax."
+    },
+    {
+      "id": 49,
+      "question": "Which of the following is NOT one of the three ways tokens are masked in BERT's MLM training strategy for the 15% of selected words?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Replaced by the <MASK> token."
+        },
+        {
+          "label": "B",
+          "text": "Replaced by a random token."
+        },
+        {
+          "label": "C",
+          "text": "Replaced by the [SEP] token."
+        },
+        {
+          "label": "D",
+          "text": "Left intact."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The 15% of selected words are masked in three ways: 80% are replaced by <MASK>, 10% are replaced by a random token, and 10% are left intact. The [SEP] token is used to separate sentences in NSP, not for masking."
+    },
+    {
+      "id": 50,
+      "question": "Why are 10% of the masked tokens left intact in BERT's MLM strategy?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To make training faster."
+        },
+        {
+          "label": "B",
+          "text": "To force the model to predict the masked word regardless of context."
+        },
+        {
+          "label": "C",
+          "text": "To teach the model that an intact masked word can be useful for contextual representation when it sees the correct target."
+        },
+        {
+          "label": "D",
+          "text": "To avoid overfitting to the [MASK] token."
+        }
+      ],
+      "answer": "C",
+      "explanation": "Leaving 10% of selected tokens intact helps the model learn that \"it was actually useful once it sees the target (correct token) -> able to learn that the intact masked word is useful for contextual representation\". This also helps the model encounter unmasked tokens during training, which it will see during fine-tuning."
+    },
+    {
+      "id": 51,
+      "question": "In BERT's Masked Language Model (MLM), where is the loss computed?",
+      "options": [
+        {
+          "label": "A",
+          "text": "On all words in the sequence."
+        },
+        {
+          "label": "B",
+          "text": "Only on the unmasked words."
+        },
+        {
+          "label": "C",
+          "text": "Only on the [MASK] word."
+        },
+        {
+          "label": "D",
+          "text": "On the [SEP] token."
+        }
+      ],
+      "answer": "C",
+      "explanation": "For the Masked Language Model, \"The loss is computed on the [MASK] word only\". This means the model is only penalized for incorrectly predicting the words that were deliberately masked."
+    },
+    {
+      "id": 52,
+      "question": "Which BERT model architecture has 24 layers (Transformer blocks) and a hidden size of 1024?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT_BASE."
+        },
+        {
+          "label": "B",
+          "text": "BERT_LARGE."
+        },
+        {
+          "label": "C",
+          "text": "BERT-mini."
+        },
+        {
+          "label": "D",
+          "text": "BERT-tiny."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The sources specify two BERT models: BERT_BASE: L = 12, H = 768, A = 12, Total Parameters = 110M. BERT_LARGE: L = 24, H = 1024, A = 16, Total Parameters = 340M."
+    },
+    {
+      "id": 53,
+      "question": "How does BERT's approach to context differ from OpenAI GPT and ELMo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "BERT only processes context from left-to-right, similar to OpenAI GPT."
+        },
+        {
+          "label": "B",
+          "text": "BERT only processes context from right-to-left, similar to ELMo."
+        },
+        {
+          "label": "C",
+          "text": "BERT is jointly conditioned on both left and right context in all layers."
+        },
+        {
+          "label": "D",
+          "text": "BERT does not use any contextual information."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The comparison highlights a key difference: \"OpenAI GPT: left-to-right Transformer. ELMo: concatenation of independently trained left-to-right and right-to-left LSTMs. BERT is jointly conditioned on both left and right context in all layers\". This bidirectional conditioning across all layers is a major innovation."
+    },
+    {
+      "id": 54,
+      "question": "When BERT is applied to a Question Answering task, how does it predict the answer?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By generating an entirely new sentence as an answer."
+        },
+        {
+          "label": "B",
+          "text": "By classifying the question into pre-defined categories."
+        },
+        {
+          "label": "C",
+          "text": "By predicting a start and an end token from a given context paragraph that most likely answers the question."
+        },
+        {
+          "label": "D",
+          "text": "By searching an external knowledge base for the answer."
+        }
+      ],
+      "answer": "C",
+      "explanation": "For Question Answering, the model \"Given a question and a context paragraph, the model predicts a start and an end token from the paragraph that most likely answers the question\". This is achieved by learning two extra vectors (start and end) during fine-tuning."
+    },
+    {
+      "id": 55,
+      "question": "Why are 10% of the masked tokens in BERT's MLM training replaced with a random token?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To make the model always output a random word."
+        },
+        {
+          "label": "B",
+          "text": "To specifically train the model to ignore random words in the input."
+        },
+        {
+          "label": "C",
+          "text": "To allow the model to learn that random masked words are not useful for contextual representation once it sees the target."
+        },
+        {
+          "label": "D",
+          "text": "To prevent the model from learning the [MASK] token."
+        }
+      ],
+      "answer": "C",
+      "explanation": "When 10% of tokens are replaced by a random token, \"The model tries to use the embedding of the random token to make prediction and it will eventually learn that it was actually not useful once it sees the target (correct token) -> able to learn the random masked word is useless for contextual representation\". This makes the model more robust to noisy or unexpected inputs."
+    },
+    {
+      "id": 56,
+      "question": "What are the two new parameters learned during fine-tuning when BERT is used for a Question Answering task?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A vector for question type and a vector for answer length."
+        },
+        {
+          "label": "B",
+          "text": "A start vector and an end vector (two one-hot encoding vectors)."
+        },
+        {
+          "label": "C",
+          "text": "Two separate embedding matrices for questions and paragraphs."
+        },
+        {
+          "label": "D",
+          "text": "A confidence score and a relevance score."
+        }
+      ],
+      "answer": "B",
+      "explanation": "For Question Answering, the model is \"Trained by learning two extra vectors that mark the beginning and the end of the answer\". These are described as \"Two new parameters learned during fine-tuning: a start vector and an end vector (i.e., two one-hot encoding vectors)\"."
+    },
+    {
+      "id": 57,
+      "question": "Why is it important for BERT's MLM strategy to include both \"random token\" and \"intact token\" masking, in addition to the standard [MASK] token?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To simply increase the variety of masking types."
+        },
+        {
+          "label": "B",
+          "text": "To make the pre-training process longer and more complex."
+        },
+        {
+          "label": "C",
+          "text": "To ensure the model learns robust contextual representations, prevents performance decrease during fine-tuning (when [MASK] token might not appear), and teaches it to discern useful vs. useless tokens."
+        },
+        {
+          "label": "D",
+          "text": "To only learn about words that are explicitly masked."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources detail the rationale: If trained only on predicting [MASK] tokens and then never seeing this token during fine-tuning, performance would decrease during inference. The 10% random and 10% intact tokens address this, ensuring the model sees non-masked tokens it will encounter in fine-tuning. The 10% random tokens help the model learn that such random words are not useful for contextual representation once the true target is seen. The 10% intact tokens help the model learn that the original unmasked word can be useful for contextual representation. Together, these ensure robust contextual representation learning and bridge the gap between pre-training and fine-tuning scenarios."
+    },
+    {
+      "id": 58,
+      "question": "What does the term \"\\\\(d_{model}\\\\)\" refer to in the context of Transformer architecture?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The number of attention heads."
+        },
+        {
+          "label": "B",
+          "text": "The dimensionality of the embedding and encoder input/output vectors."
+        },
+        {
+          "label": "C",
+          "text": "The depth of the network layers."
+        },
+        {
+          "label": "D",
+          "text": "The number of parameters in the model."
+        }
+      ],
+      "answer": "B",
+      "explanation": "dmodel is explicitly defined as \"The embedding and encoder input/output vectors have dimensionality of 512 (dmodel)\". It also appears in the Feed Forward Network description as \"The dimensionality of input and output is dmodel = 512\"."
+    },
+    {
+      "id": 59,
+      "question": "What is the specific architectural detail that follows the residual connection in the Transformer's encoder sub-layers?",
+      "options": [
+        {
+          "label": "A",
+          "text": "ReLU activation."
+        },
+        {
+          "label": "B",
+          "text": "Dropout layer."
+        },
+        {
+          "label": "C",
+          "text": "Layer Normalization."
+        },
+        {
+          "label": "D",
+          "text": "Softmax activation."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The sources state that \"The residual connection is followed by Layer Normalization\". This is a common pattern in deep neural networks to stabilize training."
+    },
+    {
+      "id": 60,
+      "question": "What kind of activation function is used in between the two linear transformations of the Feed Forward Network within a Transformer encoder?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sigmoid."
+        },
+        {
+          "label": "B",
+          "text": "Tanh."
+        },
+        {
+          "label": "C",
+          "text": "ReLU."
+        },
+        {
+          "label": "D",
+          "text": "Softmax."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The Feed Forward Network \"consists of two linear transformations with a ReLU activation in between\"."
+    },
+    {
+      "id": 61,
+      "question": "What is the intuition behind the \"Translator B\" (senior role, translates backwards) in the seq2seq with bidirectional GRU encoder + attention model?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Translator B only checks the grammar."
+        },
+        {
+          "label": "B",
+          "text": "Translator B is the forward RNN of the encoder."
+        },
+        {
+          "label": "C",
+          "text": "Translator B is the backward RNN of the encoder, providing an extra ability to translate a sentence from reading it backwards."
+        },
+        {
+          "label": "D",
+          "text": "Translator B is the decoder, generating the final output."
+        }
+      ],
+      "answer": "C",
+      "explanation": "In the intuition for the bidirectional GRU encoder, \"Translator A is the forward RNN, Translator B is the backward RNN of the encoder\". Translator B \"reads the same French text from the last word to the first, while writing down the keywords,\" representing \"an extra ability to translate a sentence from reading it backwards\"."
+    },
+    {
+      "id": 62,
+      "question": "In the context of the Transformer's positional encoding, what characteristic of the encoding function allows the model to easily learn to attend by relative positions?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Its non-linearity."
+        },
+        {
+          "label": "B",
+          "text": "Its fixed, non-learnable nature."
+        },
+        {
+          "label": "C",
+          "text": "The property that for any fixed offset k, PE(pos+k) can be represented as a linear function of PE(pos) regardless of pos."
+        },
+        {
+          "label": "D",
+          "text": "Its large dimensionality."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The mathematical function for positional encoding has a crucial property: \"This function would allow the model to easily learn to attend by relative positions, since for any fixed offset k, PEpos+k can be represented as a linear function of PEpos (regardless of pos)\". This consistent relative relationship simplifies learning."
+    },
+    {
+      "id": 63,
+      "question": "Which of the following is NOT a score function that was experimented with in the 2-layer stacked encoder + attention model?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Additive/concat."
+        },
+        {
+          "label": "B",
+          "text": "Dot product."
+        },
+        {
+          "label": "C",
+          "text": "Cosine similarity."
+        },
+        {
+          "label": "D",
+          "text": "Location-based."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The score functions experimented with in the 2-layer stacked encoder + attention were: \"(i) additive/concat, (ii) dot product, (iii) location-based, and (iv) 'general'\". While cosine similarity is mentioned as a general score function for attention, it's not specifically listed as one experimented in this particular model."
+    },
+    {
+      "id": 64,
+      "question": "What is the concatenated input to the next decoder step in the seq2seq with bidirectional GRU encoder + attention architecture?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The context vector only."
+        },
+        {
+          "label": "B",
+          "text": "The generated word from the previous decoder time step and the decoder hidden state."
+        },
+        {
+          "label": "C",
+          "text": "The generated word from the previous decoder time step (pink) and the context vector from the current time step (dark green)."
+        },
+        {
+          "label": "D",
+          "text": "The encoder output and the decoder output from the previous step."
+        }
+      ],
+      "answer": "C",
+      "explanation": "In this specific architecture, \"The input to the next decoder step is the concatenation between the generated word from the previous decoder time step (pink) and context vector from the current time step (dark green)\"."
+    },
+    {
+      "id": 65,
+      "question": "How does Image Caption Generation apply the concept of attention to images?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It uses attention to select specific pixels of an image."
+        },
+        {
+          "label": "B",
+          "text": "It treats the entire image as a single vector and applies attention to it."
+        },
+        {
+          "label": "C",
+          "text": "It crops the image into pieces and applies attention to these image pieces."
+        },
+        {
+          "label": "D",
+          "text": "It converts the image into text first, then applies attention to the text."
+        }
+      ],
+      "answer": "C",
+      "explanation": "The core idea for Image Caption Generation, particularly by Kelvin et al., is to \"crop the image to pieces -> attention on the image pieces\". This is described as a \"Cross-domain adaptation of Computer Vision and NLP\"."
+    },
+    {
+      "id": 66,
+      "question": "Why does the Transformer encoder apply the exact same feed-forward network independently to each position (each output of the self-attention layer)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "To save memory by sharing weights across positions."
+        },
+        {
+          "label": "B",
+          "text": "To increase the model's capacity to learn complex relationships across the entire sequence."
+        },
+        {
+          "label": "C",
+          "text": "To enable sequential processing of words."
+        },
+        {
+          "label": "D",
+          "text": "To make the network deeper for each word individually."
+        }
+      ],
+      "answer": "A",
+      "explanation": "The Feed-forward neural network in the encoder is applied independently to each position, meaning \"The exact same feed-forward network (i.e., shared weights) is independently applied to each position (i.e., each output of the self-attention layer)\". This shared-weight approach, coupled with vectors flowing through it separately, enables parallelization while being computationally efficient by not needing a unique FFN for every position."
+    },
+    {
+      "id": 67,
+      "question": "What distinguishes the \"location-based\" score function in Attention from other types like dot product or concatenation?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It computes alignment scores solely from the encoder hidden state."
+        },
+        {
+          "label": "B",
+          "text": "It computes alignment scores solely from the decoder (target) hidden state, using only its time step."
+        },
+        {
+          "label": "C",
+          "text": "It uses both encoder and decoder states but adds a bias for location."
+        },
+        {
+          "label": "D",
+          "text": "It relies on a learned embedding of the position, rather than the hidden state."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The \"Location-based\" score function is unique in that \"Alignment scores are computed from solely the decoder (target) hidden state -> using only the location (i.e., time step) of the decoder hidden state\". This is a distinct approach compared to score functions that combine encoder and decoder states."
+    },
+    {
+      "id": 68,
+      "question": "In Multi-head attention, after obtaining eight different Z matrices from different weight matrices, why is a condensation step necessary before feeding to the feed-forward layer?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The feed-forward layer expects multiple matrices."
+        },
+        {
+          "label": "B",
+          "text": "The feed-forward layer expects a single matrix (a vector for each word)."
+        },
+        {
+          "label": "C",
+          "text": "To reduce the number of attention heads."
+        },
+        {
+          "label": "D",
+          "text": "To convert the matrices into scores."
+        }
+      ],
+      "answer": "B",
+      "explanation": "After performing the self-attention calculation eight different times, the result is \"eight different Z matrices\". The sources explain the necessity for condensation: \"The feed-forward layer is not expecting eight matrices – it's expecting a single matrix (a vector for each word). So we need a way to condense these eight down into a single matrix\". This typically involves concatenating the Z matrices and then applying a linear projection."
+    },
+    {
+      "id": 69,
+      "question": "What is the primary benefit illustrated by the Multi-head attention visualization showing two heads focusing on \"the animal\" and \"tired\" when encoding the word \"it\"?",
+      "options": [
+        {
+          "label": "A",
+          "text": "It demonstrates that multi-head attention only focuses on two words at a time."
+        },
+        {
+          "label": "B",
+          "text": "It shows that multi-head attention learns independent and diverse aspects of relationships, enriching the word's representation."
+        },
+        {
+          "label": "C",
+          "text": "It indicates that multi-head attention can only process short sentences."
+        },
+        {
+          "label": "D",
+          "text": "It proves that multi-head attention always ignores the most relevant context."
+        }
+      ],
+      "answer": "B",
+      "explanation": "The visualization example for two-head attention when encoding \"it\" shows that \"one attention head is focusing most on 'the animal', while another is focusing on 'tired' -- in a sense, the model's representation of the word 'it' bakes in some of the representation of both 'animal' and 'tired'\". This perfectly illustrates the benefit of multi-head attention: it allows the model to capture \"rich diversity in attention targets\" by learning different kinds of useful semantic information on different channels (heads), thereby forming a more comprehensive representation of a word by considering various relationships."
+    },
+    {
+      "id": 70,
+      "question": "In the \"seq2seq with 2-layer stacked encoder + attention\" architecture, what is fed into a feed-forward neural network to give the final output of the current decoder time step?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only the context vector."
+        },
+        {
+          "label": "B",
+          "text": "Only the output from the current decoder time step."
+        },
+        {
+          "label": "C",
+          "text": "The concatenation between the output from the current decoder time step and the context vector from the current time step."
+        },
+        {
+          "label": "D",
+          "text": "The last encoder hidden state and the first decoder hidden state."
+        }
+      ],
+      "answer": "C",
+      "explanation": "In this specific architecture, \"The concatenation between output from current decoder time step, and context vector from the current time step are fed into a feed-forward neural network to give the final output (pink) of the current decoder time step\". This shows how both the decoder's current state and the contextual information derived from the encoder are combined to generate the output."
+    }
+  ]
+} 

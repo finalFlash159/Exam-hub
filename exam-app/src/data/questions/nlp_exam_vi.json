@@ -1,0 +1,883 @@
+{
+  "title": "Cơ bản về Xử lý Ngôn ngữ Tự nhiên",
+  "description": "Bài kiểm tra toàn diện về NLP bao gồm cơ bản machine learning, học biểu diễn, word embeddings và mô hình ngôn ngữ",
+  "timeLimit": 60,
+  "totalQuestions": 35,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Theo các nguồn tài liệu, một hệ thống machine learning điển hình bao gồm bao nhiêu thành phần?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Các nguồn tài liệu nêu rõ rằng một hệ thống machine learning điển hình bao gồm ba thành phần: Biểu diễn (Representation), Mục tiêu (Objective), và Tối ưu hóa (Optimization).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Điều nào sau đây KHÔNG được liệt kê là thành phần cốt lõi của một hệ thống machine learning điển hình?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Biểu diễn (Representation)"
+        },
+        {
+          "label": "B",
+          "text": "Mục tiêu (Objective)"
+        },
+        {
+          "label": "C",
+          "text": "Tối ưu hóa (Optimization)"
+        },
+        {
+          "label": "D",
+          "text": "Thu thập dữ liệu (Data Collection)"
+        }
+      ],
+      "explanation": "Ba thành phần của machine learning được định nghĩa rõ ràng là Biểu diễn, Mục tiêu, và Tối ưu hóa.",
+      "difficulty": "easy",
+      "answer": "D"
+    },
+    {
+      "id": 3,
+      "question": "Deep learning được trình bày là phương pháp điển hình cho loại học tập cụ thể nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Học có giám sát (Supervised learning)"
+        },
+        {
+          "label": "B",
+          "text": "Học không giám sát (Unsupervised learning)"
+        },
+        {
+          "label": "C",
+          "text": "Học tăng cường (Reinforcement learning)"
+        },
+        {
+          "label": "D",
+          "text": "Học biểu diễn (Representation learning)"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng 'Deep learning là một phương pháp điển hình cho học biểu diễn'.",
+      "difficulty": "easy",
+      "answer": "D"
+    },
+    {
+      "id": 4,
+      "question": "Lĩnh vực nào sau đây được đề cập cụ thể là đã đạt được thành công lớn với deep learning gần đây?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dự báo tài chính"
+        },
+        {
+          "label": "B",
+          "text": "Quản lý cơ sở dữ liệu truyền thống"
+        },
+        {
+          "label": "C",
+          "text": "Xử lý ngôn ngữ tự nhiên"
+        },
+        {
+          "label": "D",
+          "text": "Hệ thống điều khiển robot"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nhấn mạnh rằng deep learning đã 'đạt được thành công lớn trong nhận dạng giọng nói, thị giác máy tính và xử lý ngôn ngữ tự nhiên'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 5,
+      "question": "Hai đặc điểm phân biệt của deep learning được mô tả trong các nguồn tài liệu là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tập dữ liệu lớn và sức mạnh tính toán cao"
+        },
+        {
+          "label": "B",
+          "text": "Biểu diễn phân tán và Kiến trúc sâu"
+        },
+        {
+          "label": "C",
+          "text": "Học có giám sát và đặc trưng thủ công"
+        },
+        {
+          "label": "D",
+          "text": "Mô hình đơn giản và huấn luyện nhanh"
+        }
+      ],
+      "explanation": "Hai điểm này được liệt kê rõ ràng là những đặc điểm phân biệt của deep learning.",
+      "difficulty": "medium",
+      "answer": "B"
+    },
+    {
+      "id": 6,
+      "question": "Theo mô tả về 'Biểu diễn phân tán' trong các nguồn tài liệu, các thuật toán deep learning thường biểu diễn mỗi đối tượng như thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Bằng một vector chiều cao và thưa"
+        },
+        {
+          "label": "B",
+          "text": "Bằng một giá trị số duy nhất"
+        },
+        {
+          "label": "C",
+          "text": "Bằng một vector dày có giá trị thực chiều thấp"
+        },
+        {
+          "label": "D",
+          "text": "Bằng một nhãn ký hiệu"
+        }
+      ],
+      "explanation": "Các thuật toán deep learning thường biểu diễn mỗi đối tượng bằng một vector dày có giá trị thực chiều thấp, được gọi là biểu diễn phân tán.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 7,
+      "question": "Điều gì được coi là lý do quan trọng cho thành công lớn của deep learning trong các lĩnh vực như nhận dạng giọng nói và thị giác máy tính, liên quan đến kiến trúc của nó?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sự phụ thuộc vào các sơ đồ biểu diễn thông thường như bag-of-words"
+        },
+        {
+          "label": "B",
+          "text": "Khả năng chỉ xử lý dữ liệu thô mà không cần đặc trưng trừu tượng"
+        },
+        {
+          "label": "C",
+          "text": "Việc sử dụng biểu diễn one-hot, dẫn đến dữ liệu thưa"
+        },
+        {
+          "label": "D",
+          "text": "Khả năng học kiến trúc sâu phân cấp để trích xuất đặc trưng trừu tượng"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng điều này 'được coi là lý do quan trọng cho thành công lớn của deep learning trong nhận dạng giọng nói và thị giác máy tính'.",
+      "difficulty": "medium",
+      "answer": "D"
+    },
+    {
+      "id": 8,
+      "question": "Mục tiêu chính của Xử lý Ngôn ngữ Tự nhiên (NLP) theo các nguồn tài liệu là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dịch ngôn ngữ cho con người"
+        },
+        {
+          "label": "B",
+          "text": "Trích xuất dữ liệu số từ văn bản"
+        },
+        {
+          "label": "C",
+          "text": "Xây dựng các chương trình đặc thù ngôn ngữ để máy hiểu được ngôn ngữ"
+        },
+        {
+          "label": "D",
+          "text": "Tạo ra các chuỗi văn bản ngẫu nhiên"
+        }
+      ],
+      "explanation": "Phần động lực cho NLP nêu rõ mục tiêu này.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 9,
+      "question": "Văn bản ngôn ngữ tự nhiên được đặc trưng trong các nguồn tài liệu là loại dữ liệu gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dữ liệu có cấu trúc"
+        },
+        {
+          "label": "B",
+          "text": "Dữ liệu phân loại"
+        },
+        {
+          "label": "C",
+          "text": "Dữ liệu không có cấu trúc"
+        },
+        {
+          "label": "D",
+          "text": "Dữ liệu chuỗi thời gian"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu trực tiếp, 'Văn bản ngôn ngữ tự nhiên là dữ liệu không có cấu trúc điển hình'.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 10,
+      "question": "Khi NLP 'quan tâm đến nhiều cấp độ các thành phần ngôn ngữ, bao gồm nhưng không giới hạn ở ký tự, từ, cụm từ, câu, đoạn văn và tài liệu', điều này đề cập đến đặc điểm nào của văn bản ngôn ngữ tự nhiên?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Đa nhiệm vụ (Multiple Tasks)"
+        },
+        {
+          "label": "B",
+          "text": "Đa miền (Multiple Domains)"
+        },
+        {
+          "label": "C",
+          "text": "Đa độ chi tiết (Multiple Granularities)"
+        },
+        {
+          "label": "D",
+          "text": "Đa thuật toán (Multiple Algorithms)"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu định nghĩa rõ ràng 'Đa độ chi tiết' là NLP quan tâm đến 'nhiều cấp độ các thành phần ngôn ngữ, bao gồm nhưng không giới hạn ở ký tự, từ, cụm từ, câu, đoạn văn và tài liệu'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 11,
+      "question": "Tất cả những ví dụ sau đây là các nhiệm vụ NLP được đề cập có thể thực hiện dựa trên cùng một câu đầu vào NGOẠI TRỪ:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân tách từ (Word segmentation)"
+        },
+        {
+          "label": "B",
+          "text": "Gán nhãn từ loại (Part-of-speech tagging)"
+        },
+        {
+          "label": "C",
+          "text": "Dịch máy (Machine translation)"
+        },
+        {
+          "label": "D",
+          "text": "Nhận dạng hình ảnh (Image recognition)"
+        }
+      ],
+      "explanation": "Phân tách từ, gán nhãn từ loại, nhận dạng thực thể có tên, trích xuất quan hệ và dịch máy được liệt kê là các nhiệm vụ NLP dựa trên đầu vào câu.",
+      "difficulty": "medium",
+      "answer": "D"
+    },
+    {
+      "id": 12,
+      "question": "'Đa miền' có ý nghĩa gì trong ngữ cảnh NLP, như được mô tả trong các nguồn tài liệu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Việc sử dụng nhiều miền lập trình cho phát triển NLP"
+        },
+        {
+          "label": "B",
+          "text": "Việc áp dụng NLP trên các không gian ngữ nghĩa khác nhau"
+        },
+        {
+          "label": "C",
+          "text": "Văn bản ngôn ngữ tự nhiên được tạo ra từ các nguồn khác nhau như bài báo, bài báo khoa học hoặc nội dung do người dùng tạo ra trực tuyến"
+        },
+        {
+          "label": "D",
+          "text": "Khả năng của các mô hình NLP học từ các loại dữ liệu khác nhau đồng thời"
+        }
+      ],
+      "explanation": "Đây là định nghĩa được cung cấp cho 'Đa miền'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 13,
+      "question": "Trong giai đoạn đầu của NLP, biểu diễn ngữ nghĩa thường đến từ phương pháp nào, thay vì từ quá trình tối ưu hóa?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Học có giám sát (Supervised Learning)"
+        },
+        {
+          "label": "B",
+          "text": "Học tự giám sát (Self-supervised Learning)"
+        },
+        {
+          "label": "C",
+          "text": "Đặc trưng thống kê (Statistical Features)"
+        },
+        {
+          "label": "D",
+          "text": "Deep Learning"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu chỉ ra rằng 'biểu diễn ngữ nghĩa cho NLP trong giai đoạn đầu thường đến từ thống kê, thay vì xuất hiện từ quá trình tối ưu hóa'.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 14,
+      "question": "Dưới phương pháp học tập nào, biểu diễn phân tán chủ yếu xuất hiện từ quá trình tối ưu hóa của mạng nơ-ron?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Đặc trưng thủ công (Hand-craft Features)"
+        },
+        {
+          "label": "B",
+          "text": "Đặc trưng thống kê (Statistical Features)"
+        },
+        {
+          "label": "C",
+          "text": "Học có giám sát (Supervised Learning)"
+        },
+        {
+          "label": "D",
+          "text": "Học không giám sát (Unsupervised Learning)"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng, 'Biểu diễn phân tán xuất hiện từ quá trình tối ưu hóa của mạng nơ-ron dưới học có giám sát'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 15,
+      "question": "Mục tiêu chính của Học tự giám sát (Self-supervised Learning) cho học biểu diễn trong NLP là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giải quyết trực tiếp các nhiệm vụ NLP phức tạp mà không cần huấn luyện trước"
+        },
+        {
+          "label": "B",
+          "text": "Loại bỏ nhu cầu đầu vào của con người trong kỹ thuật đặc trưng"
+        },
+        {
+          "label": "C",
+          "text": "Có được biểu diễn tốt cho các thành phần có thể được chuyển giao cho các nhiệm vụ khác"
+        },
+        {
+          "label": "D",
+          "text": "Tinh chỉnh các mô hình đã được huấn luyện trước trên các tập dữ liệu cụ thể, nhỏ"
+        }
+      ],
+      "explanation": "Trong một số trường hợp, chúng ta chỉ đơn giản muốn có được biểu diễn tốt cho các thành phần nhất định, để những biểu diễn này có thể được chuyển giao cho các nhiệm vụ khác.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 16,
+      "question": "Nếu từ vựng \\(V\\) chứa 50.000 từ duy nhất, chiều của vector one-hot được sử dụng để biểu diễn một từ duy nhất từ từ vựng này sẽ là bao nhiêu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "100"
+        },
+        {
+          "label": "C",
+          "text": "1.000"
+        },
+        {
+          "label": "D",
+          "text": "50.000"
+        }
+      ],
+      "explanation": "Vector one-hot được biểu diễn bằng vector \\(|V|\\) chiều, trong đó \\(|V|\\) là kích thước của từ vựng.",
+      "difficulty": "easy",
+      "answer": "D"
+    },
+    {
+      "id": 17,
+      "question": "Điều nào sau đây được liệt kê rõ ràng là điểm yếu của vector one-hot?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giảm chiều"
+        },
+        {
+          "label": "B",
+          "text": "Dữ liệu dày"
+        },
+        {
+          "label": "C",
+          "text": "Khó khăn với đặc trưng có tính số ít cao"
+        },
+        {
+          "label": "D",
+          "text": "Giữ lại các mối quan hệ thứ tự"
+        }
+      ],
+      "explanation": "Các điểm yếu được liệt kê bao gồm 'Tăng chiều, dữ liệu thưa, mất mối quan hệ thứ tự, và khó khăn với đặc trưng có tính số ít cao'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 18,
+      "question": "Xét từ vựng \\(V = \\{\\text{apple}, \\text{banana}, \\text{orange}\\}\\). Nếu 'banana' được biểu diễn bằng vector one-hot, có bao nhiêu chiều sẽ có giá trị 0?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "3"
+        }
+      ],
+      "explanation": "Nếu kích thước từ vựng là 3, vector sẽ có 3 chiều. Chỉ có một chiều sẽ là 1 (cho 'banana'), và tất cả các chiều khác (2 trong trường hợp này) sẽ là 0.",
+      "difficulty": "hard",
+      "answer": "C"
+    },
+    {
+      "id": 19,
+      "question": "Theo các nguồn tài liệu, 3-gram (trigram) là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một chuỗi từ đơn"
+        },
+        {
+          "label": "B",
+          "text": "Một chuỗi hai từ"
+        },
+        {
+          "label": "C",
+          "text": "Một chuỗi ba từ"
+        },
+        {
+          "label": "D",
+          "text": "Bất kỳ chuỗi N từ nào"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu định nghĩa trigram là 'một chuỗi ba từ'.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 20,
+      "question": "Trong ngữ cảnh sửa lỗi chính tả, một mô hình ngôn ngữ xác suất thường sẽ gán xác suất cao hơn cho cụm từ nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(P(\\text{Then office is})\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(P(\\text{The Office is})\\)"
+        },
+        {
+          "label": "C",
+          "text": "Cả hai sẽ có xác suất bằng nhau"
+        },
+        {
+          "label": "D",
+          "text": "Mô hình không thể phân biệt giữa chúng"
+        }
+      ],
+      "explanation": "Ví dụ được đưa ra cho sửa lỗi chính tả cho thấy '\\(P(\\text{The Office is}) > P(\\text{Then office is})\\)'.",
+      "difficulty": "medium",
+      "answer": "B"
+    },
+    {
+      "id": 21,
+      "question": "Khi bổ sung câu cho Ước lượng Hợp lý Cực đại của bigram, ký hiệu đặc biệt nào được thêm vào cuối mỗi câu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\langle/s\\rangle\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\langle s\\rangle\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\langle\\text{EOS}\\rangle\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\langle\\text{EOL}\\rangle\\)"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng, 'Chúng ta cũng sẽ cần một ký hiệu kết thúc đặc biệt \\(\\langle/s\\rangle\\)'.",
+      "difficulty": "medium",
+      "answer": "A"
+    },
+    {
+      "id": 22,
+      "question": "Sử dụng mini-corpus: 1. \\(\\langle s\\rangle\\) I am Sam \\(\\langle/s\\rangle\\) 2. \\(\\langle s\\rangle\\) Sam I am \\(\\langle/s\\rangle\\) 3. \\(\\langle s\\rangle\\) I do not like green eggs and ham \\(\\langle/s\\rangle\\). Ước lượng hợp lý cực đại cho \\(P(\\text{Sam}|\\langle s\\rangle)\\) là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{3}\\) (Count('\\(\\langle s\\rangle\\) Sam') = 1; Count('\\(\\langle s\\rangle\\)') = 3)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{2}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "explanation": "Chuỗi '\\(\\langle s\\rangle\\) Sam' xuất hiện 1 lần (trong câu 2). Ký hiệu bắt đầu đặc biệt '\\(\\langle s\\rangle\\)' xuất hiện tổng cộng 3 lần. Do đó, \\(P(\\text{Sam}|\\langle s\\rangle) = \\frac{\\text{Count}(\\langle s\\rangle \\text{ Sam})}{\\text{Count}(\\langle s\\rangle)} = \\frac{1}{3}\\).",
+      "difficulty": "medium",
+      "answer": "B"
+    },
+    {
+      "id": 23,
+      "question": "Sử dụng cùng mini-corpus từ Câu hỏi 22, ước lượng hợp lý cực đại cho \\(P(\\text{am}|\\text{I})\\) là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{2}{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{1}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "explanation": "Chuỗi 'I am' xuất hiện 2 lần (trong câu 1 và câu 2). Từ 'I' xuất hiện như từ đi trước 3 lần: 'I am' (câu 1), 'I am' (câu 2), 'I do' (câu 3). Do đó, \\(P(\\text{am}|\\text{I}) = \\frac{\\text{Count}(\\text{I am})}{\\text{Count}(\\text{I như từ đi trước})} = \\frac{2}{3}\\).",
+      "difficulty": "hard",
+      "answer": "B"
+    },
+    {
+      "id": 24,
+      "question": "Phân tích Ngữ nghĩa tiềm ẩn (LSA) nhằm khám phá các yếu tố tiềm ẩn cho từ và tài liệu chủ yếu thông qua kỹ thuật toán học nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân tích hồi quy"
+        },
+        {
+          "label": "B",
+          "text": "Thuật toán phân cụm"
+        },
+        {
+          "label": "C",
+          "text": "Phân tích ma trận"
+        },
+        {
+          "label": "D",
+          "text": "Huấn luyện mạng nơ-ron"
+        }
+      ],
+      "explanation": "LSA 'nhằm khám phá các yếu tố tiềm ẩn cho từ và tài liệu bằng phân tích ma trận'.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 25,
+      "question": "Trong ngữ cảnh LSA, các phần tử của ma trận từ-tài liệu thường biểu diễn điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sự hiện diện hoặc vắng mặt của một từ"
+        },
+        {
+          "label": "B",
+          "text": "Độ tương tự ngữ nghĩa giữa các từ"
+        },
+        {
+          "label": "C",
+          "text": "Thứ tự thời gian của các từ"
+        },
+        {
+          "label": "D",
+          "text": "Tần suất của một từ trong tài liệu"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng, 'Tạo ma trận từ-tài liệu trong đó mỗi hàng tương ứng với một từ, mỗi cột tương ứng với một tài liệu, và các phần tử ma trận biểu diễn tần suất của một từ trong tài liệu'.",
+      "difficulty": "medium",
+      "answer": "D"
+    },
+    {
+      "id": 26,
+      "question": "Khi áp dụng Phân tích Giá trị Đơn (SVD) trong LSA cho ma trận từ-tài liệu X, ba ma trận nào được tạo ra?",
+      "options": [
+        {
+          "label": "A",
+          "text": "X, Y, Z"
+        },
+        {
+          "label": "B",
+          "text": "P, Q, R"
+        },
+        {
+          "label": "C",
+          "text": "U, Σ, Vᵀ"
+        },
+        {
+          "label": "D",
+          "text": "A, B, C"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rõ: 'SVD của ma trận từ-tài liệu M tạo ra ba ma trận U, Σ và V sao cho: X = UΣVᵀ'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 27,
+      "question": "Điều nào sau đây là hạn chế đáng kể của LSA liên quan đến khả năng thích ứng với dữ liệu mới?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó yêu cầu kích thước từ vựng cố định"
+        },
+        {
+          "label": "B",
+          "text": "Nó chỉ có thể xử lý tài liệu ngắn"
+        },
+        {
+          "label": "C",
+          "text": "Việc phân tích cần được tính toán lại từ đầu bất cứ khi nào có dữ liệu mới"
+        },
+        {
+          "label": "D",
+          "text": "Nó không thể nắm bắt mối quan hệ ngữ nghĩa giữa các từ"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu xác định đây là hạn chế chính: 'Phương pháp không tăng dần – việc phân tích cần được tính toán lại từ đầu bất cứ khi nào có dữ liệu mới'.",
+      "difficulty": "hard",
+      "answer": "C"
+    },
+    {
+      "id": 28,
+      "question": "Xét việc triển khai LSA với w từ và d tài liệu. Nếu w là 100.000 và d là 1.000, yếu tố chi phối trong độ phức tạp thời gian chạy cho tính toán SVD sẽ là gì, theo quy tắc kinh nghiệm O(max(w, d)× min(w, d)²)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "O(100.000 * 1.000)"
+        },
+        {
+          "label": "B",
+          "text": "O(100.000 * 1.000²)"
+        },
+        {
+          "label": "C",
+          "text": "O(100.000² * 1.000)"
+        },
+        {
+          "label": "D",
+          "text": "O(1.000³)"
+        }
+      ],
+      "explanation": "Công thức đã cho là O(max(w, d) × min(w, d)²). Với w = 100.000 và d = 1.000: max(w, d) = 100.000, min(w, d) = 1.000. Vậy độ phức tạp là khoảng 100.000 * (1.000)² = 100.000 * 1.000.000 = 10¹¹.",
+      "difficulty": "hard",
+      "answer": "B"
+    },
+    {
+      "id": 29,
+      "question": "Tại sao số đếm thô cho sự đồng xuất hiện của từ thường được coi là có vấn đề, đặc biệt đối với các từ chức năng như 'the' hoặc 'she'?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chúng khó tính toán"
+        },
+        {
+          "label": "B",
+          "text": "Chúng chỉ hoạt động với các từ hiếm"
+        },
+        {
+          "label": "C",
+          "text": "Chúng đưa ra quá nhiều trọng số cho các từ chức năng xuất hiện thường xuyên"
+        },
+        {
+          "label": "D",
+          "text": "Chúng không nắm bắt thứ tự từ"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rõ, 'Số đếm thô đưa ra quá nhiều trọng số cho các từ chức năng như the, she, has, và quá ít trọng số cho cheese, bread, sheep'.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 30,
+      "question": "Cường độ liên kết giữa từ mục tiêu 'w' và ngữ cảnh 'c' được đo bằng Thông tin Tương hỗ Điểm (PMI) như thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "PMI(w, c) = P(w, c) - P(w) - P(c)"
+        },
+        {
+          "label": "B",
+          "text": "PMI(w, c) = P(w) * P(c) / P(w, c)"
+        },
+        {
+          "label": "C",
+          "text": "PMI(w, c) = log (P(w, c) / (P(w) * P(c)))"
+        },
+        {
+          "label": "D",
+          "text": "PMI(w, c) = P(w, c) + P(w) + P(c)"
+        }
+      ],
+      "explanation": "Đây là định nghĩa chính thức được cung cấp trong các nguồn tài liệu.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 31,
+      "question": "Lý do chính mà Thông tin Tương hỗ Điểm Dương (PPMI) được ưa thích hơn PMI thô trong thực tế là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó làm cho tính toán đơn giản và nhanh hơn"
+        },
+        {
+          "label": "B",
+          "text": "Nó đảm bảo rằng tất cả giá trị đều chính xác là 1 hoặc 0"
+        },
+        {
+          "label": "C",
+          "text": "Nó xử lý các trường hợp mà giá trị PMI sẽ là âm vô cực (log 0) bằng cách thay thế chúng bằng số không"
+        },
+        {
+          "label": "D",
+          "text": "Nó chỉ tập trung vào các cặp từ rất phổ biến"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng, 'Vì các hàng của ma trận đồng xuất hiện thưa thớt, nhiều giá trị PMI sẽ là log 0 = −∞. Một phương pháp phổ biến là sử dụng thông tin tương hỗ điểm dương (PPMI), và thay thế tất cả giá trị âm bằng số không'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 32,
+      "question": "Các mô hình Word2vec (CBOW và Skip-gram) dựa trên giả định cốt lõi nào về ý nghĩa từ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Từ có ý nghĩa thông qua âm thanh ngữ âm của chúng"
+        },
+        {
+          "label": "B",
+          "text": "Ý nghĩa từ được định nghĩa trước trong từ điển"
+        },
+        {
+          "label": "C",
+          "text": "Ý nghĩa của một từ có thể được học từ ngữ cảnh của nó"
+        },
+        {
+          "label": "D",
+          "text": "Từ có ý nghĩa nội tại độc lập với việc sử dụng của chúng"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng, 'Dựa trên giả định rằng ý nghĩa của một từ có thể được học từ ngữ cảnh của nó'.",
+      "difficulty": "easy",
+      "answer": "C"
+    },
+    {
+      "id": 33,
+      "question": "Mô hình Word2vec nào được tối ưu hóa để dự đoán từ mục tiêu khi được cho các từ ngữ cảnh xung quanh?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Skip-gram"
+        },
+        {
+          "label": "B",
+          "text": "Túi từ liên tục (CBOW)"
+        },
+        {
+          "label": "C",
+          "text": "Phân tích Ngữ nghĩa tiềm ẩn (LSA)"
+        },
+        {
+          "label": "D",
+          "text": "Biểu diễn One-Hot"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu giải thích, 'CBOW tối ưu hóa embeddings để chúng có thể dự đoán từ mục tiêu khi được cho các từ ngữ cảnh của nó'.",
+      "difficulty": "medium",
+      "answer": "B"
+    },
+    {
+      "id": 34,
+      "question": "Ngược lại với CBOW, nhiệm vụ dự đoán chính của mô hình Skip-gram là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dự đoán từ trung tâm khi được cho ngữ cảnh của nó"
+        },
+        {
+          "label": "B",
+          "text": "Dự đoán từ tiếp theo trong chuỗi"
+        },
+        {
+          "label": "C",
+          "text": "Dự đoán các từ ngữ cảnh khi được cho từ mục tiêu (trung tâm)"
+        },
+        {
+          "label": "D",
+          "text": "Dự đoán cảm xúc của câu"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu nêu rằng, 'Skip-gram, ngược lại, học embeddings có thể dự đoán các từ ngữ cảnh khi được cho từ mục tiêu' và 'Ngược lại với CBOW, Skip-gram dự đoán ngữ cảnh khi được cho từ trung tâm'.",
+      "difficulty": "medium",
+      "answer": "C"
+    },
+    {
+      "id": 35,
+      "question": "Khi tái sử dụng word embeddings đã được huấn luyện trước cho một nhiệm vụ mới (Nhiệm vụ B), hai chiến lược chính được đề cập để xử lý các trọng số đã được huấn luyện trước trong các lớp embedding là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Khởi tạo với giá trị ngẫu nhiên hoặc đặt tất cả trọng số về không"
+        },
+        {
+          "label": "B",
+          "text": "Huấn luyện như bình thường (tinh chỉnh) hoặc đóng băng các trọng số"
+        },
+        {
+          "label": "C",
+          "text": "Chuyển đổi chúng thành vector one-hot hoặc loại bỏ hoàn toàn"
+        },
+        {
+          "label": "D",
+          "text": "Chỉ sử dụng đặc trưng thống kê hoặc đặc trưng thủ công"
+        }
+      ],
+      "explanation": "Các nguồn tài liệu mô tả hai lựa chọn này: 'Lựa chọn 1: Huấn luyện như bình thường, thực tế là tinh chỉnh embeddings đã được huấn luyện trước cho nhiệm vụ hiện tại. Lựa chọn 2: Đóng băng trọng số của các lớp embedding, để ngăn chặn embeddings đã được huấn luyện trước bị sửa đổi'.",
+      "difficulty": "hard",
+      "answer": "B"
+    }
+  ]
+}

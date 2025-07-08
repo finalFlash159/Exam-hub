@@ -100,8 +100,8 @@ class ExamGenerator:
         """Create prompt for question generation"""
         prompt = f"""Create {question_count} multiple-choice questions based on the provided text content.
 
-TEXT CONTENT:
-{text[:10000]}
+        TEXT CONTENT:
+        {text[:10000]}
 
 INSTRUCTIONS:
 - Generate exactly {question_count} questions
@@ -111,21 +111,21 @@ INSTRUCTIONS:
 - Return ONLY valid JSON array, no markdown or extra text
 
 REQUIRED JSON FORMAT:
-[
-{{
-    "id": 1,
+        [
+        {{
+            "id": 1,
     "question": "Question text here",
-    "options": [
+            "options": [
         {{"label": "A", "text": "Option A text"}},
         {{"label": "B", "text": "Option B text"}},
         {{"label": "C", "text": "Option C text"}},
         {{"label": "D", "text": "Option D text"}}
-    ],
+            ],
     "answer": "A",
-    "explanation": {{
+            "explanation": {{
         "en": "English explanation",
         "vi": "Vietnamese explanation"
-    }}
+            }}
 }}]
 
 IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code blocks, or any other text."""
@@ -173,7 +173,7 @@ IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code 
                     logger.debug(f"Cleaned JSON: {json_str[:300]}...")
                     return json.loads(json_str)
                 else:
-                    return json.loads(cleaned_text)
+                return json.loads(cleaned_text)
                     
             except json.JSONDecodeError as e2:
                 logger.error(f"Cannot parse JSON response after cleaning: {e2}")
