@@ -24,7 +24,10 @@ class Settings:
         self.upload_folder = "uploads"
         self.allowed_extensions = {'pdf', 'docx'}
         self.max_upload_size = 16 * 1024 * 1024  # 16MB
-        self.questions_dir = "../exam-app/src/data/questions"
+        # Calculate path to frontend questions directory
+        backend_dir = os.path.dirname(os.path.dirname(__file__))
+        project_root = os.path.dirname(backend_dir)
+        self.questions_dir = os.path.join(project_root, "exam-app", "src", "data", "questions")
     
     def _get_gemini_api_key(self) -> Optional[str]:
         """Get Gemini API key from environment variables"""
@@ -63,7 +66,7 @@ def configure_gemini() -> bool:
     
     if not api_key:
         logger.warning("GEMINI_API_KEY not found in environment variables")
-        logger.warning("Please set GEMINI_API_KEY environment variable on Railway")
+        logger.warning("Please set GEMINI_API_KEY environment variable")
         logger.warning("Gemini API functionality will be unavailable")
         return False
     

@@ -18,10 +18,10 @@ RUN apt-get update \
         && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
-COPY requirements.txt .
+COPY ../requirements.prod.txt .
 
 # Install Python dependencies
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.prod.txt
 
 # Copy application code
 COPY . .

@@ -16,7 +16,7 @@ def setup_logging():
     )
     
     logger = logging.getLogger(__name__)
-    logger.info(f"🚀 Exam Hub API - Environment: {env.upper()}")
-    logger.info(f"📝 Logging level: {logging.getLevelName(log_level)}")
+    logger.info(f"Exam Hub API - Environment: {env.upper()}")
+    logger.info(f"Logging level: {logging.getLevelName(log_level)}")
     
     return logger 

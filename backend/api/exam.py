@@ -60,7 +60,7 @@ async def generate_exam(request: ExamGenerationRequest) -> Dict[str, Any]:
             raise HTTPException(status_code=500, detail=f'Failed to generate questions: {exam_data["details"]}')
 
         questions_count = len(exam_data.get('questions', []))
-        logger.info(f"✅ Successfully generated {questions_count} questions")
+        logger.info(f"Successfully generated {questions_count} questions")
 
         response_data = {
             'message': 'Exam generated successfully',
@@ -105,7 +105,7 @@ async def save_exam(request: SaveExamRequest) -> Dict[str, Any]:
         new_id = _find_next_exam_id(questions_dir)
         logger.info(f"Selected new exam ID: {new_id}")
 
-        # Save questions file
+        # Save questions file (TODO: Replace with database persistence)
         new_file_name = f'questions{new_id}.json'
         file_path = os.path.join(questions_dir, new_file_name)
 
@@ -117,7 +117,7 @@ async def save_exam(request: SaveExamRequest) -> Dict[str, Any]:
         # Update index.js
         logger.info("Updating index.js...")
         _update_index_js(new_id, exam_title, new_file_name)
-        logger.info("✅ index.js updated successfully")
+        logger.info("index.js updated successfully")
 
         response_data = {
             'success': True,

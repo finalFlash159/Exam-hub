@@ -187,8 +187,9 @@ temp_files/
 app.log
 minimal_app.py
 
-# Railway/Deployment
+# Deployment
 .railway/
+deployment.env
 
 # Backup files
 *.bak

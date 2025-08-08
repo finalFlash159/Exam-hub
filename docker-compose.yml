@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  exam-hub-backend:
+    build: 
+      context: .
+      dockerfile: ./backend/Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - ENV=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - PORT=5001
+    volumes:
+      - ./backend/uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3 

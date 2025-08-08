@@ -15,7 +15,7 @@ An intelligent exam generation application that creates multiple-choice question
 ## 🚀 Live Demo
 
 **Live Demo:** https://exam-app-gules.vercel.app/   
-**Backend API:** https://exam-hub-production-c8b2.up.railway.app
+**Backend API:** Self-hosted or local development
 
 ## Features
 
@@ -32,7 +32,7 @@ An intelligent exam generation application that creates multiple-choice question
 - **Frontend:** React.js + Material-UI + Context API
 - **Backend:** FastAPI + LangChain + Google Gemini AI
 - **Document Processing:** PyMuPDF, python-docx
-- **Deployment:** Vercel (frontend) + Railway (backend)
+- **Deployment:** Vercel (frontend) + Docker/Self-hosted (backend)
 - **Development:** Hot reload, structured logging
 
 ## 🛠️ Quick Start
@@ -134,19 +134,41 @@ PORT=5001
 
 ### Frontend Configuration
 - **Development**: Automatically connects to localhost:5001
-- **Production**: Connects to Railway deployment
+- **Production**: Connects to your deployed backend API
 
 ## 🚀 Deployment
 
-### Railway (Backend)
-1. Connect GitHub repository to Railway
-2. Set environment variable: `GEMINI_API_KEY`
-3. Railway will auto-deploy from main branch
+### Backend Deployment Options
+
+#### Option 1: Docker Compose (Recommended)
+```bash
+# Copy environment template
+cp deployment.env.example .env
+# Edit .env with your GEMINI_API_KEY
+# Deploy with Docker Compose
+docker-compose up -d
+```
+
+#### Option 2: Render/Heroku
+1. Connect GitHub repository
+2. Set environment variables: `GEMINI_API_KEY`, `ENV=production`
+3. Use build command: `pip install -r requirements.prod.txt`
+4. Use start command: `uvicorn app:app --host 0.0.0.0 --port $PORT`
+
+#### Option 3: VPS/Manual Setup
+```bash
+cd backend
+pip install -r ../requirements.prod.txt
+export GEMINI_API_KEY=your_key
+export ENV=production
+uvicorn app:app --host 0.0.0.0 --port 5001
+```
 
 ### Vercel (Frontend)
 1. Connect GitHub repository to Vercel
-2. Build settings are automatically configured
-3. Deploys automatically on push to main
+2. Set environment variable: `REACT_APP_BACKEND_URL` (your backend URL)
+3. Build settings are automatically configured
+4. Deploys automatically on push to main
 
 ## Testing
 
@@ -179,6 +201,14 @@ MIT License - see [LICENSE](LICENSE) file for details
 3. Commit changes (`git commit -m 'Add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
+
+## Migration from Railway
+
+If migrating from Railway deployment:
+1. Export any data you need from Railway
+2. Update frontend environment variables to point to new backend
+3. Deploy using one of the options above
+4. Update DNS/domain settings if applicable
 
 ## Troubleshooting
 

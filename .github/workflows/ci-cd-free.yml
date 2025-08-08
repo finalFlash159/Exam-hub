@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy Frontend to Production
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy Frontend and Backend
+    name: Deploy Frontend
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -39,13 +39,15 @@ jobs:
         VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
         VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
-    - name: Trigger Railway deployment
+    - name: Build backend (verification)
       run: |
-        echo "Railway will auto-deploy from GitHub webhook"
-        echo "Backend URL: https://exam-hub-production.up.railway.app"
+        cd backend
+        python -m pip install --upgrade pip
+        pip install -r ../requirements.prod.txt
+        echo "Backend dependencies verified"
 
     - name: Deployment complete
       run: |
-        echo "✅ Frontend deployed to: https://exam-app-gules.vercel.app/"
-        echo "✅ Backend deployed to: https://exam-hub-production.up.railway.app"
-        echo "🚀 Production deployment successful!" 
+        echo "Frontend deployed to: https://exam-app-gules.vercel.app/"
+        echo "Backend ready for deployment (Docker/VPS)"
+        echo "Frontend deployment successful!" 

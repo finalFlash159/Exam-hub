@@ -4,7 +4,7 @@ Main application file with modular structure
 """
 
 import os
-import threading
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -19,18 +19,11 @@ from api import upload_router, exam_router, health_router
 logger = setup_logging()
 
 
-def setup_background_gemini():
-    """Setup Gemini API in background thread for faster startup"""
-    def background_gemini_test():
-        try:
-            configure_gemini()
-            logger.info("Background Gemini initialization completed")
-    except Exception as e:
-            logger.warning(f"Background Gemini initialization failed: {e}")
-
-    logger.info("Starting server with background Gemini initialization...")
-    threading.Thread(target=background_gemini_test, daemon=True).start()
-    logger.info("Server startup optimized")
+def setup_gemini():
+    """Setup Gemini API configuration"""
+    logger.info("Initializing Gemini API...")
+    configure_gemini()
+    logger.info("Gemini API setup completed")
 
 
 def create_app() -> FastAPI:
@@ -55,8 +48,8 @@ def create_app() -> FastAPI:
     return app
 
 
-# Initialize background services
-setup_background_gemini()
+# Initialize services
+setup_gemini()
 
 # Create FastAPI app
 app = create_app()
