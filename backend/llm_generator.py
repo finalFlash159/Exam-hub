@@ -173,7 +173,7 @@ IMPORTANT: Return ONLY the JSON array. Do not include markdown formatting, code 
                     logger.debug(f"Cleaned JSON: {json_str[:300]}...")
                     return json.loads(json_str)
                 else:
-                return json.loads(cleaned_text)
+                    return json.loads(cleaned_text)
                     
             except json.JSONDecodeError as e2:
                 logger.error(f"Cannot parse JSON response after cleaning: {e2}")
