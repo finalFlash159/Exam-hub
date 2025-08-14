@@ -1,6 +1,6 @@
-from typing import Optional
-from sqlalchemy import String, Boolean, Enum as SQLEnum
-from sqlalchemy.orm import Mapped, mapped_column
+from typing import Optional, List
+from sqlalchemy import String, Boolean, DateTime, Enum as SQLEnum
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 import enum
 from datetime import datetime
 
@@ -32,6 +32,13 @@ class User(BaseModel):
         SQLEnum(UserRole),
         default=UserRole.USER,
         nullable=False
+    )
+
+    # Relationship
+    refresh_tokens: Mapped[List["RefreshToken"]] = relationship(
+        "RefreshToken", 
+        back_populates="user", 
+        cascade="all, delete-orphan"
     )
 
     def __repr__(self) -> str:
