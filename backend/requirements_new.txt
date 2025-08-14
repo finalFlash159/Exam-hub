@@ -1,0 +1,32 @@
+# Core FastAPI dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Document processing
+python-docx==0.8.11
+PyMuPDF==1.23.5
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# AI/LLM dependencies
+langchain>=0.2.0
+langchain-google-genai>=1.0.8
+
+# Database dependencies (NEW)
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+psycopg2-binary>=2.9.7  # PostgreSQL adapter
+databases[postgresql]>=0.8.0  # Async database support
+
+# Authentication (for Phase 5)
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+
+# Development dependencies
+pytest==7.4.2
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+pytest-asyncio>=0.21.0 
