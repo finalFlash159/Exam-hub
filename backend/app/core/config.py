@@ -32,7 +32,17 @@ class Settings:
         self.secret_key = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
         self.algorithm = "HS256"
         self.access_token_expire_minutes = 30
-        
+
+        # Email configuration (Brevo)
+        self.brevo_api_key = os.getenv('BREVO_API_KEY', '')
+        self.from_email = os.getenv('FROM_EMAIL', 'noreply@examhub.com')
+        self.from_name = os.getenv('FROM_NAME', 'Exam Hub')
+        self.frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
+
+        # Brevo template settings
+        self.verification_email_template_id = os.getenv('VERIFICATION_EMAIL_TEMPLATE_ID', '')
+        self.password_reset_template_id = os.getenv('PASSWORD_RESET_TEMPLATE_ID', '')
+                
         # AI/LLM
         self.gemini_api_key = self._get_gemini_api_key()
         
