@@ -6,6 +6,8 @@ Main entry point for the refactored Exam Hub API
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.auth import router as auth_router
+from app.api.exam import router as exam_router
 
 # Will be implemented in future phases
 # from app.core.config import get_settings
@@ -63,6 +65,8 @@ def create_app() -> FastAPI:
 
 # For backward compatibility with current app.py
 app = create_app()
+app.include_router(auth_router)
+app.include_router(exam_router)
 
 if __name__ == "__main__":
     import uvicorn

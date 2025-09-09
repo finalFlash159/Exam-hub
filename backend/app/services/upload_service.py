@@ -14,7 +14,7 @@ from fastapi import UploadFile
 try:
     from app.core.config import get_settings
 except ImportError:
-    from core.config import get_settings
+    from app.core.config import get_settings
 
 logger = logging.getLogger(__name__)
 

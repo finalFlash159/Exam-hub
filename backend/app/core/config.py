@@ -7,7 +7,15 @@ import os
 import logging
 from typing import Dict, Any, Optional
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
+
+# Handle potential version conflicts
+try:
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    GENAI_AVAILABLE = True
+except Exception as e:
+    logging.warning(f"Google GenAI import failed: {e}")
+    ChatGoogleGenerativeAI = None
+    GENAI_AVAILABLE = False
 
 # Load environment variables
 load_dotenv()
@@ -156,6 +164,10 @@ def create_gemini_instance() -> Optional[ChatGoogleGenerativeAI]:
     Create a new Gemini API instance for use
     Returns: ChatGoogleGenerativeAI instance or None if failed
     """
+    if not GENAI_AVAILABLE:
+        logger.error("Cannot create Gemini instance: Google GenAI not available")
+        return None
+        
     api_key = settings.gemini_api_key
     
     if not api_key:

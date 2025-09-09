@@ -14,7 +14,7 @@ try:
     from app.core.config import create_gemini_instance
 except ImportError:
     # Fallback to old import during migration
-    from core.config import create_gemini_instance
+    from app.core.config import create_gemini_instance
 
 logger = logging.getLogger(__name__)
 
@@ -49,25 +49,45 @@ class ExamGenerator:
         Returns:
             Dict containing exam data or error information
         """
-        prompt = self._create_prompt(text, question_count)
+        # TEMPORARILY DISABLED: Always use mock for now
+        logger.info("LLM temporarily disabled, using mock generator")
+        return self._generate_mock_questions(text, exam_title, question_count)
         
-        try:
-            logger.info(f"Generating {question_count} questions from {len(text)} characters")
-            
-            # Call LangChain to generate questions
-            response = self.llm.invoke([HumanMessage(content=prompt)])
-            
-            # Parse response from LangChain
-            exam_data = self._parse_response(response.content)
-            
-            return {
-                "title": exam_title,
-                "questions": exam_data
-            }
-            
-        except Exception as e:
-            logger.error(f"Error generating questions: {str(e)}")
-            return {"error": "Failed to generate questions", "details": str(e)}
+        # TODO: Re-enable when LLM is properly configured
+        # prompt = self._create_prompt(text, question_count)
+        # try:
+        #     logger.info(f"Generating {question_count} questions from {len(text)} characters")
+        #     response = self.llm.invoke([HumanMessage(content=prompt)])
+        #     exam_data = self._parse_response(response.content)
+        #     return {"title": exam_title, "questions": exam_data}
+        # except Exception as e:
+        #     logger.error(f"Error generating questions: {str(e)}")
+        #     return {"error": "Failed to generate questions", "details": str(e)}
+
+    def _generate_mock_questions(self, text: str, exam_title: str, question_count: int) -> Dict[str, Any]:
+        """Generate mock questions for testing when Gemini API is not available"""
+        logger.info(f"Generating {question_count} mock questions for: {exam_title}")
+        
+        mock_questions = []
+        for i in range(min(question_count, 5)):  # Limit to 5 mock questions
+            mock_questions.append({
+                "question_text": f"Mock Question {i+1}: What is the main concept discussed in the provided text?",
+                "options": [
+                    f"Concept A from {exam_title}",
+                    f"Concept B from {exam_title}", 
+                    f"Concept C from {exam_title}",
+                    f"Concept D from {exam_title}"
+                ],
+                "correct_answer": "A",
+                "explanation": f"This is a mock explanation for question {i+1}. The correct answer is based on the text content analysis."
+            })
+        
+        return {
+            "title": exam_title,
+            "questions": mock_questions,
+            "total_questions": len(mock_questions),
+            "mock": True
+        }
 
     async def generate_from_text_async(self, text: str, exam_title: str, question_count: int = 10) -> Dict[str, Any]:
         """
@@ -81,25 +101,24 @@ class ExamGenerator:
         Returns:
             Dict containing exam data or error information
         """
-        prompt = self._create_prompt(text, question_count)
+        # TEMPORARILY DISABLED: Always use mock for now
+        logger.info("LLM temporarily disabled, using mock generator (async)")
+        return self._generate_mock_questions(text, exam_title, question_count)
         
-        try:
-            logger.info(f"Generating {question_count} questions from {len(text)} characters (async)")
-            
-            # Call LangChain to generate questions (async)
-            response = await self.llm.ainvoke([HumanMessage(content=prompt)])
-            
-            # Parse response from LangChain
-            exam_data = self._parse_response(response.content)
-            
-            return {
-                "title": exam_title,
-                "questions": exam_data
-            }
-            
-        except Exception as e:
-            logger.error(f"Error generating questions: {str(e)}")
-            return {"error": "Failed to generate questions", "details": str(e)}
+        # TODO: Re-enable when LLM is properly configured
+        # if not self.llm:
+        #     logger.warning("Gemini API not available, using mock generator")
+        #     return self._generate_mock_questions(text, exam_title, question_count)
+        # 
+        # prompt = self._create_prompt(text, question_count)
+        # try:
+        #     logger.info(f"Generating {question_count} questions from {len(text)} characters (async)")
+        #     response = await self.llm.ainvoke([HumanMessage(content=prompt)])
+        #     exam_data = self._parse_response(response.content)
+        #     return {"title": exam_title, "questions": exam_data}
+        # except Exception as e:
+        #     logger.error(f"Error generating questions: {str(e)}")
+        #     return {"error": "Failed to generate questions", "details": str(e)}
 
     def _create_prompt(self, text: str, question_count: int) -> str:
         """Create prompt for question generation"""

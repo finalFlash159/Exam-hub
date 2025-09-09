@@ -1,6 +1,6 @@
 import logging
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from app.services.upload_service import UploadService
+from ..services.upload_service import UploadService
 
 router = APIRouter(prefix="/api", tags=["upload"])
 logger = logging.getLogger(__name__)
