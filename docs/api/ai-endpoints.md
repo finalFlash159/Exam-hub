@@ -1,8 +1,10 @@
-# 🤖 AI Integration API Documentation
+# 🤖 GenAI Module API Documentation
 
 ## 📋 **OVERVIEW**
 
-API endpoints for AI-powered exam generation with multi-provider support (OpenAI, Gemini, Mock).
+API endpoints for GenAI-powered exam generation with multi-provider support (OpenAI, Gemini, Mock).
+
+**GenAI Module:** Domain-driven AI module for all generative AI functionality
 
 **Base URL:** `http://localhost:8000`  
 **Authentication:** Required (JWT Bearer token)
@@ -11,13 +13,13 @@ API endpoints for AI-powered exam generation with multi-provider support (OpenAI
 
 ## 🔍 **AI CLIENT DISCOVERY**
 
-### **GET /ai/clients**
+### **GET /ai/providers**
 
-Get available AI service providers and their capabilities.
+Get available GenAI providers and their capabilities.
 
 **Authentication:** Required  
 **Method:** GET  
-**Path:** `/ai/clients`
+**Path:** `/ai/providers`
 
 #### **Response:**
 ```json
@@ -69,7 +71,7 @@ Get available AI service providers and their capabilities.
 
 #### **cURL Example:**
 ```bash
-curl -X GET "http://localhost:8000/ai/clients" \
+curl -X GET "http://localhost:8000/ai/providers" \
   -H "Authorization: Bearer your-jwt-token"
 ```
 
