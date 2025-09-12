@@ -94,6 +94,7 @@ CREATE TABLE exams (
     id VARCHAR(36) PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
+    creator_id VARCHAR(36),  -- Links to users.id
     duration_minutes INTEGER,
     total_questions INTEGER DEFAULT 0,
     passing_score INTEGER,
@@ -110,6 +111,7 @@ CREATE TABLE exams (
 
 -- Indexes
 CREATE INDEX idx_exams_title ON exams(title);
+CREATE INDEX idx_exams_creator_id ON exams(creator_id);  -- For user-scoped queries
 CREATE INDEX idx_exams_status ON exams(status);
 CREATE INDEX idx_exams_public ON exams(is_public);
 CREATE INDEX idx_exams_created ON exams(created_at);
@@ -206,6 +208,55 @@ CREATE INDEX idx_refresh_tokens_expires ON refresh_tokens(expires_at);
 
 ---
 
+### **7. UploadedFiles Table**
+```sql
+CREATE TABLE uploaded_files (
+    id VARCHAR(36) PRIMARY KEY,
+    owner_id VARCHAR(36) NOT NULL,
+    original_filename VARCHAR(255) NOT NULL,
+    stored_filename VARCHAR(255) UNIQUE NOT NULL,
+    file_path VARCHAR(500) NOT NULL,
+    size INTEGER NOT NULL,
+    content_type VARCHAR(100),
+    file_hash VARCHAR(64), -- SHA-256 hash
+    is_public BOOLEAN DEFAULT FALSE,
+    storage_type VARCHAR(10) DEFAULT 'LOCAL',
+    storage_metadata JSON,
+    upload_status VARCHAR(20) DEFAULT 'COMPLETED',
+    processed BOOLEAN DEFAULT FALSE,
+    processing_result JSON,
+    error_message TEXT,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    
+    FOREIGN KEY (owner_id) REFERENCES users(id)
+);
+
+-- Indexes for performance
+CREATE INDEX idx_uploaded_files_owner_id ON uploaded_files(owner_id);
+CREATE INDEX idx_uploaded_files_file_hash ON uploaded_files(file_hash);
+CREATE INDEX idx_uploaded_files_stored_filename ON uploaded_files(stored_filename);
+CREATE INDEX idx_uploaded_files_upload_status ON uploaded_files(upload_status);
+```
+
+**Purpose:** File upload management with database integration
+**Key Features:**
+- User-scoped file ownership
+- SHA-256 hash-based duplicate detection
+- File metadata and processing status tracking
+- Support for multiple storage backends (local, cloud)
+- Security-hardened filename storage
+- Processing result tracking for AI features
+
+**Security Features:**
+- Owner-based access control
+- Sanitized filename storage
+- File hash integrity verification
+- Upload status tracking
+- Error logging and debugging
+
+---
+
 ## 🔧 DATABASE OPERATIONS
 
 ### **Migration Strategy**
@@ -239,6 +290,8 @@ DATABASE_URL = "postgresql+asyncpg://user:pass@host:port/dbname"
 - Foreign keys for relationships
 - Search fields (email, title)
 - Frequently filtered columns (status, role)
+- File operations (owner_id, file_hash, stored_filename)
+- Upload status tracking (upload_status)
 
 **Query Optimization:**
 - Relationship loading with `selectinload()`

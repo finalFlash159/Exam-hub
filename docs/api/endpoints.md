@@ -183,6 +183,7 @@ Logout user and revoke refresh token.
 
 ### **POST /exam/generate**
 Generate exam questions from text content.
+🔒 **REQUIRES AUTHENTICATION**
 
 **Request Body:**
 ```json
@@ -222,8 +223,7 @@ Generate exam questions from text content.
 
 ### **POST /exam/save**
 Save generated exam to database.
-
-**⚠️ TODO: Requires Authentication**
+🔒 **REQUIRES AUTHENTICATION - User-scoped**
 
 **Request Body:**
 ```json
@@ -260,8 +260,7 @@ Save generated exam to database.
 
 ### **GET /exam/{exam_id}**
 Get exam details with questions.
-
-**⚠️ TODO: Requires Authentication + Authorization**
+🔒 **REQUIRES AUTHENTICATION + OWNERSHIP CHECK**
 
 **Response (200):**
 ```json
@@ -288,9 +287,78 @@ Get exam details with questions.
 ```
 
 **Errors:**
-- `401`: Authentication required (TODO)
-- `403`: Access denied (TODO)
+- `401`: Authentication required
+- `403`: Access denied - not exam owner or not public
 - `404`: Exam not found
+- `500`: Retrieval failed
+
+---
+
+### **GET /exam/**
+List current user's exams.
+🔒 **REQUIRES AUTHENTICATION - User-scoped**
+
+**Response (200):**
+```json
+{
+  "exams": [
+    {
+      "id": "exam-uuid",
+      "title": "My Exam",
+      "description": "Description",
+      "duration_minutes": 30,
+      "total_questions": 5,
+      "is_public": false,
+      "status": "draft",
+      "created_at": "2025-01-15T10:30:00Z",
+      "updated_at": "2025-01-15T10:30:00Z"
+    }
+  ],
+  "count": 1,
+  "user_id": "user-uuid"
+}
+```
+
+**Errors:**
+- `401`: Authentication required
+- `500`: Retrieval failed
+
+---
+
+### **GET /exam/admin/all**
+List ALL exams (Admin only).
+🔒 **REQUIRES ADMIN ROLE**
+
+**Query Parameters:**
+- `skip`: Number of records to skip (default: 0)
+- `limit`: Maximum records to return (default: 100)
+
+**Response (200):**
+```json
+{
+  "exams": [
+    {
+      "id": "exam-uuid",
+      "title": "Any User's Exam",
+      "description": "Description",
+      "creator_id": "user-uuid",
+      "duration_minutes": 30,
+      "total_questions": 5,
+      "is_public": true,
+      "status": "published",
+      "created_at": "2025-01-15T10:30:00Z",
+      "updated_at": "2025-01-15T10:30:00Z"
+    }
+  ],
+  "count": 1,
+  "total_available": 1,
+  "admin_access": true
+}
+```
+
+**Errors:**
+- `401`: Authentication required
+- `403`: Admin role required
 - `500`: Retrieval failed
 
 ---
@@ -432,6 +500,228 @@ Health check with database status.
 
 ---
 
+## 📁 UPLOAD ENDPOINTS
+
+### **POST /upload/**
+🔒 **REQUIRES AUTHENTICATION** - Upload file for current user
+
+**Request:**
+```http
+Content-Type: multipart/form-data
+Authorization: Bearer <jwt_token>
+
+file: <binary_file_data>
+```
+
+**Response (201):**
+```json
+{
+  "success": true,
+  "message": "File uploaded successfully",
+  "data": {
+    "file_id": "uuid-string",
+    "original_filename": "document.pdf",
+    "stored_filename": "user123_abc123_document.pdf",
+    "size": 1024000,
+    "size_mb": 1.02,
+    "content_type": "application/pdf",
+    "file_hash": "sha256-hash",
+    "uploaded_at": "2025-09-12T10:30:00Z",
+    "is_duplicate": false,
+    "metadata": {
+      "is_image": false,
+      "is_pdf": true,
+      "user_scoped": true,
+      "database_integrated": true
+    }
+  }
+}
+```
+
+**Features:**
+- File validation (type, size, content)
+- Filename sanitization & path traversal protection
+- SHA-256 hash-based duplicate detection
+- Database metadata storage
+- User ownership tracking
+
+**Errors:**
+- `400`: Invalid file type, size, or empty file
+- `401`: Authentication required
+- `500`: Server error during upload
+
+---
+
+### **GET /upload/**
+🔒 **REQUIRES AUTHENTICATION** - List current user's files
+
+**Query Parameters:**
+- `skip` (int, optional) - Number of files to skip (default: 0)
+- `limit` (int, optional) - Max files per page (default: 100, max: 1000)
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "files": [
+      {
+        "file_id": "uuid-string",
+        "original_filename": "document.pdf",
+        "size": 1024000,
+        "size_mb": 1.02,
+        "content_type": "application/pdf",
+        "upload_status": "completed",
+        "uploaded_at": "2025-09-12T10:30:00Z",
+        "filesystem_exists": true
+      }
+    ],
+    "pagination": {
+      "count": 1,
+      "total_count": 1,
+      "skip": 0,
+      "limit": 100,
+      "has_more": false
+    }
+  }
+}
+```
+
+---
+
+### **GET /upload/{file_id}/info**
+🔒 **REQUIRES AUTHENTICATION + OWNERSHIP** - Get file information
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "file_id": "uuid-string",
+    "original_filename": "document.pdf",
+    "size": 1024000,
+    "content_type": "application/pdf",
+    "upload_status": "completed",
+    "filesystem_exists": true,
+    "uploaded_at": "2025-09-12T10:30:00Z"
+  }
+}
+```
+
+**Errors:**
+- `404`: File not found
+- `403`: Access denied (not file owner)
+
+---
+
+### **GET /upload/{file_id}/download**
+🔒 **REQUIRES AUTHENTICATION + OWNERSHIP** - Download file
+
+**Response (200):**
+- File content with proper headers
+- `Content-Type`: File MIME type
+- `Content-Disposition`: attachment; filename="..."
+- `X-File-ID`: File identifier
+- `X-File-Size`: File size in bytes
+
+**Errors:**
+- `404`: File not found or missing from filesystem
+- `403`: Access denied (not file owner)
+
+---
+
+### **DELETE /upload/{file_id}**
+🔒 **REQUIRES AUTHENTICATION + OWNERSHIP** - Delete file
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "message": "File deleted successfully",
+  "data": {
+    "file_id": "uuid-string",
+    "original_filename": "document.pdf",
+    "filesystem_deleted": true,
+    "database_updated": true
+  }
+}
+```
+
+---
+
+### **GET /upload/admin/files**
+🔒 **REQUIRES ADMIN ROLE** - List all files (Admin only)
+
+**Query Parameters:**
+- `skip` (int, optional) - Number of files to skip
+- `limit` (int, optional) - Max files per page
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "files": [
+      {
+        "file_id": "uuid-string",
+        "original_filename": "document.pdf",
+        "owner_id": "user-uuid",
+        "size": 1024000,
+        "uploaded_at": "2025-09-12T10:30:00Z"
+      }
+    ],
+    "admin_access": true,
+    "requested_by": "admin@example.com"
+  }
+}
+```
+
+---
+
+### **GET /upload/admin/stats**
+🔒 **REQUIRES ADMIN ROLE** - Get upload statistics
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "total_files": 150,
+    "total_size_mb": 150.0,
+    "active_users": 25,
+    "file_types": {
+      "application/pdf": 80,
+      "image/jpeg": 45
+    },
+    "admin_access": true
+  }
+}
+```
+
+---
+
+### **GET /upload/health**
+**PUBLIC ENDPOINT** - Upload service health check
+
+**Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "service": "upload",
+    "status": "healthy",
+    "checks": {
+      "upload_folder_exists": true,
+      "upload_folder_writable": true,
+      "database_integration": true,
+      "security_enabled": true
+    }
+  }
+}
+```
+
+---
+
 ## 🔒 AUTHENTICATION HEADERS
 
 ### **Protected Endpoints (TODO)**
@@ -442,11 +732,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 ### **Current Status**
-- ⚠️ **All endpoints currently PUBLIC**
-- ⚠️ **No authentication middleware implemented**
-- ⚠️ **Authorization not enforced**
+- ✅ **Authentication middleware implemented**
+- ✅ **Protected endpoints working**
+- ✅ **User-scoped data access enforced**
+- ✅ **Role-based authorization active**
+- ✅ **Upload system fully integrated**
+- ✅ **File security & validation implemented**
 
-**Priority Fix:** Implement JWT middleware and protect sensitive endpoints.
+**Security Status:** All sensitive endpoints are protected with JWT authentication, user-scoped access control, and comprehensive file security measures.
 
 ---
 
