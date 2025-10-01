@@ -55,12 +55,15 @@ async def client(test_db_session):
     app.dependency_overrides[get_db_session] = override_get_db
 
     # Mock FastAPILimiter to avoid Redis dependency in tests
+    # Mock EmailService to avoid Brevo API dependency in tests
     with patch('fastapi_limiter.FastAPILimiter.redis', new=AsyncMock()):
         with patch('fastapi_limiter.FastAPILimiter.identifier', new=AsyncMock()):
             with patch('fastapi_limiter.FastAPILimiter.http_callback', new=AsyncMock()):
-                transport = ASGITransport(app=app)
-                async with AsyncClient(transport=transport, base_url="http://test") as ac:
-                    yield ac
+                with patch('app.services.email_service.EmailService.send_verification_email', new=AsyncMock(return_value=True)):
+                    with patch('app.services.email_service.EmailService.send_password_reset_email', new=AsyncMock(return_value=True)):
+                        transport = ASGITransport(app=app)
+                        async with AsyncClient(transport=transport, base_url="http://test") as ac:
+                            yield ac
 
     app.dependency_overrides.clear()
 
