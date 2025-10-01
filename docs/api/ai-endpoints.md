@@ -330,11 +330,11 @@ Check health status of specific AI client.
 
 ---
 
-## 📊 **LEGACY EXAM GENERATION**
+## 🎯 **TEXT-BASED EXAM GENERATION (UPDATED)**
 
 ### **POST /exam/generate**
 
-Legacy endpoint for exam generation from text content (backward compatibility).
+Generate exam questions directly from raw text content using multi-provider GenAI.
 
 **Authentication:** Required  
 **Method:** POST  
@@ -343,29 +343,44 @@ Legacy endpoint for exam generation from text content (backward compatibility).
 #### **Request Body:**
 ```json
 {
-  "file_content": "Python is a high-level programming language...",
-  "num_questions": 10,
-  "subject": "Python Programming"
+  "content": "Algebra basics...",
+  "question_count": 10,
+  "subject": "Mathematics",
+  "ai_provider": "openai",
+  "language": "vi",
+  "temperature": 0.0,
+  "max_tokens": 300
 }
 ```
 
 #### **Response:**
 ```json
 {
+  "success": true,
   "questions": [
     {
-      "question_text": "What is Python?",
-      "options": ["A programming language", "A snake", "A framework", "A database"],
-      "correct_answer": "A programming language",
-      "explanation": "Python is a high-level programming language."
+      "question_text": "...",
+      "options": ["A", "B", "C", "D"],
+      "correct_answer": "A",
+      "explanation": "..."
     }
   ],
-  "subject": "Python Programming",
-  "total_questions": 1
+  "metadata": {
+    "total_questions": 10,
+    "difficulty": "medium",
+    "estimated_duration": 10,
+    "ai_provider": "openai",
+    "generated_at": "2025-09-29T10:00:00",
+    "usage": null
+  },
+  "error": null
 }
 ```
 
-**Note:** This endpoint uses the default AI client (Gemini) and is maintained for backward compatibility.
+#### **Notes:**
+- `language`: `vi` (default) hoặc `en`. Prompt sẽ render theo locale tương ứng.
+- `ai_provider`: `openai` | `gemini` | `mock` (default: `gemini`).
+- `temperature`, `max_tokens`: override cấu hình từ YAML provider.
 
 ---
 
