@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # Redis - For rate limiting and caching
+  redis:
+    image: redis:7-alpine
+    container_name: exam-hub-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - exam-hub-network
+
+  # PostgreSQL - Production database (optional)
+  postgres:
+    image: postgres:15-alpine
+    container_name: exam-hub-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-exam_hub}
+      POSTGRES_USER: ${POSTGRES_USER:-exam_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_production}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U exam_user"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - exam-hub-network
+
+  # Redis Commander - GUI for Redis (development only)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: exam-hub-redis-gui
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - exam-hub-network
+    profiles:
+      - dev  # Only run in dev mode
+
+# Volumes for data persistence
+volumes:
+  redis_data:
+    driver: local
+    name: exam-hub-redis-data
+  postgres_data:
+    driver: local
+    name: exam-hub-postgres-data
+
+# Network for service communication
+networks:
+  exam-hub-network:
+    driver: bridge
+    name: exam-hub-network
