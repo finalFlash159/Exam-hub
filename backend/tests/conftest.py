@@ -2,9 +2,16 @@ import pytest
 import os
 import sys
 from unittest.mock import patch, Mock
+from dotenv import load_dotenv
+
+# Load .env file before running tests
+# Get the backend directory path
+backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env_path = os.path.join(backend_dir, '.env')
+load_dotenv(env_path)
 
 # Add the backend directory to Python path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, backend_dir)
 
 @pytest.fixture
 def client():
