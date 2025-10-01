@@ -12,7 +12,7 @@ from app.schemas.auth_schemas import (
 )
 from app.repositories.user_repository import UserRepository, RefreshTokenRepository
 from app.services.email_service import EmailService
-from app.utils.security import (
+from app.core.security import (
     get_password_hash, verify_password,
     create_access_token, create_refresh_token,
     validate_password,
