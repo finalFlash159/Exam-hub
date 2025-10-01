@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment files (use docker-compose env)
+.env
+.env.local
+.env.*.local
+
+# Database (not needed in Docker image)
+*.db
+*.sqlite
+*.sqlite3
+exam_hub.db
+
+# Testing (not needed in production image)
+tests/
+.coverage
+htmlcov/
+.pytest_cache/
+coverage.xml
+
+# Documentation (not needed in image)
+docs/
+*.md
+!README.md
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Development files
+alembic.ini
+commands.md
+DOCKER-GUIDE.md

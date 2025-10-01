@@ -18,10 +18,10 @@ RUN apt-get update \
         && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
-COPY ../requirements.prod.txt .
+COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install -r requirements.prod.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . .
@@ -42,4 +42,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:5001/health || exit 1
 
 # Run the FastAPI application with uvicorn
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5001"] 
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5001"] 
