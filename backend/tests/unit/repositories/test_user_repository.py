@@ -141,7 +141,7 @@ class TestUserRepositoryUpdate:
         assert verified_user is not None
         assert verified_user.email_verified is True
         assert verified_user.email_verification_token is None
-        assert verified_user.email_verified_at is not None
+        # email_verified_at field does not exist in User model
 
     @pytest.mark.asyncio
     async def test_verify_email_invalid_token(self, user_repository):

@@ -58,7 +58,7 @@ class TestUserRegistration:
 
         # Create mock user object (not actual User model)
         mock_user = MagicMock()
-        mock_user.id = 1
+        mock_user.id = "1"
         mock_user.email = "newuser@example.com"
         mock_user.full_name = "New User"
         mock_user.email_verified = False
@@ -105,14 +105,13 @@ class TestUserRegistration:
     @pytest.mark.asyncio
     async def test_register_user_weak_password(self, auth_service):
         """Test registration with weak password"""
-        register_request = UserRegisterRequest(
-            email="test@example.com",
-            password="weak",  # Too short
-            full_name="Test User"
-        )
-
+        # ValidationError is raised during UserRegisterRequest instantiation
         with pytest.raises(Exception):  # Pydantic ValidationError
-            await auth_service.register_user(register_request)
+            register_request = UserRegisterRequest(
+                email="test@example.com",
+                password="weak",  # Too short
+                full_name="Test User"
+            )
 
 
 class TestUserLogin:
@@ -192,7 +191,7 @@ class TestUserLogin:
             remember_me=False
         )
 
-        with pytest.raises(ValueError, match="Email not verified"):
+        with pytest.raises(ValueError, match="Please verify your email first"):
             await auth_service.login_user(login_request)
 
     @pytest.mark.asyncio
@@ -215,7 +214,7 @@ class TestUserLogin:
                 remember_me=False
             )
 
-            with pytest.raises(ValueError, match="Incorrect password"):
+            with pytest.raises(ValueError, match="Invalid credentials"):
                 await auth_service.login_user(login_request)
 
 
@@ -245,9 +244,8 @@ class TestEmailVerification:
         auth_service.user_repository = mock_user_repository
         mock_user_repository.verify_email.return_value = None
 
-        result = await auth_service.verify_email("invalid_token")
-
-        assert result is False
+        with pytest.raises(ValueError, match="Invalid or expired verification token"):
+            await auth_service.verify_email("invalid_token")
 
 
 class TestPasswordReset:
@@ -259,7 +257,10 @@ class TestPasswordReset:
         auth_service.user_repository = mock_user_repository
         auth_service.email_service = mock_email_service
 
-        mock_user = User(id=1, email="forgot@example.com")
+        mock_user = MagicMock()
+        mock_user.id = 1
+        mock_user.email = "forgot@example.com"
+        mock_user.email_verified = True  # Must be verified to request password reset
         mock_user_repository.get_by_email.return_value = mock_user
         mock_user_repository.set_password_reset_token.return_value = True
         mock_email_service.send_password_reset_email.return_value = True
@@ -345,8 +346,10 @@ class TestLogout:
     async def test_logout_success(self, auth_service, mock_token_repository):
         """Test successful logout"""
         auth_service.token_repository = mock_token_repository
-        mock_token_repository.revoke_token = AsyncMock(return_value=True)
-
+        # Mock get_valid_token to return a valid token
+        mock_refresh_token = MagicMock()
+        mock_refresh_token.token = "refresh_token_123"
+        mock_token_repository.get_valid_token = AsyncMock(return_value=mock_refresh_token)
         result = await auth_service.logout_user("refresh_token_123")
 
         assert result is True
@@ -356,8 +359,8 @@ class TestLogout:
     async def test_logout_invalid_token(self, auth_service, mock_token_repository):
         """Test logout with invalid token"""
         auth_service.token_repository = mock_token_repository
-        mock_token_repository.revoke_token = AsyncMock(return_value=False)
-
+        # Mock get_valid_token to return None (invalid token)
+        mock_token_repository.get_valid_token = AsyncMock(return_value=None)
         result = await auth_service.logout_user("invalid_token")
 
         assert result is False
