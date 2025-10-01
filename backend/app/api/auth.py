@@ -90,7 +90,13 @@ async def verify_email(
 
         logger.info(f"Email verified successfully")
         return MessageResponse(message="Email verified successfully")
-    
+
+    except ValueError as e:
+        # Invalid or expired token
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
     except Exception as e:
         logger.error(f"Email verification failed: {e}")
         raise HTTPException(
