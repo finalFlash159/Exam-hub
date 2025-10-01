@@ -2,6 +2,7 @@ from .base import Base, BaseModel
 from .user import User, UserRole
 from .exam import Exam, Question, ExamAttempt, DifficultyLevel, ExamStatus
 from .auth import RefreshToken, EmailVerificationToken
+from .file import UploadedFile, FileStatus, StorageType, ProcessingStatus
 
 __all__ = [
     "Base",
@@ -14,5 +15,9 @@ __all__ = [
     "DifficultyLevel",
     "ExamStatus",
     "RefreshToken",
-    "EmailVerificationToken"
+    "EmailVerificationToken",
+    "UploadedFile",
+    "FileStatus", 
+    "StorageType",
+    "ProcessingStatus"
 ]
