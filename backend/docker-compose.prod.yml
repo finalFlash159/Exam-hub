@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    image: registry.digitalocean.com/${DIGITALOCEAN_REGISTRY_NAME}/exam-hub-backend:latest
+    container_name: exam-hub-backend
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      # Database
+      - DATABASE_URL=${DATABASE_URL}
+
+      # Security
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+
+      # Email (Brevo)
+      - BREVO_API_KEY=${BREVO_API_KEY}
+      - SENDER_EMAIL=${SENDER_EMAIL}
+      - SENDER_NAME=${SENDER_NAME}
+
+      # AI Services
+      - GENAI_PROVIDER=${GENAI_PROVIDER}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+
+      # Redis
+      - REDIS_URL=${REDIS_URL}
+      - RATE_LIMIT_ENABLED=${RATE_LIMIT_ENABLED}
+
+      # CORS
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+
+      # File Upload
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE}
+      - UPLOAD_DIR=${UPLOAD_DIR}
+
+    volumes:
+      - ./uploads:/app/uploads
+      - ./exam_hub.db:/app/exam_hub.db
+
+    networks:
+      - exam-hub-network
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis (optional - for rate limiting)
+  redis:
+    image: redis:7-alpine
+    container_name: exam-hub-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - exam-hub-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  exam-hub-network:
+    driver: bridge
+
+volumes:
+  redis-data:
