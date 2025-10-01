@@ -172,7 +172,7 @@ async def retry_with_backoff(
 
 def with_retry(
     config: Optional[RetryConfig] = None,
-    retryable_exceptions: Tuple[Type[Exception], ...] = TRANSIENT_EXCEPTIONS,
+    retryable_exceptions: Tuple[Type[Exception], ...] = (Exception,),
     context: Optional[str] = None,
 ):
     """
