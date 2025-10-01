@@ -8,6 +8,7 @@ import pytest
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.pool import StaticPool
+from unittest.mock import AsyncMock, patch
 
 from app.main import app
 from app.models.base import Base
@@ -53,9 +54,13 @@ async def client(test_db_session):
 
     app.dependency_overrides[get_db_session] = override_get_db
 
-    transport = ASGITransport(app=app)
-    async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        yield ac
+    # Mock FastAPILimiter to avoid Redis dependency in tests
+    with patch('fastapi_limiter.FastAPILimiter.redis', new=AsyncMock()):
+        with patch('fastapi_limiter.FastAPILimiter.identifier', new=AsyncMock()):
+            with patch('fastapi_limiter.FastAPILimiter.http_callback', new=AsyncMock()):
+                transport = ASGITransport(app=app)
+                async with AsyncClient(transport=transport, base_url="http://test") as ac:
+                    yield ac
 
     app.dependency_overrides.clear()
 
