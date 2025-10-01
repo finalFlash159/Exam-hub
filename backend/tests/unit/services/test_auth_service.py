@@ -120,45 +120,45 @@ class TestUserLogin:
     async def test_login_success(self, auth_service, mock_user_repository, mock_token_repository):
         """Test successful login"""
         auth_service.user_repository = mock_user_repository
-        auth_service.token_repository = mock_token_repository
+        auth_service.refresh_token_repository = mock_token_repository
 
         # Mock verified user with correct password
+        mock_user = MagicMock()
+        mock_user.id = 1
+        mock_user.email = "user@example.com"
+        mock_user.hashed_password = "hashed"
+        mock_user.email_verified = True
+        mock_user.is_active = True
+        mock_user.role = UserRole.USER
+        mock_user.full_name = "Test User"
+        mock_user.created_at = datetime.now(timezone.utc)
+        mock_user_repository.get_by_email.return_value = mock_user
+        mock_user_repository.update = AsyncMock(return_value=mock_user)
+
+        mock_refresh_token = MagicMock()
+        mock_refresh_token.id = 1
+        mock_refresh_token.user_id = 1
+        mock_refresh_token.token = "refresh_token_123"
+        mock_refresh_token.expires_at = datetime.now(timezone.utc) + timedelta(days=7)
+        mock_token_repository.create_refresh_token = AsyncMock(return_value=mock_refresh_token)
+
+        # Execute
+        login_request = UserLoginRequest(
+            email="user@example.com",
+            password="correct_password",
+            remember_me=False
+        )
+
         with patch('app.core.security.verify_password', return_value=True):
-            with patch('app.core.security.get_password_hash', return_value="hashed"):
-                mock_user = MagicMock()
-                mock_user.id = 1
-                mock_user.email = "user@example.com"
-                mock_user.hashed_password = "hashed"
-                mock_user.email_verified = True
-                mock_user.is_active = True
-                mock_user.role = UserRole.USER
-                mock_user.full_name = "Test User"
-                mock_user.created_at = datetime.now(timezone.utc)
-                mock_user_repository.get_by_email.return_value = mock_user
-                mock_user_repository.update = AsyncMock(return_value=mock_user)
-
-                mock_refresh_token = MagicMock()
-                mock_refresh_token.id = 1
-                mock_refresh_token.user_id = 1
-                mock_refresh_token.token = "refresh_token_123"
-                mock_refresh_token.expires_at = datetime.now(timezone.utc) + timedelta(days=7)
-                mock_token_repository.create_refresh_token = AsyncMock(return_value=mock_refresh_token)
-
-                # Execute
-                login_request = UserLoginRequest(
-                    email="user@example.com",
-                    password="correct_password",
-                    remember_me=False
-                )
-
-                with patch('app.core.security.create_access_token', return_value="access_token_123"):
+            with patch('app.core.security.create_access_token', return_value="access_token_123"):
+                with patch('app.core.security.create_refresh_token', return_value="refresh_token_123"):
                     result = await auth_service.login_user(login_request)
 
-                # Assertions
-                assert result.access_token == "access_token_123"
-                assert result.refresh_token == "refresh_token_123"
-                assert result.token_type == "bearer"
-                assert result.user.email == "user@example.com"
+        # Assertions
+        assert result.access_token == "access_token_123"
+        assert result.refresh_token == "refresh_token_123"
+        assert result.token_type == "bearer"
+        assert result.user.email == "user@example.com"
 
     @pytest.mark.asyncio
     async def test_login_user_not_found(self, auth_service, mock_user_repository):
@@ -311,7 +311,7 @@ class TestTokenRefresh:
     @pytest.mark.asyncio
     async def test_refresh_access_token_success(self, auth_service, mock_token_repository, mock_user_repository):
         """Test successful access token refresh"""
-        auth_service.token_repository = mock_token_repository
+        auth_service.refresh_token_repository = mock_token_repository
         auth_service.user_repository = mock_user_repository
 
         mock_refresh_token = MagicMock()
@@ -341,7 +341,7 @@ class TestTokenRefresh:
     @pytest.mark.asyncio
     async def test_refresh_access_token_invalid(self, auth_service, mock_token_repository):
         """Test refresh with invalid token"""
-        auth_service.token_repository = mock_token_repository
+        auth_service.refresh_token_repository = mock_token_repository
         mock_token_repository.get_valid_token = AsyncMock(return_value=None)
 
         with pytest.raises(ValueError, match="Invalid or expired refresh token"):
@@ -354,7 +354,7 @@ class TestLogout:
     @pytest.mark.asyncio
     async def test_logout_success(self, auth_service, mock_token_repository):
         """Test successful logout"""
-        auth_service.token_repository = mock_token_repository
+        auth_service.refresh_token_repository = mock_token_repository
         # Mock get_valid_token to return a valid token
         mock_refresh_token = MagicMock()
         mock_refresh_token.token = "refresh_token_123"
@@ -370,7 +370,7 @@ class TestLogout:
     @pytest.mark.asyncio
     async def test_logout_invalid_token(self, auth_service, mock_token_repository):
         """Test logout with invalid token"""
-        auth_service.token_repository = mock_token_repository
+        auth_service.refresh_token_repository = mock_token_repository
         # Mock get_valid_token to return None (invalid token)
         mock_token_repository.get_valid_token = AsyncMock(return_value=None)
         result = await auth_service.logout_user("invalid_token")
