@@ -9,6 +9,13 @@ from app.schemas.auth_schemas import LoginResponse, UserLoginRequest
 from app.schemas.auth_schemas import MessageResponse, ForgotPasswordRequest, ResetPasswordRequest
 from app.schemas.auth_schemas import EmailVerificationRequest
 from app.schemas.auth_schemas import RefreshTokenRequest, LogoutRequest
+from app.core.rate_limit import (
+    rate_limit_auth_login,
+    rate_limit_auth_register,
+    rate_limit_auth_forgot_password,
+    rate_limit_auth_reset_password,
+    rate_limit_auth_verify_email,
+)
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 logger = logging.getLogger(__name__)
@@ -16,8 +23,9 @@ logger = logging.getLogger(__name__)
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def register_user(
     request: UserRegisterRequest,
-    db: AsyncSession = Depends(get_db_session)
-):
+    db: AsyncSession = Depends(get_db_session),
+    _rate_limit: None = Depends(rate_limit_auth_register()),
+): 
     try:
         # Initialize auth service
         auth_service = AuthService(db)
@@ -44,7 +52,8 @@ async def register_user(
 @router.post("/login", response_model=LoginResponse)
 async def login_user(
     request: UserLoginRequest,
-    db: AsyncSession = Depends(get_db_session)
+    db: AsyncSession = Depends(get_db_session),
+    _rate_limit: None = Depends(rate_limit_auth_login()),
 ):
     try:
         # Initialize auth service
@@ -69,7 +78,8 @@ async def login_user(
 @router.post("/verify-email", response_model=MessageResponse)
 async def verify_email(
     request: EmailVerificationRequest,
-    db: AsyncSession = Depends(get_db_session)
+    db: AsyncSession = Depends(get_db_session),
+    _rate_limit: None = Depends(rate_limit_auth_verify_email()),
 ):
     try:
         # Initialize auth service
@@ -91,7 +101,8 @@ async def verify_email(
 @router.post("/forgot-password", response_model=MessageResponse)
 async def forgot_password(
     request: ForgotPasswordRequest,
-    db: AsyncSession = Depends(get_db_session)
+    db: AsyncSession = Depends(get_db_session),
+    _rate_limit: None = Depends(rate_limit_auth_forgot_password()),
 ):
     try:
         # Initialize auth service
@@ -114,7 +125,8 @@ async def forgot_password(
 @router.post("/reset-password", response_model=MessageResponse)
 async def reset_password(
     request: ResetPasswordRequest,
-    db: AsyncSession = Depends(get_db_session)
+    db: AsyncSession = Depends(get_db_session),
+    _rate_limit: None = Depends(rate_limit_auth_reset_password()),
 ):
     try:
         # Initialize auth service

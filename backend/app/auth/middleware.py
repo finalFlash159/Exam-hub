@@ -9,7 +9,7 @@ from fastapi import HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.utils.security import verify_token
+from app.core.security import verify_token
 from app.models.user import User
 from app.repositories.user_repository import UserRepository
 

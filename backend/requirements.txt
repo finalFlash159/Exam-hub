@@ -17,7 +17,9 @@ langchain-google-genai>=1.0.8
 # Testing
 pytest==7.4.2
 pytest-cov==4.1.0
-pytest-mock==3.11.1 
+pytest-mock==3.11.1
+pytest-asyncio==0.21.0
+httpx<0.25  # For FastAPI TestClient compatibility 
 
 # Authentication
 passlib==1.7.4
@@ -38,3 +40,10 @@ argon2-cffi==23.1.0
 
 # Email validation
 email-validator==2.1.0
+
+# AI providers
+openai
+
+# Rate Limiting & Caching
+fastapi-limiter==0.1.6
+redis>=6.4.0

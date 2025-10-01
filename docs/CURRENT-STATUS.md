@@ -40,81 +40,99 @@
 
 ---
 
-## 🔄 **CURRENT PHASE: AI Integration Planning**
+## 🔄 **CURRENT PHASE: GenAI Module Planning**
 
-### **📋 Planning & Documentation (IN PROGRESS)**
-- ✅ **AI Architecture Design** - Complete multi-provider strategy
-- ✅ **Implementation Plan** - 3-week detailed roadmap
-- ✅ **API Documentation** - AI endpoints specification
-- ✅ **System Design Updates** - Architecture documentation
+### **📋 Planning & Documentation (COMPLETED)**
+- ✅ **GenAI Architecture Design** - Domain-driven module approach
+- ✅ **Implementation Plan** - 3-week detailed roadmap with GenAI structure
+- ✅ **API Documentation** - GenAI endpoints specification
+- ✅ **System Design Updates** - Architecture documentation updated
 
-### **🤖 AI Module Structure (PLANNED)**
+### **🤖 GenAI Module Structure (PLANNED)**
 ```
-app/ai/
-├── clients/          # AI service clients
-│   ├── base.py      # Abstract base client
-│   ├── openai_client.py    # OpenAI GPT integration
-│   ├── gemini_client.py    # Google Gemini integration
-│   └── mock_client.py      # Testing & development
-├── services/         # AI business logic
-│   ├── ai_service.py       # Main AI orchestrator
-│   └── client_factory.py   # Client instantiation
-└── schemas/          # AI request/response models
-    ├── requests.py   # API request schemas
-    └── responses.py  # API response schemas
+app/genai/
+├── clients/              # External AI service clients
+│   ├── base.py          # Abstract client interface
+│   ├── openai_client.py # OpenAI GPT integration
+│   ├── gemini_client.py # Google Gemini integration
+│   ├── mock_client.py   # Testing & development
+│   └── factory.py       # Client factory pattern
+├── generators/           # Generation algorithms
+│   ├── exam_generator.py     # High-level exam generation
+│   └── question_generator.py # Individual question generation
+├── services/            # GenAI business logic
+│   └── genai_service.py # Main GenAI orchestrator
+├── schemas/             # GenAI data models
+│   ├── requests.py      # Request schemas
+│   └── responses.py     # Response schemas
+├── prompts/             # AI prompt templates
+│   ├── exam_prompts.py  # Exam generation prompts
+│   └── question_prompts.py # Question-specific prompts
+└── utils/               # GenAI utilities
+    └── content_analyzer.py # Content analysis & preprocessing
 ```
 
 ---
 
 ## 🎯 **NEXT IMMEDIATE STEPS**
 
-### **Week 1: AI Foundation**
-1. **Create AI module structure** (Day 1)
+### **Week 1: GenAI Foundation**
+1. **Create GenAI module structure** (Day 1)
    ```bash
-   mkdir -p backend/app/ai/{clients,services,schemas}
+   mkdir -p backend/app/genai/{clients,generators,services,schemas,prompts,utils}
    ```
 
 2. **Implement Base AI Client** (Day 1-2)
    - Abstract `BaseAIClient` interface
-   - `AIClientType` enum (OpenAI, Gemini, Mock)
-   - Request/response schemas
+   - `AIProvider` enum (OpenAI, Gemini, Mock)
+   - Core request/response schemas
 
 3. **Mock Client Implementation** (Day 2-3)
    - Working mock for development
    - Realistic test data generation
    - No external dependencies
 
-4. **Client Factory Pattern** (Day 3-4)
-   - AI client instantiation logic
-   - Configuration validation
-   - Health checking
+4. **Client Factory & Content Analyzer** (Day 3-4)
+   - AI client factory pattern
+   - Content analysis utilities
+   - Health checking system
 
 ### **Week 2: Real AI Clients**
-1. **OpenAI Client** (Day 5-7)
+1. **OpenAI Client** (Day 5-6)
    - Async OpenAI API integration
-   - Prompt engineering
-   - Error handling & retries
+   - JSON mode support
+   - Usage tracking & cost monitoring
 
-2. **Gemini Client Migration** (Day 8-10)
-   - Move from `utils/` to `ai/clients/`
+2. **Gemini Client Migration** (Day 7-8)
+   - Move from `utils/` to `genai/clients/`
    - Refactor to new interface
    - Improve existing implementation
 
-### **Week 3: Integration & Testing**
-1. **AI Service Implementation** (Day 11-14)
+3. **Prompt Engineering** (Day 9-10)
+   - Professional prompt templates
+   - Dynamic prompt generation
+   - Multi-difficulty support
+
+### **Week 3: Generation Logic & Integration**
+1. **Exam Generation Logic** (Day 11-12)
+   - Complete generation pipeline
+   - Quality validation system
+   - Error recovery mechanisms
+
+2. **GenAI Service Integration** (Day 13-14)
+   - Complete GenAI service
+   - Document service integration
    - File-to-exam pipeline
-   - Multi-client orchestration
-   - Integration with DocumentService
 
-2. **API Endpoints** (Day 15-17)
-   - `/ai/clients` - Client discovery
+3. **API Integration** (Day 15-16)
+   - `/ai/providers` - Provider discovery
    - `/upload/{file_id}/generate-exam` - Main generation
-   - Update existing exam endpoints
+   - Update existing services
 
-3. **Testing & Documentation** (Day 18-21)
+4. **Configuration & Testing** (Day 17-21)
+   - Complete configuration management
    - Comprehensive test suite
-   - API documentation updates
-   - Production deployment preparation
+   - Documentation updates
 
 ---
 
@@ -222,12 +240,12 @@ backend/app/ai/       # 🔄 TO BE CREATED
 - ✅ Detailed implementation plan
 
 ### **Next Action:**
-**Begin AI Module Implementation - Week 1, Day 1**
+**Begin GenAI Module Implementation - Week 1, Day 1**
 
 ```bash
 # Ready to execute:
 cd backend
-mkdir -p app/ai/{clients,services,schemas}
+mkdir -p app/genai/{clients,generators,services,schemas,prompts,utils}
 # Start with base.py implementation
 ```
 
@@ -235,13 +253,15 @@ mkdir -p app/ai/{clients,services,schemas}
 
 ## 💡 **Key Decisions Made**
 
-1. **AI Architecture:** Multi-provider client pattern
-2. **Supported Providers:** OpenAI GPT + Google Gemini + Mock
-3. **Integration Point:** File-based exam generation
-4. **User Choice:** AI provider selection in API
-5. **Backward Compatibility:** Maintain existing exam endpoints
-6. **Testing Strategy:** Mock client for development
-7. **Configuration:** Environment-based provider selection
+1. **GenAI Architecture:** Domain-driven module with multi-provider support
+2. **Module Structure:** Self-contained genai/ module with clear boundaries
+3. **Supported Providers:** OpenAI GPT + Google Gemini + Mock
+4. **Integration Point:** File-based exam generation pipeline
+5. **User Choice:** AI provider selection in API
+6. **Backward Compatibility:** Maintain existing exam endpoints
+7. **Testing Strategy:** Mock client for development
+8. **Configuration:** Environment-based provider selection
+9. **Future-Proof:** Microservice-ready architecture
 
 ---
 

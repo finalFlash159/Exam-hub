@@ -1,8 +1,3 @@
-"""
-Database connection and session management
-Handles SQLAlchemy async engine and session creation
-"""
-
 import logging
 from typing import AsyncGenerator
 
@@ -96,13 +91,14 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def init_database():
-    """
-    Initialize database (create tables)
-    Call this on application startup
-    """
-    from app.models.base import Base
-    # Import all models to ensure they're registered
-    from app.models.exam import Exam, Question, ExamAttempt
+    # Initialize database and create tables
+    from app.models import (
+        Base, 
+        Exam, Question, ExamAttempt, 
+        RefreshToken, EmailVerificationToken,
+        UploadedFile, FileStatus, StorageType, ProcessingStatus,
+        User, UserRole
+    )
     
     global engine
     

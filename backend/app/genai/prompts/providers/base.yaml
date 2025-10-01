@@ -1,0 +1,20 @@
+version: "1.0"
+variables:
+  max_content_length: 10000
+  default_question_count: 10
+  language_default: "vi"
+templates:
+  exam_generation:
+    output_format: "json_array"
+    required_fields: ["question_text", "options", "correct_answer", "explanation"]
+    locales:
+      en: |
+        Create {{ question_count }} MCQs. Use content below (trimmed to {{ max_content_length }} chars).
+        Return ONLY JSON array with fields {{ required_fields }}. No markdown.
+        CONTENT:
+        {{ content[:max_content_length] }}
+      vi: |
+        Tạo {{ question_count }} câu trắc nghiệm. Dùng nội dung dưới (cắt {{ max_content_length }} ký tự).
+        Chỉ trả về JSON array với các trường {{ required_fields }}. Không markdown.
+        NỘI DUNG:
+        {{ content[:max_content_length] }}

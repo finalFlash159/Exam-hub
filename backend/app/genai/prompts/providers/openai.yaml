@@ -1,0 +1,11 @@
+# providers/openai.yaml
+provider:
+  name: "openai"
+  model: "gpt-4o-mini"
+  params:
+    temperature: 0.3
+    max_tokens: 2000
+  variables:
+    max_content_length: 9000
+  template_mapping:
+    exam_generation: "exam_generation"

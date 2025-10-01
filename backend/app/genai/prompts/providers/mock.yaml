@@ -1,0 +1,11 @@
+# providers/mock.yaml
+provider:
+  name: "mock"
+  model: "mock-v1.0"
+  params:
+    temperature: 0.5
+    max_tokens: 1000
+  variables:
+    max_content_length: 5000
+  template_mapping:
+    exam_generation: "exam_generation"

@@ -41,6 +41,10 @@ class Settings:
         self.algorithm = "HS256"
         self.access_token_expire_minutes = 30
 
+        # CORS allowed origins (comma-separated in .env)
+        allowed_origins_str = os.getenv('ALLOWED_ORIGINS', 'http://localhost:3000,http://localhost:5173')
+        self.allowed_origins = [origin.strip() for origin in allowed_origins_str.split(',') if origin.strip()]
+
         # Email configuration (Brevo)
         self.brevo_api_key = os.getenv('BREVO_API_KEY', '')
         self.from_email = os.getenv('FROM_EMAIL', 'noreply@examhub.com')
@@ -56,13 +60,32 @@ class Settings:
         
         # File upload
         self.upload_folder = "uploads"
-        self.allowed_extensions = {'pdf', 'docx'}
+        self.allowed_extensions = {'pdf', 'docx', 'txt'}
         self.max_upload_size = 16 * 1024 * 1024  # 16MB
         
         # Database
         self.database_url = self._get_database_url()
         self.database_echo = self.debug
-        
+
+        # Redis Configuration (for rate limiting and caching)
+        self.redis_url = os.getenv('REDIS_URL')
+
+        # Build Redis URL from individual parameters if REDIS_URL not provided
+        if not self.redis_url:
+            self.redis_host = os.getenv('REDIS_HOST', 'localhost')
+            self.redis_port = int(os.getenv('REDIS_PORT', '6379'))
+            self.redis_db = int(os.getenv('REDIS_DB', '0'))
+            self.redis_password = os.getenv('REDIS_PASSWORD')
+
+            # Build URL with or without password
+            if self.redis_password:
+                self.redis_url = f'redis://:{self.redis_password}@{self.redis_host}:{self.redis_port}/{self.redis_db}'
+            else:
+                self.redis_url = f'redis://{self.redis_host}:{self.redis_port}/{self.redis_db}'
+
+        # Rate limiting toggle
+        self.rate_limit_enabled = os.getenv('RATE_LIMIT_ENABLED', 'true').lower() == 'true'
+
         # Paths
         backend_dir = os.path.dirname(os.path.dirname(__file__))
         project_root = os.path.dirname(backend_dir)

@@ -34,13 +34,39 @@ class User(BaseModel):
         nullable=False
     )
 
-    # Relationship
+    # Relationships
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(
         "RefreshToken", 
         back_populates="user", 
         cascade="all, delete-orphan"
     )
+    
+    # File relationship
+    uploaded_files: Mapped[List["UploadedFile"]] = relationship(
+        "UploadedFile",
+        back_populates="owner",
+        cascade="all, delete-orphan",
+        order_by="UploadedFile.created_at.desc()"
+    )
+    
+    # Exam relationship 
+    created_exams: Mapped[List["Exam"]] = relationship(
+        "Exam",
+        foreign_keys="Exam.creator_id",
+        back_populates="creator",
+        cascade="all, delete-orphan",
+        order_by="Exam.created_at.desc()"
+    )
 
     def __repr__(self) -> str:
         return f"<User(id={self.id}, email='{self.email}', role={self.role})>"
     
+    @property
+    def file_count(self) -> int:
+        """Get number of uploaded files"""
+        return len([f for f in self.uploaded_files if f.upload_status != "deleted"])
+    
+    @property
+    def total_file_size(self) -> int:
+        """Get total size of uploaded files in bytes"""
+        return sum(f.size for f in self.uploaded_files if f.upload_status != "deleted")

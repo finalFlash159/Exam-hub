@@ -36,6 +36,7 @@ class Exam(BaseModel):
     # Basic info
     title: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     description: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    creator_id: Mapped[Optional[str]] = mapped_column(String(36), ForeignKey("users.id"), nullable=True, index=True)
     
     # Exam settings
     duration_minutes: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
@@ -64,6 +65,13 @@ class Exam(BaseModel):
         "Question", 
         back_populates="exam",
         cascade="all, delete-orphan"
+    )
+    
+    # Creator relationship
+    creator: Mapped[Optional["User"]] = relationship(
+        "User", 
+        foreign_keys=[creator_id],
+        back_populates="created_exams"
     )
     
     def __repr__(self) -> str:
