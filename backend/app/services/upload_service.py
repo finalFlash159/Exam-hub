@@ -59,13 +59,20 @@ class UploadService:
         
         # Extract extension first
         name, ext = os.path.splitext(filename)
-        
-        # Remove dangerous characters, keep only alphanumeric, dots, hyphens, underscores
-        safe_name = re.sub(r'[^\w\-_.]', '_', name)
-        safe_ext = re.sub(r'[^\w.]', '', ext)  # Extensions should be cleaner
-        
-        # Remove leading/trailing dots and underscores
-        safe_name = safe_name.strip('._')
+
+        # Remove dangerous characters, keep only alphanumeric, hyphens, underscores (NO DOTS)
+        # This prevents path traversal attacks with sequences like ../
+        safe_name = re.sub(r'[^\w\-]', '_', name)
+
+        # Only allow alphanumeric characters in extension, ensure single dot prefix
+        safe_ext = ''
+        if ext:
+            # Remove leading dots and sanitize extension
+            ext_clean = ext.lstrip('.')
+            safe_ext = '.' + re.sub(r'[^\w]', '', ext_clean)
+
+        # Remove leading/trailing underscores
+        safe_name = safe_name.strip('_')
         
         # Ensure name is not empty
         if not safe_name:
@@ -293,7 +300,7 @@ class UploadService:
                     await self.file_repo.delete_file_record(file_record.id, user_id)
                 except Exception as cleanup_error:
                     logger.error(f"Failed to cleanup database record: {cleanup_error}")
-                raise Exception("File save failed")
+                raise Exception(f"File save failed: {type(e).__name__}") from e
             
             # Verify file was saved correctly
             if not os.path.exists(file_path):

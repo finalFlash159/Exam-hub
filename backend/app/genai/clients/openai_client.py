@@ -11,7 +11,11 @@ try:
     from openai import OpenAIError  # type: ignore
 except ImportError:
     OpenAI = None  # type: ignore
-    OpenAIError = Exception  # type: ignore
+
+    # Custom fallback exception if openai package is not installed
+    class OpenAIError(Exception):
+        """Custom OpenAIError fallback when openai package is unavailable."""
+        pass
 
 
 logger = logging.getLogger(__name__)

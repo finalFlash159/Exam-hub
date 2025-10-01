@@ -7,16 +7,22 @@ logger = logging.getLogger(__name__)
 async def get_rate_limit_key(request: Request) -> str:
     """
     Generate unique rate limit key for each user/IP
-    
+
     Priority:
-    1. User ID (authenticated)
+    1. User ID (authenticated) - from request.state.user
     2. IP Address (anonymous)
-    
+
+    Note:
+        This function depends on request.state.user being set by authentication
+        middleware for authenticated requests. For anonymous requests, it falls
+        back to IP-based rate limiting.
+
     Returns:
-        Unique identifier string
+        Unique identifier string (e.g., "user:123" or "ip:127.0.0.1")
     """
     try:
         # Try to get user from request state (set by auth middleware)
+        # This creates a soft dependency on authentication middleware
         user = getattr(request.state, "user", None)
         
         if user:

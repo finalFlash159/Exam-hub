@@ -63,7 +63,7 @@ def render(
         # fallback to default
         use_locale = language_default
         if use_locale not in locales:
-            raise KeyError(f"Locale '{locale}' not available and no valid default in base.yaml")
+            raise KeyError(f"Locale '{use_locale}' not available and no valid default in base.yaml")
 
     # Provider validations
     prv = prv_cfg.get("provider") or {}

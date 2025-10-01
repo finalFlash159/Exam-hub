@@ -8,8 +8,21 @@ import asyncio
 import logging
 from typing import Any, Callable, Optional, Type, Tuple
 from functools import wraps
+from http.client import RemoteDisconnected
+from urllib.error import URLError
 
 logger = logging.getLogger(__name__)
+
+
+# Define retryable exceptions (transient errors only)
+TRANSIENT_EXCEPTIONS = (
+    ConnectionError,      # Network connection errors
+    TimeoutError,         # Timeout errors
+    asyncio.TimeoutError, # Async timeout errors
+    RemoteDisconnected,   # HTTP connection dropped
+    URLError,             # URL/network errors
+    OSError,              # OS-level I/O errors (includes network)
+)
 
 
 class RetryConfig:
@@ -80,7 +93,7 @@ async def retry_with_backoff(
     func: Callable,
     *args: Any,
     config: Optional[RetryConfig] = None,
-    retryable_exceptions: Tuple[Type[Exception], ...] = (Exception,),
+    retryable_exceptions: Tuple[Type[Exception], ...] = TRANSIENT_EXCEPTIONS,
     context: Optional[str] = None,
     **kwargs: Any,
 ) -> Any:
@@ -159,7 +172,7 @@ async def retry_with_backoff(
 
 def with_retry(
     config: Optional[RetryConfig] = None,
-    retryable_exceptions: Tuple[Type[Exception], ...] = (Exception,),
+    retryable_exceptions: Tuple[Type[Exception], ...] = TRANSIENT_EXCEPTIONS,
     context: Optional[str] = None,
 ):
     """

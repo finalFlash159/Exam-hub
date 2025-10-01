@@ -259,8 +259,34 @@ class AIClientFactory:
 
 # Convenience functions for common operations
 async def create_default_client() -> BaseAIClient:
-    """Create client with default provider (Mock for now)"""
-    return AIClientFactory.create_client(AIProvider.MOCK)
+    """
+    Create client with default provider from environment variable.
+
+    Falls back to best available client if DEFAULT_AI_PROVIDER not set.
+    """
+    import os
+
+    # Get default provider from environment
+    default_provider_str = os.getenv("DEFAULT_AI_PROVIDER", "").lower()
+
+    # Try to use specified default provider
+    if default_provider_str:
+        try:
+            provider = AIProvider(default_provider_str)
+            logger.info(f"Using default AI provider from env: {provider.value}")
+            return AIClientFactory.create_client(provider)
+        except (ValueError, KeyError) as e:
+            logger.warning(f"Invalid DEFAULT_AI_PROVIDER '{default_provider_str}': {e}")
+
+    # Fallback to best available client
+    logger.info("DEFAULT_AI_PROVIDER not set, using best available client")
+    client = await create_best_available_client()
+
+    if client is None:
+        logger.error("No healthy AI clients available, falling back to MOCK")
+        return AIClientFactory.create_client(AIProvider.MOCK)
+
+    return client
 
 async def create_best_available_client() -> Optional[BaseAIClient]:
     """

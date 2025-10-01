@@ -41,6 +41,10 @@ class Settings:
         self.algorithm = "HS256"
         self.access_token_expire_minutes = 30
 
+        # CORS allowed origins (comma-separated in .env)
+        allowed_origins_str = os.getenv('ALLOWED_ORIGINS', 'http://localhost:3000,http://localhost:5173')
+        self.allowed_origins = [origin.strip() for origin in allowed_origins_str.split(',') if origin.strip()]
+
         # Email configuration (Brevo)
         self.brevo_api_key = os.getenv('BREVO_API_KEY', '')
         self.from_email = os.getenv('FROM_EMAIL', 'noreply@examhub.com')
