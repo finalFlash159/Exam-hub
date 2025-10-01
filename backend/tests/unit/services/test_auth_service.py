@@ -180,9 +180,10 @@ class TestUserLogin:
         auth_service.user_repository = mock_user_repository
 
         unverified_user = MagicMock()
-                mock_user.id = 1
-                mock_user.email = "unverified@example.com"
-                mock_user.email_verified = False
+        unverified_user.id = 1
+        unverified_user.email = "unverified@example.com"
+        unverified_user.email_verified = False
+
         mock_user_repository.get_by_email.return_value = unverified_user
 
         login_request = UserLoginRequest(
