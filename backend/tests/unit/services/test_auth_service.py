@@ -124,7 +124,7 @@ class TestUserLogin:
 
         # Mock verified user with correct password
         mock_user = MagicMock()
-        mock_user.id = 1
+        mock_user.id = "1"
         mock_user.email = "user@example.com"
         mock_user.hashed_password = "hashed"
         mock_user.email_verified = True
@@ -149,9 +149,9 @@ class TestUserLogin:
             remember_me=False
         )
 
-        with patch('app.core.security.verify_password', return_value=True):
-            with patch('app.core.security.create_access_token', return_value="access_token_123"):
-                with patch('app.core.security.create_refresh_token', return_value="refresh_token_123"):
+        with patch('app.services.auth_service.verify_password', return_value=True):
+            with patch('app.services.auth_service.create_access_token', return_value="access_token_123"):
+                with patch('app.services.auth_service.create_refresh_token', return_value="refresh_token_123"):
                     result = await auth_service.login_user(login_request)
 
         # Assertions
@@ -323,7 +323,7 @@ class TestTokenRefresh:
         mock_token_repository.get_valid_token = AsyncMock(return_value=mock_refresh_token)
 
         mock_user = MagicMock()
-        mock_user.id = 1
+        mock_user.id = "1"
         mock_user.email = "user@example.com"
         mock_user.full_name = "Test User"
         mock_user.role = UserRole.USER
@@ -332,7 +332,7 @@ class TestTokenRefresh:
         mock_user.created_at = datetime.now(timezone.utc)
         mock_user_repository.get_by_id.return_value = mock_user
 
-        with patch('app.core.security.create_access_token', return_value="new_access_token"):
+        with patch('app.services.auth_service.create_access_token', return_value="new_access_token"):
             result = await auth_service.refresh_access_token("refresh_123")
 
         assert result.access_token == "new_access_token"
@@ -373,6 +373,6 @@ class TestLogout:
         auth_service.refresh_token_repository = mock_token_repository
         # Mock get_valid_token to return None (invalid token)
         mock_token_repository.get_valid_token = AsyncMock(return_value=None)
-        result = await auth_service.logout_user("invalid_token")
 
-        assert result is False
+        with pytest.raises(ValueError, match="Invalid or expired refresh token"):
+            await auth_service.logout_user("invalid_token")
