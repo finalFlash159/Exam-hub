@@ -1,0 +1,11 @@
+# providers/gemini.yaml
+provider:
+  name: "gemini"
+  model: "gemini-2.0-flash-exp"
+  params:
+    temperature: 0.1
+    max_tokens: 4000
+  variables:
+    max_content_length: 12000
+  template_mapping:
+    exam_generation: "exam_generation"
