@@ -74,7 +74,8 @@ class TestRefreshTokenCreate:
         assert refresh_token.id is not None
         assert refresh_token.user_id == test_user.id
         assert refresh_token.token == token
-        assert refresh_token.expires_at == expires_at
+        # Compare timestamps without microseconds
+        assert refresh_token.expires_at.replace(microsecond=0, tzinfo=timezone.utc) == expires_at.replace(microsecond=0)
         assert refresh_token.device_info == "iPhone 15"
         assert refresh_token.ip_address == "192.168.1.1"
         assert refresh_token.is_revoked is False

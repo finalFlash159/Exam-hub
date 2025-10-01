@@ -57,7 +57,7 @@ class TestUserRepositoryCreate:
         assert user.hashed_password == "hashed_pwd"
         assert user.full_name == "Test User"
         assert user.email_verification_token == "token123"
-        assert user.is_verified is False
+        assert user.email_verified is False
         assert user.role == UserRole.USER
 
     @pytest.mark.asyncio
@@ -134,12 +134,12 @@ class TestUserRepositoryUpdate:
             verification_token="verify_token"
         )
 
-        assert user.is_verified is False
+        assert user.email_verified is False
 
         verified_user = await user_repository.verify_email("verify_token")
 
         assert verified_user is not None
-        assert verified_user.is_verified is True
+        assert verified_user.email_verified is True
         assert verified_user.email_verification_token is None
         assert verified_user.email_verified_at is not None
 
@@ -190,12 +190,9 @@ class TestUserRepositoryUpdate:
 
         # Reset password
         new_hashed_password = "new_hashed_pwd"
-        success = await user_repository.reset_password(reset_token, new_hashed_password)
+        updated_user = await user_repository.reset_password(reset_token, new_hashed_password)
 
-        assert success is True
-
-        # Verify password changed and token cleared
-        updated_user = await user_repository.get_by_id(user.id)
+        assert updated_user is not None
         assert updated_user.hashed_password == new_hashed_password
         assert updated_user.password_reset_token is None
         assert updated_user.password_reset_expires is None
@@ -216,9 +213,9 @@ class TestUserRepositoryUpdate:
         await user_repository.set_password_reset_token(user, reset_token, expires_at)
 
         # Try to reset password
-        success = await user_repository.reset_password(reset_token, "new_pwd")
+        result = await user_repository.reset_password(reset_token, "new_pwd")
 
-        assert success is False
+        assert result is None
 
 
 class TestUserRepositoryDelete:
